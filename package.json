@@ -1,0 +1,31 @@
+{
+  "name": "sih26242-rpl",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SIH26242: AI-Assisted Skill Assessment Tool for Recognition of Prior Learning (RPL) - monorepo",
+  "type": "module",
+  "workspaces": [
+    "contracts",
+    "backend"
+  ],
+  "scripts": {
+    "build": "npm run build -w @sih/contracts && npm run build -w @sih/backend",
+    "dev": "npm run build -w @sih/contracts && npm run dev -w @sih/backend",
+    "dev:worker": "npm run build -w @sih/contracts && npm run dev:worker -w @sih/backend",
+    "test": "npm run build -w @sih/contracts && npm run test -w @sih/backend",
+    "openapi": "npm run openapi -w @sih/contracts",
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  },
+  "allowScripts": {
+    "ffmpeg-static@5.3.0": true,
+    "mongodb-memory-server@11.3.0": true,
+    "esbuild@0.28.2": true
+  }
+}

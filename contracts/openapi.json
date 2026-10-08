@@ -1,0 +1,7413 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SIH26242 — AI-Assisted RPL Skill Assessment API",
+    "version": "1.0.0",
+    "description": "Single source of truth for the Worker PWA + Assessor portal (Person A) and the backend (Person B).\n\n**Offline rules:** client-generated UUIDs, `Idempotency-Key` on writes, evidence append-only,\nworker data last-write-wins via `version`, assessor/approval fields server-authoritative.\n\n**State machine:** DRAFT → DECLARED → MAPPED → PLAN_READY → IN_PROGRESS → SUBMITTED → AI_ANALYZED → UNDER_REVIEW → (REVIEWED | REASSESS) → APPROVED / REJECTED."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000",
+      "description": "local dev"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "DateTime": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+      },
+      "GeoPoint": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "lng": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "accuracy": {
+            "type": "number",
+            "minimum": 0
+          },
+          "source": {
+            "default": "gps",
+            "type": "string",
+            "enum": [
+              "gps",
+              "network",
+              "manual"
+            ]
+          }
+        },
+        "required": [
+          "lat",
+          "lng",
+          "source"
+        ],
+        "additionalProperties": false
+      },
+      "Id": {
+        "type": "string",
+        "format": "uuid",
+        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+      },
+      "IdempotencyKey": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 200
+      },
+      "Language": {
+        "type": "string",
+        "enum": [
+          "en",
+          "hi",
+          "mr"
+        ]
+      },
+      "LocalizedText": {
+        "type": "object",
+        "properties": {
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hi": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mr": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "en"
+        ],
+        "additionalProperties": false
+      },
+      "PageQuery": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/__shared/definitions/schema0"
+          },
+          "limit": {
+            "$ref": "#/components/schemas/__shared/definitions/schema1"
+          }
+        },
+        "required": [
+          "page",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "Timestamps": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "Version": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "BridgeTraining": {
+        "type": "object",
+        "properties": {
+          "skillArea": {
+            "type": "string"
+          },
+          "nosRefs": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggestion": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "required": [
+          "skillArea",
+          "nosRefs",
+          "suggestion"
+        ],
+        "additionalProperties": false
+      },
+      "ChecklistItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "criterionRef": {
+            "type": "string"
+          },
+          "criticalSafety": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "criticalSafety"
+        ],
+        "additionalProperties": false
+      },
+      "EvidenceSpec": {
+        "type": "object",
+        "properties": {
+          "media": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/__shared/definitions/schema2"
+            }
+          },
+          "minCount": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "maxCount": {
+            "default": 5,
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 50
+          },
+          "requireGps": {
+            "default": true,
+            "type": "boolean"
+          },
+          "requireWorkerInFrame": {
+            "default": false,
+            "type": "boolean"
+          },
+          "narrationRequired": {
+            "default": false,
+            "type": "boolean"
+          },
+          "minDurationSec": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "maxDurationSec": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "media",
+          "minCount",
+          "maxCount",
+          "requireGps",
+          "requireWorkerInFrame",
+          "narrationRequired"
+        ],
+        "additionalProperties": false
+      },
+      "LevelBand": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "minScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "maxScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "level",
+          "minScore",
+          "maxScore"
+        ],
+        "additionalProperties": false
+      },
+      "McqItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "topic": {
+            "type": "string",
+            "enum": [
+              "safety",
+              "tools",
+              "theory"
+            ]
+          },
+          "prompt": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "options": {
+            "minItems": 2,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/__shared/definitions/schema3"
+            }
+          },
+          "correctOptionId": {
+            "type": "string"
+          },
+          "nosRefs": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "criticalSafety": {
+            "default": false,
+            "type": "boolean"
+          },
+          "explanation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "topic",
+          "prompt",
+          "options",
+          "correctOptionId",
+          "nosRefs",
+          "criticalSafety"
+        ],
+        "additionalProperties": false
+      },
+      "Nos": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "core",
+              "support",
+              "safety",
+              "critical"
+            ]
+          },
+          "performanceCriteria": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerformanceCriterion"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "title",
+          "category",
+          "performanceCriteria"
+        ],
+        "additionalProperties": false
+      },
+      "PerformanceCriterion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "criticalSafety": {
+            "default": false,
+            "type": "boolean"
+          },
+          "keywords": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "criticalSafety",
+          "keywords"
+        ],
+        "additionalProperties": false
+      },
+      "SafetyTopic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "critical": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "critical"
+        ],
+        "additionalProperties": false
+      },
+      "SourceRef": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "estimated"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "confidence"
+        ],
+        "additionalProperties": false
+      },
+      "TaskBlueprint": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "mcq",
+              "tool_identification",
+              "checklist",
+              "practical_photo",
+              "practical_video",
+              "narration"
+            ]
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "brief": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            ]
+          },
+          "nosRefs": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/__shared/definitions/schema4"
+            }
+          },
+          "criteriaRefs": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "criticalSafety": {
+            "default": false,
+            "type": "boolean"
+          },
+          "evidenceSpec": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EvidenceSpec"
+              }
+            ]
+          },
+          "checklistFrom": {
+            "default": "criteria",
+            "type": "string",
+            "enum": [
+              "criteria",
+              "custom"
+            ]
+          },
+          "checklistItems": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChecklistItem"
+            }
+          },
+          "mcqIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "toolPickCount": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "toolDistractorCount": {
+            "default": 3,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "generation": {
+            "default": "static",
+            "type": "string",
+            "enum": [
+              "static",
+              "ai"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title",
+          "nosRefs",
+          "criteriaRefs",
+          "weight",
+          "criticalSafety",
+          "checklistFrom",
+          "checklistItems",
+          "mcqIds",
+          "toolDistractorCount",
+          "generation"
+        ],
+        "additionalProperties": false
+      },
+      "Thresholds": {
+        "type": "object",
+        "properties": {
+          "overallPass": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "perTaskPass": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "criticalMustPass": {
+            "default": true,
+            "type": "boolean"
+          },
+          "confidenceHumanRoute": {
+            "default": 0.65,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "levelBands": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LevelBand"
+            }
+          },
+          "bridgeBand": {
+            "type": "object",
+            "properties": {
+              "minScore": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "maxScore": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "minScore",
+              "maxScore"
+            ],
+            "additionalProperties": false
+          },
+          "consistencyFlagThreshold": {
+            "default": 0.35,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "overallPass",
+          "perTaskPass",
+          "criticalMustPass",
+          "confidenceHumanRoute",
+          "levelBands",
+          "bridgeBand",
+          "consistencyFlagThreshold"
+        ],
+        "additionalProperties": false
+      },
+      "ToolItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "aliases": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "aliases"
+        ],
+        "additionalProperties": false
+      },
+      "TradePack": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "enum": [
+              1
+            ]
+          },
+          "id": {
+            "$ref": "#/components/schemas/__shared/definitions/schema5"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "aliases": {
+            "$ref": "#/components/schemas/__shared/definitions/schema6"
+          },
+          "qp": {
+            "$ref": "#/components/schemas/TradePackQpMeta"
+          },
+          "sources": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SourceRef"
+            }
+          },
+          "nos": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Nos"
+            }
+          },
+          "tools": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToolItem"
+            }
+          },
+          "safetyTopics": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SafetyTopic"
+            }
+          },
+          "mcqBank": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/McqItem"
+            }
+          },
+          "taskBlueprints": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskBlueprint"
+            }
+          },
+          "thresholds": {
+            "$ref": "#/components/schemas/Thresholds"
+          },
+          "bridgeTraining": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BridgeTraining"
+            }
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "id",
+          "title",
+          "aliases",
+          "qp",
+          "sources",
+          "nos",
+          "tools",
+          "safetyTopics",
+          "mcqBank",
+          "taskBlueprints",
+          "thresholds",
+          "bridgeTraining"
+        ],
+        "additionalProperties": false
+      },
+      "TradePackQpMeta": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "qpId": {
+            "type": "string"
+          },
+          "ncoCode": {
+            "type": "string"
+          },
+          "nsqfLevel": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "ssc": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "alignedJobRoles": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "title",
+          "nsqfLevel",
+          "alignedJobRoles"
+        ],
+        "additionalProperties": false
+      },
+      "AIAnalysis": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "llm",
+              "fallback",
+              "mixed"
+            ]
+          },
+          "provider": {
+            "type": "string"
+          },
+          "models": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "llm": {
+                "type": "string"
+              },
+              "vision": {
+                "type": "string"
+              },
+              "asr": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIItemScore"
+            }
+          },
+          "keyframes": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyframeCheck"
+            }
+          },
+          "narration": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NarrationAnalysis"
+            }
+          },
+          "safetySummary": {
+            "type": "object",
+            "properties": {
+              "criticalFlags": {
+                "default": 0,
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "issues": {
+                "default": 0,
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "criticalFlags",
+              "issues"
+            ],
+            "additionalProperties": false
+          },
+          "pendingHumanTasks": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Id"
+            }
+          },
+          "pipelineVersion": {
+            "type": "string"
+          },
+          "computedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "round",
+          "mode",
+          "models",
+          "items",
+          "keyframes",
+          "narration",
+          "safetySummary",
+          "pendingHumanTasks",
+          "pipelineVersion",
+          "computedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AIFlag": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "missing_step",
+              "safety_issue",
+              "quality",
+              "integrity",
+              "consistency",
+              "process"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warn",
+              "critical"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "nosRef": {
+            "type": "string"
+          },
+          "criterionRef": {
+            "type": "string"
+          },
+          "timestampSec": {
+            "type": "number",
+            "minimum": 0
+          },
+          "evidenceIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        },
+        "required": [
+          "kind",
+          "severity",
+          "message",
+          "evidenceIds"
+        ],
+        "additionalProperties": false
+      },
+      "AIItemScore": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "criterionRef": {
+            "type": "string"
+          },
+          "routing": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "ai_assist",
+              "human_required"
+            ]
+          },
+          "criticalSafety": {
+            "default": false,
+            "type": "boolean"
+          },
+          "aiScore": {
+            "nullable": true,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "flags": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIFlag"
+            }
+          },
+          "note": {
+            "type": "string"
+          },
+          "requiresHuman": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "taskId",
+          "routing",
+          "criticalSafety",
+          "aiScore",
+          "confidence",
+          "flags",
+          "requiresHuman"
+        ],
+        "additionalProperties": false
+      },
+      "Assessment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "claimedBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "statusHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusEvent"
+            }
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "workerId",
+          "status",
+          "round",
+          "language",
+          "version",
+          "statusHistory",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AssessmentPlan": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "tradePackId": {
+            "$ref": "#/components/schemas/__shared/definitions/schema7"
+          },
+          "qpTitle": {
+            "$ref": "#/components/schemas/__shared/definitions/schema8"
+          },
+          "nsqfLevel": {
+            "$ref": "#/components/schemas/__shared/definitions/schema9"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            }
+          },
+          "totalWeight": {
+            "$ref": "#/components/schemas/__shared/definitions/schema20"
+          },
+          "generatedBy": {
+            "$ref": "#/components/schemas/__shared/definitions/schema21"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "tradePackId",
+          "qpTitle",
+          "nsqfLevel",
+          "tasks",
+          "totalWeight",
+          "generatedBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AssessorReview": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "assessorId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReviewItem"
+            }
+          },
+          "overallComment": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "REVIEWED",
+              "REASSESS"
+            ]
+          },
+          "reassessmentTasks": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taskId": {
+                  "$ref": "#/components/schemas/Id"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "taskId",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "startedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "completedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "round",
+          "assessorId",
+          "items",
+          "outcome",
+          "reassessmentTasks",
+          "startedAt",
+          "completedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AuditLogEntry": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "entityType": {
+            "type": "string"
+          },
+          "entityId": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "actorId": {
+            "type": "string"
+          },
+          "actorRole": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {}
+          },
+          "prevHash": {
+            "type": "string"
+          },
+          "payloadHash": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "at": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "seq",
+          "entityType",
+          "entityId",
+          "action",
+          "prevHash",
+          "payloadHash",
+          "hash",
+          "at"
+        ],
+        "additionalProperties": false
+      },
+      "AutoScore": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "perCriterion": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "criterionRef": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "criterionRef",
+                "score"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "gradedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "score",
+          "perCriterion",
+          "gradedAt"
+        ],
+        "additionalProperties": false
+      },
+      "BridgeSuggestion": {
+        "type": "object",
+        "properties": {
+          "skillArea": {
+            "type": "string"
+          },
+          "nosRefs": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggestion": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "required": [
+          "skillArea",
+          "nosRefs",
+          "suggestion"
+        ],
+        "additionalProperties": false
+      },
+      "Certificate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "certificateNo": {
+            "type": "string"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "reportId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "holderName": {
+            "type": "string"
+          },
+          "tradePackId": {
+            "type": "string"
+          },
+          "qpTitle": {
+            "type": "string"
+          },
+          "nsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "overallScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "verifyUrl": {
+            "type": "string"
+          },
+          "issuedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "revoked": {
+            "default": false,
+            "type": "boolean"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "certificateNo",
+          "assessmentId",
+          "reportId",
+          "workerId",
+          "holderName",
+          "tradePackId",
+          "qpTitle",
+          "nsqfLevel",
+          "overallScore",
+          "verifyUrl",
+          "issuedAt",
+          "revoked",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "CompetencyReport": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "tradePackId": {
+            "type": "string"
+          },
+          "qpTitle": {
+            "type": "string"
+          },
+          "overallScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "skillsPassed": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillResult"
+            }
+          },
+          "skillsNeedingImprovement": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillResult"
+            }
+          },
+          "currentNsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "suggestedNsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "recommendation": {
+            "type": "string",
+            "enum": [
+              "certify",
+              "certify_with_bridge",
+              "reassess",
+              "not_certified"
+            ]
+          },
+          "consistencyScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "assessorOverrides": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "criticalSafetyPassed": {
+            "type": "boolean"
+          },
+          "bridgeTraining": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BridgeSuggestion"
+            }
+          },
+          "summary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            ]
+          },
+          "generatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "workerId",
+          "round",
+          "tradePackId",
+          "qpTitle",
+          "overallScore",
+          "skillsPassed",
+          "skillsNeedingImprovement",
+          "currentNsqfLevel",
+          "suggestedNsqfLevel",
+          "recommendation",
+          "consistencyScore",
+          "assessorOverrides",
+          "criticalSafetyPassed",
+          "bridgeTraining",
+          "generatedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "Decision": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "authorizedAssessorId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "certificateId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "issuedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "outcome",
+          "authorizedAssessorId",
+          "issuedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "Declaration": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "answers": {
+            "$ref": "#/components/schemas/DeclarationAnswers"
+          },
+          "voiceAnswers": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VoiceAnswer"
+            }
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "submittedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "workerId",
+          "language",
+          "answers",
+          "voiceAnswers",
+          "version",
+          "submittedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "DeclarationAnswers": {
+        "type": "object",
+        "properties": {
+          "yearsExperience": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 60
+          },
+          "workTypes": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "toolsUsed": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tasksCanPerform": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sectors": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "employmentTypes": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "yearsExperience",
+          "workTypes",
+          "toolsUsed",
+          "tasksCanPerform",
+          "sectors",
+          "employmentTypes"
+        ],
+        "additionalProperties": false
+      },
+      "Evidence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "taskId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "seq": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "photo",
+              "video",
+              "audio",
+              "document"
+            ]
+          },
+          "storageKey": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "capturedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "appVersion": {
+            "type": "string"
+          },
+          "gps": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoPoint"
+              }
+            ]
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "narration": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NarrationTranscript"
+              }
+            ]
+          },
+          "status": {
+            "default": "received",
+            "type": "string",
+            "enum": [
+              "received",
+              "analyzing",
+              "analyzed",
+              "error"
+            ]
+          },
+          "integrity": {
+            "$ref": "#/components/schemas/EvidenceIntegrity"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "workerId",
+          "round",
+          "seq",
+          "kind",
+          "storageKey",
+          "sizeBytes",
+          "capturedAt",
+          "status",
+          "integrity",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "EvidenceIntegrity": {
+        "type": "object",
+        "properties": {
+          "serverSha256": {
+            "type": "string"
+          },
+          "clientSha256": {
+            "type": "string"
+          },
+          "hashVerified": {
+            "default": false,
+            "type": "boolean"
+          },
+          "chainPrev": {
+            "type": "string"
+          },
+          "chainHash": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "serverSha256",
+          "hashVerified"
+        ],
+        "additionalProperties": false
+      },
+      "Gender": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female",
+          "other",
+          "prefer_not_to_say"
+        ]
+      },
+      "KeyframeCheck": {
+        "type": "object",
+        "properties": {
+          "evidenceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "timestampSec": {
+            "type": "number",
+            "minimum": 0
+          },
+          "storageKey": {
+            "type": "string"
+          },
+          "checks": {
+            "type": "object",
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "summary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidenceId",
+          "timestampSec",
+          "storageKey",
+          "checks"
+        ],
+        "additionalProperties": false
+      },
+      "NarrationAnalysis": {
+        "type": "object",
+        "properties": {
+          "evidenceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "transcript": {
+            "type": "string"
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "flags": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIFlag"
+            }
+          },
+          "keywordHits": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "evidenceId",
+          "transcript",
+          "flags",
+          "keywordHits"
+        ],
+        "additionalProperties": false
+      },
+      "NarrationTranscript": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "asr",
+              "client"
+            ]
+          },
+          "confirmed": {
+            "default": false,
+            "type": "boolean"
+          },
+          "provider": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "source",
+          "confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "PresentedOption": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "required": [
+          "id",
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "PublicTask": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "planId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "order": {
+            "$ref": "#/components/schemas/__shared/definitions/schema10"
+          },
+          "type": {
+            "$ref": "#/components/schemas/__shared/definitions/schema11"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "brief": {
+            "$ref": "#/components/schemas/__shared/definitions/schema12"
+          },
+          "nosRefs": {
+            "$ref": "#/components/schemas/__shared/definitions/schema13"
+          },
+          "criteriaRefs": {
+            "$ref": "#/components/schemas/__shared/definitions/schema14"
+          },
+          "weight": {
+            "$ref": "#/components/schemas/__shared/definitions/schema15"
+          },
+          "criticalSafety": {
+            "$ref": "#/components/schemas/__shared/definitions/schema16"
+          },
+          "evidenceSpec": {
+            "$ref": "#/components/schemas/__shared/definitions/schema17"
+          },
+          "presentedOptions": {
+            "$ref": "#/components/schemas/__shared/definitions/schema18"
+          },
+          "checklistItems": {
+            "$ref": "#/components/schemas/__shared/definitions/schema19"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "planId",
+          "order",
+          "type",
+          "title",
+          "nosRefs",
+          "criteriaRefs",
+          "weight",
+          "criticalSafety",
+          "presentedOptions",
+          "checklistItems",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "QPMatch": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "matches": {
+            "minItems": 1,
+            "maxItems": 3,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QPMatchCandidate"
+            }
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "llm",
+              "fallback",
+              "mixed"
+            ]
+          },
+          "provider": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "matches",
+          "mode",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "QPMatchCandidate": {
+        "type": "object",
+        "properties": {
+          "tradePackId": {
+            "type": "string"
+          },
+          "qpTitle": {
+            "type": "string"
+          },
+          "jobRole": {
+            "type": "string"
+          },
+          "nsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "reasoning": {
+            "type": "string"
+          },
+          "matchedConcepts": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "tradePackId",
+          "qpTitle",
+          "nsqfLevel",
+          "confidence",
+          "reasoning",
+          "matchedConcepts"
+        ],
+        "additionalProperties": false
+      },
+      "ReviewItem": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "aiScore": {
+            "nullable": true,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "finalScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "overridden",
+              "manual"
+            ]
+          },
+          "comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "taskId",
+          "aiScore",
+          "finalScore",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "SkillResult": {
+        "type": "object",
+        "properties": {
+          "nosRef": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "criticalSafety": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nosRef",
+          "title",
+          "score",
+          "passed",
+          "criticalSafety"
+        ],
+        "additionalProperties": false
+      },
+      "StatusEvent": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "at": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "at"
+        ],
+        "additionalProperties": false
+      },
+      "SyncRecord": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "version": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "deleted": {
+            "default": false,
+            "type": "boolean"
+          },
+          "data": {}
+        },
+        "required": [
+          "entity",
+          "id",
+          "updatedAt",
+          "deleted",
+          "data"
+        ],
+        "additionalProperties": false
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "planId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "order": {
+            "$ref": "#/components/schemas/__shared/definitions/schema10"
+          },
+          "type": {
+            "$ref": "#/components/schemas/__shared/definitions/schema11"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "brief": {
+            "$ref": "#/components/schemas/__shared/definitions/schema12"
+          },
+          "nosRefs": {
+            "$ref": "#/components/schemas/__shared/definitions/schema13"
+          },
+          "criteriaRefs": {
+            "$ref": "#/components/schemas/__shared/definitions/schema14"
+          },
+          "weight": {
+            "$ref": "#/components/schemas/__shared/definitions/schema15"
+          },
+          "criticalSafety": {
+            "$ref": "#/components/schemas/__shared/definitions/schema16"
+          },
+          "evidenceSpec": {
+            "$ref": "#/components/schemas/__shared/definitions/schema17"
+          },
+          "presentedOptions": {
+            "$ref": "#/components/schemas/__shared/definitions/schema18"
+          },
+          "correctIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "checklistItems": {
+            "$ref": "#/components/schemas/__shared/definitions/schema19"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "planId",
+          "order",
+          "type",
+          "title",
+          "nosRefs",
+          "criteriaRefs",
+          "weight",
+          "criticalSafety",
+          "presentedOptions",
+          "correctIds",
+          "checklistItems",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "TaskAnswers": {
+        "type": "object",
+        "properties": {
+          "selectedOptionIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "checkedItemIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "textAnswer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "selectedOptionIds",
+          "checkedItemIds"
+        ],
+        "additionalProperties": false
+      },
+      "TaskResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "taskId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "answers": {
+            "$ref": "#/components/schemas/TaskAnswers"
+          },
+          "autoScore": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AutoScore"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "taskId",
+          "workerId",
+          "round",
+          "answers",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "worker",
+              "assessor",
+              "authorized_assessor",
+              "admin"
+            ]
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "active": {
+            "default": true,
+            "type": "boolean"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "language",
+          "active",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "VoiceAnswer": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "string"
+          },
+          "transcript": {
+            "type": "string"
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "evidenceId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "confirmed": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "questionId",
+          "transcript",
+          "confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "WorkerProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "phone": {
+            "$ref": "#/components/schemas/__shared/definitions/schema22"
+          },
+          "fullName": {
+            "$ref": "#/components/schemas/__shared/definitions/schema23"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/__shared/definitions/schema24"
+          },
+          "dateOfBirth": {
+            "$ref": "#/components/schemas/__shared/definitions/schema25"
+          },
+          "language": {
+            "$ref": "#/components/schemas/__shared/definitions/schema26"
+          },
+          "region": {
+            "$ref": "#/components/schemas/__shared/definitions/schema27"
+          },
+          "trades": {
+            "$ref": "#/components/schemas/__shared/definitions/schema28"
+          },
+          "yearsExperience": {
+            "$ref": "#/components/schemas/__shared/definitions/schema29"
+          },
+          "photoStorageKey": {
+            "$ref": "#/components/schemas/__shared/definitions/schema30"
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "fullName",
+          "language",
+          "region",
+          "trades",
+          "yearsExperience",
+          "version",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AnalysisRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "llm",
+              "fallback",
+              "mixed"
+            ]
+          },
+          "provider": {
+            "type": "string"
+          },
+          "models": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "llm": {
+                "type": "string"
+              },
+              "vision": {
+                "type": "string"
+              },
+              "asr": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIItemScore"
+            }
+          },
+          "keyframes": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyframeCheck"
+            }
+          },
+          "narration": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NarrationAnalysis"
+            }
+          },
+          "safetySummary": {
+            "type": "object",
+            "properties": {
+              "criticalFlags": {
+                "default": 0,
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "issues": {
+                "default": 0,
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "criticalFlags",
+              "issues"
+            ],
+            "additionalProperties": false
+          },
+          "pendingHumanTasks": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Id"
+            }
+          },
+          "pipelineVersion": {
+            "type": "string"
+          },
+          "computedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "round",
+          "mode",
+          "models",
+          "items",
+          "keyframes",
+          "narration",
+          "safetySummary",
+          "pendingHumanTasks",
+          "pipelineVersion",
+          "computedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AnalysisStatusRes": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "done",
+              "error",
+              "none"
+            ]
+          },
+          "queuedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "AssessmentListRes": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubmitAssessmentRes"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "total": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "items",
+          "page",
+          "limit",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "AssessmentRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "claimedBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "statusHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusEvent"
+            }
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "workerId",
+          "status",
+          "round",
+          "language",
+          "version",
+          "statusHistory",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AssessorLoginReq": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "AssessorRegisterReq": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "default": "assessor",
+            "type": "string",
+            "enum": [
+              "assessor",
+              "authorized_assessor"
+            ]
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "displayName"
+        ]
+      },
+      "AuditLogRes": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditLogEntry"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "total": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "items",
+          "page",
+          "limit",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "AuthSession": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "tokens": {
+            "$ref": "#/components/schemas/AuthTokens"
+          }
+        },
+        "required": [
+          "user",
+          "tokens"
+        ],
+        "additionalProperties": false
+      },
+      "AuthSessionRes": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "tokens": {
+            "$ref": "#/components/schemas/AuthTokens"
+          }
+        },
+        "required": [
+          "user",
+          "tokens"
+        ],
+        "additionalProperties": false
+      },
+      "AuthTokens": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "expiresInSec": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "accessToken",
+          "refreshToken",
+          "expiresInSec"
+        ],
+        "additionalProperties": false
+      },
+      "CertificateRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "certificateNo": {
+            "type": "string"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "reportId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "holderName": {
+            "type": "string"
+          },
+          "tradePackId": {
+            "type": "string"
+          },
+          "qpTitle": {
+            "type": "string"
+          },
+          "nsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "overallScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "verifyUrl": {
+            "type": "string"
+          },
+          "issuedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "revoked": {
+            "default": false,
+            "type": "boolean"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "certificateNo",
+          "assessmentId",
+          "reportId",
+          "workerId",
+          "holderName",
+          "tradePackId",
+          "qpTitle",
+          "nsqfLevel",
+          "overallScore",
+          "verifyUrl",
+          "issuedAt",
+          "revoked",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "ClaimReviewRes": {
+        "type": "object",
+        "properties": {
+          "assessment": {
+            "$ref": "#/components/schemas/SubmitAssessmentRes"
+          }
+        },
+        "required": [
+          "assessment"
+        ],
+        "additionalProperties": false
+      },
+      "ConflictRes": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "enum": [
+              "version_conflict"
+            ]
+          },
+          "server": {
+            "$ref": "#/components/schemas/ProfileRes"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "server",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "CreateAssessmentReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "tradeHint": {
+            "type": "string"
+          }
+        }
+      },
+      "DecisionReq": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "comments": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "outcome"
+        ]
+      },
+      "DecisionRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "authorizedAssessorId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "certificateId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "issuedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "outcome",
+          "authorizedAssessorId",
+          "issuedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "DeclarationRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "answers": {
+            "$ref": "#/components/schemas/DeclarationAnswers"
+          },
+          "voiceAnswers": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VoiceAnswer"
+            }
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "submittedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "workerId",
+          "language",
+          "answers",
+          "voiceAnswers",
+          "version",
+          "submittedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "EvidenceListRes": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceRes"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "total": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "items",
+          "page",
+          "limit",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "EvidenceRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "taskId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "seq": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "photo",
+              "video",
+              "audio",
+              "document"
+            ]
+          },
+          "storageKey": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "capturedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "appVersion": {
+            "type": "string"
+          },
+          "gps": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoPoint"
+              }
+            ]
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "narration": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NarrationTranscript"
+              }
+            ]
+          },
+          "status": {
+            "default": "received",
+            "type": "string",
+            "enum": [
+              "received",
+              "analyzing",
+              "analyzed",
+              "error"
+            ]
+          },
+          "integrity": {
+            "$ref": "#/components/schemas/EvidenceIntegrity"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "workerId",
+          "round",
+          "seq",
+          "kind",
+          "storageKey",
+          "sizeBytes",
+          "capturedAt",
+          "status",
+          "integrity",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "FairnessRes": {
+        "type": "object",
+        "properties": {
+          "buckets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dimension": {
+                  "type": "string",
+                  "enum": [
+                    "language",
+                    "gender",
+                    "region"
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "avgScore": {
+                  "type": "number"
+                },
+                "approvalRate": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "dimension",
+                "value",
+                "count",
+                "avgScore",
+                "approvalRate"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "buckets",
+          "note"
+        ],
+        "additionalProperties": false
+      },
+      "GeneratePlanReq": {
+        "type": "object",
+        "properties": {
+          "tradePackId": {
+            "type": "string"
+          }
+        }
+      },
+      "HealthRes": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "degraded"
+            ]
+          },
+          "service": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "checks": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "status"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "status",
+          "service",
+          "version",
+          "time",
+          "checks"
+        ],
+        "additionalProperties": false
+      },
+      "ListQuery": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/__shared/definitions/schema0"
+          },
+          "limit": {
+            "$ref": "#/components/schemas/__shared/definitions/schema1"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "workerId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          }
+        },
+        "required": [
+          "page",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "MapReq": {
+        "type": "object",
+        "properties": {
+          "tradeHint": {
+            "type": "string"
+          }
+        }
+      },
+      "MeRes": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "profile": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ProfileRes"
+              }
+            ]
+          }
+        },
+        "required": [
+          "user"
+        ],
+        "additionalProperties": false
+      },
+      "PlanRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "tradePackId": {
+            "$ref": "#/components/schemas/__shared/definitions/schema7"
+          },
+          "qpTitle": {
+            "$ref": "#/components/schemas/__shared/definitions/schema8"
+          },
+          "nsqfLevel": {
+            "$ref": "#/components/schemas/__shared/definitions/schema9"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            }
+          },
+          "totalWeight": {
+            "$ref": "#/components/schemas/__shared/definitions/schema20"
+          },
+          "generatedBy": {
+            "$ref": "#/components/schemas/__shared/definitions/schema21"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "tradePackId",
+          "qpTitle",
+          "nsqfLevel",
+          "tasks",
+          "totalWeight",
+          "generatedBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "ProfileRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "phone": {
+            "$ref": "#/components/schemas/__shared/definitions/schema22"
+          },
+          "fullName": {
+            "$ref": "#/components/schemas/__shared/definitions/schema23"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/__shared/definitions/schema24"
+          },
+          "dateOfBirth": {
+            "$ref": "#/components/schemas/__shared/definitions/schema25"
+          },
+          "language": {
+            "$ref": "#/components/schemas/__shared/definitions/schema26"
+          },
+          "region": {
+            "$ref": "#/components/schemas/__shared/definitions/schema27"
+          },
+          "trades": {
+            "$ref": "#/components/schemas/__shared/definitions/schema28"
+          },
+          "yearsExperience": {
+            "$ref": "#/components/schemas/__shared/definitions/schema29"
+          },
+          "photoStorageKey": {
+            "$ref": "#/components/schemas/__shared/definitions/schema30"
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "fullName",
+          "language",
+          "region",
+          "trades",
+          "yearsExperience",
+          "version",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "PublicPlanRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "tradePackId": {
+            "$ref": "#/components/schemas/__shared/definitions/schema7"
+          },
+          "qpTitle": {
+            "$ref": "#/components/schemas/__shared/definitions/schema8"
+          },
+          "nsqfLevel": {
+            "$ref": "#/components/schemas/__shared/definitions/schema9"
+          },
+          "totalWeight": {
+            "$ref": "#/components/schemas/__shared/definitions/schema20"
+          },
+          "generatedBy": {
+            "$ref": "#/components/schemas/__shared/definitions/schema21"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicTask"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "tradePackId",
+          "qpTitle",
+          "nsqfLevel",
+          "totalWeight",
+          "generatedBy",
+          "createdAt",
+          "updatedAt",
+          "tasks"
+        ],
+        "additionalProperties": false
+      },
+      "QPMatchRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "matches": {
+            "minItems": 1,
+            "maxItems": 3,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QPMatchCandidate"
+            }
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "llm",
+              "fallback",
+              "mixed"
+            ]
+          },
+          "provider": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "matches",
+          "mode",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "RefreshReq": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "minLength": 10
+          }
+        },
+        "required": [
+          "refreshToken"
+        ]
+      },
+      "RegisterEvidenceReq": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "photo",
+              "video",
+              "audio",
+              "document"
+            ]
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "capturedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "clientSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "appVersion": {
+            "type": "string"
+          },
+          "gps": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number"
+              },
+              "lng": {
+                "type": "number"
+              },
+              "accuracy": {
+                "type": "number"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "gps",
+                  "network",
+                  "manual"
+                ]
+              }
+            },
+            "required": [
+              "lat",
+              "lng"
+            ]
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "narrationText": {
+            "type": "string"
+          },
+          "narrationSource": {
+            "type": "string",
+            "enum": [
+              "asr",
+              "client"
+            ]
+          },
+          "storageKey": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "sizeBytes",
+          "capturedAt"
+        ]
+      },
+      "ReportRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "tradePackId": {
+            "type": "string"
+          },
+          "qpTitle": {
+            "type": "string"
+          },
+          "overallScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "skillsPassed": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillResult"
+            }
+          },
+          "skillsNeedingImprovement": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillResult"
+            }
+          },
+          "currentNsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "suggestedNsqfLevel": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "recommendation": {
+            "type": "string",
+            "enum": [
+              "certify",
+              "certify_with_bridge",
+              "reassess",
+              "not_certified"
+            ]
+          },
+          "consistencyScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "assessorOverrides": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "criticalSafetyPassed": {
+            "type": "boolean"
+          },
+          "bridgeTraining": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BridgeSuggestion"
+            }
+          },
+          "summary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            ]
+          },
+          "generatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "workerId",
+          "round",
+          "tradePackId",
+          "qpTitle",
+          "overallScore",
+          "skillsPassed",
+          "skillsNeedingImprovement",
+          "currentNsqfLevel",
+          "suggestedNsqfLevel",
+          "recommendation",
+          "consistencyScore",
+          "assessorOverrides",
+          "criticalSafetyPassed",
+          "bridgeTraining",
+          "generatedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "RequestOtpReq": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "pattern": "^\\+?[0-9]{8,15}$"
+          }
+        },
+        "required": [
+          "phone"
+        ]
+      },
+      "RequestOtpRes": {
+        "type": "object",
+        "properties": {
+          "sent": {
+            "type": "boolean",
+            "enum": [
+              true
+            ]
+          },
+          "expiresInSec": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "debugCode": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sent",
+          "expiresInSec"
+        ],
+        "additionalProperties": false
+      },
+      "ReviewRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "assessorId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReviewItem"
+            }
+          },
+          "overallComment": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "REVIEWED",
+              "REASSESS"
+            ]
+          },
+          "reassessmentTasks": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taskId": {
+                  "$ref": "#/components/schemas/Id"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "taskId",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "startedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "completedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "round",
+          "assessorId",
+          "items",
+          "outcome",
+          "reassessmentTasks",
+          "startedAt",
+          "completedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "ReviewSubmitReq": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/__shared/definitions/schema31"
+            }
+          },
+          "overallComment": {
+            "type": "string"
+          },
+          "outcome": {
+            "default": "REVIEWED",
+            "type": "string",
+            "enum": [
+              "REVIEWED",
+              "REASSESS"
+            ]
+          },
+          "reassessmentTasks": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taskId": {
+                  "$ref": "#/components/schemas/Id"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "taskId",
+                "reason"
+              ]
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "StartAssessmentRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "claimedBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "statusHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusEvent"
+            }
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "workerId",
+          "status",
+          "round",
+          "language",
+          "version",
+          "statusHistory",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "SubmitAnswersReq": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "answers": {
+            "$ref": "#/components/schemas/TaskAnswers"
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          }
+        },
+        "required": [
+          "taskId",
+          "answers"
+        ]
+      },
+      "SubmitAnswersRes": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "$ref": "#/components/schemas/TaskResponseRes"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/SubmitAssessmentRes"
+          }
+        },
+        "required": [
+          "response",
+          "assessment"
+        ],
+        "additionalProperties": false
+      },
+      "SubmitAssessmentRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "claimedBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "statusHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusEvent"
+            }
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "workerId",
+          "status",
+          "round",
+          "language",
+          "version",
+          "statusHistory",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "SubmitDeclarationReq": {
+        "type": "object",
+        "properties": {
+          "answers": {
+            "$ref": "#/components/schemas/DeclarationAnswers"
+          },
+          "voiceAnswers": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VoiceAnswer"
+            }
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          }
+        },
+        "required": [
+          "answers"
+        ]
+      },
+      "SyncPullQuery": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "string"
+          },
+          "limit": {
+            "default": 200,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "SyncPullRes": {
+        "type": "object",
+        "properties": {
+          "changes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SyncRecord"
+            }
+          },
+          "nextCursor": {
+            "type": "string"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "changes",
+          "hasMore",
+          "serverTime"
+        ],
+        "additionalProperties": false
+      },
+      "SyncPushReq": {
+        "type": "object",
+        "properties": {
+          "ops": {
+            "minItems": 1,
+            "maxItems": 200,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/__shared/definitions/schema32"
+            }
+          }
+        },
+        "required": [
+          "ops"
+        ]
+      },
+      "SyncPushRes": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "opId": {
+                  "$ref": "#/components/schemas/Id"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "applied",
+                    "duplicate",
+                    "conflict",
+                    "rejected",
+                    "error"
+                  ]
+                },
+                "serverVersion": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "opId",
+                "status"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "results",
+          "serverTime"
+        ],
+        "additionalProperties": false
+      },
+      "TaskResponseRes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "assessmentId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "taskId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "answers": {
+            "$ref": "#/components/schemas/TaskAnswers"
+          },
+          "autoScore": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AutoScore"
+              }
+            ]
+          },
+          "clientUpdatedAt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DateTime"
+              }
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "assessmentId",
+          "taskId",
+          "workerId",
+          "round",
+          "answers",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "TradeListRes": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "$ref": "#/components/schemas/__shared/definitions/schema5"
+                },
+                "title": {
+                  "$ref": "#/components/schemas/LocalizedText"
+                },
+                "aliases": {
+                  "$ref": "#/components/schemas/__shared/definitions/schema6"
+                },
+                "qp": {
+                  "$ref": "#/components/schemas/TradePackQpMeta"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "aliases",
+                "qp"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false
+      },
+      "TradePackRes": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "enum": [
+              1
+            ]
+          },
+          "id": {
+            "$ref": "#/components/schemas/__shared/definitions/schema5"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "aliases": {
+            "$ref": "#/components/schemas/__shared/definitions/schema6"
+          },
+          "qp": {
+            "$ref": "#/components/schemas/TradePackQpMeta"
+          },
+          "sources": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SourceRef"
+            }
+          },
+          "nos": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Nos"
+            }
+          },
+          "tools": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToolItem"
+            }
+          },
+          "safetyTopics": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SafetyTopic"
+            }
+          },
+          "mcqBank": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/McqItem"
+            }
+          },
+          "taskBlueprints": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskBlueprint"
+            }
+          },
+          "thresholds": {
+            "$ref": "#/components/schemas/Thresholds"
+          },
+          "bridgeTraining": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BridgeTraining"
+            }
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "id",
+          "title",
+          "aliases",
+          "qp",
+          "sources",
+          "nos",
+          "tools",
+          "safetyTopics",
+          "mcqBank",
+          "taskBlueprints",
+          "thresholds",
+          "bridgeTraining"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateProfileReq": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "clientUpdatedAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "patch": {
+            "type": "object",
+            "properties": {
+              "phone": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema22"
+                  }
+                ]
+              },
+              "fullName": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema23"
+                  }
+                ]
+              },
+              "gender": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema24"
+                  }
+                ]
+              },
+              "dateOfBirth": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema25"
+                  }
+                ]
+              },
+              "language": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema26"
+                  }
+                ]
+              },
+              "region": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema27"
+                  }
+                ]
+              },
+              "trades": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema28"
+                  }
+                ]
+              },
+              "yearsExperience": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema29"
+                  }
+                ]
+              },
+              "photoStorageKey": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/__shared/definitions/schema30"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "version",
+          "clientUpdatedAt",
+          "patch"
+        ]
+      },
+      "VerifyOtpReq": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "pattern": "^\\+?[0-9]{8,15}$"
+          },
+          "code": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 10
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "language": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "displayName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "phone",
+          "code"
+        ]
+      },
+      "VerifyOtpRes": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "tokens": {
+            "$ref": "#/components/schemas/AuthTokens"
+          }
+        },
+        "required": [
+          "user",
+          "tokens"
+        ],
+        "additionalProperties": false
+      },
+      "VerifyRes": {
+        "type": "object",
+        "properties": {
+          "valid": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "certificate": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CertificateRes"
+              }
+            ]
+          },
+          "holder": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "trade": {
+                "type": "string"
+              },
+              "nsqfLevel": {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "name",
+              "trade",
+              "nsqfLevel"
+            ],
+            "additionalProperties": false
+          },
+          "assessment": {
+            "type": "object",
+            "properties": {
+              "overallScore": {
+                "type": "number"
+              },
+              "decidedAt": {
+                "$ref": "#/components/schemas/DateTime"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "DRAFT",
+                  "DECLARED",
+                  "MAPPED",
+                  "PLAN_READY",
+                  "IN_PROGRESS",
+                  "SUBMITTED",
+                  "AI_ANALYZED",
+                  "UNDER_REVIEW",
+                  "REASSESS",
+                  "REVIEWED",
+                  "APPROVED",
+                  "REJECTED"
+                ]
+              }
+            },
+            "required": [
+              "overallScore",
+              "decidedAt",
+              "status"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "valid"
+        ],
+        "additionalProperties": false
+      },
+      "postAuthLogoutResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "enum": [
+              true
+            ]
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdDeclarationParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdDeclarationParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdMapParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdMappingParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdPlanParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdPlanParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdStartParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdAnswersParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdAnswersParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdAnswersResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskResponseRes"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdSubmitParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdEvidenceParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdEvidenceParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getEvidenceIdContentParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getEvidenceIdContentResponse": {},
+      "getAssessmentsIdAnalysisParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdAnalysisStatusParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdReviewClaimParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdReviewParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdReviewParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdReportParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "postAssessmentsIdDecisionParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdDecisionParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getCertificatesIdPdfParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getCertificatesIdPdfResponse": {},
+      "getAssessmentsIdAuditParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getAssessmentsIdAuditResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditLogEntry"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "total": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "items",
+          "page",
+          "limit",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "getVerifyCertificateNoParams": {
+        "type": "object",
+        "properties": {
+          "certificateNo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "certificateNo"
+        ],
+        "additionalProperties": false
+      },
+      "getTradesIdParams": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "__shared": {
+        "definitions": {
+          "schema0": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "schema1": {
+            "default": 20,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "schema2": {
+            "type": "string",
+            "enum": [
+              "photo",
+              "video",
+              "audio",
+              "document"
+            ]
+          },
+          "schema3": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            },
+            "required": [
+              "id",
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "schema4": {
+            "type": "string"
+          },
+          "schema5": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "schema6": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "schema7": {
+            "type": "string"
+          },
+          "schema8": {
+            "type": "string"
+          },
+          "schema9": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "schema10": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "schema11": {
+            "type": "string",
+            "enum": [
+              "mcq",
+              "tool_identification",
+              "checklist",
+              "practical_photo",
+              "practical_video",
+              "narration"
+            ]
+          },
+          "schema12": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            ]
+          },
+          "schema13": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "schema14": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "schema15": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "schema16": {
+            "default": false,
+            "type": "boolean"
+          },
+          "schema17": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EvidenceSpec"
+              }
+            ]
+          },
+          "schema18": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PresentedOption"
+            }
+          },
+          "schema19": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChecklistItem"
+            }
+          },
+          "schema20": {
+            "type": "number"
+          },
+          "schema21": {
+            "type": "string",
+            "enum": [
+              "rule",
+              "ai"
+            ]
+          },
+          "schema22": {
+            "type": "string"
+          },
+          "schema23": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema24": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Gender"
+              }
+            ]
+          },
+          "schema25": {
+            "type": "string"
+          },
+          "schema26": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "schema27": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "state": {
+                "type": "string"
+              },
+              "district": {
+                "type": "string"
+              },
+              "pin": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "schema28": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "schema29": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 60
+          },
+          "schema30": {
+            "type": "string"
+          },
+          "schema31": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "$ref": "#/components/schemas/Id"
+              },
+              "finalScore": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "acceptAi": {
+                "default": false,
+                "type": "boolean"
+              },
+              "comment": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "taskId",
+              "finalScore",
+              "acceptAi"
+            ],
+            "additionalProperties": false
+          },
+          "schema32": {
+            "type": "object",
+            "properties": {
+              "opId": {
+                "$ref": "#/components/schemas/Id"
+              },
+              "idempotencyKey": {
+                "$ref": "#/components/schemas/IdempotencyKey"
+              },
+              "entity": {
+                "type": "string",
+                "enum": [
+                  "profile",
+                  "declaration",
+                  "answers"
+                ]
+              },
+              "action": {
+                "type": "string",
+                "enum": [
+                  "create",
+                  "update"
+                ]
+              },
+              "clientUpdatedAt": {
+                "$ref": "#/components/schemas/DateTime"
+              },
+              "version": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {}
+            },
+            "required": [
+              "opId",
+              "idempotencyKey",
+              "entity",
+              "action",
+              "clientUpdatedAt",
+              "payload"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "getHealth",
+        "summary": "Liveness + dependency checks",
+        "tags": [
+          "meta"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Liveness + dependency checks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthRes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/otp/request": {
+      "post": {
+        "operationId": "postAuthOtpRequest",
+        "summary": "Request phone OTP",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Request phone OTP",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestOtpRes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestOtpReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/otp/verify": {
+      "post": {
+        "operationId": "postAuthOtpVerify",
+        "summary": "Verify OTP, get session",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Verify OTP, get session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyOtpRes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyOtpReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/assessor/register": {
+      "post": {
+        "operationId": "postAuthAssessorRegister",
+        "summary": "Register assessor (email+password)",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Register assessor (email+password)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyOtpRes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessorRegisterReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/assessor/login": {
+      "post": {
+        "operationId": "postAuthAssessorLogin",
+        "summary": "Assessor login",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Assessor login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyOtpRes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessorLoginReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "postAuthRefresh",
+        "summary": "Refresh tokens",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Refresh tokens",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyOtpRes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "postAuthLogout",
+        "summary": "Revoke refresh token",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Revoke refresh token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postAuthLogoutResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "getAuthMe",
+        "summary": "Current user + profile",
+        "tags": [
+          "auth"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Current user + profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/profile": {
+      "get": {
+        "operationId": "getProfile",
+        "summary": "Get own worker profile",
+        "tags": [
+          "profile"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Get own worker profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "patchProfile",
+        "summary": "Update profile (LWW + version)",
+        "tags": [
+          "profile"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Update profile (LWW + version)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/assessments": {
+      "post": {
+        "operationId": "postAssessments",
+        "summary": "Create assessment (DRAFT)",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "201": {
+            "description": "Create assessment (DRAFT)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitAssessmentRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAssessmentReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessments",
+        "summary": "List assessments (role-scoped)",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "List assessments (role-scoped)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentListRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema1"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DRAFT",
+                "DECLARED",
+                "MAPPED",
+                "PLAN_READY",
+                "IN_PROGRESS",
+                "SUBMITTED",
+                "AI_ANALYZED",
+                "UNDER_REVIEW",
+                "REASSESS",
+                "REVIEWED",
+                "APPROVED",
+                "REJECTED"
+              ]
+            }
+          },
+          {
+            "name": "workerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Id"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}": {
+      "get": {
+        "operationId": "getAssessmentsId",
+        "summary": "Get assessment + status history",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get assessment + status history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitAssessmentRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/declaration": {
+      "post": {
+        "operationId": "postAssessmentsIdDeclaration",
+        "summary": "Submit self-declaration → DECLARED",
+        "tags": [
+          "declaration"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "201": {
+            "description": "Submit self-declaration → DECLARED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitDeclarationReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessmentsIdDeclaration",
+        "summary": "Get declaration",
+        "tags": [
+          "declaration"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get declaration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/map": {
+      "post": {
+        "operationId": "postAssessmentsIdMap",
+        "summary": "AI NSQF mapping, top-3 → MAPPED",
+        "tags": [
+          "mapping"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "AI NSQF mapping, top-3 → MAPPED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QPMatchRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MapReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/assessments/{id}/mapping": {
+      "get": {
+        "operationId": "getAssessmentsIdMapping",
+        "summary": "Get QP match",
+        "tags": [
+          "mapping"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get QP match",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QPMatchRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/plan": {
+      "post": {
+        "operationId": "postAssessmentsIdPlan",
+        "summary": "Generate assessment plan → PLAN_READY",
+        "tags": [
+          "plan"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "201": {
+            "description": "Generate assessment plan → PLAN_READY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneratePlanReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessmentsIdPlan",
+        "summary": "Get plan (answer key stripped for workers)",
+        "tags": [
+          "plan"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get plan (answer key stripped for workers)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicPlanRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/start": {
+      "post": {
+        "operationId": "postAssessmentsIdStart",
+        "summary": "Start / resume → IN_PROGRESS",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Start / resume → IN_PROGRESS",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitAssessmentRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/answers": {
+      "post": {
+        "operationId": "postAssessmentsIdAnswers",
+        "summary": "Submit task answers (auto-scored)",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Submit task answers (auto-scored)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitAnswersRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitAnswersReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessmentsIdAnswers",
+        "summary": "List task responses",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "List task responses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAssessmentsIdAnswersResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/submit": {
+      "post": {
+        "operationId": "postAssessmentsIdSubmit",
+        "summary": "Submit assessment → SUBMITTED, queues AI",
+        "tags": [
+          "assessments"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Submit assessment → SUBMITTED, queues AI",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitAssessmentRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/evidence": {
+      "post": {
+        "operationId": "postAssessmentsIdEvidence",
+        "summary": "Register evidence metadata",
+        "tags": [
+          "evidence"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "201": {
+            "description": "Register evidence metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterEvidenceReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessmentsIdEvidence",
+        "summary": "List evidence",
+        "tags": [
+          "evidence"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "List evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceListRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema1"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evidence/{id}/content": {
+      "get": {
+        "operationId": "getEvidenceIdContent",
+        "summary": "Stream evidence bytes",
+        "tags": [
+          "evidence"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Stream evidence bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEvidenceIdContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/analysis": {
+      "get": {
+        "operationId": "getAssessmentsIdAnalysis",
+        "summary": "Get AI analysis",
+        "tags": [
+          "analysis"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get AI analysis",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/analysis/status": {
+      "get": {
+        "operationId": "getAssessmentsIdAnalysisStatus",
+        "summary": "Pipeline status",
+        "tags": [
+          "analysis"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Pipeline status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisStatusRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/review/claim": {
+      "post": {
+        "operationId": "postAssessmentsIdReviewClaim",
+        "summary": "Assessor claims review → UNDER_REVIEW",
+        "tags": [
+          "review"
+        ],
+        "description": "**Auth:** `assessor`",
+        "responses": {
+          "200": {
+            "description": "Assessor claims review → UNDER_REVIEW",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimReviewRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/review": {
+      "post": {
+        "operationId": "postAssessmentsIdReview",
+        "summary": "Submit review (accept/override) → REVIEWED|REASSESS",
+        "tags": [
+          "review"
+        ],
+        "description": "**Auth:** `assessor`",
+        "responses": {
+          "200": {
+            "description": "Submit review (accept/override) → REVIEWED|REASSESS",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewSubmitReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessmentsIdReview",
+        "summary": "Get latest review",
+        "tags": [
+          "review"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get latest review",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessor/queue": {
+      "get": {
+        "operationId": "getAssessorQueue",
+        "summary": "Assessor queue",
+        "tags": [
+          "review"
+        ],
+        "description": "**Auth:** `assessor`",
+        "responses": {
+          "200": {
+            "description": "Assessor queue",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentListRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema1"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/report": {
+      "get": {
+        "operationId": "getAssessmentsIdReport",
+        "summary": "Competency report",
+        "tags": [
+          "report"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Competency report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/decision": {
+      "post": {
+        "operationId": "postAssessmentsIdDecision",
+        "summary": "Final approval → APPROVED|REJECTED",
+        "tags": [
+          "report"
+        ],
+        "description": "**Auth:** `authorized_assessor`",
+        "responses": {
+          "200": {
+            "description": "Final approval → APPROVED|REJECTED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionReq"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAssessmentsIdDecision",
+        "summary": "Get decision",
+        "tags": [
+          "report"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Get decision",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/certificates/{id}/pdf": {
+      "get": {
+        "operationId": "getCertificatesIdPdf",
+        "summary": "Certificate PDF (QR)",
+        "tags": [
+          "report"
+        ],
+        "description": "**Auth:** `any`",
+        "responses": {
+          "200": {
+            "description": "Certificate PDF (QR)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCertificatesIdPdfResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/assessments/{id}/audit": {
+      "get": {
+        "operationId": "getAssessmentsIdAudit",
+        "summary": "Tamper-evident audit trail",
+        "tags": [
+          "report"
+        ],
+        "description": "**Auth:** `assessor`",
+        "responses": {
+          "200": {
+            "description": "Tamper-evident audit trail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAssessmentsIdAuditResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema1"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/verify/{certificateNo}": {
+      "get": {
+        "operationId": "getVerifyCertificateNo",
+        "summary": "Public certificate verification",
+        "tags": [
+          "report"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Public certificate verification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyRes"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "certificateNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/sync/push": {
+      "post": {
+        "operationId": "postSyncPush",
+        "summary": "Push offline ops (idempotent, LWW)",
+        "tags": [
+          "sync"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Push offline ops (idempotent, LWW)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncPushRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncPushReq"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sync/pull": {
+      "get": {
+        "operationId": "getSyncPull",
+        "summary": "Pull changes since cursor",
+        "tags": [
+          "sync"
+        ],
+        "description": "**Auth:** `worker`",
+        "responses": {
+          "200": {
+            "description": "Pull changes since cursor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncPullRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/trades": {
+      "get": {
+        "operationId": "getTrades",
+        "summary": "List trade packs",
+        "tags": [
+          "trades"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "List trade packs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TradeListRes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trades/{id}": {
+      "get": {
+        "operationId": "getTradesId",
+        "summary": "Full trade pack (QP/NOS/rubric)",
+        "tags": [
+          "trades"
+        ],
+        "description": "**Auth:** public",
+        "responses": {
+          "200": {
+            "description": "Full trade pack (QP/NOS/rubric)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TradePackRes"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/fairness": {
+      "get": {
+        "operationId": "getAdminFairness",
+        "summary": "Fairness stats by language/gender/region",
+        "tags": [
+          "admin"
+        ],
+        "description": "**Auth:** `assessor`",
+        "responses": {
+          "200": {
+            "description": "Fairness stats by language/gender/region",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FairnessRes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/__shared/definitions/schema1"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/files": {
+      "post": {
+        "operationId": "tusCreateUpload",
+        "summary": "tus: create resumable upload",
+        "tags": [
+          "evidence"
+        ],
+        "description": "**Auth:** worker — tus resumable upload protocol. `Upload-Metadata` carries evidence fields (base64 `key value` pairs).",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Upload-Length",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "Upload-Metadata",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "assessmentId, taskId, kind, clientSha256, capturedAt, gps(lat,lng,accuracy), deviceId, language, narrationText…"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Upload created",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Upload-Offset": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/files/{uploadId}": {
+      "head": {
+        "operationId": "tusHeadUpload",
+        "summary": "tus: query upload offset/state (resume after connection loss)",
+        "tags": [
+          "evidence"
+        ],
+        "description": "**Auth:** worker — tus resumable upload protocol. `Upload-Metadata` carries evidence fields (base64 `key value` pairs).",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "uploadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current offset and length"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "tusPatchUpload",
+        "summary": "tus: append chunk",
+        "tags": [
+          "evidence"
+        ],
+        "description": "**Auth:** worker — tus resumable upload protocol. `Upload-Metadata` carries evidence fields (base64 `key value` pairs).",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "uploadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Upload-Offset",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/offset+octet-stream"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Chunk accepted",
+            "headers": {
+              "Upload-Offset": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
