@@ -1,0 +1,2722 @@
+{
+  "schemaVersion": 1,
+  "id": "welder",
+  "title": {
+    "en": "Welder (Manual Metal Arc Welding / Shielded Metal Arc Welding)",
+    "hi": "वेल्डर (मैन्युअल मेटल आर्क वेल्डिंग / शील्डेड मेटल आर्क वेल्डिंग)",
+    "mr": "वेल्डर (मॅन्युअल मेटल आर्क वेल्डिंग / शील्डेड मेटल आर्क वेल्डिंग)"
+  },
+  "aliases": [
+    "arc welder",
+    "SMAW welder",
+    "MMAW welder",
+    "fabricator",
+    "welding operator"
+  ],
+  "qp": {
+    "title": "Manual Metal Arc Welding / Shielded Metal Arc Welding Welder",
+    "qpId": "CSC/Q0204",
+    "ncoCode": "7212.0200",
+    "nsqfLevel": 3,
+    "ssc": "Capital Goods Skill Council (CGSC)",
+    "version": "3.0",
+    "alignedJobRoles": [
+      "Manual Metal Arc Welding (MMAW)/Shielded Metal Arc Welding (SMAW) Welder"
+    ]
+  },
+  "sources": [
+    {
+      "title": "CSC/Q0204 v3.0 Qualification Pack - Manual Metal Arc Welding/SMAW Welder",
+      "publisher": "Capital Goods Skill Council (CGSC)",
+      "confidence": "verified",
+      "note": "Extracted from CSC_Q0204_v3_clean.txt; includes NOS, PCs, assessment weightage (70% per Core NOS, 70% overall)."
+    },
+    {
+      "title": "HYC/Q9101 v8.0 Qualification Pack - Industrial Welder (Oil & Gas)",
+      "publisher": "Hydrocarbon Sector Skill Council (HSSCI)",
+      "confidence": "verified",
+      "note": "Extracted from HYC_Q9101_v8.txt; includes HYC/N9302 safety NOS."
+    },
+    {
+      "title": "CGSC Tool List - MMAW/Q0204 Tools",
+      "url": "https://www.cgsc.in/qp/Manual_Metal_Arc_Welding-Shielded_Metal/MMAW_Q0204_Tools.pdf",
+      "publisher": "Capital Goods Skill Council (CGSC)",
+      "confidence": "verified",
+      "note": "Extracted to MMAW_Q0204_Tools.txt."
+    },
+    {
+      "title": "NSQF Annexure I - Level Descriptors",
+      "publisher": "NCVET",
+      "confidence": "verified",
+      "note": "Extracted from NSQF-Order.txt Annexure I descriptors."
+    }
+  ],
+  "nos": [
+    {
+      "code": "CSC/N1335",
+      "title": "Follow the health and safety practices at the work",
+      "category": "safety",
+      "performanceCriteria": [
+        {
+          "id": "CSC/N1335/PC1",
+          "text": "Follow recommended practices to ensure protection from infections and transmission",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "hygiene",
+            "mask",
+            "sanitizer",
+            "infection",
+            "protection"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC2",
+          "text": "Check work conditions, assess health and safety risks, and take mitigation measures",
+          "criticalSafety": true,
+          "keywords": [
+            "hazard",
+            "risk",
+            "assessment",
+            "mitigation",
+            "inspection"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC3",
+          "text": "Select and use appropriate Personal Protective Equipment (PPE)",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "gloves",
+            "goggles",
+            "helmet",
+            "apron",
+            "protection"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC4",
+          "text": "Follow recommended techniques while lifting and moving heavy objects",
+          "criticalSafety": true,
+          "keywords": [
+            "lifting",
+            "ergonomics",
+            "injury",
+            "manual",
+            "handling"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC5",
+          "text": "Follow manufacturer instructions and workplace safety guidelines for machinery/tools",
+          "criticalSafety": true,
+          "keywords": [
+            "machinery",
+            "safety",
+            "guidelines",
+            "equipment",
+            "operation"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC6",
+          "text": "Identify existing and potential hazards at work",
+          "criticalSafety": true,
+          "keywords": [
+            "hazard",
+            "identification",
+            "workplace",
+            "safety",
+            "risk"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC7",
+          "text": "Assess potential risks and injuries associated with identified hazards",
+          "criticalSafety": true,
+          "keywords": [
+            "risk",
+            "injury",
+            "assessment",
+            "hazard",
+            "evaluation"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC8",
+          "text": "Coordinate with supervisor to prevent or minimise identified hazards",
+          "criticalSafety": true,
+          "keywords": [
+            "coordination",
+            "supervisor",
+            "mitigation",
+            "hazard",
+            "reporting"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC9",
+          "text": "Handle hazardous materials safely and store in designated storage",
+          "criticalSafety": true,
+          "keywords": [
+            "hazardous",
+            "storage",
+            "material",
+            "safety",
+            "labeling"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC10",
+          "text": "Check first aid box to ensure it is updated with relevant supplies",
+          "criticalSafety": true,
+          "keywords": [
+            "first",
+            "aid",
+            "kit",
+            "supplies",
+            "emergency"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC11",
+          "text": "Check and test firefighting and safety equipment",
+          "criticalSafety": true,
+          "keywords": [
+            "fire",
+            "extinguisher",
+            "equipment",
+            "testing",
+            "safety"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC12",
+          "text": "Coordinate for repair/replacement of firefighting and safety equipment",
+          "criticalSafety": true,
+          "keywords": [
+            "repair",
+            "fire",
+            "equipment",
+            "maintenance",
+            "safety"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC13",
+          "text": "Segregate waste into appropriate categories",
+          "criticalSafety": false,
+          "keywords": [
+            "waste",
+            "segregation",
+            "recycling",
+            "disposal",
+            "environment"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC14",
+          "text": "Recycle recyclable waste appropriately",
+          "criticalSafety": false,
+          "keywords": [
+            "recycle",
+            "waste",
+            "environment",
+            "segregation",
+            "disposal"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC15",
+          "text": "Dispose of non-recyclable waste in environment-friendly manner",
+          "criticalSafety": false,
+          "keywords": [
+            "disposal",
+            "waste",
+            "environment",
+            "compliance",
+            "hazardous"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC16",
+          "text": "Use appropriate type of fire extinguisher for different fires",
+          "criticalSafety": true,
+          "keywords": [
+            "fire",
+            "extinguisher",
+            "class",
+            "safety",
+            "emergency"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC17",
+          "text": "Follow recommended practices for safe rescue during fire emergency",
+          "criticalSafety": true,
+          "keywords": [
+            "rescue",
+            "fire",
+            "emergency",
+            "evacuation",
+            "safety"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC18",
+          "text": "Coordinate with fire department for serious fire incidents",
+          "criticalSafety": true,
+          "keywords": [
+            "fire",
+            "department",
+            "emergency",
+            "coordination",
+            "response"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC19",
+          "text": "Follow organisational H&S guidelines during workplace emergencies",
+          "criticalSafety": true,
+          "keywords": [
+            "emergency",
+            "guidelines",
+            "safety",
+            "response",
+            "protocol"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC20",
+          "text": "Follow recommended practices to minimise loss during emergency",
+          "criticalSafety": true,
+          "keywords": [
+            "emergency",
+            "property",
+            "loss",
+            "prevention",
+            "response"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC21",
+          "text": "Follow recommended procedure to free person from electrocution",
+          "criticalSafety": true,
+          "keywords": [
+            "electrocution",
+            "electric",
+            "shock",
+            "rescue",
+            "safety"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC22",
+          "text": "Administer appropriate first aid to injured personnel",
+          "criticalSafety": true,
+          "keywords": [
+            "first",
+            "aid",
+            "injury",
+            "emergency",
+            "medical"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC23",
+          "text": "Perform Cardiopulmonary Resuscitation (CPR) on potential cardiac arrest victim",
+          "criticalSafety": true,
+          "keywords": [
+            "cpr",
+            "cardiac",
+            "arrest",
+            "resuscitation",
+            "emergency"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC24",
+          "text": "Coordinate with emergency services for seriously injured persons",
+          "criticalSafety": true,
+          "keywords": [
+            "emergency",
+            "medical",
+            "ambulance",
+            "coordination",
+            "response"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC25",
+          "text": "Carry out appropriate documentation following H&S incident",
+          "criticalSafety": false,
+          "keywords": [
+            "documentation",
+            "incident",
+            "report",
+            "safety",
+            "record"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC26",
+          "text": "Coordinate with relevant personnel to review H&S conditions",
+          "criticalSafety": false,
+          "keywords": [
+            "review",
+            "safety",
+            "conditions",
+            "coordination",
+            "improvement"
+          ]
+        },
+        {
+          "id": "CSC/N1335/PC27",
+          "text": "Assist in implementing changes to improve H&S conditions",
+          "criticalSafety": false,
+          "keywords": [
+            "improvement",
+            "safety",
+            "implementation",
+            "measures",
+            "control"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CSC/N1336",
+      "title": "Coordinate with co-workers to achieve work efficiency",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "CSC/N1336/PC1",
+          "text": "Plan daily tasks to ensure timely completion and efficient use of time",
+          "criticalSafety": false,
+          "keywords": [
+            "planning",
+            "time",
+            "schedule",
+            "productivity",
+            "tasks"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC2",
+          "text": "Carry out work responsibilities adhering to limits of authority",
+          "criticalSafety": false,
+          "keywords": [
+            "authority",
+            "responsibility",
+            "delegation",
+            "compliance",
+            "scope"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC3",
+          "text": "Follow supervisor instructions for quality standards and timescales",
+          "criticalSafety": false,
+          "keywords": [
+            "supervisor",
+            "instructions",
+            "quality",
+            "timeline",
+            "standards"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC4",
+          "text": "Coordinate with co-workers to achieve work objectives efficiently",
+          "criticalSafety": false,
+          "keywords": [
+            "coordination",
+            "teamwork",
+            "objectives",
+            "cooperation",
+            "efficiency"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC5",
+          "text": "Prepare relevant documents and reports as per instructions",
+          "criticalSafety": false,
+          "keywords": [
+            "documentation",
+            "reports",
+            "records",
+            "format",
+            "information"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC6",
+          "text": "Coordinate with supervisor for out-of-authority tasks/concerns",
+          "criticalSafety": false,
+          "keywords": [
+            "escalation",
+            "authority",
+            "supervisor",
+            "concerns",
+            "coordination"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC7",
+          "text": "Mentor and assist subordinates in execution of work responsibilities",
+          "criticalSafety": false,
+          "keywords": [
+            "mentoring",
+            "training",
+            "assistance",
+            "subordinates",
+            "guidance"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC8",
+          "text": "Identify possible disruptions and take preventive measures",
+          "criticalSafety": false,
+          "keywords": [
+            "disruption",
+            "prevention",
+            "risk",
+            "contingency",
+            "planning"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC9",
+          "text": "Use resources efficiently to ensure maximum utilisation and minimum wastage",
+          "criticalSafety": false,
+          "keywords": [
+            "resources",
+            "efficiency",
+            "wastage",
+            "utilisation",
+            "conservation"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC10",
+          "text": "Follow recommended practices to avoid and resolve conflicts at work",
+          "criticalSafety": false,
+          "keywords": [
+            "conflict",
+            "resolution",
+            "communication",
+            "harmony",
+            "workplace"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC11",
+          "text": "Follow organisational policies for disciplined behaviour and productivity",
+          "criticalSafety": false,
+          "keywords": [
+            "discipline",
+            "policy",
+            "productivity",
+            "behaviour",
+            "workplace"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC12",
+          "text": "Follow policy for efficient and timely dissemination of information",
+          "criticalSafety": false,
+          "keywords": [
+            "communication",
+            "information",
+            "dissemination",
+            "timely",
+            "policy"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC13",
+          "text": "Communicate clearly and politely with co-workers",
+          "criticalSafety": false,
+          "keywords": [
+            "communication",
+            "politeness",
+            "clarity",
+            "interaction",
+            "teamwork"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC14",
+          "text": "Follow appropriate techniques for active listening during interactions",
+          "criticalSafety": false,
+          "keywords": [
+            "listening",
+            "active",
+            "communication",
+            "interaction",
+            "skills"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC15",
+          "text": "Empathise with Persons with Disabilities (PwD)",
+          "criticalSafety": false,
+          "keywords": [
+            "inclusion",
+            "disability",
+            "empathy",
+            "diversity",
+            "respect"
+          ]
+        },
+        {
+          "id": "CSC/N1336/PC16",
+          "text": "Adopt gender-neutral behaviour at work",
+          "criticalSafety": false,
+          "keywords": [
+            "gender",
+            "neutral",
+            "inclusion",
+            "diversity",
+            "respect"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CSC/N0201",
+      "title": "Manually cut metal and metal alloys using oxy-fuel gas",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CSC/N0201/PC1",
+          "text": "Prepare work area, tools and equipment for oxy-fuel gas cutting",
+          "criticalSafety": true,
+          "keywords": [
+            "preparation",
+            "oxy",
+            "fuel",
+            "cutting",
+            "setup"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC2",
+          "text": "Check and ensure safety equipment and PPE are in place",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "safety",
+            "oxy",
+            "fuel",
+            "check"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC3",
+          "text": "Inspect gas cylinders, regulators, hoses and connections",
+          "criticalSafety": true,
+          "keywords": [
+            "cylinder",
+            "regulator",
+            "hose",
+            "leak",
+            "inspection"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC4",
+          "text": "Set correct gas pressures as per job requirements",
+          "criticalSafety": true,
+          "keywords": [
+            "pressure",
+            "regulator",
+            "gas",
+            "setting",
+            "parameters"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC5",
+          "text": "Light and adjust oxy-fuel flame safely",
+          "criticalSafety": true,
+          "keywords": [
+            "lighting",
+            "flame",
+            "oxy",
+            "acetylene",
+            "adjustment"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC6",
+          "text": "Perform pre-heating and piercing operations safely",
+          "criticalSafety": true,
+          "keywords": [
+            "preheat",
+            "piercing",
+            "cutting",
+            "oxy",
+            "safety"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC7",
+          "text": "Cut metal to specified dimensions and profiles",
+          "criticalSafety": false,
+          "keywords": [
+            "cutting",
+            "dimension",
+            "profile",
+            "accuracy",
+            "bevel"
+          ]
+        },
+        {
+          "id": "CSC/N0201/PC8",
+          "text": "Ensure use and functioning of flashback arrestor",
+          "criticalSafety": true,
+          "keywords": [
+            "flashback",
+            "arrestor",
+            "safety",
+            "gas",
+            "cylinder"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CSC/N0204",
+      "title": "Manually weld carbon and low alloy steels by MMAW/SMAW",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CSC/N0204/PC1",
+          "text": "Prepare workpiece, equipment and welding area for MMAW/SMAW",
+          "criticalSafety": true,
+          "keywords": [
+            "preparation",
+            "mmaw",
+            "smaw",
+            "welding",
+            "setup"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC2",
+          "text": "Select appropriate electrode, current and polarity as per job",
+          "criticalSafety": false,
+          "keywords": [
+            "electrode",
+            "current",
+            "polarity",
+            "selection",
+            "parameters"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC3",
+          "text": "Set up welding machine and accessories correctly",
+          "criticalSafety": true,
+          "keywords": [
+            "machine",
+            "setup",
+            "cables",
+            "ground",
+            "connection"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC4",
+          "text": "Perform tack welding to maintain alignment",
+          "criticalSafety": false,
+          "keywords": [
+            "tack",
+            "welding",
+            "alignment",
+            "joint",
+            "fitup"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC5",
+          "text": "Strike arc and maintain proper arc length",
+          "criticalSafety": false,
+          "keywords": [
+            "arc",
+            "strike",
+            "length",
+            "stability",
+            "technique"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC6",
+          "text": "Deposit weld beads in specified positions",
+          "criticalSafety": false,
+          "keywords": [
+            "bead",
+            "position",
+            "welding",
+            "deposition",
+            "technique"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC7",
+          "text": "Control heat input and weaving technique appropriately",
+          "criticalSafety": false,
+          "keywords": [
+            "heat",
+            "input",
+            "weave",
+            "travel",
+            "speed"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC8",
+          "text": "Inspect welds for defects and ensure quality as per specification",
+          "criticalSafety": false,
+          "keywords": [
+            "inspection",
+            "defects",
+            "quality",
+            "visual",
+            "acceptance"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC9",
+          "text": "Identify and rectify common weld defects",
+          "criticalSafety": false,
+          "keywords": [
+            "defects",
+            "rectification",
+            "porosity",
+            "undercut",
+            "crack"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC10",
+          "text": "Ensure proper ventilation and fume control during welding",
+          "criticalSafety": true,
+          "keywords": [
+            "ventilation",
+            "fume",
+            "extraction",
+            "respiratory",
+            "safety"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC11",
+          "text": "Follow electrical safety precautions while welding",
+          "criticalSafety": true,
+          "keywords": [
+            "electrical",
+            "safety",
+            "shock",
+            "earthing",
+            "cables"
+          ]
+        },
+        {
+          "id": "CSC/N0204/PC12",
+          "text": "Follow fire prevention measures during hot work",
+          "criticalSafety": true,
+          "keywords": [
+            "fire",
+            "hot",
+            "work",
+            "sparks",
+            "prevention"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "HYC/N9302",
+      "title": "Maintain health, safety and security procedures",
+      "category": "safety",
+      "performanceCriteria": [
+        {
+          "id": "HYC/N9302/PC1",
+          "text": "Use protective clothing/equipment for specific tasks and work conditions",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "clothing",
+            "equipment",
+            "protection",
+            "workplace"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC2",
+          "text": "Identify people responsible for maintaining health and safety",
+          "criticalSafety": true,
+          "keywords": [
+            "responsibility",
+            "safety",
+            "personnel",
+            "reporting",
+            "authority"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC3",
+          "text": "Identify possible causes of risk or accident in workplace",
+          "criticalSafety": true,
+          "keywords": [
+            "risk",
+            "accident",
+            "causes",
+            "hazard",
+            "identification"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC4",
+          "text": "Follow safe working practices to ensure safety of self and others",
+          "criticalSafety": true,
+          "keywords": [
+            "safe",
+            "practices",
+            "safety",
+            "self",
+            "others"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC5",
+          "text": "Lift heavy objects safely using correct procedures",
+          "criticalSafety": true,
+          "keywords": [
+            "lifting",
+            "heavy",
+            "safe",
+            "procedure",
+            "ergonomics"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC6",
+          "text": "Follow safety signages",
+          "criticalSafety": true,
+          "keywords": [
+            "signage",
+            "warning",
+            "safety",
+            "symbols",
+            "compliance"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC7",
+          "text": "Maintain hand hygiene by washing or using alcohol-based hand rub",
+          "criticalSafety": true,
+          "keywords": [
+            "hygiene",
+            "hand",
+            "washing",
+            "sanitizer",
+            "cleanliness"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC8",
+          "text": "Inform concerned person of any illness related to self and others",
+          "criticalSafety": true,
+          "keywords": [
+            "illness",
+            "reporting",
+            "health",
+            "concerned",
+            "person"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC9",
+          "text": "Maintain workplace hygiene by disinfecting equipment and tools",
+          "criticalSafety": true,
+          "keywords": [
+            "disinfection",
+            "hygiene",
+            "equipment",
+            "tools",
+            "cleaning"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC10",
+          "text": "Respond promptly and appropriately to accident or emergency situation",
+          "criticalSafety": true,
+          "keywords": [
+            "response",
+            "emergency",
+            "accident",
+            "prompt",
+            "action"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC11",
+          "text": "Use appropriate fire extinguishers for different types of fires correctly",
+          "criticalSafety": true,
+          "keywords": [
+            "fire",
+            "extinguisher",
+            "types",
+            "correct",
+            "use"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC12",
+          "text": "Follow appropriate rescue techniques during fire hazard",
+          "criticalSafety": true,
+          "keywords": [
+            "rescue",
+            "fire",
+            "techniques",
+            "evacuation",
+            "safety"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC13",
+          "text": "Follow good housekeeping practice to prevent fire hazards",
+          "criticalSafety": true,
+          "keywords": [
+            "housekeeping",
+            "fire",
+            "prevention",
+            "cleanliness",
+            "order"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC14",
+          "text": "Inform fire safety department about near-miss incidents",
+          "criticalSafety": true,
+          "keywords": [
+            "near",
+            "miss",
+            "fire",
+            "reporting",
+            "incident"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC15",
+          "text": "Provide appropriate first aid to victims in emergency situation",
+          "criticalSafety": true,
+          "keywords": [
+            "first",
+            "aid",
+            "victim",
+            "emergency",
+            "medical"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC16",
+          "text": "Follow applicable regulations and codes as per safety standard",
+          "criticalSafety": true,
+          "keywords": [
+            "regulations",
+            "codes",
+            "compliance",
+            "safety",
+            "standards"
+          ]
+        },
+        {
+          "id": "HYC/N9302/PC17",
+          "text": "Prepare written accident/incident report and share with concerned officer/department",
+          "criticalSafety": true,
+          "keywords": [
+            "incident",
+            "report",
+            "written",
+            "documentation",
+            "sharing"
+          ]
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "arc-welding-machine",
+      "name": {
+        "en": "Arc Welding Machine (MMAW AC/DC)",
+        "hi": "आर्क वेल्डिंग मशीन (MMAW AC/DC)"
+      },
+      "aliases": [
+        "welding machine",
+        "arc welder machine",
+        "mmaw machine"
+      ]
+    },
+    {
+      "id": "electrode-holder",
+      "name": {
+        "en": "Electrode Holder",
+        "hi": "इलेक्ट्रोड होल्डर"
+      },
+      "aliases": [
+        "holder",
+        "stinger"
+      ]
+    },
+    {
+      "id": "earthing-clamp",
+      "name": {
+        "en": "Earthing/Ground Clamp",
+        "hi": "अर्थिंग क्लैंप"
+      },
+      "aliases": [
+        "ground clamp",
+        "earth clamp"
+      ]
+    },
+    {
+      "id": "welding-cables",
+      "name": {
+        "en": "Welding Cables",
+        "hi": "वेल्डिंग केबल"
+      },
+      "aliases": [
+        "cables",
+        "welding leads"
+      ]
+    },
+    {
+      "id": "chipping-hammer",
+      "name": {
+        "en": "Chipping Hammer",
+        "hi": "चिपिंग हैमर"
+      },
+      "aliases": [
+        "chipping tool",
+        "slag hammer"
+      ]
+    },
+    {
+      "id": "wire-brush",
+      "name": {
+        "en": "Wire Brush",
+        "hi": "वायर ब्रश"
+      },
+      "aliases": [
+        "steel brush",
+        "cleaning brush"
+      ]
+    },
+    {
+      "id": "welding-helmet",
+      "name": {
+        "en": "Welding Helmet",
+        "hi": "वेल्डिंग हेलमेट"
+      },
+      "aliases": [
+        "arc helmet",
+        "face shield"
+      ]
+    },
+    {
+      "id": "welding-gloves",
+      "name": {
+        "en": "Welding Gloves",
+        "hi": "वेल्डिंग दस्ताने"
+      },
+      "aliases": [
+        "welding gauntlets",
+        "leather gloves"
+      ]
+    },
+    {
+      "id": "apron-leather",
+      "name": {
+        "en": "Leather Apron",
+        "hi": "चमड़े का एप्रन"
+      },
+      "aliases": [
+        "welding apron"
+      ]
+    },
+    {
+      "id": "leg-guard",
+      "name": {
+        "en": "Leather Leg Guard",
+        "hi": "चमड़े का लेग गार्ड"
+      },
+      "aliases": [
+        "leggings"
+      ]
+    },
+    {
+      "id": "safety-shoes",
+      "name": {
+        "en": "Safety Shoes",
+        "hi": "सुरक्षा जूते"
+      },
+      "aliases": [
+        "steel toe shoes"
+      ]
+    },
+    {
+      "id": "goggles",
+      "name": {
+        "en": "Goggles",
+        "hi": "चश्मा (सुरक्षा)"
+      },
+      "aliases": [
+        "safety goggles",
+        "eye protection"
+      ]
+    },
+    {
+      "id": "ear-plugs",
+      "name": {
+        "en": "Ear Plugs",
+        "hi": "कान के प्लग"
+      },
+      "aliases": [
+        "ear defenders"
+      ]
+    },
+    {
+      "id": "grinder",
+      "name": {
+        "en": "Angle/Bench Grinder",
+        "hi": "ग्राइंडर"
+      },
+      "aliases": [
+        "grinding machine"
+      ]
+    },
+    {
+      "id": "oxygen-cylinder",
+      "name": {
+        "en": "Oxygen Cylinder",
+        "hi": "ऑक्सीजन सिलेंडर"
+      },
+      "aliases": [
+        "o2 cylinder"
+      ]
+    },
+    {
+      "id": "acetylene-cylinder",
+      "name": {
+        "en": "Acetylene Cylinder",
+        "hi": "एसीटिलीन सिलेंडर"
+      },
+      "aliases": [
+        "c2h2 cylinder"
+      ]
+    },
+    {
+      "id": "regulator",
+      "name": {
+        "en": "Gas Regulator",
+        "hi": "गैस रेगुलेटर"
+      },
+      "aliases": [
+        "pressure regulator"
+      ]
+    },
+    {
+      "id": "flashback-arrestor",
+      "name": {
+        "en": "Flashback Arrestor",
+        "hi": "फ्लैशबैक अरेस्टर"
+      },
+      "aliases": [
+        "flashback valve"
+      ]
+    },
+    {
+      "id": "gas-cutting-torch",
+      "name": {
+        "en": "Oxy-Fuel Cutting Torch",
+        "hi": "ऑक्सी-कटिंग टॉर्च"
+      },
+      "aliases": [
+        "cutting torch"
+      ]
+    },
+    {
+      "id": "fume-extractor",
+      "name": {
+        "en": "Fume Extractor",
+        "hi": "फ्यूम एक्स्ट्रैक्टर"
+      },
+      "aliases": [
+        "local exhaust ventilation"
+      ]
+    },
+    {
+      "id": "first-aid-kit",
+      "name": {
+        "en": "First Aid Kit",
+        "hi": "प्राथमिक चिकित्सा किट"
+      },
+      "aliases": [
+        "first aid box"
+      ]
+    },
+    {
+      "id": "fire-extinguisher",
+      "name": {
+        "en": "Fire Extinguisher",
+        "hi": "अग्निशमन यंत्र"
+      },
+      "aliases": [
+        "fire extinguisher co2/dcp"
+      ]
+    }
+  ],
+  "safetyTopics": [
+    {
+      "id": "ppe-usage",
+      "text": {
+        "en": "Use of appropriate PPE for welding and cutting operations",
+        "hi": "वेल्डिंग और कटिंग के लिए उचित PPE का उपयोग"
+      },
+      "critical": true
+    },
+    {
+      "id": "electrical-safety",
+      "text": {
+        "en": "Electrical safety including earthing and shock prevention",
+        "hi": "बिजली सुरक्षा - अर्थिंग और शॉक रोकथाम"
+      },
+      "critical": true
+    },
+    {
+      "id": "arc-radiation",
+      "text": {
+        "en": "Protection from arc radiation (UV/IR)",
+        "hi": "आर्क विकिरण (UV/IR) से सुरक्षा"
+      },
+      "critical": true
+    },
+    {
+      "id": "fume-extraction",
+      "text": {
+        "en": "Fume extraction and ventilation requirements",
+        "hi": "धुआं निष्कर्षण और वेंटिलेशन"
+      },
+      "critical": true
+    },
+    {
+      "id": "fire-prevention",
+      "text": {
+        "en": "Fire prevention during hot work",
+        "hi": "गर्म कार्य के दौरान अग्नि रोकथाम"
+      },
+      "critical": true
+    },
+    {
+      "id": "gas-cylinder-safety",
+      "text": {
+        "en": "Gas cylinder handling, storage and flashback arrestor use",
+        "hi": "गैस सिलेंडर हैंडलिंग, भंडारण और फ्लैशबैक अरेस्टर"
+      },
+      "critical": true
+    },
+    {
+      "id": "manual-handling",
+      "text": {
+        "en": "Safe manual lifting and material handling",
+        "hi": "सुरक्षित मैनुअल लिफ्टिंग और सामग्री हैंडलिंग"
+      },
+      "critical": false
+    },
+    {
+      "id": "first-aid-cpr",
+      "text": {
+        "en": "First aid and CPR basics",
+        "hi": "प्राथमिक चिकित्सा और CPR मूल बातें"
+      },
+      "critical": true
+    },
+    {
+      "id": "emergency-response",
+      "text": {
+        "en": "Emergency response, evacuation and incident reporting",
+        "hi": "आपातकालीन प्रतिक्रिया, evacuation और घटना रिपोर्टिंग"
+      },
+      "critical": true
+    },
+    {
+      "id": "housekeeping",
+      "text": {
+        "en": "Workplace housekeeping and waste management",
+        "hi": "कार्यस्थल की सफाई और अपशिष्ट प्रबंधन"
+      },
+      "critical": false
+    },
+    {
+      "id": "electrocution-rescue",
+      "text": {
+        "en": "Procedures for freeing person from electrocution",
+        "hi": "बिजली के झटके से व्यक्ति को मुक्त करने की प्रक्रिया"
+      },
+      "critical": true
+    },
+    {
+      "id": "hazard-identification",
+      "text": {
+        "en": "Hazard identification and risk assessment",
+        "hi": "खतरे की पहचान और जोखिम मूल्यांकन"
+      },
+      "critical": true
+    }
+  ],
+  "mcqBank": [
+    {
+      "id": "safety-ppe-selection",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which PPE is most important for eye protection during arc welding?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Safety shoes"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Welding helmet with filter lens"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Apron"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Gloves"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-fire-extinguisher",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which fire extinguisher is suitable for electrical fires?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Water"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Foam"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "CO2/Dry Chemical Powder"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Sand"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-electrical",
+      "topic": "safety",
+      "prompt": {
+        "en": "To avoid electric shock, welding machine must be properly?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Painted"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Earthed"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Oiled"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Insulated"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1335",
+        "CSC/N0204"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-fume",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which is the best method to control welding fumes?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Open window only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Use fume extractor/local exhaust"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Fan facing welder"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "None"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-flashback",
+      "topic": "safety",
+      "prompt": {
+        "en": "Flashback arrestor is used to prevent?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Electric shock"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Flame travel back into hose/cylinder"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Sparks"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Noise"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0201"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-first-aid",
+      "topic": "safety",
+      "prompt": {
+        "en": "First action for minor cut injury is to?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Apply ointment"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Wash with clean water and cover"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Ignore"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Rub with soil"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-cpr",
+      "topic": "safety",
+      "prompt": {
+        "en": "CPR is administered to a person who has?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Fainting"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cardiac arrest/no breathing"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Cough"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Headache"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-housekeeping",
+      "topic": "safety",
+      "prompt": {
+        "en": "Good housekeeping helps to prevent?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Fire accidents"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Tripping hazards"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Both a & b"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "None"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-hazard-id",
+      "topic": "safety",
+      "prompt": {
+        "en": "Hazard identification means?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Buying tools"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Finding potential hazards"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Attendance"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Breaks"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "safety-lifting",
+      "topic": "safety",
+      "prompt": {
+        "en": "Safe lifting method includes?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Lift fast"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Bend back, lift heavy"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Bend knees, keep back straight"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Twist while lifting"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "tools-helmet",
+      "topic": "tools",
+      "prompt": {
+        "en": "Welding helmet protects from?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Noise only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "UV, IR and sparks"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Dust only"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Cold"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "tools-gloves",
+      "topic": "tools",
+      "prompt": {
+        "en": "Welding gloves are primarily made of?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Cotton"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Plastic"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Leather"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Silk"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "tools-grinder",
+      "topic": "tools",
+      "prompt": {
+        "en": "Angle grinder is used for?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Welding"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cutting/grinding metal"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Painting"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Drilling wood"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N1336"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "tools-electrode",
+      "topic": "tools",
+      "prompt": {
+        "en": "Electrode selection depends on?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Color"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Base metal and thickness"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Price"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Weight"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "tools-clamp",
+      "topic": "tools",
+      "prompt": {
+        "en": "Earthing clamp is connected to?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Electrode"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Workpiece/Job"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Holder"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Cable"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "tools-fume-extractor",
+      "topic": "tools",
+      "prompt": {
+        "en": "Fume extractor purpose is to?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Heat metal"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Remove welding fumes"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Cool metal"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Lubricate"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-arc-length",
+      "topic": "theory",
+      "prompt": {
+        "en": "Ideal arc length in SMAW is approximately?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10mm"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Equal to electrode diameter"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5cm"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1cm"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-current",
+      "topic": "theory",
+      "prompt": {
+        "en": "Welding current affects?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Penetration and bead shape"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Only color"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Only sound"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Smell"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-polish",
+      "topic": "theory",
+      "prompt": {
+        "en": "Which is NOT a welding defect?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Porosity"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Undercut"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Polishing mark"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Slag inclusion"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-defect",
+      "topic": "theory",
+      "prompt": {
+        "en": "Undercut is a defect caused by?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Excess current"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Slow travel"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Excess heat"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "All of above"
+          }
+        }
+      ],
+      "correctOptionId": "d",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-joint",
+      "topic": "theory",
+      "prompt": {
+        "en": "Butt joint is a type of?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Weld position"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Joint type"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Electrode type"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Polarity"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-heat-input",
+      "topic": "theory",
+      "prompt": {
+        "en": "Heat input depends on?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Current only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Voltage, current, travel speed"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Time only"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Distance only"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-position",
+      "topic": "theory",
+      "prompt": {
+        "en": "1G,2G,3G,4G refer to?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Electrodes"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Welding positions"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Metals"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Gases"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    },
+    {
+      "id": "theory-preheat",
+      "topic": "theory",
+      "prompt": {
+        "en": "Preheating is done to?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Cool faster"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Reduce hardness and cracking"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Increase cost"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Make rough"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Based on standard welding safety and theory practices as per QP requirements."
+      }
+    }
+  ],
+  "taskBlueprints": [
+    {
+      "id": "mcq-safety-basics",
+      "type": "mcq",
+      "title": {
+        "en": "MCQ - Safety Basics"
+      },
+      "brief": {
+        "en": "Test fundamental safety knowledge"
+      },
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criteriaRefs": [
+        "CSC/N1335/PC1",
+        "CSC/N1335/PC3",
+        "CSC/N1335/PC6"
+      ],
+      "weight": 15,
+      "criticalSafety": true,
+      "mcqIds": [
+        "safety-ppe-selection",
+        "safety-fire-extinguisher",
+        "safety-electrical"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-basic",
+      "type": "tool_identification",
+      "title": {
+        "en": "Tool Identification - Basic Welding Tools"
+      },
+      "brief": {
+        "en": "Identify basic welding tools and their uses"
+      },
+      "nosRefs": [
+        "CSC/N1336",
+        "CSC/N0204"
+      ],
+      "criteriaRefs": [
+        "CSC/N0204/PC1",
+        "CSC/N0204/PC3"
+      ],
+      "weight": 10,
+      "criticalSafety": false,
+      "toolPickCount": 5,
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "checklist-ppe-preparation",
+      "type": "checklist",
+      "title": {
+        "en": "Checklist - PPE & Work Area Preparation"
+      },
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criteriaRefs": [
+        "CSC/N1335/PC1",
+        "CSC/N1335/PC2",
+        "CSC/N1335/PC3"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-ppe-donning",
+      "type": "practical_photo",
+      "title": {
+        "en": "Practical - Donning PPE Correctly"
+      },
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criteriaRefs": [
+        "CSC/N1335/PC1",
+        "CSC/N1335/PC3"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 2,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-oxy-cutting-setup",
+      "type": "practical_video",
+      "title": {
+        "en": "Practical - Oxy-Fuel Cutting Setup & Safety Checks"
+      },
+      "nosRefs": [
+        "CSC/N0201"
+      ],
+      "criteriaRefs": [
+        "CSC/N0201/PC1",
+        "CSC/N0201/PC2",
+        "CSC/N0201/PC3",
+        "CSC/N0201/PC8"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": true,
+        "minDurationSec": 30,
+        "maxDurationSec": 120
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-mmaw-strike-arc",
+      "type": "practical_video",
+      "title": {
+        "en": "Practical - MMAW/SMAW Arc Strike & Bead Deposition"
+      },
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criteriaRefs": [
+        "CSC/N0204/PC1",
+        "CSC/N0204/PC2",
+        "CSC/N0204/PC3",
+        "CSC/N0204/PC5",
+        "CSC/N0204/PC10",
+        "CSC/N0204/PC11",
+        "CSC/N0204/PC12"
+      ],
+      "weight": 12,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": true,
+        "minDurationSec": 30,
+        "maxDurationSec": 120
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "narration-safety-procedures",
+      "type": "narration",
+      "title": {
+        "en": "Narration - Explain Safety Procedures"
+      },
+      "nosRefs": [
+        "CSC/N1335",
+        "HYC/N9302"
+      ],
+      "criteriaRefs": [
+        "CSC/N1335/PC3",
+        "HYC/N9302/PC1",
+        "HYC/N9302/PC4",
+        "HYC/N9302/PC10"
+      ],
+      "weight": 8,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 15,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "checklist-worksite-hygiene",
+      "type": "checklist",
+      "title": {
+        "en": "Checklist - Worksite Hygiene & Waste Management"
+      },
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criteriaRefs": [
+        "CSC/N1335/PC13",
+        "CSC/N1335/PC14",
+        "CSC/N1335/PC15"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-fire-equipment-check",
+      "type": "practical_photo",
+      "title": {
+        "en": "Practical - Fire Safety Equipment Inspection"
+      },
+      "nosRefs": [
+        "CSC/N1335"
+      ],
+      "criteriaRefs": [
+        "CSC/N1335/PC11",
+        "CSC/N1335/PC16"
+      ],
+      "weight": 7,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 2,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "mcq-tools-theory",
+      "type": "mcq",
+      "title": {
+        "en": "MCQ - Tools & Theory"
+      },
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "criteriaRefs": [
+        "CSC/N0204/PC2",
+        "CSC/N0204/PC5",
+        "CSC/N0204/PC7"
+      ],
+      "weight": 10,
+      "criticalSafety": false,
+      "mcqIds": [
+        "tools-helmet",
+        "tools-electrode",
+        "theory-arc-length",
+        "theory-current"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    }
+  ],
+  "thresholds": {
+    "overallPass": 0.7,
+    "perTaskPass": 0.6,
+    "criticalMustPass": true,
+    "confidenceHumanRoute": 0.65,
+    "levelBands": [
+      {
+        "level": 2,
+        "minScore": 0,
+        "maxScore": 0.4,
+        "label": "Basic Awareness"
+      },
+      {
+        "level": 3,
+        "minScore": 0.4,
+        "maxScore": 0.7,
+        "label": "Semi-Skilled"
+      },
+      {
+        "level": 4,
+        "minScore": 0.7,
+        "maxScore": 0.85,
+        "label": "Skilled"
+      },
+      {
+        "level": 5,
+        "minScore": 0.85,
+        "maxScore": 1,
+        "label": "Highly Skilled"
+      }
+    ],
+    "bridgeBand": {
+      "minScore": 0.38,
+      "maxScore": 0.42
+    },
+    "consistencyFlagThreshold": 0.35
+  },
+  "bridgeTraining": [
+    {
+      "skillArea": "Welding Safety & PPE Compliance",
+      "nosRefs": [
+        "CSC/N1335",
+        "HYC/N9302"
+      ],
+      "suggestion": {
+        "en": "Strengthen understanding of PPE, hazard identification and emergency procedures as per safety NOS requirements."
+      }
+    },
+    {
+      "skillArea": "Oxy-Fuel Gas Cutting Safety",
+      "nosRefs": [
+        "CSC/N0201"
+      ],
+      "suggestion": {
+        "en": "Focus on gas cylinder handling, pressure regulation, leak checks and flashback arrestor usage."
+      }
+    },
+    {
+      "skillArea": "MMAW/SMAW Welding Technique",
+      "nosRefs": [
+        "CSC/N0204"
+      ],
+      "suggestion": {
+        "en": "Practice arc striking, maintaining arc length, bead deposition, fume extraction and electrical safety."
+      }
+    }
+  ]
+}

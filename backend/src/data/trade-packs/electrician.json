@@ -1,0 +1,3919 @@
+{
+  "schemaVersion": 1,
+  "id": "electrician",
+  "title": {
+    "en": "Electrician (House Wiring, Appliances and Safety)",
+    "hi": "इलेक्ट्रीशियन (गृह वायरिंग, उपकरण और सुरक्षा)"
+  },
+  "aliases": [
+    "lineman",
+    "wireman",
+    "electrician fitter",
+    "housewire electrician",
+    "maintenance electrician",
+    "electrician general"
+  ],
+  "qp": {
+    "title": "Electrician - Domestic Solutions",
+    "qpId": "PSS/Q6001",
+    "ncoCode": "NCO-2015/7131.1",
+    "nsqfLevel": 3,
+    "ssc": "Power Sector Skill Council (PSSC)",
+    "version": "3.0",
+    "alignedJobRoles": [
+      "Electrician (Domestic Solutions)",
+      "Electrician General (NCO-2015 7411.0100)",
+      "Wireman, Light and Power (NCO-2015 7411.0301)",
+      "Electrical Fitter (NCO-2015 7412.0200)",
+      "Electrical Supervisor, Wiring (NCO-2015 3123.0400)",
+      "Line Supervisor, Electrical (NCO-2015 3122.6000)",
+      "Household Wiring and Maintenance Electrician"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Qualification Pack PSS/Q6001: Electrician - Domestic Solutions, Version 3.0 (NSQF Level 3)",
+      "url": "https://cssda.cg.nic.in/CourseQPFile/780_QP_PSS_Q6001.pdf",
+      "publisher": "Power Sector Skill Council (NSQC approved)",
+      "confidence": "verified",
+      "note": "Read in full. Primary source of this pack: all 8 NOS, performance criteria text, assessment weightage and pass rule. Document states 'Minimum Aggregate Passing % at QP Level: 50' (basis of thresholds.overallPass = 0.5) and assessment weightage Theory 235 / Practical 444 of 679 total marks (approx. 35% theory, 65% practical). NOS weightage: PSS/N6001 20%, PSS/N6002 25%, PSS/N6003 20%, PSS/N1331 10%, PSS/N6005 5%, PSS/N1336 5%, DGT/VSQ/N0101 10%, SGJ/N1702 5%. Next Review Date 31/03/2025 has passed - re-verify before production embedding."
+    },
+    {
+      "title": "Qualification Pack ESSC/ELE/Q5804: Electrician, Version 1.0 (NSQF Level 4)",
+      "url": "https://www.essc-india.org/qualification_pack/QP_Electrician.pdf",
+      "publisher": "Electronic Sector Skill Council of India (NSQC approved)",
+      "confidence": "verified",
+      "note": "Read in full. Source of NOS ELE/N5806, ELE/N5805 and ELE/N1002 (codes, titles and performance criteria text). Its pass rule is 'Minimum Aggregate Passing % at QP Level: 70' - NOT adopted here because the primary QP for this pack is PSSC PSS/Q6001 (50%). Document shows a deactivation date of 17/11/2025, which has passed - may have been superseded."
+    },
+    {
+      "title": "Electrician (CITS) Curriculum, Version 2.1 Revised 2024, NSQF Level 4.5",
+      "url": "https://dgt.gov.in/sites/default/files/Electrician_CITS2.1_NSQF-4.5.pdf",
+      "publisher": "Directorate General of Training (DGT) / MSDE",
+      "confidence": "verified",
+      "note": "Read in full. Source of the NCO-2015 aligned job roles (7411.0100 Electrician General, 7411.0301 Wireman Light and Power, 7412.0200 Electrical Fitter, 3122.6000 Line Supervisor Electrical, 3123.0400 Electrical Supervisor Wiring) and of the tools/equipment names and specifications used in the tools list (trainee toolkit items 1-21, instrument items 78/79/87/94/95/97/150)."
+    },
+    {
+      "title": "NCVET NSQF Order (updated), File 22001/01/2023 - National Qualifications Framework level descriptors",
+      "url": "https://ncvet.gov.in/wp-content/uploads/2023/06/NSQF-Order-updated-.pdf",
+      "publisher": "National Council for Vocational Education and Training (NCVET)",
+      "confidence": "verified",
+      "note": "Read the NSQF level-descriptor annexure. Basis for thresholds.levelBands: L3 routine tasks with limited choice, L4 master technician / non-routine tasks, L5 junior technical supervisor leading a small team."
+    },
+    {
+      "title": "NQR Qualification File reference 2022/POW/PSSC/06924 (Electrician - Domestic Solutions)",
+      "publisher": "National Qualifications Register, NCVET",
+      "confidence": "estimated",
+      "note": "nqr.gov.in was unreachable (connection refused on port 443) during research, so the qualification file itself could not be read. The NQR reference code 2022/POW/PSSC/06924 and NQR Version 3.0 are quoted from inside the PSSC PSS/Q6001 document, not from the NQR site. Treat NQR-side details as unverified."
+    }
+  ],
+  "nos": [
+    {
+      "code": "PSS/N6001",
+      "title": "Preparing for installation of house wiring and repairing of faults",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSS-N6001-PC1",
+          "text": "develop circuit and wiring diagram and electrical signages, code specifications to plan wiring layouts, consumption points accurately, as may be required",
+          "criticalSafety": false,
+          "keywords": [
+            "wiring diagram",
+            "circuit layout",
+            "signage",
+            "consumption points"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC2",
+          "text": "use various types of tools, their functions and application for carrying out work",
+          "criticalSafety": false,
+          "keywords": [
+            "hand tools",
+            "tool selection",
+            "tool functions",
+            "safe use"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC3",
+          "text": "understand rating and current carrying capacity of wires, cables, fuse, switches, sockets, mcbs, elcbs and other electrical accessories",
+          "criticalSafety": false,
+          "keywords": [
+            "current carrying capacity",
+            "ratings",
+            "mcb",
+            "elcb",
+            "accessories"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC4",
+          "text": "lay conduit pipe concealed and open wiring, batten, casing-capping and temporary cleat wiring",
+          "criticalSafety": false,
+          "keywords": [
+            "conduit wiring",
+            "open wiring",
+            "casing capping",
+            "cleat wiring"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC5",
+          "text": "implement system in the most economical way",
+          "criticalSafety": false,
+          "keywords": [
+            "cost effective",
+            "economy",
+            "planning"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC6",
+          "text": "ensure correct requirement of wires, cables, fuse, switches and other electrical accessories for optimal expenditure",
+          "criticalSafety": false,
+          "keywords": [
+            "material requirement",
+            "cables",
+            "fuse",
+            "optimisation"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC7",
+          "text": "ensure wiring and points selected in wiring are according to load growth in future",
+          "criticalSafety": false,
+          "keywords": [
+            "load growth",
+            "future load",
+            "point selection"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC8",
+          "text": "understand use of under-voltage protective devices, choice of setting of protective devices, labelling of protective devices, switches and terminals",
+          "criticalSafety": false,
+          "keywords": [
+            "under voltage",
+            "protective device settings",
+            "labelling",
+            "terminals"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC9",
+          "text": "understand insulation resistance of all live conductors to earth, insulation resistance between live conductors",
+          "criticalSafety": true,
+          "keywords": [
+            "insulation resistance",
+            "live to earth",
+            "megger test",
+            "conductor testing"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC10",
+          "text": "implement methods of protection against electric shock",
+          "criticalSafety": true,
+          "keywords": [
+            "electric shock",
+            "shock protection",
+            "insulation",
+            "earthing"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC11",
+          "text": "ensure selection of equipment appropriate to external influences, access to switchgear and equipment, presence of warning signs and danger notices",
+          "criticalSafety": true,
+          "keywords": [
+            "warning signs",
+            "danger notices",
+            "switchgear access",
+            "equipment selection"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC12",
+          "text": "use updated technology products and take their ageing into consideration",
+          "criticalSafety": false,
+          "keywords": [
+            "product ageing",
+            "latest technology",
+            "replacement"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC13",
+          "text": "inspect fault locating points e.g. fuse blown, mcb, rcd trip or short circuit location in wiring circuit",
+          "criticalSafety": false,
+          "keywords": [
+            "fault location",
+            "fuse blown",
+            "mcb trip",
+            "short circuit"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC14",
+          "text": "ensure open circuit due to overheated switches, socket and wires in control board due to loose contact and overload",
+          "criticalSafety": false,
+          "keywords": [
+            "open circuit",
+            "overheating",
+            "loose contact",
+            "overload"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC15",
+          "text": "check polarity to ensure all switches are connected in phase conductors",
+          "criticalSafety": true,
+          "keywords": [
+            "polarity",
+            "switch in phase",
+            "phase conductor",
+            "wiring check"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC16",
+          "text": "check equal distribution of load on three phase wiring in large residential and commercial units",
+          "criticalSafety": false,
+          "keywords": [
+            "three phase",
+            "load balancing",
+            "distribution"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC17",
+          "text": "check the color coding, connection and identification of conductors, cables and wires",
+          "criticalSafety": false,
+          "keywords": [
+            "colour coding",
+            "conductor identification",
+            "cables"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC18",
+          "text": "check routing of cables, proper selection of conductors, wires and connectors and connection of single pole devices",
+          "criticalSafety": false,
+          "keywords": [
+            "cable routing",
+            "conductors",
+            "connectors",
+            "single pole devices"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC19",
+          "text": "work safely at all times, complying with health and safety legislation, regulation and other relevant guidelines",
+          "criticalSafety": true,
+          "keywords": [
+            "safe working",
+            "legislation",
+            "compliance",
+            "guidelines"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC20",
+          "text": "adhere to procedures for safety to wear ppes",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "protective equipment",
+            "safety procedure"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC21",
+          "text": "ensure that all tools and tackles, fittings, accessories etc. are in safe and usable condition",
+          "criticalSafety": true,
+          "keywords": [
+            "tool condition",
+            "usable condition",
+            "inspection",
+            "accessories"
+          ]
+        },
+        {
+          "id": "PSS-N6001-PC22",
+          "text": "ensure work area is clean and safe from hazards before and after the job is completed",
+          "criticalSafety": true,
+          "keywords": [
+            "housekeeping",
+            "hazard free",
+            "work area",
+            "before and after job"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSS/N6002",
+      "title": "Installation of Electrical Appliances, Control Circuits and Protection Devices",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSS-N6002-PC1",
+          "text": "understand standard location of main board ensure for utilitys service line connection",
+          "criticalSafety": false,
+          "keywords": [
+            "main board",
+            "service line",
+            "location"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC2",
+          "text": "understand layout of main switch, circuit breakers require at main board",
+          "criticalSafety": false,
+          "keywords": [
+            "main switch",
+            "circuit breakers",
+            "layout"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC3",
+          "text": "ensure of controlling and protection devices for different circuits being used for lighting and power loads at each floor or portion",
+          "criticalSafety": false,
+          "keywords": [
+            "control devices",
+            "protection devices",
+            "lighting circuits",
+            "power loads"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC4",
+          "text": "check types of conduit, batten, underground and open wiring",
+          "criticalSafety": false,
+          "keywords": [
+            "conduit",
+            "batten wiring",
+            "underground wiring",
+            "open wiring"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC5",
+          "text": "locate and mark the position of conduit pipe ensures, connections into the structures with proper equipments like measuring tape, hammer, saw, drill machines etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "marking",
+            "conduit pipe",
+            "measuring tape",
+            "drill machine"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC6",
+          "text": "cut openings in structures to accommodate conduit pipes or pipe fittings, using hand or power tools",
+          "criticalSafety": false,
+          "keywords": [
+            "cutting openings",
+            "hand tools",
+            "power tools",
+            "conduit fittings"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC7",
+          "text": "read plan ensure around obstructions like electrical wiring, gas fittings etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "plan reading",
+            "obstructions",
+            "gas fittings"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC8",
+          "text": "laying of conduit pipe with clamps",
+          "criticalSafety": false,
+          "keywords": [
+            "conduit laying",
+            "clamps",
+            "conduit installation",
+            "clamp fixing"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC9",
+          "text": "install brackets and hangers to support electrical equipment",
+          "criticalSafety": false,
+          "keywords": [
+            "brackets",
+            "hangers",
+            "support"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC10",
+          "text": "install, replace and repair lighting fixtures and electrical control and distribution equipment, such as switches, relays and circuit breaker panels",
+          "criticalSafety": false,
+          "keywords": [
+            "lighting fixtures",
+            "switches",
+            "relays",
+            "breaker panels"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC11",
+          "text": "lay and pull wire through conduits and through holes in walls and floors",
+          "criticalSafety": false,
+          "keywords": [
+            "pulling wire",
+            "conduit",
+            "walls and floors"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC12",
+          "text": "join and connect wire to fixtures and components to form circuits",
+          "criticalSafety": false,
+          "keywords": [
+            "wire connections",
+            "circuits",
+            "fixtures",
+            "terminations"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC13",
+          "text": "prepare extended line for additional points with bearing capacity of existing system or augment/replacement of existing lines to with hold the additional load",
+          "criticalSafety": false,
+          "keywords": [
+            "extension",
+            "additional load",
+            "augmentation"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC14",
+          "text": "install the protective device i.e. fuse, mcb, rccb, mccbs ratings as per the load",
+          "criticalSafety": true,
+          "keywords": [
+            "fuse",
+            "mcb",
+            "rccb",
+            "device rating",
+            "load"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC15",
+          "text": "ensure proper working and functioning of all protective devices that are necessary to save lives of human, livestock, animals",
+          "criticalSafety": true,
+          "keywords": [
+            "protective devices",
+            "life saving",
+            "functioning check"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC16",
+          "text": "ensure fuse, switch or circuit breaker should not be placed in an earthed neutral conductor and are wired only in the phase conductor only",
+          "criticalSafety": true,
+          "keywords": [
+            "phase conductor",
+            "neutral conductor",
+            "switch placement",
+            "fuse in phase"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC17",
+          "text": "ensure all the connections are made properly, tightened and color coding",
+          "criticalSafety": false,
+          "keywords": [
+            "tight connections",
+            "colour coding",
+            "joint quality"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC18",
+          "text": "ensure that the correct type, size and current-carrying capacity of cables is chosen to bear the load",
+          "criticalSafety": false,
+          "keywords": [
+            "cable sizing",
+            "current carrying capacity",
+            "load"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC19",
+          "text": "ensure that the all accessible points which may be switched on/off must be easily approached by the users",
+          "criticalSafety": false,
+          "keywords": [
+            "accessibility",
+            "switch points",
+            "user safety"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC20",
+          "text": "understand types of earthing plate and pipe earthing layout location",
+          "criticalSafety": true,
+          "keywords": [
+            "plate earthing",
+            "pipe earthing",
+            "earthing layout"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC21",
+          "text": "understand importance of earth connection with household gadgets and equipment",
+          "criticalSafety": true,
+          "keywords": [
+            "earth connection",
+            "household gadgets",
+            "importance of earthing"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC22",
+          "text": "understand procedure of earth connection with appliance, sockets main board and distribution board",
+          "criticalSafety": true,
+          "keywords": [
+            "earthing procedure",
+            "sockets",
+            "distribution board"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC23",
+          "text": "use of devices available in market such as trimmers, impulse relay, programmable switch, twilight switch, movement detector",
+          "criticalSafety": false,
+          "keywords": [
+            "impulse relay",
+            "twilight switch",
+            "movement detector"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC24",
+          "text": "ensure of assembling of various type, design and capacity fans, tube lights, led lights, bulbs, lamps, doorbells, switches, geysers, inverters, exhaust fan, safety alarms, decorative lights and chandliers",
+          "criticalSafety": false,
+          "keywords": [
+            "appliance assembly",
+            "fans",
+            "geysers",
+            "inverters",
+            "led lights"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC25",
+          "text": "ensure of various size and capacity water pump motors according to the load with their control circuit of water level in tank",
+          "criticalSafety": false,
+          "keywords": [
+            "water pump motor",
+            "control circuit",
+            "water level"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC26",
+          "text": "make connections and operate instruments to check the healthiness of house wiring in terms of leakage insulation resistance",
+          "criticalSafety": true,
+          "keywords": [
+            "insulation resistance",
+            "leakage test",
+            "test instruments"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC27",
+          "text": "operate instruments to check the continuity, open circuit, short circuit and load flow",
+          "criticalSafety": false,
+          "keywords": [
+            "continuity",
+            "open circuit",
+            "short circuit",
+            "load flow"
+          ]
+        },
+        {
+          "id": "PSS-N6002-PC28",
+          "text": "operate instruments to check the earth resistance",
+          "criticalSafety": true,
+          "keywords": [
+            "earth resistance",
+            "earth tester",
+            "earthing check"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSS/N6003",
+      "title": "Maintenance and repair of Household electrical gadgets",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSS-N6003-PC1",
+          "text": "read and interpret drawings, circuit diagrams and electrical code specifications of the electrical equipment, gadgets",
+          "criticalSafety": false,
+          "keywords": [
+            "drawings",
+            "circuit diagrams",
+            "code specifications"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC2",
+          "text": "read, interpret and understand the capacity in kw, load in amperes and power consumption in kwh for each appliance",
+          "criticalSafety": false,
+          "keywords": [
+            "kw rating",
+            "ampere load",
+            "kwh consumption"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC3",
+          "text": "check connection of equipment, checking for status of tripping device",
+          "criticalSafety": true,
+          "keywords": [
+            "tripping device",
+            "connection check",
+            "equipment status"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC4",
+          "text": "ensure presence of appropriate devices for isolating and switching",
+          "criticalSafety": true,
+          "keywords": [
+            "isolation",
+            "switching devices",
+            "isolator"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC5",
+          "text": "understand operating principle of single phase motor, use of condenser",
+          "criticalSafety": false,
+          "keywords": [
+            "single phase motor",
+            "condenser",
+            "operating principle"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC6",
+          "text": "understand how rotating field is developed in single phase and three phase motor",
+          "criticalSafety": false,
+          "keywords": [
+            "rotating field",
+            "three phase motor",
+            "single phase motor"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC7",
+          "text": "understand the significance of number of poles significance in motor winding for rpm, speed and direction change",
+          "criticalSafety": false,
+          "keywords": [
+            "poles",
+            "rpm",
+            "motor winding",
+            "speed"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC8",
+          "text": "measure insulation resistance of motor winding with live conductors to earth and insulation resistance between live conductors",
+          "criticalSafety": true,
+          "keywords": [
+            "motor winding",
+            "insulation resistance",
+            "live to earth",
+            "megger"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC9",
+          "text": "understand various parts of motors, pumps and their function like ball bearings, cooling fans, fins and bushes",
+          "criticalSafety": false,
+          "keywords": [
+            "ball bearings",
+            "cooling fan",
+            "bushes",
+            "pump parts"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC10",
+          "text": "understand various types of winding wires, their gauge and insulating materials for motor winding",
+          "criticalSafety": false,
+          "keywords": [
+            "winding wire",
+            "gauge",
+            "insulating materials"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC11",
+          "text": "understand materials used to make various types of heating elements like nicrome, kanthal, eureka etc., various shape, size and capacity of heating elements according to applications and usages",
+          "criticalSafety": false,
+          "keywords": [
+            "heating elements",
+            "nicrome",
+            "kanthal",
+            "eureka"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC12",
+          "text": "understand types of thermal insulations used in electrical gadgets like mica, asbestos, ceramics, glass wool etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "thermal insulation",
+            "mica",
+            "ceramics",
+            "glass wool"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC13",
+          "text": "understand timers (motorized, mechanical), thermal relays, bimetallic strips",
+          "criticalSafety": false,
+          "keywords": [
+            "timers",
+            "thermal relays",
+            "bimetallic strips"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC14",
+          "text": "ensure preventive maintenance, regular cleaning, oiling, greasing of house hold gadgets like fans, desert cooler, water pump motors etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "preventive maintenance",
+            "cleaning",
+            "oiling",
+            "greasing"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC15",
+          "text": "replace damaged switches, MCB, fan-capacitor, regulator, lighting points i.e. holder, choke, starters, water coolers and their pump and motor",
+          "criticalSafety": false,
+          "keywords": [
+            "replacement",
+            "mcb",
+            "fan capacitor",
+            "regulator",
+            "starter"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC16",
+          "text": "ensure regular maintenance of electrical equipments like- iron, toaster, induction-plate and cooker",
+          "criticalSafety": false,
+          "keywords": [
+            "household appliances",
+            "iron",
+            "toaster",
+            "induction cooker"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC17",
+          "text": "ensure regular maintenance of doorbells, tube starters and chokes",
+          "criticalSafety": false,
+          "keywords": [
+            "doorbell",
+            "tube starter",
+            "choke"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC18",
+          "text": "preventative maintenance of batteries",
+          "criticalSafety": false,
+          "keywords": [
+            "battery",
+            "preventive maintenance",
+            "inverter battery"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC19",
+          "text": "solder winding wires, cables and their joints in electrical gadgets",
+          "criticalSafety": false,
+          "keywords": [
+            "soldering",
+            "winding wires",
+            "cable joints"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC20",
+          "text": "verify system grounding and measure insulation resistance",
+          "criticalSafety": true,
+          "keywords": [
+            "system grounding",
+            "insulation resistance",
+            "verification"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC21",
+          "text": "clean solar panels for removal of dust, bird droppings, pollen, leaves, branches etc. as per maintenance schedule",
+          "criticalSafety": false,
+          "keywords": [
+            "solar panel cleaning",
+            "maintenance schedule",
+            "dust removal",
+            "panel maintenance"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC22",
+          "text": "ensure all electrical connections as per specification, measure and record dc voltages and currents and identify the faults in the system",
+          "criticalSafety": false,
+          "keywords": [
+            "dc voltage",
+            "dc current",
+            "connections",
+            "fault identification"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC23",
+          "text": "check for working condition of fuses, circuit breakers and all cables for loose connections",
+          "criticalSafety": true,
+          "keywords": [
+            "fuses",
+            "circuit breakers",
+            "loose connections"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC24",
+          "text": "take adequate precautionary measures while handling electrical system adhering to relevant health and safety standards",
+          "criticalSafety": true,
+          "keywords": [
+            "precautionary measures",
+            "health and safety",
+            "safe handling"
+          ]
+        },
+        {
+          "id": "PSS-N6003-PC25",
+          "text": "understand that if reason of error is not clear, do not try to fix anything and call OEM repair and maintenance team",
+          "criticalSafety": true,
+          "keywords": [
+            "do not attempt repair",
+            "escalation",
+            "OEM support",
+            "unclear fault"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ELE/N5805",
+      "title": "Testing, Commissioning, Maintenance, Fault Finding and Repair",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "ELE-N5805-PC1",
+          "text": "Test installations before energizing to ensure personal and electrical safety to include: insulation resistance and earth continuity tests, correct polarity and complete a visual inspection",
+          "criticalSafety": true,
+          "keywords": [
+            "test before energizing",
+            "insulation resistance",
+            "earth continuity",
+            "polarity",
+            "visual inspection"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC2",
+          "text": "Test installations when energized by checking complete function on all equipment installed to ensure correct operation of new installation as per instructions, for example correct voltage, phase rotation and correct functioning of protection devices",
+          "criticalSafety": true,
+          "keywords": [
+            "energized testing",
+            "phase rotation",
+            "voltage check",
+            "protection devices"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC3",
+          "text": "Set-up equipment to include: selecting and using the appropriate software for programming programmable relays, bus-system; creating necessary settings on devices such as timers and overload relays; downloading and importing applications required and programming bus-system, for example KNX, DALI, Modbus and IP or IT based systems",
+          "criticalSafety": false,
+          "keywords": [
+            "programmable relays",
+            "overload relays",
+            "bus system",
+            "commissioning"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC4",
+          "text": "Set the installation to fully functioning and ensure customer can operate.",
+          "criticalSafety": false,
+          "keywords": [
+            "commissioning",
+            "handover",
+            "customer operation"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC5",
+          "text": "Adapt to changing circumstances",
+          "criticalSafety": false,
+          "keywords": [
+            "adaptability",
+            "changing conditions",
+            "flexibility",
+            "site conditions"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC6",
+          "text": "Troubleshoot electrical installation and identify faults including: short and open circuits, incorrect polarity, insulation resistance and earth continuity faults, incorrect settings on equipment and incorrect program on programmable devices",
+          "criticalSafety": false,
+          "keywords": [
+            "troubleshooting",
+            "short circuit",
+            "open circuit",
+            "incorrect polarity"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC7",
+          "text": "Diagnose electrical installation and identify problems including: bad connections, incorrect wiring, high loop impedance and equipment failure",
+          "criticalSafety": false,
+          "keywords": [
+            "diagnosis",
+            "bad connections",
+            "loop impedance",
+            "equipment failure"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC8",
+          "text": "Verify that an existing electrical installation still meets current standards.",
+          "criticalSafety": false,
+          "keywords": [
+            "standards verification",
+            "existing installation",
+            "compliance check",
+            "current standards"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC9",
+          "text": "Use, test and calibrate measuring equipment including: insulation resistance, continuity and installation testers, multi, clamp and network cable testers",
+          "criticalSafety": false,
+          "keywords": [
+            "measuring equipment",
+            "calibration",
+            "clamp tester",
+            "installation tester"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC10",
+          "text": "Repair and replace faulty components in electrical installations",
+          "criticalSafety": false,
+          "keywords": [
+            "repair",
+            "replace components",
+            "faulty parts"
+          ]
+        },
+        {
+          "id": "ELE-N5805-PC11",
+          "text": "Rewire and repair faulty installations",
+          "criticalSafety": false,
+          "keywords": [
+            "rewiring",
+            "repair",
+            "faulty installation"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ELE/N5806",
+      "title": "Planning, Design and Installation of Electrical and Electronics Sub System",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "ELE-N5806-PC1",
+          "text": "communicate with the manager in order to understand the day's planning requirement and plan work",
+          "criticalSafety": false,
+          "keywords": [
+            "planning",
+            "work instructions",
+            "communication"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC2",
+          "text": "apply approved drawings, job instructions or work manuals",
+          "criticalSafety": false,
+          "keywords": [
+            "approved drawings",
+            "job instructions",
+            "work manuals"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC3",
+          "text": "collect assembled units from the store",
+          "criticalSafety": false,
+          "keywords": [
+            "store",
+            "assembled units",
+            "materials"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC4",
+          "text": "collect consumables such as wires and connectors need for the assembly process",
+          "criticalSafety": false,
+          "keywords": [
+            "consumables",
+            "wires",
+            "connectors"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC5",
+          "text": "collect the work manual/job instruction.",
+          "criticalSafety": false,
+          "keywords": [
+            "work manual",
+            "job instruction",
+            "documentation"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC6",
+          "text": "visually inspect the boards and components received for any physical damage, any loose or wrong connections",
+          "criticalSafety": false,
+          "keywords": [
+            "visual inspection",
+            "physical damage",
+            "loose connections"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC7",
+          "text": "follow the standard operating procedure to assemble the electrical and electronics sub system",
+          "criticalSafety": false,
+          "keywords": [
+            "standard operating procedure",
+            "assembly",
+            "sop",
+            "sub system assembly"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC8",
+          "text": "interpret accurately drawings, wiring and job specifications/instructions",
+          "criticalSafety": false,
+          "keywords": [
+            "drawings",
+            "wiring specifications",
+            "interpretation"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC9",
+          "text": "report defective or inadequate number of components",
+          "criticalSafety": false,
+          "keywords": [
+            "defective components",
+            "reporting",
+            "quality check",
+            "shortage reporting"
+          ]
+        },
+        {
+          "id": "ELE-N5806-PC10",
+          "text": "report about inadequate quantity of consumables such as wires, connectors, modules, screws, nuts, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "consumables shortage",
+            "reporting",
+            "inventory"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSS/N1331",
+      "title": "Apply basic health and safety practices for power related work",
+      "category": "safety",
+      "performanceCriteria": [
+        {
+          "id": "PSS-N1331-PC1",
+          "text": "use protective clothing/equipment for specific tasks and work conditions (Protective clothing: leather or asbestos gloves, flame proof aprons, flame proof overalls buttoned to neck, cuff less trousers, reinforced footwear, helmets/hard hats, cap and shoulder covers, ear defenders/plugs, safety boots, knee pads, particle masks, glasses/goggles/visors) (Equipment: hand and face shields, machine guards, residual current devices, shields, dust sheets, respirator)",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "protective clothing",
+            "gloves",
+            "helmet",
+            "goggles"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC2",
+          "text": "identify job-site hazards and possible causes of risks/accident at the workplace (Hazards: electrical hazards, sharp edged and heavy tools, heated metals, oxyfuel and gas cylinders, welding radiation, hazardous surfaces, hazardous substances, physical hazards)",
+          "criticalSafety": false,
+          "keywords": [
+            "hazard identification",
+            "job site hazards",
+            "risk causes"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC3",
+          "text": "use standard safe working practices when working at heights, confined areas, trenches and with electrical equipment",
+          "criticalSafety": true,
+          "keywords": [
+            "heights",
+            "confined areas",
+            "trenches",
+            "safe working practices"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC4",
+          "text": "follow warning signs and symbols while working with electrical systems (Warning signs: Danger plate, high voltage area, out of service, etc.)",
+          "criticalSafety": true,
+          "keywords": [
+            "warning signs",
+            "danger plate",
+            "high voltage area",
+            "symbols"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC5",
+          "text": "ensure positive isolation of electrical equipment and system as per the given standards",
+          "criticalSafety": true,
+          "keywords": [
+            "positive isolation",
+            "isolation",
+            "lockout",
+            "dead equipment"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC6",
+          "text": "identify any abnormalities in electrical equipment or system viz temperature, pressure, flow of current etc.",
+          "criticalSafety": true,
+          "keywords": [
+            "abnormalities",
+            "temperature",
+            "current flow",
+            "equipment condition"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC7",
+          "text": "use various methods of accident prevention in the work environment (Methods: use of equipment and working practices, safety notices, advice, instruction from colleagues and supervisors)",
+          "criticalSafety": false,
+          "keywords": [
+            "accident prevention",
+            "safety notices",
+            "instructions"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC8",
+          "text": "use proper scaffolds, elevated platforms and ladders for working at height",
+          "criticalSafety": true,
+          "keywords": [
+            "scaffolds",
+            "ladders",
+            "elevated platforms",
+            "working at height"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC9",
+          "text": "inspect various tools and plants (T and P) routinely for any signs of oil, water leakages",
+          "criticalSafety": false,
+          "keywords": [
+            "tool inspection",
+            "leakage check",
+            "routine inspection"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC10",
+          "text": "store flammable materials and machine lubricating oil safely and correctly",
+          "criticalSafety": true,
+          "keywords": [
+            "flammable materials",
+            "safe storage",
+            "lubricating oil"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC11",
+          "text": "check that the emission and pollution control devices are working properly in line with environmental policy standards",
+          "criticalSafety": false,
+          "keywords": [
+            "pollution control",
+            "emission devices",
+            "environmental policy"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC12",
+          "text": "inform the relevant authorities about any abnormal situation/behavior of any equipment/system without delay",
+          "criticalSafety": false,
+          "keywords": [
+            "reporting",
+            "abnormal situation",
+            "authorities"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC13",
+          "text": "use various appropriate fire extinguishers for different types of fires correctly (Types of fires: Class A, B, C, D and E)",
+          "criticalSafety": true,
+          "keywords": [
+            "fire extinguisher",
+            "class a b c",
+            "fire fighting"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC14",
+          "text": "use appropriate rescue techniques during fire hazard",
+          "criticalSafety": true,
+          "keywords": [
+            "rescue technique",
+            "fire hazard",
+            "evacuation",
+            "rescue during fire"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC15",
+          "text": "use good housekeeping practices at all times to avoid accidental fire",
+          "criticalSafety": false,
+          "keywords": [
+            "housekeeping",
+            "accidental fire",
+            "cleanliness"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC16",
+          "text": "administer appropriate first aid to the victims for the relevant injuries (Injuries: Bleeding, burns, choking, electric shock, poisoning etc.)",
+          "criticalSafety": true,
+          "keywords": [
+            "first aid",
+            "electric shock",
+            "burns",
+            "bleeding"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC17",
+          "text": "act promptly and appropriately to an accident situation and administer basic first aid including CPR to the victims of cardiac arrest due to electric shock or medical emergency in real",
+          "criticalSafety": true,
+          "keywords": [
+            "cpr",
+            "cardiac arrest",
+            "electric shock",
+            "emergency response"
+          ]
+        },
+        {
+          "id": "PSS-N1331-PC18",
+          "text": "write an incident report and send the same to the authorized person",
+          "criticalSafety": false,
+          "keywords": [
+            "incident report",
+            "documentation",
+            "escalation"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ELE/N1002",
+      "title": "Apply health and safety practices at the workplace",
+      "category": "safety",
+      "performanceCriteria": [
+        {
+          "id": "ELE-N1002-PC1",
+          "text": "identify job-site hazards and possible causes of accident in the workplace",
+          "criticalSafety": true,
+          "keywords": [
+            "hazard identification",
+            "accident causes",
+            "workplace hazards"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC2",
+          "text": "perform work complying to organizational safe working practices and observing hazard signs displayed on containers, equipment and in various work areas such as inside buildings, in open areas and public spaces, etc.",
+          "criticalSafety": true,
+          "keywords": [
+            "safe working practices",
+            "hazard signs",
+            "compliance"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC3",
+          "text": "use appropriate personal protective equipment (PPE) for specific tasks and work conditions, contaminant (concentration w.r.t air) requirements and severity of hazard while conforming to the Indian/International standards",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "hazard severity",
+            "indian standards"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC4",
+          "text": "follow standard safety procedures while handling tool, equipment, hazardous substances and while working in hazardous environments",
+          "criticalSafety": true,
+          "keywords": [
+            "safe tool handling",
+            "hazardous substances",
+            "safety procedures"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC5",
+          "text": "dispose electronic waste (such as toxins; metals such as lead, cadmium, barium; flame retardant plastics, welding slag etc.) as per industry approved techniques",
+          "criticalSafety": false,
+          "keywords": [
+            "e-waste",
+            "disposal",
+            "toxic metals"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC6",
+          "text": "avoid damage of components due to negligence in electrostatic discharge (ESD) procedures",
+          "criticalSafety": false,
+          "keywords": [
+            "esd",
+            "electrostatic discharge",
+            "component damage"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC7",
+          "text": "locate general health and safety equipment in the workplace such as fire extinguishers; first aid equipment; safety instruments, clothing and installations (fire exits, exhaust fans)",
+          "criticalSafety": true,
+          "keywords": [
+            "fire extinguisher",
+            "first aid kit",
+            "fire exits",
+            "safety equipment"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC8",
+          "text": "maintain appropriate posture while handling heavy objects",
+          "criticalSafety": false,
+          "keywords": [
+            "posture",
+            "heavy objects",
+            "manual handling"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC9",
+          "text": "apply good housekeeping practices at all times",
+          "criticalSafety": false,
+          "keywords": [
+            "housekeeping",
+            "clean workplace",
+            "5s"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC10",
+          "text": "take preventive measures to prevent fire hazards",
+          "criticalSafety": true,
+          "keywords": [
+            "fire prevention",
+            "preventive measures",
+            "fire hazard"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC11",
+          "text": "use appropriate fire extinguishers for different types of fires: Class A ordinary solid combustibles such as wood, paper, cloth, plastic; Class B flammable liquids and gases such as gasoline, propane, diesel, cooking oil; Class C electrical equipment such as appliances, wiring, breaker panels",
+          "criticalSafety": true,
+          "keywords": [
+            "fire classes",
+            "fire extinguisher",
+            "electrical fire",
+            "class c"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC12",
+          "text": "exhibit rescue and first-aid techniques in case of fire or electrocution",
+          "criticalSafety": true,
+          "keywords": [
+            "rescue",
+            "electrocution",
+            "first aid"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC13",
+          "text": "administer appropriate first aid to victims in case of bleeding, burns, choking, electric shock, poisoning etc.",
+          "criticalSafety": true,
+          "keywords": [
+            "first aid",
+            "electric shock",
+            "burns"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC14",
+          "text": "administer first aid to victims in case of a heart attack or cardiac arrest due to electric shock",
+          "criticalSafety": true,
+          "keywords": [
+            "cardiac arrest",
+            "cpr",
+            "electric shock",
+            "heart attack"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC15",
+          "text": "participate regularly in emergency procedures such as raising alarm, safe/efficient evacuation, correct means of taking shelter and escaping, correct assembly point, roll call, correct return to work",
+          "criticalSafety": true,
+          "keywords": [
+            "emergency procedure",
+            "evacuation",
+            "assembly point",
+            "alarm"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC16",
+          "text": "use correct method to move injured people and others during an emergency",
+          "criticalSafety": true,
+          "keywords": [
+            "moving injured",
+            "emergency",
+            "safe lifting"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC17",
+          "text": "identify recyclable and non-recyclable, and hazardous waste generated",
+          "criticalSafety": false,
+          "keywords": [
+            "waste identification",
+            "hazardous waste",
+            "recyclable"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC18",
+          "text": "segregate waste into different categories",
+          "criticalSafety": false,
+          "keywords": [
+            "waste segregation",
+            "categories",
+            "separate waste"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC19",
+          "text": "ensure disposal of non-recyclable waste appropriately",
+          "criticalSafety": false,
+          "keywords": [
+            "disposal",
+            "non-recyclable waste",
+            "waste management",
+            "non recyclable"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC20",
+          "text": "deposit non-recyclable and reusable material at identified location",
+          "criticalSafety": false,
+          "keywords": [
+            "reusable material",
+            "deposit location",
+            "waste segregation",
+            "identified location"
+          ]
+        },
+        {
+          "id": "ELE-N1002-PC21",
+          "text": "follow processes specified for disposal of hazardous waste",
+          "criticalSafety": false,
+          "keywords": [
+            "hazardous waste process",
+            "disposal process",
+            "safe disposal",
+            "regulatory compliance"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "SGJ/N1702",
+      "title": "Optimize resource utilization at workplace",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "SGJ-N1702-PC1",
+          "text": "identify ways to optimize usage of material including water in various tasks/activities/processes",
+          "criticalSafety": false,
+          "keywords": [
+            "material conservation",
+            "water usage",
+            "optimization"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC2",
+          "text": "check for spills/leakages in various tasks/activities/processes",
+          "criticalSafety": false,
+          "keywords": [
+            "spills",
+            "leakages",
+            "checks"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC3",
+          "text": "plug spills/leakages and escalate to appropriate authority if unable to rectify",
+          "criticalSafety": false,
+          "keywords": [
+            "plugging leaks",
+            "escalation",
+            "spillage control"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC4",
+          "text": "carry out routine cleaning of tools, machines and equipment",
+          "criticalSafety": false,
+          "keywords": [
+            "routine cleaning",
+            "tools",
+            "equipment"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC5",
+          "text": "identify ways to optimize usage of electricity/energy in various tasks/activities/processes",
+          "criticalSafety": false,
+          "keywords": [
+            "energy conservation",
+            "electricity usage",
+            "optimization"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC6",
+          "text": "check if the equipment/machine is functioning normally before commencing work and rectify wherever required",
+          "criticalSafety": false,
+          "keywords": [
+            "pre job check",
+            "equipment functioning",
+            "rectification"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC7",
+          "text": "report malfunctioning (fumes/sparks/emission/vibration/noise) and lapse in maintenance of equipment",
+          "criticalSafety": true,
+          "keywords": [
+            "malfunctioning",
+            "sparks",
+            "fumes",
+            "reporting"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC8",
+          "text": "ensure electrical equipment and appliances are properly connected and turned off when not in use",
+          "criticalSafety": false,
+          "keywords": [
+            "turn off",
+            "proper connection",
+            "standby power"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC9",
+          "text": "identify recyclable and non-recyclable, and hazardous waste generated",
+          "criticalSafety": false,
+          "keywords": [
+            "waste types",
+            "hazardous waste",
+            "recycling"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC10",
+          "text": "segregate waste into different categories",
+          "criticalSafety": false,
+          "keywords": [
+            "segregation",
+            "waste categories",
+            "recyclable waste",
+            "bin separation"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC11",
+          "text": "dispose non-recyclable waste appropriately",
+          "criticalSafety": false,
+          "keywords": [
+            "disposal",
+            "non-recyclable",
+            "waste management",
+            "safe disposal"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC12",
+          "text": "deposit recyclable and reusable material at identified location",
+          "criticalSafety": false,
+          "keywords": [
+            "recyclable material",
+            "reuse",
+            "deposit location"
+          ]
+        },
+        {
+          "id": "SGJ-N1702-PC13",
+          "text": "follow processes specified for disposal of hazardous waste",
+          "criticalSafety": false,
+          "keywords": [
+            "hazardous waste",
+            "disposal process",
+            "safe disposal",
+            "regulatory compliance"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "DGT/VSQ/N0101",
+      "title": "Employability Skills (30 Hours)",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "DGT-VSQ-N0101-PC1",
+          "text": "understand the significance of employability skills in meeting the job requirements",
+          "criticalSafety": false,
+          "keywords": [
+            "employability skills",
+            "job requirements",
+            "career readiness",
+            "job skills"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC2",
+          "text": "identify constitutional values, civic rights, duties, personal values and ethics and environmentally sustainable practices",
+          "criticalSafety": false,
+          "keywords": [
+            "constitutional values",
+            "ethics",
+            "civic duties"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC3",
+          "text": "explain 21st Century Skills such as Self-Awareness, Behavior Skills, Positive attitude, self-motivation, problem-solving, creative thinking, time management, social and cultural awareness, emotional awareness, continuous learning mindset etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "21st century skills",
+            "problem solving",
+            "time management"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC6",
+          "text": "work with others in a team",
+          "criticalSafety": false,
+          "keywords": [
+            "teamwork",
+            "collaboration",
+            "peer support"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC12",
+          "text": "operate digital devices and use its features and applications securely and safely",
+          "criticalSafety": false,
+          "keywords": [
+            "digital devices",
+            "secure use",
+            "applications"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC16",
+          "text": "identify different types of customers",
+          "criticalSafety": false,
+          "keywords": [
+            "customer types",
+            "customer service",
+            "consumer awareness"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC17",
+          "text": "identify customer needs and address them appropriately",
+          "criticalSafety": false,
+          "keywords": [
+            "customer needs",
+            "addressing needs",
+            "service response",
+            "needs assessment"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0101-PC19",
+          "text": "create a basic biodata",
+          "criticalSafety": false,
+          "keywords": [
+            "biodata",
+            "resume",
+            "job application"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSS/N6005",
+      "title": "Develop customer relationship",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "PSS-N6005-PC1",
+          "text": "ensure effective verbal communications are polite, clear and completed in a timely manner",
+          "criticalSafety": false,
+          "keywords": [
+            "verbal communication",
+            "politeness",
+            "timeliness"
+          ]
+        },
+        {
+          "id": "PSS-N6005-PC6",
+          "text": "ensure consumer needs are correctly identified in a timely manner",
+          "criticalSafety": false,
+          "keywords": [
+            "consumer needs",
+            "identification",
+            "timeliness"
+          ]
+        },
+        {
+          "id": "PSS-N6005-PC8",
+          "text": "submit a crisp proposal answering needs of the consumer with financial estimate component, explain full details and seek his/her consent to begin the job",
+          "criticalSafety": false,
+          "keywords": [
+            "proposal",
+            "estimate",
+            "consent"
+          ]
+        },
+        {
+          "id": "PSS-N6005-PC11",
+          "text": "ensure appropriate explanation/solution/option are determined for the consumers situation",
+          "criticalSafety": false,
+          "keywords": [
+            "solution",
+            "explanation",
+            "consumer situation"
+          ]
+        },
+        {
+          "id": "PSS-N6005-PC14",
+          "text": "ensure issues are escalated or advice is solicited from appropriate departmental staff when necessary to meet consumer needs",
+          "criticalSafety": false,
+          "keywords": [
+            "escalation",
+            "departmental advice",
+            "consumer needs"
+          ]
+        },
+        {
+          "id": "PSS-N6005-PC22",
+          "text": "show closing ability: being able to close with a consumer means being able to end the service with confirmed satisfaction",
+          "criticalSafety": false,
+          "keywords": [
+            "closing ability",
+            "service completion",
+            "satisfaction"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSS/N1336",
+      "title": "Working effectively with others",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "PSS-N1336-PC1",
+          "text": "accept information and instructions from the supervisor and fellow workers and seek clarification when required",
+          "criticalSafety": false,
+          "keywords": [
+            "instructions",
+            "clarification",
+            "supervisor"
+          ]
+        },
+        {
+          "id": "PSS-N1336-PC2",
+          "text": "pass the information to the persons to all those concerns within agreed timeframe in a manner they can understand and confirm its receipt",
+          "criticalSafety": false,
+          "keywords": [
+            "information passing",
+            "timeframe",
+            "confirmation"
+          ]
+        },
+        {
+          "id": "PSS-N1336-PC4",
+          "text": "use appropriate tone, pitch and language while communicating to convey politeness, assertiveness, care and professionalism",
+          "criticalSafety": false,
+          "keywords": [
+            "tone",
+            "communication",
+            "professionalism"
+          ]
+        },
+        {
+          "id": "PSS-N1336-PC5",
+          "text": "listen attentively and respond appropriately while interacting with others at work",
+          "criticalSafety": false,
+          "keywords": [
+            "active listening",
+            "response",
+            "interaction"
+          ]
+        },
+        {
+          "id": "PSS-N1336-PC6",
+          "text": "act responsibly and demonstrate disciplined behaviour at the workplace (Disciplined behaviour: Punctuality, completing tasks within agreed timescales, ensuring quality standards, honesty)",
+          "criticalSafety": false,
+          "keywords": [
+            "discipline",
+            "punctuality",
+            "quality standards"
+          ]
+        },
+        {
+          "id": "PSS-N1336-PC8",
+          "text": "respect gender diversity in the workplace",
+          "criticalSafety": false,
+          "keywords": [
+            "gender diversity",
+            "respect",
+            "workplace"
+          ]
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "insulated-plier",
+      "name": {
+        "en": "Insulated Plier 150 mm",
+        "hi": "इंसुलेटेड प्लायर 150 मिमी"
+      },
+      "aliases": [
+        "insulated pliers",
+        "linemen plier",
+        "electrician plier"
+      ]
+    },
+    {
+      "id": "side-cutting-plier",
+      "name": {
+        "en": "Plier Side Cutting 150 mm",
+        "hi": "साइड कटिंग प्लायर 150 मिमी"
+      },
+      "aliases": [
+        "side cutter",
+        "cutting plier",
+        "wire cutter"
+      ]
+    },
+    {
+      "id": "combination-plier",
+      "name": {
+        "en": "Combination Plier",
+        "hi": "कॉम्बिनेशन प्लायर"
+      },
+      "aliases": [
+        "combi plier",
+        "lineman combination plier"
+      ]
+    },
+    {
+      "id": "wire-stripper",
+      "name": {
+        "en": "Wire Stripper",
+        "hi": "वायर स्ट्रिपर"
+      },
+      "aliases": [
+        "wire stripping tool",
+        "insulation stripper"
+      ]
+    },
+    {
+      "id": "insulated-screwdriver",
+      "name": {
+        "en": "Insulated Screwdriver 100/150 mm",
+        "hi": "इंसुलेटेड स्क्रूड्राइवर"
+      },
+      "aliases": [
+        "screw driver",
+        "tester screwdriver",
+        "electrician screwdriver"
+      ]
+    },
+    {
+      "id": "neon-tester",
+      "name": {
+        "en": "Neon Tester",
+        "hi": "नियॉन टेस्टर"
+      },
+      "aliases": [
+        "phase tester",
+        "line tester",
+        "voltage tester screwdriver"
+      ]
+    },
+    {
+      "id": "digital-multimeter",
+      "name": {
+        "en": "Digital Multi Meter",
+        "hi": "डिजिटल मल्टीमीटर"
+      },
+      "aliases": [
+        "multimeter",
+        "DMM",
+        "multi meter"
+      ]
+    },
+    {
+      "id": "clamp-meter",
+      "name": {
+        "en": "Tong Tester / Clamp Meter 0-100 A",
+        "hi": "क्लैंप मीटर (टॉंग टेस्टर)"
+      },
+      "aliases": [
+        "clamp meter",
+        "tong tester",
+        "ampere clamp"
+      ]
+    },
+    {
+      "id": "megger-500v",
+      "name": {
+        "en": "Megger 500 V (Insulation Resistance Tester)",
+        "hi": "मेगर 500 वोल्ट"
+      },
+      "aliases": [
+        "megger",
+        "insulation tester",
+        "megger 500"
+      ]
+    },
+    {
+      "id": "earth-tester",
+      "name": {
+        "en": "Earth Tester 0-30 ohm",
+        "hi": "अर्थ टेस्टर"
+      },
+      "aliases": [
+        "earth resistance tester",
+        "ground tester"
+      ]
+    },
+    {
+      "id": "phase-sequence-meter",
+      "name": {
+        "en": "Phase Sequence Meter",
+        "hi": "फेज सीक्वेंस मीटर"
+      },
+      "aliases": [
+        "phase rotation meter",
+        "phase sequence indicator"
+      ]
+    },
+    {
+      "id": "ac-energy-meter",
+      "name": {
+        "en": "A.C. Energy Meter, Single Phase",
+        "hi": "एसी एनर्जी मीटर"
+      },
+      "aliases": [
+        "energy meter",
+        "kilowatt hour meter",
+        "electricity meter"
+      ]
+    },
+    {
+      "id": "crimping-tool",
+      "name": {
+        "en": "Crimping Tool",
+        "hi": "क्रिम्पिंग टूल"
+      },
+      "aliases": [
+        "crimper",
+        "lug crimping tool"
+      ]
+    },
+    {
+      "id": "hacksaw-frame",
+      "name": {
+        "en": "Hacksaw Frame 200/300 mm",
+        "hi": "हैकसॉ फ्रेम"
+      },
+      "aliases": [
+        "hacksaw",
+        "hacksaw blade holder"
+      ]
+    },
+    {
+      "id": "soldering-iron",
+      "name": {
+        "en": "Soldering Iron 65 W",
+        "hi": "सोल्डरिंग आयरन"
+      },
+      "aliases": [
+        "solder iron",
+        "soldron"
+      ]
+    },
+    {
+      "id": "portable-drill-machine",
+      "name": {
+        "en": "Portable Electric Drill Machine 6 mm",
+        "hi": "पोर्टेबल इलेक्ट्रिक ड्रिल मशीन"
+      },
+      "aliases": [
+        "drill machine",
+        "electric drill",
+        "hand drill"
+      ]
+    },
+    {
+      "id": "steel-tape",
+      "name": {
+        "en": "Steel Tape 10 m",
+        "hi": "स्टील टेप"
+      },
+      "aliases": [
+        "measuring tape",
+        "steel rule",
+        "tape measure"
+      ]
+    },
+    {
+      "id": "hammer-cross-peen",
+      "name": {
+        "en": "Hammer, Cross Peen",
+        "hi": "क्रॉस पीन हथौड़ा"
+      },
+      "aliases": [
+        "hammer",
+        "fitter hammer"
+      ]
+    },
+    {
+      "id": "safety-helmet",
+      "name": {
+        "en": "Safety Helmet / Hard Hat",
+        "hi": "सेफ्टी हेलमेट"
+      },
+      "aliases": [
+        "hard hat",
+        "safety helmet",
+        "head protection"
+      ]
+    },
+    {
+      "id": "insulated-gloves",
+      "name": {
+        "en": "Insulated Safety Gloves (leather)",
+        "hi": "इंसुलेटेड सेफ्टी ग्लव्स"
+      },
+      "aliases": [
+        "safety gloves",
+        "leather gloves",
+        "insulating gloves"
+      ]
+    },
+    {
+      "id": "safety-goggles",
+      "name": {
+        "en": "Safety Goggles",
+        "hi": "सेफ्टी गॉगल"
+      },
+      "aliases": [
+        "goggles",
+        "eye protection"
+      ]
+    },
+    {
+      "id": "safety-boots",
+      "name": {
+        "en": "Safety Boots",
+        "hi": "सेफ्टी जूते"
+      },
+      "aliases": [
+        "safety shoes",
+        "reinforced footwear"
+      ]
+    }
+  ],
+  "safetyTopics": [
+    {
+      "id": "safe-isolation-lockout",
+      "text": {
+        "en": "Positive isolation before work: isolate the equipment or system as per the given standards, lock it out and confirm it is dead before touching any conductor.",
+        "hi": "काम शुरू करने से पहले उपकरण को मानक अनुसार पूरी तरह आइसोलेट करें, लॉक लगाएं और मृत (dead) प्रमाणित करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "ppe-for-electrical-work",
+      "text": {
+        "en": "Wear the PPE suited to the task and hazard: insulated gloves, helmet, goggles, safety boots, and insulated tools.",
+        "hi": "कार्य और खतरे के अनुसार PPE पहनें: इंसुलेटेड दस्ताने, हेलमेट, गॉगल, सेफ्टी बूट और इंसुलेटेड औजार।"
+      },
+      "critical": true
+    },
+    {
+      "id": "electric-shock-rescue",
+      "text": {
+        "en": "Rescue from live parts: do not touch the victim with bare hands; isolate the supply first or push the conductor away with a dry non-conducting object.",
+        "hi": "लाइव हिस्से से बचाव: पीड़ित को नंगे हाथ से न छुएं; पहले सप्लाई बंद करें या सूखी गैर-चालक वस्तु से तार हटाएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "cpr-and-first-aid",
+      "text": {
+        "en": "Electric shock can cause cardiac arrest; administer basic first aid including CPR immediately and call for medical help.",
+        "hi": "बिजली के झटके से हृदय रुक सकता है; तुरंत CPR सहित प्राथमिक उपचार दें और डॉक्टर बुलाएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "fire-classes-extinguishers",
+      "text": {
+        "en": "Match the extinguisher to the fire class: Class A solids, Class B flammable liquids/gases, Class C electrical equipment (per ESSC ELE/N1002), Class D metals.",
+        "hi": "आग के प्रकार के अनुसार सही अग्निशामक लगाएं: क्लास A ठोस, क्लास B ज्वलनशील तरल/गैस, क्लास C विद्युत उपकरण, क्लास D धातुएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "working-at-heights",
+      "text": {
+        "en": "Use proper scaffolds, elevated platforms and ladders for work at height; never work on heights without stable access.",
+        "hi": "ऊंचाई पर काम के लिए उचित स्कैफोल्ड, ऊंचा मंच और सीढ़ी का ही प्रयोग करें; स्थिर साधन के बिना ऊंचाई पर काम न करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "warning-signs-and-danger-plates",
+      "text": {
+        "en": "Follow warning signs and symbols: danger plate, high voltage area, out of service markers before approaching any installation.",
+        "hi": "चेतावनी संकेतों का पालन करें: खतरा प्लेट, हाई वोल्टेज क्षेत्र, आउट ऑफ़ सर्विस चिह्न।"
+      },
+      "critical": false
+    },
+    {
+      "id": "test-before-touch",
+      "text": {
+        "en": "Test before touch: verify insulation resistance, earth continuity and polarity with proper instruments before energizing any installation.",
+        "hi": "छूने से पहले जांचें: ऊर्जादान से पहले इंसुलेशन रेजिस्टेंस, अर्थ कंटिन्यूटी और पोलैरिटी जांच लें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "earthing-and-protective-devices",
+      "text": {
+        "en": "Verify earthing (plate/pipe) and the correct rating and functioning of fuse, MCB and RCCB - these save lives.",
+        "hi": "अर्थिंग (प्लेट/पाइप) और फ्यूज़, MCB, RCCB की सही रेटिंग व कार्यशीलता जांचें - यही जीवन बचाते हैं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "phase-conductor-switching",
+      "text": {
+        "en": "Fuse, switch or circuit breaker must be wired only in the phase conductor, never in the earthed neutral conductor.",
+        "hi": "फ्यूज़, स्विच या सर्किट ब्रेकर केवल फेज कंडक्टर में लगाएं, अर्थड न्यूट्रल में कभी नहीं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "confined-spaces-trenches",
+      "text": {
+        "en": "Apply standard safe working practices in confined areas, trenches and while handling electrical equipment.",
+        "hi": "संकीर्ण स्थानों, खाइयों और विद्युत उपकरणों के साथ काम में मानक सुरक्षा विधियां अपनाएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "hand-tool-condition",
+      "text": {
+        "en": "Check tools and tackles before use - insulation intact, no damage; keep them in safe and usable condition.",
+        "hi": "उपयोग से पहले औजार जांचें - इंसुलेशन सही और कोई क्षति नहीं; उन्हें सुरक्षित और उपयोगी स्थिति में रखें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "housekeeping-and-fire-prevention",
+      "text": {
+        "en": "Keep the work area clean and free of hazards before and after the job; store flammable materials safely to prevent accidental fire.",
+        "hi": "काम से पहले और बाद में क्षेत्र साफ और खतरा-रहित रखें; ज्वलनशील सामग्री सुरक्षित रखें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "emergency-evacuation",
+      "text": {
+        "en": "Know the emergency procedure: raise the alarm, evacuate safely to the assembly point, roll call and only then return to work.",
+        "hi": "आपात प्रक्रिया जानें: अलार्म बजाएं, सुरक्षित असेंबली पॉइंट पर पहुंचें, उपस्थिति दर्ज कराएं, तभी काम पर लौटें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "hazardous-waste-and-esd",
+      "text": {
+        "en": "Dispose e-waste (lead, cadmium, flame retardant plastics) by approved methods and follow ESD procedures while handling electronics.",
+        "hi": "ई-वेस्ट (सीसा, कैडमियम) को स्वीकृत विधि से निपटाएं और इलेक्ट्रॉनिक्स संभालते समय ESD नियम पालन करें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "incident-reporting",
+      "text": {
+        "en": "Report any abnormal situation of equipment or an accident without delay and write the incident report for the authorized person.",
+        "hi": "उपकरण की असामान्य स्थिति या दुर्घटना की तुरंत सूचना दें और घटना रिपोर्ट लिखें।"
+      },
+      "critical": false
+    }
+  ],
+  "mcqBank": [
+    {
+      "id": "mcq-safe-isolation-before-work",
+      "topic": "safety",
+      "prompt": {
+        "en": "Before any work begins on a circuit that has been switched off, what must the electrician confirm as per PSS/N1331?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "That the switch is in the off position only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Positive isolation of the electrical equipment and system as per the given standards"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "That the customer has been informed verbally"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "That a neon tester glows when touched"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N1331"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N1331 PC5 requires positive isolation of electrical equipment and system as per the given standards - switching off alone is not isolation."
+      }
+    },
+    {
+      "id": "mcq-fuse-in-phase-conductor",
+      "topic": "safety",
+      "prompt": {
+        "en": "As per PSS/N6002, where may a fuse, switch or circuit breaker be placed?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "In the earthed neutral conductor"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Only in the phase conductor, never in the earthed neutral conductor"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "In both phase and neutral conductors"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "In the protective earth conductor"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N6002 PC16: fuse, switch or circuit breaker should not be placed in an earthed neutral conductor and are wired only in the phase conductor."
+      }
+    },
+    {
+      "id": "mcq-purpose-of-protective-devices",
+      "topic": "safety",
+      "prompt": {
+        "en": "Why are protective devices (fuse, MCB, RCCB) required on a domestic circuit?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "To increase the load capacity of the wiring"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "To save the lives of human beings, livestock and animals by interrupting fault current"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "To reduce the electricity bill"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "To change the polarity of the circuit"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N6002 PC15: all protective devices must function properly as they are necessary to save the lives of human beings, livestock and animals."
+      }
+    },
+    {
+      "id": "mcq-fire-class-electrical-equipment",
+      "topic": "safety",
+      "prompt": {
+        "en": "In ESSC NOS ELE/N1002, which fire class covers fires in electrical equipment such as appliances, wiring and breaker panels?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Class A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Class B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Class C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Class D"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "ELE/N1002"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "ELE/N1002 PC11: Class A ordinary solid combustibles, Class B flammable liquids and gases, Class C electrical equipment such as appliances, wiring, breaker panels."
+      }
+    },
+    {
+      "id": "mcq-cpr-for-electric-shock",
+      "topic": "safety",
+      "prompt": {
+        "en": "A victim of electric shock is in cardiac arrest. What must the electrician do?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Give water to drink"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Administer basic first aid including CPR immediately"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Massage the chest gently and wait"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Wait for the ambulance without acting"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N1331",
+        "ELE/N1002"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N1331 PC17 and ELE/N1002 PC14 require prompt action with basic first aid including CPR for cardiac arrest due to electric shock."
+      }
+    },
+    {
+      "id": "mcq-rescue-from-live-part",
+      "topic": "safety",
+      "prompt": {
+        "en": "A person is in contact with a live conductor. What is the rescuer's first correct action?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Pull the person away with bare hands"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Isolate the supply and use a dry non-conducting object before touching the person"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Throw water on the person"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Call out but do not approach at all"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N1331"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Safe rescue requires isolation of the supply first; touching a live victim with bare hands electrocutes the rescuer too (PSS/N1331 safe working practices)."
+      }
+    },
+    {
+      "id": "mcq-ppe-selection",
+      "topic": "safety",
+      "prompt": {
+        "en": "PSS/N1331 PC1 requires protective clothing and equipment to be selected for:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The specific task and work conditions"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Whatever the worker prefers"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Only when the supervisor is present"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Only for outdoor work"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N1331"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N1331 PC1: use protective clothing/equipment for specific tasks and work conditions; ELE/N1002 PC3 adds severity of hazard and Indian/International standards."
+      }
+    },
+    {
+      "id": "mcq-tests-before-energising",
+      "topic": "safety",
+      "prompt": {
+        "en": "Before energizing a new installation, which test set does ELE/N5805 PC1 require?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Insulation resistance and earth continuity tests, correct polarity and a complete visual inspection"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Phase rotation test only"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "A neon tester check only"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "High voltage withstand test only"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "ELE/N5805"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "ELE/N5805 PC1: test installations before energizing for personal and electrical safety - insulation resistance, earth continuity, correct polarity and complete visual inspection."
+      }
+    },
+    {
+      "id": "mcq-warning-signs",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which of these is listed as a warning sign to be followed while working with electrical systems?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Danger plate / high voltage area"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Price list"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Direction to the canteen"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Delivery schedule"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N1331"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N1331 PC4 lists warning signs such as danger plate, high voltage area and out of service while working with electrical systems."
+      }
+    },
+    {
+      "id": "mcq-working-at-heights",
+      "topic": "safety",
+      "prompt": {
+        "en": "PSS/N1331 PC8 specifically requires for working at height:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Proper scaffolds, elevated platforms and ladders"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "A wooden stool"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Standing on the distribution board"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Holding the ceiling fan while working"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N1331"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N1331 PC8: use proper scaffolds, elevated platforms and ladders for working at height."
+      }
+    },
+    {
+      "id": "mcq-earth-resistance-measurement",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which instrument is used to check earth resistance of a house wiring installation as per PSS/N6002 PC28?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Neon tester"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Earth tester"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Hacksaw"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Wire stripper"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N6002 PC28 requires operating instruments to check earth resistance; the earth tester (0-30 ohm) is the specified instrument."
+      }
+    },
+    {
+      "id": "mcq-protection-against-shock",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which option best matches PSS/N6001 PC10, implement methods of protection against electric shock?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Insulation of live parts, earthing of exposed conductive parts and protective devices"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Replacing wires with thicker wires"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Using a longer extension board"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Increasing the fuse rating"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N6001 PC10 covers methods of protection against electric shock: insulation, earthing and protective devices - not conductor sizing or fuse rating changes."
+      }
+    },
+    {
+      "id": "mcq-megger-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "What does a 500 V megger measure in house wiring?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Earth resistance"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Insulation resistance of live conductors to earth and between conductors"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Phase sequence"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Load current"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N6001",
+        "PSS/N6002"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6001 PC9 and PSS/N6002 PC26: insulation resistance of all live conductors to earth and between live conductors is measured with the insulation megger."
+      }
+    },
+    {
+      "id": "mcq-clamp-meter-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "A tong tester / clamp meter is used to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Measure current without breaking the circuit"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Measure earth resistance"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Strip wire insulation"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Tighten terminal screws"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6003"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Clamp on meter measures current flowing in a conductor by clamping around it, without breaking the circuit (PSS/N6003 measuring instruments)."
+      }
+    },
+    {
+      "id": "mcq-neon-tester-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "A neon tester is used to check:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Insulation resistance"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Presence of phase voltage on a conductor"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Earth continuity resistance value"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Wire gauge number"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "The neon tester (listed in KU10 of PSS/N6002 along with test lamp, multimeter, clamp on meter and meggers) indicates whether a conductor is live."
+      }
+    },
+    {
+      "id": "mcq-multimeter-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "Which instrument checks continuity, open circuit, short circuit and load flow in house wiring?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Multi meter"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Hacksaw"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Pincer"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Bradawl"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6002 PC27: operate instruments to check continuity, open circuit, short circuit and load flow - done with a multi meter."
+      }
+    },
+    {
+      "id": "mcq-wire-stripper-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "What is the correct use of a wire stripper?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Remove insulation without nicking the conductor"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cut the conduit pipe"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Measure cable length"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Tighten MCB screws"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "The wire stripper (DGT trainee toolkit item 19) strips insulation cleanly so the conductor is not nicked, which would weaken it and cause overheating."
+      }
+    },
+    {
+      "id": "mcq-crimping-tool-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "A crimping tool is used while forming circuits to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Terminate wires on lugs/connectors for secure component connections"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Solder the joints"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Test insulation resistance"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Mark the conduit route"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6002 PC12: join and connect wire to fixtures and components to form circuits - crimped lug joints are made with the crimping tool (DGT toolkit items 43/44)."
+      }
+    },
+    {
+      "id": "mcq-phase-sequence-meter-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "A phase sequence meter is used to check:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Phase rotation of a three phase supply"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Insulation resistance"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Earth resistance"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Wire gauge"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "ELE/N5805"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "ELE/N5805 PC2: energized testing includes correct voltage and phase rotation, checked with a phase sequence meter (DGT toolkit item 150)."
+      }
+    },
+    {
+      "id": "mcq-soldering-iron-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "In appliance repair, a soldering iron is used to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Solder winding wires, cables and their joints"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Measure earth resistance"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Cut conduit pipe"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Earth the appliance"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6003"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6003 PC19: solder winding wires, cables and their joints in electrical gadgets; DGT toolkit lists 25 W, 65 W and 125 W soldering irons."
+      }
+    },
+    {
+      "id": "mcq-ohms-law",
+      "topic": "theory",
+      "prompt": {
+        "en": "Ohm's law relates voltage, current and resistance as:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "V = I x R"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "V = I / R"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "I = V x R"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "R = V x I"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Voltage equals current times resistance (PSS/N6001 KU3: basic elements of electricity - voltage, current, resistance, power, energy)."
+      }
+    },
+    {
+      "id": "mcq-rccb-earth-leakage",
+      "topic": "theory",
+      "prompt": {
+        "en": "Which accessory mainly protects occupants from earth leakage / shock current in a house wiring circuit?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "MCB only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "RCCB / ELCB"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Neon tester"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Casing and capping"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6001 PC3/KU7 cover ratings and functioning of fuses, switches, sockets, MCBs and ELCBs/RCDs - the RCCB/ELCB is the earth-leakage protective device."
+      }
+    },
+    {
+      "id": "mcq-polarity-switches",
+      "topic": "theory",
+      "prompt": {
+        "en": "PSS/N6001 PC15 requires that all switches in a wiring installation be connected in:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Phase conductors"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Neutral conductors"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Earth conductors"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Data lines"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N6001 PC15: check polarity to ensure all switches are connected in phase conductors, so the load is dead when switched off."
+      }
+    },
+    {
+      "id": "mcq-insulation-resistance-defined",
+      "topic": "theory",
+      "prompt": {
+        "en": "Insulation resistance is measured between:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "All live conductors to earth and between live conductors"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Neutral and the switch plate"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Lamp holder and ceiling hook"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Two phase wires only"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSS/N6001 PC9: insulation resistance of all live conductors to earth and insulation resistance between live conductors."
+      }
+    },
+    {
+      "id": "mcq-single-phase-motor-condenser",
+      "topic": "theory",
+      "prompt": {
+        "en": "In a single phase motor, the starting condenser is used to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Help develop the rotating field so the motor starts"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Reduce insulation resistance"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Store house lighting energy"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Earth the motor body"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6003"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6003 PC5 and PC6: operating principle of single phase motor, use of condenser and how a rotating field is developed in single phase and three phase motors."
+      }
+    },
+    {
+      "id": "mcq-earthing-types",
+      "topic": "theory",
+      "prompt": {
+        "en": "The two types of earthing layout understood for house wiring as per PSS/N6002 PC20 are:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Plate earthing and pipe earthing"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Loop and ring earthing"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Series and parallel earthing"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Phase and neutral earthing"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6002 PC20: understand types of earthing - plate and pipe earthing layout location (KU5: standard procedure to lay pipe and plate earthing)."
+      }
+    },
+    {
+      "id": "mcq-three-phase-load-balance",
+      "topic": "theory",
+      "prompt": {
+        "en": "In large residential and commercial units, the load on three phase wiring should be:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Equally distributed across the three phases"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Placed entirely on one phase"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Left unbalanced as per convenience"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Connected to neutral only"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6001 PC16: check equal distribution of load on three phase wiring in large residential and commercial units."
+      }
+    },
+    {
+      "id": "mcq-cable-sizing-for-load",
+      "topic": "theory",
+      "prompt": {
+        "en": "PSS/N6002 PC18 requires cables to be chosen for correct type, size and:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Current-carrying capacity to bear the load"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Colour of the insulation"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Brand name of the manufacturer"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Length of the conduit"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSS/N6002 PC18: ensure that the correct type, size and current-carrying capacity of cables is chosen to bear the load."
+      }
+    }
+  ],
+  "taskBlueprints": [
+    {
+      "id": "mcq-safety-critical",
+      "type": "mcq",
+      "title": {
+        "en": "Safety knowledge check (isolation, PPE, rescue, fire)"
+      },
+      "brief": {
+        "en": "Answer the safety questions drawn from PSS/N1331 and ELE/N1002. A failed critical-safety item vetoes the overall pass."
+      },
+      "nosRefs": [
+        "PSS/N1331",
+        "ELE/N1002"
+      ],
+      "criteriaRefs": [
+        "PSS-N1331-PC1",
+        "PSS-N1331-PC5",
+        "PSS-N1331-PC17",
+        "ELE-N1002-PC3",
+        "ELE-N1002-PC11",
+        "ELE-N1002-PC14"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [
+        "mcq-safe-isolation-before-work",
+        "mcq-fuse-in-phase-conductor",
+        "mcq-purpose-of-protective-devices",
+        "mcq-fire-class-electrical-equipment",
+        "mcq-cpr-for-electric-shock",
+        "mcq-rescue-from-live-part",
+        "mcq-ppe-selection",
+        "mcq-tests-before-energising",
+        "mcq-warning-signs",
+        "mcq-working-at-heights",
+        "mcq-earth-resistance-measurement",
+        "mcq-protection-against-shock"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "mcq-tools-and-theory",
+      "type": "mcq",
+      "title": {
+        "en": "Tools and electrical theory questions"
+      },
+      "brief": {
+        "en": "Identify what each instrument measures and answer basic electrical theory questions."
+      },
+      "nosRefs": [
+        "PSS/N6001",
+        "PSS/N6002",
+        "PSS/N6003",
+        "ELE/N5805"
+      ],
+      "criteriaRefs": [
+        "PSS-N6001-PC2",
+        "PSS-N6001-PC3",
+        "PSS-N6002-PC26",
+        "PSS-N6002-PC27",
+        "PSS-N6003-PC8",
+        "ELE-N5805-PC9"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [
+        "mcq-megger-purpose",
+        "mcq-clamp-meter-purpose",
+        "mcq-neon-tester-purpose",
+        "mcq-multimeter-use",
+        "mcq-wire-stripper-purpose",
+        "mcq-crimping-tool-purpose",
+        "mcq-phase-sequence-meter-purpose",
+        "mcq-soldering-iron-purpose",
+        "mcq-ohms-law",
+        "mcq-rccb-earth-leakage",
+        "mcq-polarity-switches",
+        "mcq-insulation-resistance-defined",
+        "mcq-single-phase-motor-condenser",
+        "mcq-earthing-types",
+        "mcq-three-phase-load-balance",
+        "mcq-cable-sizing-for-load"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-hand-tools",
+      "type": "tool_identification",
+      "title": {
+        "en": "Identify the hand tools for house wiring"
+      },
+      "brief": {
+        "en": "From a presented set, pick the hand tools required for wiring work and reject the distractors."
+      },
+      "nosRefs": [
+        "PSS/N6001"
+      ],
+      "criteriaRefs": [
+        "PSS-N6001-PC2",
+        "PSS-N6001-PC21"
+      ],
+      "weight": 7,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolPickCount": 5,
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-test-instruments",
+      "type": "tool_identification",
+      "title": {
+        "en": "Identify the electrical test instruments"
+      },
+      "brief": {
+        "en": "Pick the correct instrument for insulation, continuity, earth resistance, current and phase sequence checks."
+      },
+      "nosRefs": [
+        "PSS/N6002",
+        "ELE/N5805"
+      ],
+      "criteriaRefs": [
+        "PSS-N6002-PC26",
+        "PSS-N6002-PC27",
+        "PSS-N6002-PC28",
+        "ELE-N5805-PC9"
+      ],
+      "weight": 7,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolPickCount": 5,
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "checklist-safe-isolation-and-ppe",
+      "type": "checklist",
+      "title": {
+        "en": "Safe isolation and PPE checklist before starting work"
+      },
+      "brief": {
+        "en": "Confirm each isolation and PPE step performed before touching any circuit. Built from the safety performance criteria."
+      },
+      "nosRefs": [
+        "PSS/N1331",
+        "PSS/N6001"
+      ],
+      "criteriaRefs": [
+        "PSS-N1331-PC1",
+        "PSS-N1331-PC3",
+        "PSS-N1331-PC4",
+        "PSS-N1331-PC5",
+        "PSS-N1331-PC8",
+        "PSS-N6001-PC19",
+        "PSS-N6001-PC20",
+        "PSS-N6001-PC21",
+        "PSS-N6001-PC22"
+      ],
+      "weight": 14,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "checklist-house-wiring-fault-finding",
+      "type": "checklist",
+      "title": {
+        "en": "House wiring fault-finding and connection checklist"
+      },
+      "brief": {
+        "en": "Walk through the inspection steps for locating faults, checking polarity and confirming connections."
+      },
+      "nosRefs": [
+        "PSS/N6001",
+        "PSS/N6002"
+      ],
+      "criteriaRefs": [
+        "PSS-N6001-PC13",
+        "PSS-N6001-PC14",
+        "PSS-N6001-PC15",
+        "PSS-N6001-PC16",
+        "PSS-N6001-PC17",
+        "PSS-N6002-PC17",
+        "PSS-N6002-PC19"
+      ],
+      "weight": 9,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-photo-isolation-setup",
+      "type": "practical_photo",
+      "title": {
+        "en": "Photograph the isolation, warning and earthing setup at the worksite"
+      },
+      "brief": {
+        "en": "Take photos showing the locked-out isolation point, warning signage, PPE worn, the phase-only switching arrangement and the earthing connection before any work begins."
+      },
+      "nosRefs": [
+        "PSS/N1331",
+        "PSS/N6002"
+      ],
+      "criteriaRefs": [
+        "PSS-N1331-PC1",
+        "PSS-N1331-PC4",
+        "PSS-N1331-PC5",
+        "PSS-N6002-PC16",
+        "PSS-N6002-PC20"
+      ],
+      "weight": 13,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 3,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-video-protective-devices",
+      "type": "practical_video",
+      "title": {
+        "en": "Video: install and test protective devices and measure insulation"
+      },
+      "brief": {
+        "en": "Record the installation of fuse/MCB/RCCB as per load, the tightened colour-coded connections, and the insulation resistance and continuity tests before handing over."
+      },
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "criteriaRefs": [
+        "PSS-N6002-PC14",
+        "PSS-N6002-PC15",
+        "PSS-N6002-PC16",
+        "PSS-N6002-PC18",
+        "PSS-N6002-PC26",
+        "PSS-N6002-PC27"
+      ],
+      "weight": 12,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false,
+        "minDurationSec": 60,
+        "maxDurationSec": 300
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-video-appliance-maintenance",
+      "type": "practical_video",
+      "title": {
+        "en": "Video: preventive maintenance and repair of a household appliance"
+      },
+      "brief": {
+        "en": "Record the isolation, inspection of tripping/isolating devices, cleaning and part replacement of a household gadget, ending with grounding verification and insulation measurement."
+      },
+      "nosRefs": [
+        "PSS/N6003"
+      ],
+      "criteriaRefs": [
+        "PSS-N6003-PC3",
+        "PSS-N6003-PC4",
+        "PSS-N6003-PC8",
+        "PSS-N6003-PC14",
+        "PSS-N6003-PC15",
+        "PSS-N6003-PC24"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false,
+        "minDurationSec": 60,
+        "maxDurationSec": 300
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "narration-shock-rescue-and-first-aid",
+      "type": "narration",
+      "title": {
+        "en": "Narrate the electric-shock rescue and first-aid procedure"
+      },
+      "brief": {
+        "en": "Explain aloud how you would rescue a victim in contact with a live part, isolate the supply, give first aid including CPR, and write the incident report."
+      },
+      "nosRefs": [
+        "PSS/N1331",
+        "ELE/N1002"
+      ],
+      "criteriaRefs": [
+        "PSS-N1331-PC16",
+        "PSS-N1331-PC17",
+        "PSS-N1331-PC18",
+        "ELE-N1002-PC12",
+        "ELE-N1002-PC14"
+      ],
+      "weight": 7,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 15,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "narration-fault-diagnosis-walkthrough",
+      "type": "narration",
+      "title": {
+        "en": "Narrate your fault-diagnosis walkthrough of a failed lighting circuit"
+      },
+      "brief": {
+        "en": "Talk through locating the blown fuse / MCB trip / short circuit, checking for overheated switches and loose contacts, verifying polarity, and when to escalate an unclear fault."
+      },
+      "nosRefs": [
+        "PSS/N6001",
+        "PSS/N6003"
+      ],
+      "criteriaRefs": [
+        "PSS-N6001-PC13",
+        "PSS-N6001-PC14",
+        "PSS-N6001-PC15",
+        "PSS-N6003-PC3",
+        "PSS-N6003-PC25"
+      ],
+      "weight": 5,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 15,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    }
+  ],
+  "thresholds": {
+    "overallPass": 0.5,
+    "perTaskPass": 0.4,
+    "criticalMustPass": true,
+    "confidenceHumanRoute": 0.65,
+    "levelBands": [
+      {
+        "level": 3,
+        "minScore": 0,
+        "maxScore": 0.55,
+        "label": "NSQF Level 3 - performs routine domestic wiring tasks with limited choice, works to established procedures"
+      },
+      {
+        "level": 4,
+        "minScore": 0.6,
+        "maxScore": 0.8,
+        "label": "NSQF Level 4 - master technician, analyses and resolves non-routine wiring and fault-finding problems"
+      },
+      {
+        "level": 5,
+        "minScore": 0.84,
+        "maxScore": 1,
+        "label": "NSQF Level 5 - junior technical supervisor, leads a small team and takes responsibility for complex diagnostics"
+      }
+    ],
+    "bridgeBand": {
+      "minScore": 0.55,
+      "maxScore": 0.6
+    },
+    "consistencyFlagThreshold": 0.35
+  },
+  "bridgeTraining": [
+    {
+      "skillArea": "Safe isolation, LOTO and PPE discipline",
+      "nosRefs": [
+        "PSS/N1331",
+        "PSS/N6001"
+      ],
+      "suggestion": {
+        "en": "Practise positive isolation with lockout on a distribution board and repeat PPE selection for each work condition until it is habit.",
+        "hi": "डिस्ट्रीब्यूशन बोर्ड पर लॉकआउट सहित सकारात्मक आइसोलेशन का अभ्यास करें और हर कार्य स्थिति के लिए PPE चयन दोहराएं।"
+      }
+    },
+    {
+      "skillArea": "Protective devices, earthing and phase-only switching",
+      "nosRefs": [
+        "PSS/N6002"
+      ],
+      "suggestion": {
+        "en": "Drill on rating selection for fuse/MCB/RCCB as per load, plate and pipe earthing layouts, and verifying that every switch and fuse is in the phase conductor only."
+      }
+    },
+    {
+      "skillArea": "Test instruments and fault finding",
+      "nosRefs": [
+        "PSS/N6001",
+        "ELE/N5805"
+      ],
+      "suggestion": {
+        "en": "Build confidence with megger, earth tester, multimeter and clamp meter: run the full pre-energisation test sequence (insulation resistance, earth continuity, polarity, visual inspection) and locate common faults."
+      }
+    },
+    {
+      "skillArea": "Household appliance and motor maintenance",
+      "nosRefs": [
+        "PSS/N6003"
+      ],
+      "suggestion": {
+        "en": "Repeat preventive maintenance on fans, pumps and geysers: isolation check, tripping device status, cleaning, part replacement and motor winding insulation measurement."
+      }
+    }
+  ]
+}

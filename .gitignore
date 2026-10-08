@@ -11,6 +11,10 @@ coverage/
 
 # runtime data
 data/
+# ...but trade packs are source content, not runtime data
+!backend/src/data/
+!backend/src/data/trade-packs/
+!backend/src/data/trade-packs/**
 uploads/
 *.log
 npm-debug.log*

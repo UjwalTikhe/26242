@@ -4,13 +4,17 @@
  * silently missing, and auth guards still apply.
  */
 import { routes } from '@sih/contracts';
+import { assessmentHandlers } from './assessments.js';
 import { authHandlers } from './auth.js';
 import { profileHandlers } from './profile.js';
+import { tradeHandlers } from './trades.js';
 import { notImplemented, type HandlerMap } from './types.js';
 
 export const handlers: HandlerMap = {
+  ...assessmentHandlers,
   ...authHandlers,
   ...profileHandlers,
+  ...tradeHandlers,
 };
 
 export const stubRoutes: string[] = [];

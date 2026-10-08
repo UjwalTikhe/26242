@@ -12,6 +12,7 @@ import type { LanguageCode } from '@sih/contracts';
 import { notFound } from '../errors.js';
 import { WorkerProfile, type WorkerProfileDoc } from '../models/profile.models.js';
 import { toApi } from '../utils/toApi.js';
+import { recordChange } from './changelog.service.js';
 
 export type ProfileResult =
   | { ok: true; profile: unknown }
@@ -57,7 +58,16 @@ export async function updateProfile(userId: string, input: z.infer<typeof Update
       message: 'Concurrent update detected, please resync',
     };
   }
-  return { ok: true, profile: toApi(updated) };
+  const api = toApi(updated);
+  await recordChange({
+    entity: 'profile',
+    id: String(updated._id),
+    ownerId: userId,
+    version: updated.version,
+    updatedAt: updated.updatedAt,
+    data: api,
+  });
+  return { ok: true, profile: api };
 }
 
 /** Bootstrap a profile if the user somehow lacks one (defensive). */
@@ -69,12 +79,21 @@ export async function ensureProfile(user: {
 }): Promise<void> {
   const existing = await WorkerProfile.findOne({ userId: user._id }).lean();
   if (existing) return;
-  await WorkerProfile.create({
+  const created = await WorkerProfile.create({
     _id: crypto.randomUUID(),
     userId: user._id,
     phone: user.phone,
     fullName: user.displayName ?? user.phone ?? 'Worker',
     language: user.language ?? 'en',
     version: 0,
+  });
+  // offline clients must be able to pull their bootstrapped profile
+  await recordChange({
+    entity: 'profile',
+    id: String(created._id),
+    ownerId: user._id,
+    version: 0,
+    updatedAt: created.createdAt,
+    data: created.toObject(),
   });
 }
