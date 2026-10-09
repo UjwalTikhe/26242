@@ -24,6 +24,8 @@ const EnvSchema = z.object({
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
   PUBLIC_BASE_URL: z.string().default('http://localhost:4000'),
   CORS_ORIGINS: z.string().default('http://localhost:5173'),
+  /** Human-facing certificate number prefix, e.g. SIH-RPL-2026-XXXXXXXX. */
+  CERTIFICATE_PREFIX: z.string().default('SIH-RPL'),
 
   MONGO_URI: z.string().default('mongodb://127.0.0.1:27017/sih_rpl'),
   REDIS_URL: z.string().optional().default(''),
@@ -44,8 +46,7 @@ const EnvSchema = z.object({
   MSG91_SENDER_ID: z.string().optional().default(''),
   MSG91_TEMPLATE_ID: z.string().optional().default(''),
 
-  STORAGE_DRIVER: z.enum(['local', 's3']).default('local'),
-  LOCAL_STORAGE_DIR: z.string().default('./data/storage'),
+  STORAGE_DRIVER: z.enum(['local', 's3']).default('local'),  LOCAL_STORAGE_DIR: z.string().default('./data/storage'),
   /** Must live INSIDE LOCAL_STORAGE_DIR (defaults to `$LOCAL_STORAGE_DIR/tus`)
    * so tus-stored bytes are addressable by the storage driver. */
   TUS_UPLOAD_DIR: z.string().optional().default(''),

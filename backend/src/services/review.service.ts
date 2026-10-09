@@ -18,7 +18,10 @@ import { Assessment, AssessmentPlan, newUuid } from '../models/assessment.models
 import { AssessorReview, Decision } from '../models/review.models.js';
 import { toApi } from '../utils/toApi.js';
 import { getAssessmentFor, transitionAssessment } from './assessment.service.js';
+import { recordAudit } from './audit.service.js';
+import { issueCertificateFor } from './certificate.service.js';
 import { recordChange } from './changelog.service.js';
+import { generateReport } from './report.service.js';
 
 /* ------------------------------------------------------------------ */
 /* Review claim                                                        */
@@ -49,6 +52,14 @@ export async function claimReview(assessmentId: string, user: AuthUser): Promise
     by: user.id,
     note: 'review claimed',
     set: { claimedBy: user.id },
+  });
+  await recordAudit({
+    scope: assessmentId,
+    entityType: 'review',
+    entityId: assessmentId,
+    action: 'claimed',
+    actorId: user.id,
+    actorRole: user.role,
   });
   return toApi(updated.toObject());
 }
@@ -139,6 +150,15 @@ export async function submitReview(
     updatedAt: now,
     data: toApi(doc.toObject()),
   });
+  await recordAudit({
+    scope: assessmentId,
+    entityType: 'review',
+    entityId: String(doc._id),
+    action: input.outcome === 'REVIEWED' ? 'completed' : 'reassess_requested',
+    actorId: user.id,
+    actorRole: user.role,
+    data: { outcome: input.outcome, items: items.length },
+  });
   return toApi(doc.toObject());
 }
 
@@ -192,6 +212,14 @@ export async function submitDecision(
     note: input.comments ?? `decision: ${input.outcome}`,
   });
 
+  // Always produce the competency report; issue a certificate only on APPROVE.
+  const report = await generateReport(assessmentId);
+  let certificateId: string | undefined;
+  if (input.outcome === 'APPROVED') {
+    const cert = await issueCertificateFor(assessmentId, { id: user.id, role: user.role });
+    certificateId = cert.id;
+  }
+
   const now = new Date();
   const doc = await Decision.create({
     _id: newUuid(),
@@ -199,6 +227,7 @@ export async function submitDecision(
     outcome: input.outcome,
     authorizedAssessorId: user.id,
     ...(input.comments ? { comments: input.comments } : {}),
+    ...(certificateId ? { certificateId } : {}),
     issuedAt: now,
   });
 
@@ -208,6 +237,15 @@ export async function submitDecision(
     ownerId: assessment.workerId,
     updatedAt: now,
     data: toApi(doc.toObject()),
+  });
+  await recordAudit({
+    scope: assessmentId,
+    entityType: 'decision',
+    entityId: doc._id,
+    action: input.outcome === 'APPROVED' ? 'approved' : 'rejected',
+    actorId: user.id,
+    actorRole: user.role,
+    data: { reportId: report.id, certificateId, comments: input.comments },
   });
   return toApi(doc.toObject());
 }

@@ -10,6 +10,7 @@ import type { AuthUser } from '../auth/jwt.js';
 import { Assessment, type AssessmentDoc, type AssessmentDocument } from '../models/assessment.models.js';
 import { toApi } from '../utils/toApi.js';
 import { assertTransition } from './stateMachine.js';
+import { recordAudit } from './audit.service.js';
 import { recordChange } from './changelog.service.js';
 
 /** Workers see only their own; assessors see everything (404 hides existence). */
@@ -53,6 +54,14 @@ export async function createAssessment(
     version: 0,
     updatedAt: doc.createdAt,
     data: doc.toObject(),
+  });
+  await recordAudit({
+    scope: id,
+    entityType: 'assessment',
+    entityId: id,
+    action: 'created',
+    actorId: workerId,
+    actorRole: 'worker',
   });
   return { assessment: toApi(doc.toObject()), created: true };
 }
@@ -115,6 +124,14 @@ export async function transitionAssessment(
     version: updated.version,
     updatedAt: updated.updatedAt,
     data: updated.toObject(),
+  });
+  await recordAudit({
+    scope: id,
+    entityType: 'assessment',
+    entityId: id,
+    action: `status:${to}`,
+    actorId: opts.by,
+    data: { from, to, ...(opts.note ? { note: opts.note } : {}) },
   });
   return updated;
 }

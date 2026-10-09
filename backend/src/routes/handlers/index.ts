@@ -9,6 +9,7 @@ import { assessmentHandlers } from './assessments.js';
 import { authHandlers } from './auth.js';
 import { evidenceHandlers } from './evidence.js';
 import { profileHandlers } from './profile.js';
+import { reportHandlers } from './report.js';
 import { reviewHandlers } from './review.js';
 import { syncHandlers } from './sync.js';
 import { tradeHandlers } from './trades.js';
@@ -20,6 +21,7 @@ export const handlers: HandlerMap = {
   ...authHandlers,
   ...evidenceHandlers,
   ...profileHandlers,
+  ...reportHandlers,
   ...reviewHandlers,
   ...syncHandlers,
   ...tradeHandlers,
