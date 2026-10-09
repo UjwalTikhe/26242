@@ -10,6 +10,7 @@ import type { AuthUser } from '../auth/jwt.js';
 import { Assessment, type AssessmentDoc, type AssessmentDocument } from '../models/assessment.models.js';
 import { toApi } from '../utils/toApi.js';
 import { assertTransition } from './stateMachine.js';
+import { recordChange } from './changelog.service.js';
 
 /** Workers see only their own; assessors see everything (404 hides existence). */
 export async function getAssessmentFor(id: string, user: AuthUser): Promise<AssessmentDocument> {
@@ -44,6 +45,14 @@ export async function createAssessment(
     version: 0,
     statusHistory: [{ status: 'DRAFT', at: now, by: workerId }],
     tradeHint: input.tradeHint,
+  });
+  await recordChange({
+    entity: 'assessment',
+    id,
+    ownerId: workerId,
+    version: 0,
+    updatedAt: doc.createdAt,
+    data: doc.toObject(),
   });
   return { assessment: toApi(doc.toObject()), created: true };
 }
@@ -99,6 +108,14 @@ export async function transitionAssessment(
     assertTransition(latest.status, to);
     return latest;
   }
+  await recordChange({
+    entity: 'assessment',
+    id,
+    ownerId: updated.workerId,
+    version: updated.version,
+    updatedAt: updated.updatedAt,
+    data: updated.toObject(),
+  });
   return updated;
 }
 

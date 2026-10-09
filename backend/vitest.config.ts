@@ -18,7 +18,7 @@ export default defineConfig({
       OTP_MOCK_CODE: '123456',
       STORAGE_DRIVER: 'local',
       LOCAL_STORAGE_DIR: './data/test-storage',
-      TUS_UPLOAD_DIR: './data/test-tus',
+      TUS_UPLOAD_DIR: './data/test-storage/tus',
       JWT_ACCESS_SECRET: 'test-access-secret',
       JWT_REFRESH_SECRET: 'test-refresh-secret',
     },

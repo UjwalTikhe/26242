@@ -1,9 +1,17 @@
 /**
  * Assessment flow handlers: create/list/get, declaration, NSQF mapping,
- * plan generation, start. (Answers/submit are Phase 4/5 — still 501 stubs.)
+ * plan generation, answers (LWW), start. (submit is Phase 5 — still a 501 stub.)
  */
 import type { z } from 'zod';
-import type { CreateAssessmentReq, GeneratePlanReq, ListQuery, MapReq, SubmitDeclarationReq } from '@sih/contracts';
+import type {
+  CreateAssessmentReq,
+  GeneratePlanReq,
+  ListQuery,
+  MapReq,
+  SubmitAnswersReq,
+  SubmitDeclarationReq,
+} from '@sih/contracts';
+import * as answersService from '../../services/answers.service.js';
 import * as assessmentService from '../../services/assessment.service.js';
 import * as declarationService from '../../services/declaration.service.js';
 import * as mappingService from '../../services/mapping.service.js';
@@ -74,6 +82,20 @@ export const assessmentHandlers: HandlerMap = {
     const auth = userOr401(ctx);
     const { plan } = await planService.getPlanFor(idOf(ctx), auth);
     return { status: 200, data: plan };
+  },
+
+  /* ------------------------------- answers ------------------------ */
+
+  'post /api/v1/assessments/:id/answers': async (ctx: HandlerCtx) => {
+    const auth = userOr401(ctx);
+    const input = ctx.body as z.infer<typeof SubmitAnswersReq>;
+    const { response, assessment } = await answersService.saveTaskResponse(auth, idOf(ctx), input);
+    return { status: 200, data: { response, assessment } };
+  },
+
+  'get /api/v1/assessments/:id/answers': async (ctx: HandlerCtx) => {
+    const auth = userOr401(ctx);
+    return { status: 200, data: await answersService.listTaskResponses(idOf(ctx), auth) };
   },
 
   /* ------------------------------ start --------------------------- */

@@ -6,14 +6,18 @@
 import { routes } from '@sih/contracts';
 import { assessmentHandlers } from './assessments.js';
 import { authHandlers } from './auth.js';
+import { evidenceHandlers } from './evidence.js';
 import { profileHandlers } from './profile.js';
+import { syncHandlers } from './sync.js';
 import { tradeHandlers } from './trades.js';
 import { notImplemented, type HandlerMap } from './types.js';
 
 export const handlers: HandlerMap = {
   ...assessmentHandlers,
   ...authHandlers,
+  ...evidenceHandlers,
   ...profileHandlers,
+  ...syncHandlers,
   ...tradeHandlers,
 };
 

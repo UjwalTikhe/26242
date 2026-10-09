@@ -17,7 +17,7 @@ import { logger } from '../logger.js';
 import { getOtpProvider } from '../auth/otp/provider.js';
 import { signAccess, signRefresh, verifyRefresh } from '../auth/jwt.js';
 import { OtpCode, RefreshToken, User, newId, type UserDoc } from '../models/auth.models.js';
-import { WorkerProfile } from '../models/profile.models.js';
+import { ensureProfile } from './profile.service.js';
 import { toApi } from '../utils/toApi.js';
 
 const sha256 = (s: string) => createHash('sha256').update(s).digest('hex');
@@ -86,13 +86,13 @@ export async function verifyOtp(input: z.infer<typeof VerifyOtpReq>) {
       active: true,
     });
     user = created.toObject();
-    await WorkerProfile.create({
-      _id: newId(),
-      userId: user._id,
+    // Bootstrap the profile AND record it on the change feed, so a client's
+    // first sync pull already contains its profile (bootstrapped at login).
+    await ensureProfile({
+      _id: user._id,
       phone: input.phone,
-      fullName: input.displayName ?? input.phone,
-      language: input.language ?? 'en',
-      version: 0,
+      displayName: input.displayName,
+      language: input.language,
     });
   }
 

@@ -46,7 +46,9 @@ const EnvSchema = z.object({
 
   STORAGE_DRIVER: z.enum(['local', 's3']).default('local'),
   LOCAL_STORAGE_DIR: z.string().default('./data/storage'),
-  TUS_UPLOAD_DIR: z.string().default('./data/tus'),
+  /** Must live INSIDE LOCAL_STORAGE_DIR (defaults to `$LOCAL_STORAGE_DIR/tus`)
+   * so tus-stored bytes are addressable by the storage driver. */
+  TUS_UPLOAD_DIR: z.string().optional().default(''),
   MAX_UPLOAD_BYTES: z.coerce.number().int().default(524_288_000),
   S3_ENDPOINT: z.string().optional().default(''),
   S3_REGION: z.string().default('auto'),
@@ -73,7 +75,12 @@ if (!parsed.success) {
   throw new Error(`Invalid environment:\n${issues}`);
 }
 
-export const env: Env = Object.freeze(parsed.data);
+const data = parsed.data;
+const tusDir =
+  process.env.TUS_UPLOAD_DIR?.trim() ||
+  `${data.LOCAL_STORAGE_DIR.replace(/[\\/]+$/, '')}/tus`;
+
+export const env: Env = Object.freeze({ ...data, TUS_UPLOAD_DIR: tusDir });
 
 /** True when a real LLM-backed flow should be attempted. */
 export const llmEnabled = env.AI_MODE === 'llm' || (env.AI_MODE === 'auto' && env.LLM_API_KEY !== '');

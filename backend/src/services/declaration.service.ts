@@ -12,6 +12,7 @@ import type { AuthUser } from '../auth/jwt.js';
 import { Assessment, Declaration, newUuid } from '../models/assessment.models.js';
 import { toApi } from '../utils/toApi.js';
 import { assertTransition } from './stateMachine.js';
+import { recordChange } from './changelog.service.js';
 
 export async function getDeclarationFor(id: string, user: AuthUser): Promise<unknown> {
   const assessment = await Assessment.findById(id);
@@ -58,6 +59,14 @@ export async function submitDeclaration(
     { returnDocument: 'after' },
   );
   if (!advanced) throw conflict('invalid_transition', 'Assessment already left DRAFT');
+  await recordChange({
+    entity: 'assessment',
+    id: assessmentId,
+    ownerId: assessment.workerId,
+    version: advanced.version,
+    updatedAt: advanced.updatedAt,
+    data: advanced.toObject(),
+  });
 
   // …then persist the declaration; a concurrent duplicate falls through to
   // the stored one (unique index on assessmentId).
@@ -72,6 +81,14 @@ export async function submitDeclaration(
       version: 1,
       clientUpdatedAt: input.clientUpdatedAt ? new Date(input.clientUpdatedAt) : undefined,
       submittedAt: new Date(),
+    });
+    await recordChange({
+      entity: 'declaration',
+      id: String(doc._id),
+      ownerId: user.id,
+      version: 1,
+      updatedAt: doc.createdAt,
+      data: doc.toObject(),
     });
     return { declaration: toApi(doc.toObject()), created: true };
   } catch (err) {
