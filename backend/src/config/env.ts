@@ -57,6 +57,9 @@ const EnvSchema = z.object({
   S3_SECRET_ACCESS_KEY: z.string().optional().default(''),
   S3_PUBLIC_BASE_URL: z.string().optional().default(''),
 
+  /** Optional explicit ffmpeg binary; otherwise the optional ffmpeg-static dep is used. */
+  FFMPEG_PATH: z.string().optional().default(''),
+
   AI_MODE: z.enum(['auto', 'llm', 'mock']).default('auto'),
   LLM_BASE_URL: z.string().default('https://api.openai.com/v1'),
   LLM_API_KEY: z.string().optional().default(''),

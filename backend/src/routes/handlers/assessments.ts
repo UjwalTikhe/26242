@@ -1,6 +1,7 @@
 /**
  * Assessment flow handlers: create/list/get, declaration, NSQF mapping,
- * plan generation, answers (LWW), start. (submit is Phase 5 — still a 501 stub.)
+ * plan generation, answers (LWW), start. (submit + AI analysis live in
+ * analysis.ts; review/report are later phases — still 501 stubs.)
  */
 import type { z } from 'zod';
 import type {
