@@ -219,7 +219,8 @@ describe('role guards (run before handlers, even on 501 stubs)', () => {
 
   it('assessor passes the guard on assessor routes → explicit 501 stub', async () => {
     const { tokens } = await loginAssessor(app, 'authorized_assessor');
-    const res = await request(app).get('/api/v1/assessor/queue').set(bearer(tokens));
+    // admin/fairness is still an unimplemented stub; the guard must let the role through
+    const res = await request(app).get('/api/v1/admin/fairness').set(bearer(tokens));
     expect(res.status).toBe(501);
     expect(res.body.error).toBe('not_implemented');
   });

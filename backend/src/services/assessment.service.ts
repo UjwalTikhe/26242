@@ -84,7 +84,7 @@ export async function listAssessments(user: AuthUser, query: z.infer<typeof List
 export async function transitionAssessment(
   id: string,
   to: AssessmentStatus,
-  opts: { by?: string; note?: string } = {},
+  opts: { by?: string; note?: string; set?: Record<string, unknown> } = {},
 ): Promise<AssessmentDocument> {
   const doc = await Assessment.findById(id);
   if (!doc) throw notFound('Assessment not found');
@@ -95,7 +95,7 @@ export async function transitionAssessment(
   const updated = await Assessment.findOneAndUpdate(
     { _id: id, status: from },
     {
-      $set: { status: to },
+      $set: { status: to, ...(opts.set ?? {}) },
       $push: { statusHistory: { status: to, at: new Date(), ...(opts.by ? { by: opts.by } : {}), ...(opts.note ? { note: opts.note } : {}) } },
       $inc: { version: 1 },
     },
