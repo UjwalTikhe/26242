@@ -1,0 +1,4119 @@
+{
+  "schemaVersion": 1,
+  "id": "plumber",
+  "title": {
+    "en": "Plumber - General (Water Supply, Drainage and Sanitary Fittings)",
+    "hi": "प्लंबर - जनरल (जल आपूर्ति, जल निकासी और स्वच्छता फिटिंग)"
+  },
+  "aliases": [
+    "plumber general",
+    "plumber",
+    "pipe fitter",
+    "sanitary fitter",
+    "plumbing technician",
+    "water supply plumber",
+    "drainage plumber"
+  ],
+  "qp": {
+    "title": "Plumber - General",
+    "qpId": "PSC/Q0104",
+    "ncoCode": "NCO-2015/7126.0101",
+    "nsqfLevel": 4,
+    "ssc": "Water Management and Plumbing Skill Council (WMPSC)",
+    "version": "5.0",
+    "alignedJobRoles": [
+      "Plumber - General",
+      "Plumbing Systems Installation and Maintenance Assistant",
+      "Sanitary Fitter",
+      "Water Supply and Drainage Pipe Fitter"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Qualification Pack PSC/Q0104: Plumber - General, Version 5.0 (NSQF Level 4)",
+      "url": "https://cssda.cg.nic.in/CourseQPFile/902_QP_PSC_Q0104.pdf",
+      "publisher": "Water Management and Plumbing Skill Council (WMPSC), NSQC approved",
+      "confidence": "verified",
+      "note": "Read in full. Primary source: all NOS, performance criteria text, knowledge statements and assessment weightage. NSQC approval 17/12/2024, next review 17/12/2027. Document states 'Minimum Aggregate Passing % at QP Level: 70'; assessment weightage Theory 125 / Practical 240 / Viva 35 of 400 marks (approx. 31% theory, 60% practical). NOS weightage: PSC/N0130 15%, PSC/N0131 20%, PSC/N0132 20%, PSC/N0133 20%, PSC/N0142 10%, PSC/N0136 5%, DGT/VSQ/N0102 10%, option PSC/N0183 15%. NQR reference QG-04-PL-03441-2024-V2-WMPS."
+    },
+    {
+      "title": "National Qualifications Register - Plumber - General (QG-04-PL-03441-2024-V2-WMPS)",
+      "url": "https://nqr.gov.in/qualifications/1723",
+      "publisher": "NCVET / National Qualifications Register",
+      "confidence": "verified",
+      "note": "Confirms QP code PSC/Q0104, NSQF Level 4, WMPSC."
+    },
+    {
+      "title": "Plumber General QP (v4.0)",
+      "url": "https://wmpsc.in/assets/QP/QP_Plumber%20General%20(v%204.0)_English.pdf",
+      "publisher": "Water Management and Plumbing Skill Council",
+      "confidence": "estimated",
+      "note": "Earlier v4.0 of the same QP; cross-checked NOS names."
+    },
+    {
+      "title": "NSQF Qualification File - Plumber (CTS), DGT",
+      "url": "https://bharatskills.gov.in/pdf/QF_Curriculum/QF_Plumber_CTS_NSQF-4.pdf",
+      "publisher": "Directorate General of Training (DGT), MSDE",
+      "confidence": "verified",
+      "note": "CTS trade syllabus; corroborates tools, safety and practical tasks."
+    }
+  ],
+  "nos": [
+    {
+      "code": "PSC/N0130",
+      "title": "Prepare for Plumbing Installations and Maintenance",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0130-PC1",
+          "text": "Explain in detail the use of different tools, measuring and inspection devices, equipment and fittings for plumbing.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "measuring devices",
+            "inspection equipment",
+            "fittings"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC2",
+          "text": "Perform cutting, deburring/filing, marking and fixing operations using a vice.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe cutting",
+            "deburring",
+            "filing",
+            "marking",
+            "vice"
+          ],
+          "keywordsHi": [
+            "पाइप कटिंग",
+            "डिबरिंग",
+            "फाइलिंग",
+            "वाइस"
+          ],
+          "keywordsMr": [
+            "पाइप कात्रणे",
+            "डिबरिंग",
+            "वाइस"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC3",
+          "text": "Assess the tool's material quality to ensure long-term use in demanding plumbing environments.",
+          "criticalSafety": false,
+          "keywords": [
+            "tool material quality",
+            "durability",
+            "tool inspection"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC4",
+          "text": "Check that the tool and fitting required are suitable for different pipe types and plumbing applications.",
+          "criticalSafety": false,
+          "keywords": [
+            "tool selection",
+            "pipe types",
+            "fitting selection"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC5",
+          "text": "Ensure that the tool includes necessary safety features to prevent injuries during use.",
+          "criticalSafety": true,
+          "keywords": [
+            "tool safety features",
+            "injury prevention",
+            "safe use"
+          ],
+          "keywordsHi": [
+            "टूल सेफ्टी",
+            "चोट से बचाव",
+            "सुरक्षित उपयोग"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC6",
+          "text": "Ensure that the pipes are installed correctly, with minimal short turns, correct distances and optimal use of space.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe routing",
+            "short turns",
+            "layout",
+            "spacing"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC7",
+          "text": "Verify that hot and cold water lines are correctly laid and insulated where necessary to prevent heat loss.",
+          "criticalSafety": false,
+          "keywords": [
+            "hot water line",
+            "cold water line",
+            "insulation",
+            "heat loss"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC8",
+          "text": "Interpret the position of the fixtures and their accessories for supply and drainage systems.",
+          "criticalSafety": false,
+          "keywords": [
+            "fixture position",
+            "supply system",
+            "drainage system"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC9",
+          "text": "Understand the hot and cold water piping layout in the building.",
+          "criticalSafety": false,
+          "keywords": [
+            "piping layout",
+            "hot water",
+            "cold water"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC10",
+          "text": "Ensure correct pipe size/diameter/type is used to get the required pressure and flow rate for the water supply system.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe size",
+            "flow rate",
+            "pressure",
+            "water supply"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC11",
+          "text": "Ensure correct usage of pipe size and fitting the pipe with correct slope to install the drainage system.",
+          "criticalSafety": false,
+          "keywords": [
+            "drainage slope",
+            "pipe size",
+            "fall",
+            "drainage installation"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC12",
+          "text": "Ensure that all plumbing fixtures (sinks, toilets, showers) are positioned according to the architectural plan, with proper spacing for usability and maintenance.",
+          "criticalSafety": false,
+          "keywords": [
+            "fixtures",
+            "architectural plan",
+            "spacing",
+            "maintenance access"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC13",
+          "text": "Ensure that each fixture has clearly indicated connection points for water supply.",
+          "criticalSafety": false,
+          "keywords": [
+            "connection points",
+            "water supply",
+            "fixture"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC14",
+          "text": "Check the drainage system for proper venting, position of traps and anti-siphonage to prevent breaking of water seals.",
+          "criticalSafety": false,
+          "keywords": [
+            "venting",
+            "traps",
+            "anti-siphonage",
+            "water seal"
+          ],
+          "keywordsHi": [
+            "वेंटिंग",
+            "ट्रैप",
+            "एंटी-सिफोनेज",
+            "वॉटर सील"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC15",
+          "text": "Collect required plumbing material - type, size and quantities based on specifications from drawings and plans.",
+          "criticalSafety": false,
+          "keywords": [
+            "material collection",
+            "specifications",
+            "drawings",
+            "quantities"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC16",
+          "text": "Check if the tools and equipment are functioning properly and inform the relevant authority in case of any deviation.",
+          "criticalSafety": true,
+          "keywords": [
+            "tool check",
+            "equipment functioning",
+            "deviation reporting"
+          ],
+          "keywordsHi": [
+            "टूल जांच",
+            "उपकरण की कार्यशीलता",
+            "दोष रिपोर्टिंग"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC17",
+          "text": "Clear the area of hazardous substances, debris and waste as per organizational norms.",
+          "criticalSafety": true,
+          "keywords": [
+            "hazardous substances",
+            "debris clearance",
+            "work area"
+          ],
+          "keywordsHi": [
+            "खतरनाक पदार्थ",
+            "मलबा हटाना",
+            "कार्य क्षेत्र"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC18",
+          "text": "Store collected materials in a secure manner to ensure there is no spillage or cross-contamination.",
+          "criticalSafety": false,
+          "keywords": [
+            "material storage",
+            "spillage",
+            "cross-contamination"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC19",
+          "text": "Place signages and barricades as required to ensure safety and security of the work area, workers and visitors.",
+          "criticalSafety": true,
+          "keywords": [
+            "signage",
+            "barricades",
+            "work area safety"
+          ],
+          "keywordsHi": [
+            "साइनेज",
+            "बैरिकेड",
+            "कार्य क्षेत्र सुरक्षा"
+          ]
+        },
+        {
+          "id": "PSC-N0130-PC20",
+          "text": "Plan tasks in agreement with others while adhering to time commitments.",
+          "criticalSafety": false,
+          "keywords": [
+            "task planning",
+            "time management",
+            "coordination"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSC/N0131",
+      "title": "Install Water Supply Systems",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0131-PC1",
+          "text": "Study a typical water distribution system and identify its different components.",
+          "criticalSafety": false,
+          "keywords": [
+            "water distribution system",
+            "components",
+            "system study"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC2",
+          "text": "Explain in detail the hot water and cold water distribution/circulation system.",
+          "criticalSafety": false,
+          "keywords": [
+            "hot water distribution",
+            "cold water distribution",
+            "circulation system"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC3",
+          "text": "Inspect a typical solar water heater system and demonstrate its different components with their applications.",
+          "criticalSafety": false,
+          "keywords": [
+            "solar water heater",
+            "components",
+            "inspection"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC4",
+          "text": "Identify and select the fitting requirements to install the pipes.",
+          "criticalSafety": false,
+          "keywords": [
+            "fitting requirements",
+            "pipe installation",
+            "selection"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC5",
+          "text": "Measure and mark dimensions for installation of the pipes and fittings based on site conditions, making allowances for final finishing.",
+          "criticalSafety": false,
+          "keywords": [
+            "measuring",
+            "marking",
+            "site dimensions",
+            "finishing allowance"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC6",
+          "text": "Explain the limitations of solar water heaters in multi-floor buildings.",
+          "criticalSafety": false,
+          "keywords": [
+            "solar water heater",
+            "multi-floor building",
+            "limitations"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC7",
+          "text": "Cut G-I, CPVC, PERT, PEX or PPR pipes to the required length, ensuring measurements are proportionate to the fittings.",
+          "criticalSafety": false,
+          "keywords": [
+            "gi pipe",
+            "cpvc",
+            "ppr pipe",
+            "pipe cutting"
+          ],
+          "keywordsHi": [
+            "जीआई पाइप",
+            "सीपीवीसी",
+            "पीपीआर पाइप",
+            "पाइप कटिंग"
+          ],
+          "keywordsMr": [
+            "जीआई पाइप",
+            "पाइप कात्रणे"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC8",
+          "text": "Bend and form the pipes to specified angles and offsets.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe bending",
+            "angles",
+            "offsets"
+          ],
+          "keywordsHi": [
+            "पाइप बेंडिंग",
+            "कोण",
+            "ऑफसेट"
+          ],
+          "keywordsMr": [
+            "पाइप वाकवणे",
+            "कोन"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC9",
+          "text": "Prepare pipe ends using techniques such as reaming, deburring, levelling, filing and grinding.",
+          "criticalSafety": false,
+          "keywords": [
+            "reaming",
+            "deburring",
+            "filing",
+            "pipe ends"
+          ],
+          "keywordsHi": [
+            "रीमिंग",
+            "डिबरिंग",
+            "फाइलिंग",
+            "पाइप एंड"
+          ],
+          "keywordsMr": [
+            "रीमिंग",
+            "डिबरिंग",
+            "पाइप टोकं"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC10",
+          "text": "Join different types of pipes using fittings and specified techniques.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe joining",
+            "fittings",
+            "joint technique"
+          ],
+          "keywordsHi": [
+            "पाइप जॉइनिंग",
+            "फिटिंग",
+            "जॉइन तकनीक"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC11",
+          "text": "Ensure the assembled pipe meets the required specifications.",
+          "criticalSafety": false,
+          "keywords": [
+            "specification check",
+            "pipe assembly",
+            "quality check"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC12",
+          "text": "Report any issues or difficulties that may arise and carry out the corrective actions.",
+          "criticalSafety": false,
+          "keywords": [
+            "issue reporting",
+            "corrective action",
+            "escalation"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC13",
+          "text": "Install the assembled pipe fittings and other water supply components.",
+          "criticalSafety": false,
+          "keywords": [
+            "installation",
+            "water supply components",
+            "pipe fittings"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC14",
+          "text": "Identify the area and route where the assembled pipes are to be installed.",
+          "criticalSafety": false,
+          "keywords": [
+            "route identification",
+            "pipe route",
+            "area identification"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC15",
+          "text": "Perform wall chasing, drilling and nailing on a range of building materials such as brickwork, concrete, block work, timber, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "wall chasing",
+            "drilling",
+            "nailing",
+            "brickwork"
+          ],
+          "keywordsHi": [
+            "वॉल चेसिंग",
+            "ड्रिलिंग",
+            "नेलिंग",
+            "ईंट का काम"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC16",
+          "text": "Install pipes and other water supply components according to given specifications and site requirements, without damage or interference to the surrounding structures.",
+          "criticalSafety": false,
+          "keywords": [
+            "installation",
+            "site requirements",
+            "no damage",
+            "surrounding structures"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC17",
+          "text": "Finish the cut area of the wall after installing pipes and other water supply components.",
+          "criticalSafety": false,
+          "keywords": [
+            "wall finishing",
+            "cut area",
+            "making good"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC18",
+          "text": "Check if all the water supply system installations are properly aligned, sized, supported and installed.",
+          "criticalSafety": false,
+          "keywords": [
+            "alignment",
+            "sizing",
+            "support check",
+            "installation check"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC19",
+          "text": "Identify and rectify faults that are within the limits of expertise and authority, and escalate the others to authorized personnel.",
+          "criticalSafety": false,
+          "keywords": [
+            "fault rectification",
+            "escalation",
+            "authority limits"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC20",
+          "text": "Clear the work area and dispose, reuse or recycle leftover materials according to regulations and codes of practice.",
+          "criticalSafety": false,
+          "keywords": [
+            "work area clearing",
+            "disposal",
+            "recycling"
+          ]
+        },
+        {
+          "id": "PSC-N0131-PC21",
+          "text": "Clean and store tools and equipment according to the manufacturer's recommendations and workplace procedures.",
+          "criticalSafety": false,
+          "keywords": [
+            "tool cleaning",
+            "storage",
+            "manufacturer recommendations"
+          ],
+          "keywordsHi": [
+            "औजार की सफाई",
+            "भंडारण",
+            "निर्माता अनुशंसाएं"
+          ],
+          "keywordsMr": [
+            "साहित्य स्वच्छता",
+            "साठवण"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSC/N0132",
+      "title": "Install Drainage System",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0132-PC1",
+          "text": "Identify the type of drainage piping systems and its components to be installed as appropriate for the type of building.",
+          "criticalSafety": false,
+          "keywords": [
+            "drainage piping",
+            "components",
+            "building type"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC2",
+          "text": "Use plumbing project plans to determine the location of various drainage components and the route of the water drainage piping and traps.",
+          "criticalSafety": false,
+          "keywords": [
+            "project plans",
+            "drainage route",
+            "traps",
+            "locations"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC3",
+          "text": "Calculate quantity, dimensions and type of materials required from design drawings/specifications.",
+          "criticalSafety": false,
+          "keywords": [
+            "material calculation",
+            "drawings",
+            "specifications"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC4",
+          "text": "Construct chambers to accommodate drainage systems.",
+          "criticalSafety": false,
+          "keywords": [
+            "chambers",
+            "drainage system",
+            "construction"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC5",
+          "text": "Determine fitting requirements for installing various types of drainage pipes according to given specifications and site requirements.",
+          "criticalSafety": false,
+          "keywords": [
+            "drainage fittings",
+            "specifications",
+            "site requirements"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC6",
+          "text": "Check if the area is prepared for laying the pipes for underground, above ground and overhead piping systems.",
+          "criticalSafety": false,
+          "keywords": [
+            "area preparation",
+            "underground piping",
+            "overhead piping"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC7",
+          "text": "Install the various components of the drainage system such as pipes and their fittings, manholes, traps, cleanouts, catch basins, inspection chambers, soak pits, etc.",
+          "criticalSafety": true,
+          "keywords": [
+            "manholes",
+            "traps",
+            "cleanouts",
+            "soak pit",
+            "inspection chamber"
+          ],
+          "keywordsHi": [
+            "मैनहोल",
+            "ट्रैप",
+            "क्लीनआउट",
+            "सोक पिट",
+            "इंस्पेक्शन चैंबर"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC8",
+          "text": "Perform fitting activities on various types of pipes such as stoneware (SW) pipes, polyvinyl chloride (PVC) pipes, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "stoneware pipe",
+            "pvc pipe",
+            "fitting activities"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC9",
+          "text": "Install stormwater and sub-soil drainage systems.",
+          "criticalSafety": false,
+          "keywords": [
+            "stormwater",
+            "sub-soil drainage",
+            "drainage installation"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC10",
+          "text": "Install different types of pumps used in sanitary and drainage systems such as submersible water pumps and dewatering pumps (for rainwater piping).",
+          "criticalSafety": true,
+          "keywords": [
+            "submersible pump",
+            "dewatering pump",
+            "sanitary pumps"
+          ],
+          "keywordsHi": [
+            "सबमर्सिबल पंप",
+            "डीवॉटरिंग पंप",
+            "सैनिटरी पंप"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC11",
+          "text": "Install pipework for water and sewage treatment plants.",
+          "criticalSafety": false,
+          "keywords": [
+            "sewage treatment plant",
+            "water treatment",
+            "pipework"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC12",
+          "text": "Test the installations for proper functioning.",
+          "criticalSafety": false,
+          "keywords": [
+            "functional testing",
+            "installation test",
+            "commissioning"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC13",
+          "text": "Repair faulty drainage pipes and traps.",
+          "criticalSafety": false,
+          "keywords": [
+            "drainage repair",
+            "faulty pipes",
+            "traps"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC14",
+          "text": "Ensure that all inspection openings and covers are fitted according to relevant standards and job specifications.",
+          "criticalSafety": false,
+          "keywords": [
+            "inspection openings",
+            "covers",
+            "standards"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC15",
+          "text": "Backfill excavated areas to secure the installation.",
+          "criticalSafety": false,
+          "keywords": [
+            "backfilling",
+            "excavation",
+            "securing installation"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC16",
+          "text": "Put required signages at the site after the plumbing task has been completed.",
+          "criticalSafety": true,
+          "keywords": [
+            "signage",
+            "site safety",
+            "post-task"
+          ],
+          "keywordsHi": [
+            "साइनेज",
+            "साइट सुरक्षा"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC17",
+          "text": "Clear the work area and dispose, reuse or recycle leftover materials according to legislation, regulations, codes of practice and job specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "work area clearing",
+            "disposal",
+            "recycling",
+            "codes of practice"
+          ]
+        },
+        {
+          "id": "PSC-N0132-PC18",
+          "text": "Clean and store tools and equipment according to the manufacturer's recommendations and workplace procedures.",
+          "criticalSafety": false,
+          "keywords": [
+            "tool cleaning",
+            "storage",
+            "workplace procedures"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSC/N0133",
+      "title": "Install Plumbing Fixtures",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0133-PC1",
+          "text": "Plan the correct fixture requirement, parts and support material provided in the packing with the manufacturer's list or order form.",
+          "criticalSafety": false,
+          "keywords": [
+            "fixture planning",
+            "manufacturer list",
+            "parts",
+            "packing"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC2",
+          "text": "Select the size, type and quantity of fixture and trim for specific applications according to the given specifications.",
+          "criticalSafety": false,
+          "keywords": [
+            "fixture selection",
+            "trim",
+            "specifications"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC3",
+          "text": "Locate and mark the position of fixtures and fixture supports in structures.",
+          "criticalSafety": false,
+          "keywords": [
+            "marking",
+            "fixture position",
+            "fixture supports"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC4",
+          "text": "Ensure fixtures are level and securely fastened; tighten connections without over-tightening, which can damage the fittings.",
+          "criticalSafety": false,
+          "keywords": [
+            "levelling",
+            "fastening",
+            "over-tightening",
+            "fittings"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC5",
+          "text": "Cut the physical structures such as walls and concrete in line with the correct markings and specifications for performing internal pipe installations.",
+          "criticalSafety": false,
+          "keywords": [
+            "cutting structures",
+            "walls",
+            "concrete",
+            "markings"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC6",
+          "text": "Install supports for plumbing piping using the correct tool to ensure grade, spacing and alignment.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe supports",
+            "grade",
+            "spacing",
+            "alignment"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC7",
+          "text": "Install fixtures as per specifications without damage to pipework and the surrounding area.",
+          "criticalSafety": false,
+          "keywords": [
+            "fixture installation",
+            "no damage",
+            "specifications"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC8",
+          "text": "Install and secure the sensor for touchless fittings and fixtures in the slot provided.",
+          "criticalSafety": false,
+          "keywords": [
+            "sensor",
+            "touchless fittings",
+            "sensor faucet"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC9",
+          "text": "Insert batteries for sensor-based fittings and fixtures safely and in compliance with the manufacturer's specifications.",
+          "criticalSafety": true,
+          "keywords": [
+            "batteries",
+            "sensor fittings",
+            "safe insertion"
+          ],
+          "keywordsHi": [
+            "बैटरी",
+            "सेंसर फिटिंग",
+            "सुरक्षित डालना"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC10",
+          "text": "Connect the fixture to water supply, drainage and electricity supply, ensuring proper functioning, safety and compliance with the manufacturer's specifications.",
+          "criticalSafety": true,
+          "keywords": [
+            "water supply connection",
+            "drainage connection",
+            "electricity supply",
+            "functioning check"
+          ],
+          "keywordsHi": [
+            "जल आपूर्ति कनेक्शन",
+            "विद्युत आपूर्ति",
+            "कार्यशीलता जांच"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC11",
+          "text": "Perform installation of smart plumbing fixtures.",
+          "criticalSafety": false,
+          "keywords": [
+            "smart fixtures",
+            "plumbing fixtures",
+            "installation"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC12",
+          "text": "Perform installation of smart sensors and automated systems to monitor and control water flow, temperature and energy usage in real time.",
+          "criticalSafety": false,
+          "keywords": [
+            "smart sensors",
+            "automated systems",
+            "water flow",
+            "energy usage"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC13",
+          "text": "Perform installation of dry wall modules and mounting of various plumbing fixtures.",
+          "criticalSafety": false,
+          "keywords": [
+            "dry wall modules",
+            "mounting",
+            "fixtures"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC14",
+          "text": "Plumb and level the supports and fixtures installed to ensure alignment and balance.",
+          "criticalSafety": false,
+          "keywords": [
+            "plumb",
+            "level",
+            "alignment",
+            "balance"
+          ],
+          "keywordsHi": [
+            "प्लंब",
+            "लेवल",
+            "संरेखण"
+          ],
+          "keywordsMr": [
+            "प्लंब",
+            "लेवल"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC15",
+          "text": "Check if all installations are properly aligned, supported and functioning.",
+          "criticalSafety": false,
+          "keywords": [
+            "alignment check",
+            "support check",
+            "functioning"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC16",
+          "text": "Identify and rectify or replace faults that are within limits of expertise and authority, and escalate the others to authorized personnel.",
+          "criticalSafety": false,
+          "keywords": [
+            "fault rectification",
+            "replacement",
+            "escalation"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC17",
+          "text": "Clear the work area and dispose, reuse or recycle leftover materials according to regulations and codes of practice.",
+          "criticalSafety": false,
+          "keywords": [
+            "work area",
+            "disposal",
+            "recycling"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC18",
+          "text": "Hand over to the customer with full information and warranty card of products.",
+          "criticalSafety": false,
+          "keywords": [
+            "handover",
+            "warranty card",
+            "customer information"
+          ]
+        },
+        {
+          "id": "PSC-N0133-PC19",
+          "text": "Hand over to the customer with full information and warranty card of products.",
+          "criticalSafety": false,
+          "keywords": [
+            "handover",
+            "product information",
+            "customer handover"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSC/N0142",
+      "title": "Perform Troubleshooting and Maintenance for Domestic Plumbing Fixtures and Systems",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0142-PC1",
+          "text": "Detect the root cause of the problem.",
+          "criticalSafety": false,
+          "keywords": [
+            "root cause",
+            "problem detection",
+            "diagnosis"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC2",
+          "text": "Detect blockages and damage in pipes, fittings and fixtures.",
+          "criticalSafety": false,
+          "keywords": [
+            "blockages",
+            "damage detection",
+            "pipes"
+          ],
+          "keywordsHi": [
+            "रुकावट",
+            "क्षति",
+            "पाइप"
+          ],
+          "keywordsMr": [
+            "अडकणे",
+            "नुकसान",
+            "पाइप"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC3",
+          "text": "Detect the reason for low flow and low pressure.",
+          "criticalSafety": false,
+          "keywords": [
+            "low flow",
+            "low pressure",
+            "diagnosis"
+          ],
+          "keywordsHi": [
+            "कम प्रवाह",
+            "कम दबाव",
+            "निदान"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC4",
+          "text": "Replace faulty pipe fittings and parts.",
+          "criticalSafety": false,
+          "keywords": [
+            "replacement",
+            "faulty fittings",
+            "spare parts"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC5",
+          "text": "Remove air lock and blockages in the pipes that are installed.",
+          "criticalSafety": false,
+          "keywords": [
+            "air lock",
+            "blockage removal",
+            "pipes"
+          ],
+          "keywordsHi": [
+            "एयर लॉक",
+            "रुकावट हटाना",
+            "पाइप"
+          ],
+          "keywordsMr": [
+            "एअर लॉक",
+            "अडकणे",
+            "पाइप"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC6",
+          "text": "Repair and maintain water supply tanks and valves.",
+          "criticalSafety": false,
+          "keywords": [
+            "tanks",
+            "valves",
+            "repair",
+            "maintenance"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC7",
+          "text": "Unclog drains and drain strainer baskets.",
+          "criticalSafety": false,
+          "keywords": [
+            "drain unclogging",
+            "strainer basket",
+            "drains"
+          ],
+          "keywordsHi": [
+            "नाली की सफाई",
+            "स्ट्रेनर बास्केट",
+            "ड्रेन"
+          ],
+          "keywordsMr": [
+            "नळ स्वच्छ करणे",
+            "स्ट्रेनर",
+            "नळ"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC8",
+          "text": "Repair broken sewer, dripping faucets and fixtures that are not working properly.",
+          "criticalSafety": false,
+          "keywords": [
+            "sewer repair",
+            "dripping faucets",
+            "fixtures"
+          ],
+          "keywordsHi": [
+            "सीवर मरम्मत",
+            "टपकते नल",
+            "फिटिंग"
+          ],
+          "keywordsMr": [
+            "सीवर दुरुस्ती",
+            "गळत नळ"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC9",
+          "text": "Resolve leakages, loosening and jamming of fittings.",
+          "criticalSafety": false,
+          "keywords": [
+            "leakage",
+            "loose fittings",
+            "jamming"
+          ],
+          "keywordsHi": [
+            "लीकेज",
+            "ढीली फिटिंग",
+            "जाम"
+          ],
+          "keywordsMr": [
+            "गळती",
+            "लोसं फिटिंग",
+            "जाम"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC10",
+          "text": "Implement measures to reduce noise in pipes and fixtures.",
+          "criticalSafety": false,
+          "keywords": [
+            "noise reduction",
+            "pipes",
+            "fixtures"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC11",
+          "text": "Inspect and maintain septic systems on a timely basis.",
+          "criticalSafety": false,
+          "keywords": [
+            "septic system",
+            "inspection",
+            "maintenance"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC12",
+          "text": "Perform basic services for appliances such as water heaters, washing machines and dishwashers, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "water heater",
+            "washing machine",
+            "appliance service"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC13",
+          "text": "Clean up spills quickly after the task has been completed.",
+          "criticalSafety": false,
+          "keywords": [
+            "spill cleanup",
+            "housekeeping",
+            "quick cleaning"
+          ],
+          "keywordsHi": [
+            "रिसाव साफ करना",
+            "घरेलू साफ-सफाई"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC14",
+          "text": "Empty waste containers as per organizational procedures.",
+          "criticalSafety": false,
+          "keywords": [
+            "waste containers",
+            "procedures",
+            "emptying"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC15",
+          "text": "Discard oily rags and flammable materials as per industry practices.",
+          "criticalSafety": true,
+          "keywords": [
+            "oily rags",
+            "flammable materials",
+            "disposal"
+          ],
+          "keywordsHi": [
+            "चिकने कपड़े",
+            "ज्वलनशील सामग्री",
+            "निपटान"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC16",
+          "text": "Record daily logs in a specified format for activities such as maintenance and installation.",
+          "criticalSafety": false,
+          "keywords": [
+            "daily logs",
+            "records",
+            "maintenance"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC17",
+          "text": "Guide customers on proper care and maintenance of plumbing systems.",
+          "criticalSafety": false,
+          "keywords": [
+            "customer guidance",
+            "maintenance advice",
+            "plumbing care"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC18",
+          "text": "Minimize water usage by using water-efficient fixtures and appliances.",
+          "criticalSafety": false,
+          "keywords": [
+            "water efficient",
+            "conservation",
+            "fixtures"
+          ],
+          "keywordsHi": [
+            "जल-दक्ष",
+            "संरक्षण",
+            "वॉटर सेविंग"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC19",
+          "text": "Apply water leak prevention techniques.",
+          "criticalSafety": false,
+          "keywords": [
+            "leak prevention",
+            "techniques",
+            "water saving"
+          ],
+          "keywordsHi": [
+            "लीक रोकथाम",
+            "तकनीक",
+            "पानी की बचत"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC20",
+          "text": "Use low toxicity and environment friendly materials.",
+          "criticalSafety": false,
+          "keywords": [
+            "low toxicity",
+            "eco friendly materials",
+            "green materials"
+          ],
+          "keywordsHi": [
+            "कम विषाक्तता",
+            "पर्यावरण अनुकूल सामग्री"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC21",
+          "text": "Maintain optimal water pressure to prevent waste and damage to the system.",
+          "criticalSafety": false,
+          "keywords": [
+            "water pressure",
+            "optimisation",
+            "damage prevention"
+          ],
+          "keywordsHi": [
+            "जल दबाव",
+            "अनुकूलन",
+            "क्षति रोकथाम"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC22",
+          "text": "Perform insulation on pipes carrying hot water to minimize energy loss and improve efficiency.",
+          "criticalSafety": false,
+          "keywords": [
+            "hot water pipes",
+            "insulation",
+            "energy loss"
+          ],
+          "keywordsHi": [
+            "गर्म पानी का पाइप",
+            "इंसुलेशन",
+            "ऊर्जा हानि"
+          ],
+          "keywordsMr": [
+            "गरम पाण्याचे पाइप",
+            "इंस्युलेशन"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC23",
+          "text": "Use locally sourced materials and prefabricated components to reduce transportation energy, and choose products with a lower carbon footprint.",
+          "criticalSafety": false,
+          "keywords": [
+            "local materials",
+            "prefabricated",
+            "carbon footprint"
+          ]
+        },
+        {
+          "id": "PSC-N0142-PC24",
+          "text": "Ensure that the plumbing system complies with relevant green building standards such as LEED or Green Building Certification.",
+          "criticalSafety": false,
+          "keywords": [
+            "leed",
+            "green building",
+            "compliance"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSC/N0136",
+      "title": "Apply Health and Safety Practices at the Workplace",
+      "category": "safety",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0136-PC1",
+          "text": "Identify risks and hazards at the workplace.",
+          "criticalSafety": true,
+          "keywords": [
+            "hazard identification",
+            "risks",
+            "workplace safety"
+          ],
+          "keywordsHi": [
+            "खतरा पहचान",
+            "जोखिम",
+            "कार्यस्थल सुरक्षा"
+          ],
+          "keywordsMr": [
+            "धोका ओळख",
+            "जोखीम",
+            "कामगारी सुरक्षा"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC2",
+          "text": "Wear personal protective equipment (PPE) as per the type of plumbing work.",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "protective equipment",
+            "plumbing work"
+          ],
+          "keywordsHi": [
+            "पीपीई",
+            "निजी सुरक्षा उपकरण",
+            "प्लंबिंग कार्य"
+          ],
+          "keywordsMr": [
+            "पीपीई",
+            "सुरक्षा उपकरणे",
+            "प्लंबिंग काम"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC3",
+          "text": "Place protective barricades and signages around the pits and trenches.",
+          "criticalSafety": true,
+          "keywords": [
+            "barricades",
+            "signage",
+            "pits",
+            "trenches"
+          ],
+          "keywordsHi": [
+            "बैरिकेड",
+            "साइनेज",
+            "गड्ढे",
+            "खाई"
+          ],
+          "keywordsMr": [
+            "बॅरिकेड",
+            "साइनेज",
+            "खंती"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC4",
+          "text": "Isolate the plumbing fittings and fixtures from electrical wiring to avoid accidents.",
+          "criticalSafety": true,
+          "keywords": [
+            "electrical isolation",
+            "wiring",
+            "accident prevention"
+          ],
+          "keywordsHi": [
+            "विद्युत अलगाव",
+            "आइसोलेशन",
+            "दुर्घटना रोकथाम"
+          ],
+          "keywordsMr": [
+            "विद्युत विभक्ती",
+            "आयसोलेशन",
+            "अपघात प्रतिबंध"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC5",
+          "text": "Adhere to organisational procedures for reporting hazards and incidents to relevant authorities.",
+          "criticalSafety": false,
+          "keywords": [
+            "incident reporting",
+            "hazard reporting",
+            "procedures"
+          ],
+          "keywordsHi": [
+            "घटना रिपोर्टिंग",
+            "खतरा रिपोर्टिंग"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC6",
+          "text": "Establish ventilation before entering underground work areas.",
+          "criticalSafety": true,
+          "keywords": [
+            "ventilation",
+            "underground work",
+            "confined area"
+          ],
+          "keywordsHi": [
+            "वेंटिलेशन",
+            "भूमिगत कार्य",
+            "संकीर्ण स्थान"
+          ],
+          "keywordsMr": [
+            "व्हेंटिलेशन",
+            "भूमिगत काम",
+            "बंद जागा"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC7",
+          "text": "Work safely in and around trenches, elevated places and confined areas.",
+          "criticalSafety": true,
+          "keywords": [
+            "trenches",
+            "elevated places",
+            "confined areas",
+            "safe working"
+          ],
+          "keywordsHi": [
+            "खाई",
+            "ऊंचाई",
+            "संकीर्ण स्थान",
+            "सुरक्षित कार्य"
+          ],
+          "keywordsMr": [
+            "खंती",
+            "उंचाई",
+            "बंद जागा",
+            "सुरक्षित काम"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC8",
+          "text": "Ensure tools and hazardous materials are not left unattended.",
+          "criticalSafety": true,
+          "keywords": [
+            "unattended tools",
+            "hazardous materials",
+            "security"
+          ],
+          "keywordsHi": [
+            "बिना देखरेख औजार",
+            "खतरनाक सामग्री"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC9",
+          "text": "Ensure good housekeeping in order to prevent hazards, e.g. fire.",
+          "criticalSafety": false,
+          "keywords": [
+            "housekeeping",
+            "fire prevention",
+            "cleanliness"
+          ],
+          "keywordsHi": [
+            "साफ-सफाई",
+            "आग रोकथाम",
+            "स्वच्छता"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC10",
+          "text": "Dispose waste materials and used PPE according to regulations and codes of practice.",
+          "criticalSafety": false,
+          "keywords": [
+            "waste disposal",
+            "used ppe",
+            "regulations"
+          ],
+          "keywordsHi": [
+            "अपशिष्ट निपटान",
+            "उपयोग किया पीपीई",
+            "नियम"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC11",
+          "text": "Follow recommended personal hygiene and sanitation practices, for example washing/sanitizing hands, covering the face with a bent elbow while coughing/sneezing, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "hygiene",
+            "sanitation",
+            "hand washing"
+          ],
+          "keywordsHi": [
+            "स्वच्छता",
+            "स्वास्थ्य",
+            "हाथ धोना"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC12",
+          "text": "Clean and disinfect work area, materials/supplies, equipment, etc. before and after use.",
+          "criticalSafety": false,
+          "keywords": [
+            "disinfection",
+            "cleaning",
+            "work area"
+          ],
+          "keywordsHi": [
+            "कीटाणुरहित",
+            "सफाई",
+            "कार्य क्षेत्र"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC13",
+          "text": "Report hygiene and sanitation issues to the appropriate authority.",
+          "criticalSafety": false,
+          "keywords": [
+            "hygiene reporting",
+            "sanitation",
+            "escalation"
+          ],
+          "keywordsHi": [
+            "स्वच्छता रिपोर्ट",
+            "सैनिटेशन"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC14",
+          "text": "Check that the tools, equipment and materials are in good condition and as per industry standards before use.",
+          "criticalSafety": true,
+          "keywords": [
+            "tool condition",
+            "industry standards",
+            "pre-use check"
+          ],
+          "keywordsHi": [
+            "टूल की स्थिति",
+            "उद्योग मानक",
+            "पूर्व-उपयोग जांच"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC15",
+          "text": "Use power tools and machinery that are grounded.",
+          "criticalSafety": true,
+          "keywords": [
+            "grounded power tools",
+            "earthing",
+            "machinery"
+          ],
+          "keywordsHi": [
+            "ग्राउंडेड पावर टूल",
+            "अर्थिंग",
+            "मशीनरी"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC16",
+          "text": "Replace or repair split or loose tools before use.",
+          "criticalSafety": true,
+          "keywords": [
+            "loose tools",
+            "repair before use",
+            "tool replacement"
+          ],
+          "keywordsHi": [
+            "ढीले औजार",
+            "उपयोग से पहले मरम्मत"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC17",
+          "text": "Store and transport various plumbing materials safely.",
+          "criticalSafety": false,
+          "keywords": [
+            "safe storage",
+            "transport",
+            "materials"
+          ],
+          "keywordsHi": [
+            "सुरक्षित भंडारण",
+            "परिवहन",
+            "सामग्री"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC18",
+          "text": "Follow workplace emergency and evacuation procedures.",
+          "criticalSafety": true,
+          "keywords": [
+            "emergency procedure",
+            "evacuation",
+            "workplace"
+          ],
+          "keywordsHi": [
+            "आपातकालीन प्रक्रिया",
+            "निकासी",
+            "कार्यस्थल"
+          ],
+          "keywordsMr": [
+            "आणीबाणी प्रक्रिया",
+            "बाहेर पडणे"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC19",
+          "text": "Use a fire extinguisher correctly.",
+          "criticalSafety": true,
+          "keywords": [
+            "fire extinguisher",
+            "fire fighting",
+            "emergency"
+          ],
+          "keywordsHi": [
+            "अग्निशामक",
+            "आग बुझाना",
+            "आपातकाल"
+          ],
+          "keywordsMr": [
+            "अग्निशामक",
+            "आग विझवणे"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC20",
+          "text": "Use safe methods to free a person from electrocution.",
+          "criticalSafety": true,
+          "keywords": [
+            "electrocution",
+            "rescue",
+            "safe methods"
+          ],
+          "keywordsHi": [
+            "बिजली का झटका",
+            "बचाव",
+            "सुरक्षित विधि"
+          ],
+          "keywordsMr": [
+            "वीज धक्का",
+            "वाचवणे",
+            "सुरक्षित पद्धत"
+          ]
+        },
+        {
+          "id": "PSC-N0136-PC21",
+          "text": "Administer appropriate first aid (such as CPR etc.) to victims in case of cuts, bleeding, burns, choking, electric shock, poisoning, etc.",
+          "criticalSafety": true,
+          "keywords": [
+            "first aid",
+            "cpr",
+            "burns",
+            "bleeding"
+          ],
+          "keywordsHi": [
+            "प्राथमिक उपचार",
+            "सीपीआर",
+            "जलन",
+            "रक्तस्राव"
+          ],
+          "keywordsMr": [
+            "प्राथमिक उपचार",
+            "सीपीआर",
+            "व्रण",
+            "रक्तस्राव"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "DGT/VSQ/N0102",
+      "title": "Employability Skills (60 Hours)",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "DGT-VSQ-N0102-PC1",
+          "text": "Identify employability skills required for jobs in various industries.",
+          "criticalSafety": false,
+          "keywords": [
+            "employability skills",
+            "job requirements",
+            "industries"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC3",
+          "text": "Recognize the significance of constitutional values, including civic rights and duties, citizenship and responsibility towards society, and personal values and ethics such as honesty, integrity, caring and respecting others.",
+          "criticalSafety": false,
+          "keywords": [
+            "constitutional values",
+            "civic duties",
+            "ethics"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC4",
+          "text": "Follow environmentally sustainable practices.",
+          "criticalSafety": false,
+          "keywords": [
+            "sustainable practices",
+            "environment",
+            "green work"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC6",
+          "text": "Practice the 21st Century Skills such as self-awareness, behaviour skills, time management, critical and adaptive thinking, problem-solving, creative thinking, social and cultural awareness, emotional awareness and learning to learn for continuous learning, in personal and professional life.",
+          "criticalSafety": false,
+          "keywords": [
+            "21st century skills",
+            "problem solving",
+            "time management"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC12",
+          "text": "Follow verbal and non-verbal communication etiquette and active listening techniques in various settings.",
+          "criticalSafety": false,
+          "keywords": [
+            "communication etiquette",
+            "active listening",
+            "non-verbal"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC13",
+          "text": "Work collaboratively with others in a team.",
+          "criticalSafety": false,
+          "keywords": [
+            "teamwork",
+            "collaboration",
+            "team"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC20",
+          "text": "Operate digital devices and carry out basic internet operations securely and safely.",
+          "criticalSafety": false,
+          "keywords": [
+            "digital devices",
+            "internet operations",
+            "safe use"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC26",
+          "text": "Identify different types of customers.",
+          "criticalSafety": false,
+          "keywords": [
+            "customer types",
+            "customer service",
+            "customer interaction"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC27",
+          "text": "Identify and respond to customer requests and needs in a professional manner.",
+          "criticalSafety": false,
+          "keywords": [
+            "customer needs",
+            "professional response",
+            "service"
+          ]
+        },
+        {
+          "id": "DGT-VSQ-N0102-PC29",
+          "text": "Create a professional curriculum vitae (resume).",
+          "criticalSafety": false,
+          "keywords": [
+            "cv",
+            "resume",
+            "job application"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "PSC/N0183",
+      "title": "Perform Installation of Insulation on Pipes",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "PSC-N0183-PC1",
+          "text": "Identify different types of insulation materials like fiberglass, mineral wool, foam insulation, cellulose, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "fiberglass",
+            "mineral wool",
+            "foam insulation",
+            "cellulose"
+          ],
+          "keywordsHi": [
+            "फाइबरग्लास",
+            "मिनरल वूल",
+            "फोम इंसुलेशन"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC2",
+          "text": "Identify different types of covering for the protection of insulation material.",
+          "criticalSafety": false,
+          "keywords": [
+            "protective covering",
+            "lagging",
+            "jacketing"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC3",
+          "text": "Identify different types of fasteners and joints.",
+          "criticalSafety": false,
+          "keywords": [
+            "fasteners",
+            "joints",
+            "fixings"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC4",
+          "text": "Identify different types of sealing and jointing material.",
+          "criticalSafety": false,
+          "keywords": [
+            "sealing material",
+            "jointing",
+            "sealant"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC5",
+          "text": "Identify the accessories such as insulation hanger, insulation saddle, etc.",
+          "criticalSafety": false,
+          "keywords": [
+            "insulation hanger",
+            "insulation saddle",
+            "accessories"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC6",
+          "text": "Identify the different types and grade of pipes.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe types",
+            "pipe grades",
+            "identification"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC7",
+          "text": "Identify the different types of measuring devices.",
+          "criticalSafety": false,
+          "keywords": [
+            "measuring devices",
+            "tape",
+            "scale"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC8",
+          "text": "Identify the different types of cutting and sealing devices.",
+          "criticalSafety": false,
+          "keywords": [
+            "cutting devices",
+            "sealing devices",
+            "tools"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC9",
+          "text": "Identify the irregularities in pipe diameter, shape or surface condition and rectify it.",
+          "criticalSafety": false,
+          "keywords": [
+            "pipe diameter",
+            "surface irregularity",
+            "rectification"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC10",
+          "text": "Ensure proper alignment and sealing of insulation joints.",
+          "criticalSafety": false,
+          "keywords": [
+            "insulation joints",
+            "sealing",
+            "alignment"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC11",
+          "text": "Perform different techniques for cutting such as nesting or pattern cutting to maximize the number of usable pieces from each insulation sheet or roll.",
+          "criticalSafety": false,
+          "keywords": [
+            "pattern cutting",
+            "nesting",
+            "cutting technique"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC12",
+          "text": "Perform clean and smooth cutting of edges of insulation material to facilitate proper sealing and adhesion during installation.",
+          "criticalSafety": false,
+          "keywords": [
+            "smooth cutting",
+            "edges",
+            "adhesion"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC13",
+          "text": "Avoid ragged or jagged edges.",
+          "criticalSafety": false,
+          "keywords": [
+            "jagged edges",
+            "clean edges",
+            "cutting quality"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC14",
+          "text": "Identify the correct measurement of material with required instruments.",
+          "criticalSafety": false,
+          "keywords": [
+            "measurement",
+            "instruments",
+            "material"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC15",
+          "text": "Calculate the desired thickness of insulation material based on pipe diameter.",
+          "criticalSafety": false,
+          "keywords": [
+            "insulation thickness",
+            "pipe diameter",
+            "calculation"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC16",
+          "text": "Perform checking of thermal conductivity, density and durability.",
+          "criticalSafety": false,
+          "keywords": [
+            "thermal conductivity",
+            "density",
+            "durability"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC17",
+          "text": "Perform a tight fit of insulation material around the pipes.",
+          "criticalSafety": false,
+          "keywords": [
+            "tight fit",
+            "insulation",
+            "around pipes"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC18",
+          "text": "Ensure complete coverage of the pipe, including bends, joints and fittings.",
+          "criticalSafety": false,
+          "keywords": [
+            "complete coverage",
+            "bends",
+            "fittings"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC19",
+          "text": "Perform secured sealing of seams, joints and edges of insulation to prevent air leakage and moisture ingress.",
+          "criticalSafety": false,
+          "keywords": [
+            "seams",
+            "air leakage",
+            "moisture ingress"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC20",
+          "text": "Apply fastening methods such as adhesive bonding or mechanical fasteners correctly to ensure insulation stays in place.",
+          "criticalSafety": false,
+          "keywords": [
+            "adhesive bonding",
+            "mechanical fasteners",
+            "fastening"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC21",
+          "text": "Check that insulation should not obstruct access to valves, controls or other components of the piping system.",
+          "criticalSafety": false,
+          "keywords": [
+            "valve access",
+            "controls",
+            "obstruction"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC22",
+          "text": "Check that properly installed insulation effectively reduces heat loss or gain, contributing to energy conservation goals.",
+          "criticalSafety": false,
+          "keywords": [
+            "heat loss",
+            "energy conservation",
+            "efficiency"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC23",
+          "text": "Ensure compatibility of insulation material with the operating temperature and conditions of the piping system.",
+          "criticalSafety": false,
+          "keywords": [
+            "operating temperature",
+            "compatibility",
+            "piping system"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC24",
+          "text": "Adhere to safety protocols and regulations, including handling of insulation materials.",
+          "criticalSafety": true,
+          "keywords": [
+            "safety protocols",
+            "handling",
+            "regulations"
+          ],
+          "keywordsHi": [
+            "सुरक्षा प्रोटोकॉल",
+            "हैंडलिंग",
+            "नियम"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC25",
+          "text": "Perform the use of personal protective equipment (PPE).",
+          "criticalSafety": true,
+          "keywords": [
+            "ppe",
+            "protective equipment",
+            "safe handling"
+          ],
+          "keywordsHi": [
+            "पीपीई",
+            "निजी सुरक्षा उपकरण"
+          ]
+        },
+        {
+          "id": "PSC-N0183-PC26",
+          "text": "Maintain records of insulation installation, including material specifications, measurements and installation procedures.",
+          "criticalSafety": false,
+          "keywords": [
+            "records",
+            "specifications",
+            "installation procedures"
+          ]
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "pipe-wrench",
+      "name": {
+        "en": "Pipe Wrench (Stilson)",
+        "hi": "पाइप रेंच"
+      },
+      "aliases": [
+        "pipe wrench",
+        "stilson wrench",
+        "plumber wrench"
+      ]
+    },
+    {
+      "id": "adjustable-spanner",
+      "name": {
+        "en": "Adjustable Spanner 200 mm",
+        "hi": "एडजस्टेबल स्पैनर 200 मिमी"
+      },
+      "aliases": [
+        "adjustable spanner",
+        "crescent spanner",
+        "adjustable wrench"
+      ]
+    },
+    {
+      "id": "pipe-cutter",
+      "name": {
+        "en": "Pipe Cutter (wheel type)",
+        "hi": "पाइप कटर"
+      },
+      "aliases": [
+        "pipe cutter",
+        "tube cutter",
+        "pipe cutting tool"
+      ]
+    },
+    {
+      "id": "deburring-tool",
+      "name": {
+        "en": "Deburring Tool / Reamer",
+        "hi": "डिबरिंग टूल / रीमर"
+      },
+      "aliases": [
+        "deburring tool",
+        "reamer",
+        "pipe deburrer"
+      ]
+    },
+    {
+      "id": "pipe-threader",
+      "name": {
+        "en": "Pipe Threader with Die Set",
+        "hi": "पाइप थ्रेडर डाइ सेट"
+      },
+      "aliases": [
+        "pipe threader",
+        "die stock",
+        "threading die",
+        "die set"
+      ]
+    },
+    {
+      "id": "hacksaw-frame",
+      "name": {
+        "en": "Hacksaw Frame 300 mm",
+        "hi": "हैकसॉ फ्रेम 300 मिमी"
+      },
+      "aliases": [
+        "hacksaw",
+        "hacksaw blade",
+        "metal saw"
+      ]
+    },
+    {
+      "id": "pipe-bender",
+      "name": {
+        "en": "Pipe Bender / Bending Spring",
+        "hi": "पाइप बेंडर"
+      },
+      "aliases": [
+        "pipe bender",
+        "bending spring",
+        "pipe bending tool"
+      ]
+    },
+    {
+      "id": "plunger",
+      "name": {
+        "en": "Plunger (cup type)",
+        "hi": "प्लंजर"
+      },
+      "aliases": [
+        "cup plunger",
+        "sink plunger",
+        "force cup"
+      ]
+    },
+    {
+      "id": "drain-snake",
+      "name": {
+        "en": "Drain Snake / Auger",
+        "hi": "ड्रेन स्नेक / ऑगर"
+      },
+      "aliases": [
+        "drain auger",
+        "plumbing snake",
+        "drain cleaning machine",
+        "rodder"
+      ]
+    },
+    {
+      "id": "soldering-torch",
+      "name": {
+        "en": "Soldering Torch (LPG/Butane)",
+        "hi": "सोल्डरिंग टॉर्च"
+      },
+      "aliases": [
+        "gas torch",
+        "blow torch",
+        "soldering lamp",
+        "soldering torch"
+      ]
+    },
+    {
+      "id": "crimping-tool",
+      "name": {
+        "en": "Crimping Tool (press fittings)",
+        "hi": "क्रिम्पिंग टूल"
+      },
+      "aliases": [
+        "crimper",
+        "press tool",
+        "crimping plier"
+      ]
+    },
+    {
+      "id": "pressure-gauge",
+      "name": {
+        "en": "Pressure Gauge 0-10 kg/cm2",
+        "hi": "प्रेशर गेज 0-10 किग्रा/सेमी2"
+      },
+      "aliases": [
+        "pressure gauge",
+        "test gauge",
+        "pressure tester"
+      ]
+    },
+    {
+      "id": "spirit-level",
+      "name": {
+        "en": "Spirit Level 300 mm",
+        "hi": "स्पिरिट लेवल 300 मिमी"
+      },
+      "aliases": [
+        "spirit level",
+        "bubble level",
+        "water level"
+      ]
+    },
+    {
+      "id": "measuring-tape",
+      "name": {
+        "en": "Measuring Tape 5 m",
+        "hi": "मापन टेप 5 मीटर"
+      },
+      "aliases": [
+        "measuring tape",
+        "steel tape",
+        "tape measure"
+      ]
+    },
+    {
+      "id": "water-level-hose",
+      "name": {
+        "en": "Water Level Tube / Hose",
+        "hi": "वॉटर लेवल ट्यूब / नली"
+      },
+      "aliases": [
+        "water level tube",
+        "level hose",
+        "transparent hose"
+      ]
+    },
+    {
+      "id": "chisel",
+      "name": {
+        "en": "Chisel and Cold Chisel",
+        "hi": "छेनी"
+      },
+      "aliases": [
+        "cold chisel",
+        "wall chisel",
+        "chisel"
+      ]
+    },
+    {
+      "id": "hammer",
+      "name": {
+        "en": "Hammer, Cross Peen",
+        "hi": "क्रॉस पीन हथौड़ा"
+      },
+      "aliases": [
+        "hammer",
+        "cross peen hammer",
+        "mallet"
+      ]
+    },
+    {
+      "id": "drill-machine",
+      "name": {
+        "en": "Portable Drill Machine",
+        "hi": "पोर्टेबल ड्रिल मशीन"
+      },
+      "aliases": [
+        "drill machine",
+        "power drill",
+        "hammer drill",
+        "electric drill"
+      ]
+    },
+    {
+      "id": "bench-vice",
+      "name": {
+        "en": "Bench Vice",
+        "hi": "बेंच वाइस"
+      },
+      "aliases": [
+        "vice",
+        "bench vise",
+        "work bench vice"
+      ]
+    },
+    {
+      "id": "caulking-gun",
+      "name": {
+        "en": "Caulking Gun (sealant)",
+        "hi": "कॉल्किंग गन"
+      },
+      "aliases": [
+        "caulking gun",
+        "sealant gun",
+        "silicone gun"
+      ]
+    },
+    {
+      "id": "ppe-kit",
+      "name": {
+        "en": "PPE Kit (helmet, goggles, gloves, gumboots)",
+        "hi": "पीपीई किट"
+      },
+      "aliases": [
+        "ppe",
+        "ppe kit",
+        "personal protective equipment",
+        "safety kit"
+      ]
+    },
+    {
+      "id": "safety-gloves",
+      "name": {
+        "en": "Safety Gloves (cut resistant)",
+        "hi": "सेफ्टी ग्लव्स"
+      },
+      "aliases": [
+        "safety gloves",
+        "hand protection",
+        "cut resistant gloves"
+      ]
+    }
+  ],
+  "safetyTopics": [
+    {
+      "id": "ppe-for-plumbing-work",
+      "text": {
+        "en": "Wear the PPE suited to the plumbing task and hazard: helmet, goggles, cut-resistant gloves, gumboots and safety footwear, as per the type of plumbing work (PSC/N0136 PC2).",
+        "hi": "कार्य और खतरे के अनुसार पीपीई पहनें: हेलमेट, गॉगल, कट-रेजिस्टेंट दस्ताने, गमबूट और सुरक्षा जूते (PSC/N0136 PC2)।"
+      },
+      "critical": true
+    },
+    {
+      "id": "positive-isolation-before-work",
+      "text": {
+        "en": "Positive isolation before work: close and lock the water, gas and electrical isolation points that feed the job, drain the line and confirm zero energy before opening any joint.",
+        "hi": "काम शुरू करने से पहले सकारात्मक अलगाव: पानी, गैस और विद्युत आइसोलेशन बंद करके लॉक करें, लाइन खाली करें और कोई जॉइन खोलने से पहले ऊर्जा शून्य की पुष्टि करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "electrical-safety-near-water",
+      "text": {
+        "en": "Electricity and water mix fatally: isolate plumbing fittings and fixtures from electrical wiring (PSC/N0136 PC4), use grounded power tools only (PC15) and keep hands and floor dry.",
+        "hi": "विद्युत और पानी जानलेवा हो सकते हैं: प्लंबिंग फिटिंग को विद्युत वायरिंग से अलग करें (PSC/N0136 PC4), केवल ग्राउंडेड पावर टूल इस्तेमाल करें (PC15) और हाथ व फर्श सूखे रखें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "hot-work-soldering-torch",
+      "text": {
+        "en": "Hot work with a soldering torch: keep LPG/butane cylinders upright and away from the flame, remove combustibles, keep an extinguisher ready and never leave the torch unattended.",
+        "hi": "सोल्डरिंग टॉर्च से हॉट वर्क: एलपीजी/ब्यूटेन सिलेंडर सीधा और लौ से दूर रखें, ज्वलनशील सामग्री हटाएं, अग्निशामक तैयार रखें और टॉर्च बिना देखरेख कभी न छोड़ें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "lead-solder-fume",
+      "text": {
+        "en": "Lead-solder fumes: solder only in a ventilated area, avoid breathing the flux fume, never eat or drink at the workstation and wash hands after handling solder.",
+        "hi": "सीसा सोल्डर धुआं: सोल्डरिंग केवल हवादार जगह पर करें, फ्लक्स का धुआं न सांस में लें, कार्यस्थल पर कभी खाएं-पिएं नहीं और सोल्डर छूने के बाद हाथ धोएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "pvc-solvent-adhesive-ventilation",
+      "text": {
+        "en": "PVC solvent cement and adhesives give off flammable, harmful vapour: use them only with cross-ventilation, keep the lid closed after use and away from any flame or spark.",
+        "hi": "पीवीसी सॉल्वेंट सीमेंट और गोंद से ज्वलनशील और हानिकारक वाष्प निकलती है: इन्हें केवल क्रॉस-वेंटिलेशन में उपयोग करें, उपयोग के बाद ढक्कन बंद रखें और लौ/चिंगारी से दूर रखें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "confined-space-manhole-entry",
+      "text": {
+        "en": "Confined space / manhole entry: establish ventilation before entering underground work areas (PSC/N0136 PC6), test the air, work with a standby person outside and never enter alone.",
+        "hi": "संकीर्ण स्थान / मैनहोल प्रवेश: भूमिगत क्षेत्र में घुसने से पहले वेंटिलेशन स्थापित करें (PSC/N0136 PC6), हवा की जांच करें, बाहर स्टैंडबाय व्यक्ति रखें और अकेले कभी प्रवेश न करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "trench-and-pit-barricading",
+      "text": {
+        "en": "Place protective barricades and signages around pits and trenches (PSC/N0136 PC3), guard open edges and keep workers and visitors outside the barricaded zone.",
+        "hi": "गड्ढों और खाइयों के चारों ओर सुरक्षात्मक बैरिकेड और साइनेज लगाएं (PSC/N0136 PC3), खुले किनारों की सुरक्षा करें और श्रमिकों व आगंतुकों को बैरिकेड के बाहर रखें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "work-at-height-ladders",
+      "text": {
+        "en": "Work at height: use stable ladders, scaffolds and elevated platforms only, do not overreach, keep both feet on the rungs and do not work at height alone.",
+        "hi": "ऊंचाई पर काम: केवल स्थिर सीढ़ी, स्कैफोल्ड और ऊंचे मंच का उपयोग करें, झुककर काम न करें, दोनों पैर सीढ़ी पर रखें और अकेले ऊंचाई पर काम न करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "hot-water-burns",
+      "text": {
+        "en": "Hot-water burns: drain and cool hot water lines before opening them, never open a geyser or solar water heater under pressure, and insulate hot water pipes (PSC/N0142 PC22).",
+        "hi": "गर्म पानी से जलन: गर्म पानी की लाइन खोलने से पहले खाली और ठंडी करें, दबाव में गीजर या सोलर वॉटर हीटर कभी न खोलें, और गर्म पानी के पाइप इंसुलेट करें (PSC/N0142 PC22)।"
+      },
+      "critical": true
+    },
+    {
+      "id": "gas-cylinder-handling",
+      "text": {
+        "en": "LPG/butane cylinder handling: keep cylinders upright and secured, check the hose and regulator for leaks with soap solution, and store cylinders away from heat and work areas.",
+        "hi": "एलपीजी/ब्यूटेन सिलेंडर: सिलेंडर सीधा और बंधा रखें, साबुन के घोल से होज व रेगुलेटर की लीक जांचें और सिलेंडर को गर्मी व कार्य क्षेत्र से दूर रखें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "manual-handling-ergonomics",
+      "text": {
+        "en": "Manual handling: lift pipes and fixtures with help or trolleys, bend at the knees, keep the load close to the body and avoid awkward postures to prevent back injury.",
+        "hi": "मैनुअल हैंडलिंग: पाइप और फिटिंग सहायता या ट्रॉली से उठाएं, घुटनों से मुड़ें, भार को शरीर के पास रखें और कमर की चोट से बचने के लिए अजीब मुद्रा से बचें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "housekeeping-and-fire-prevention",
+      "text": {
+        "en": "Good housekeeping prevents fire and slips: keep the work area clean and hazard free before and after the job, discard oily rags and flammable materials correctly and store tools safely.",
+        "hi": "साफ-सफाई से आग व फिसलन से बचाव होता है: काम से पहले और बाद में क्षेत्र साफ व खतरा-रहित रखें, चिकने कपड़े व ज्वलनशील सामग्री सही ढंग से निपटाएं और औजार सुरक्षित रखें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "waste-and-cross-contamination",
+      "text": {
+        "en": "Waste and cross-contamination: store collected material securely with no spillage, clean and disinfect the work area before and after use, and dispose sewage-contaminated waste per regulations (PSC/N0130 PC18, PSC/N0136 PC10-PC12).",
+        "hi": "अपशिष्ट और क्रॉस-कंटैमिनेशन: इकट्ठी सामग्री सुरक्षित रखें ताकि रिसाव न हो, कार्य क्षेत्र उपयोग से पहले और बाद में साफ व कीटाणुरहित करें, और सीवेज से दूषित अपशिष्ट नियमानुसार निपटाएं।"
+      },
+      "critical": false
+    },
+    {
+      "id": "tool-condition-and-grounded-tools",
+      "text": {
+        "en": "Check tools and materials before use: they must be in good condition and as per industry standards; replace or repair split or loose tools, and use only grounded power tools (PSC/N0136 PC14-PC16).",
+        "hi": "उपयोग से पहले औजार व सामग्री जांचें: वे अच्छी स्थिति और उद्योग मानकों के अनुसार हों; फटे या ढीले औजार बदलें या ठीक करें, और केवल ग्राउंडेड पावर टूल उपयोग करें (PSC/N0136 PC14-PC16)।"
+      },
+      "critical": true
+    },
+    {
+      "id": "emergency-and-first-aid",
+      "text": {
+        "en": "Emergency response: follow the workplace emergency and evacuation procedure, use a fire extinguisher correctly, free a casualty from electrocution with safe methods only, and give first aid including CPR for cuts, burns, electric shock or poisoning (PSC/N0136 PC18-PC21).",
+        "hi": "आपातकालीन प्रतिक्रिया: कार्यस्थल की आपातकालीन व निकासी प्रक्रिया का पालन करें, अग्निशामक का सही उपयोग करें, बिजली के झटके से पीड़ित को केवल सुरक्षित विधि से छुड़ाएं, और कटने, जलन, बिजली झटके या विषाक्तता पर सीपीआर सहित प्राथमिक उपचार दें (PSC/N0136 PC18-PC21)।"
+      },
+      "critical": true
+    }
+  ],
+  "mcqBank": [
+    {
+      "id": "mcq-ppe-for-plumbing-work",
+      "topic": "safety",
+      "prompt": {
+        "en": "As per PSC/N0136, when must a plumber wear personal protective equipment (PPE)?",
+        "hi": "PSC/N0136 के अनुसार प्लंबर को निजी सुरक्षा उपकरण (पीपीई) कब पहनना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Only when the supervisor is watching"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "As per the type of plumbing work"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Only for outdoor work"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Only after an accident has happened"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC2: wear personal protective equipment (PPE) as per the type of plumbing work - the PPE changes with the hazard.",
+        "hi": "PSC/N0136 PC2: प्लंबिंग कार्य के प्रकार के अनुसार निजी सुरक्षा उपकरण (पीपीई) पहनें।"
+      }
+    },
+    {
+      "id": "mcq-isolate-electrical-wiring",
+      "topic": "safety",
+      "prompt": {
+        "en": "PSC/N0136 PC4 requires the plumber to isolate plumbing fittings and fixtures from what?",
+        "hi": "PSC/N0136 PC4 के अनुसार प्लंबर को प्लंबिंग फिटिंग और फिक्स्चर किससे अलग करना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Electrical wiring"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The water supply only"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The architectural plan"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The neighbouring flat"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC4: isolate the plumbing fittings and fixtures from electrical wiring to avoid accidents - water and electricity together cause fatal shocks.",
+        "hi": "PSC/N0136 PC4: दुर्घटनाओं से बचने के लिए प्लंबिंग फिटिंग व फिक्स्चर को विद्युत वायरिंग से अलग करें।"
+      }
+    },
+    {
+      "id": "mcq-barricades-around-pits",
+      "topic": "safety",
+      "prompt": {
+        "en": "What must be placed around pits and trenches as per PSC/N0136 PC3?",
+        "hi": "PSC/N0136 PC3 के अनुसार गड्ढों और खाइयों के चारों ओर क्या लगाना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Plastic sheets only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Protective barricades and signages"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Loose bricks at one corner"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Nothing, only temporary lighting"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSC/N0136",
+        "PSC/N0130"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC3: place protective barricades and signages around the pits and trenches; PSC/N0130 PC19 extends this to signage and barricades for the whole work area.",
+        "hi": "PSC/N0136 PC3: गड्ढों और खाइयों के चारों ओर सुरक्षात्मक बैरिकेड और साइनेज लगाएं।"
+      }
+    },
+    {
+      "id": "mcq-ventilation-underground-work",
+      "topic": "safety",
+      "prompt": {
+        "en": "Before entering underground work areas, PSC/N0136 PC6 requires the plumber to:",
+        "hi": "भूमिगत कार्य क्षेत्र में प्रवेश से पहले PSC/N0136 PC6 के अनुसार प्लंबर को क्या करना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Establish ventilation"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Light a candle to test the air"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Fill the area with water"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Skip the entry if it looks dark"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC6: establish ventilation before entering underground work areas. A flame is never a gas test - it can ignite sewer gas.",
+        "hi": "PSC/N0136 PC6: भूमिगत कार्य क्षेत्र में प्रवेश से पहले वेंटिलेशन स्थापित करें।"
+      }
+    },
+    {
+      "id": "mcq-safe-working-trenches-confined",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which statement correctly matches PSC/N0136 PC7?",
+        "hi": "PSC/N0136 PC7 से कौन सा कथन सही मेल खाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Work safely in and around trenches, elevated places and confined areas"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Enter confined spaces alone without testing"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Work at height without stable access"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Leave trench walls unsupported in soft soil"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC7: work safely in and around trenches, elevated places and confined areas - these are the highest-risk zones on a plumbing site.",
+        "hi": "PSC/N0136 PC7: खाइयों, ऊंचाई और संकीर्ण स्थानों में व उनके आसपास सुरक्षित रूप से काम करें।"
+      }
+    },
+    {
+      "id": "mcq-grounded-power-tools",
+      "topic": "safety",
+      "prompt": {
+        "en": "PSC/N0136 PC15 on the use of power tools states:",
+        "hi": "पावर टूल के उपयोग पर PSC/N0136 PC15 क्या कहता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Use power tools and machinery that are grounded"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Remove the earth pin for convenience"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Use damaged cables if they are taped"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Hold the tool with wet hands for grip"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC15: use power tools and machinery that are grounded; PC14 and PC16 add that tools must be in good condition and split or loose tools replaced before use.",
+        "hi": "PSC/N0136 PC15: ऐसे पावर टूल और मशीनरी उपयोग करें जो ग्राउंडेड हों।"
+      }
+    },
+    {
+      "id": "mcq-fire-extinguisher-use",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which action is required by PSC/N0136 PC19?",
+        "hi": "PSC/N0136 PC19 किस कार्य की आवश्यकता रखता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Use a fire extinguisher correctly"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Keep extinguishers locked away so they are not stolen"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Fight any fire with water"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Move burning materials indoors"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC19: use a fire extinguisher correctly - right extinguisher for the fire class, kept accessible and never fighting an electrical or solvent fire with water.",
+        "hi": "PSC/N0136 PC19: अग्निशामक का सही उपयोग करें - आग के प्रकार के अनुसार सही अग्निशामक लगाएं।"
+      }
+    },
+    {
+      "id": "mcq-free-from-electrocution",
+      "topic": "safety",
+      "prompt": {
+        "en": "A co-worker is receiving an electric shock. What does PSC/N0136 PC20 require?",
+        "hi": "सहकर्मी को बिजली का झटका लग रहा है। PSC/N0136 PC20 क्या निर्देश देता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Pull the person away with bare hands"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Use safe methods to free the person from electrocution, starting by isolating the supply"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Throw water on the person"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Wait for the person to let go on their own"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC20: use safe methods to free a person from electrocution - isolate the supply first or push the wire away with a dry non-conducting object; touching the victim with bare hands electrocutes the rescuer too.",
+        "hi": "PSC/N0136 PC20: व्यक्ति को विद्युत झटके से सुरक्षित विधि से छुड़ाएं - पहले सप्लाई बंद करें।"
+      }
+    },
+    {
+      "id": "mcq-first-aid-cpr",
+      "topic": "safety",
+      "prompt": {
+        "en": "PSC/N0136 PC21 requires appropriate first aid (such as CPR) for victims of:",
+        "hi": "PSC/N0136 PC21 के अनुसार किन पीड़ितों को सीपीआर सहित उचित प्राथमिक उपचार देना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Cuts, bleeding, burns, choking, electric shock, poisoning, etc."
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Only a minor paper cut"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Only heat stroke"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Only tiredness after work"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0136 PC21: administer appropriate first aid (such as CPR etc.) to victims in case of cuts, bleeding, burns, choking, electric shock, poisoning, etc.",
+        "hi": "PSC/N0136 PC21: कटने, रक्तस्राव, जलन, घुटन, बिजली झटके, विषाक्तता आदि के पीड़ितों को सीपीआर सहित उचित प्राथमिक उपचार दें।"
+      }
+    },
+    {
+      "id": "mcq-signage-and-barricades",
+      "topic": "safety",
+      "prompt": {
+        "en": "PSC/N0130 PC19 requires which of the following to protect the work area, workers and visitors?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Place signages and barricades as required"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Keep the area unmarked for faster movement"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Store tools in the passage"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Allow visitors inside the work zone"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0130 PC19: place signages and barricades as required to ensure safety and security of the work area, workers and visitors."
+      }
+    },
+    {
+      "id": "mcq-pipe-wrench-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "Which hand tool is primarily used to grip and turn threaded GI pipes and fittings?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Pipe wrench (Stilson)"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Spirit level"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Plunger"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Caulking gun"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 KU1 lists pipe wrenches among the hand tools (pipe wrenches, adjustable spanners, pipe cutters, pliers and plungers) used in plumbing."
+      }
+    },
+    {
+      "id": "mcq-deburring-after-cutting",
+      "topic": "tools",
+      "prompt": {
+        "en": "After cutting a CPVC pipe with a pipe cutter, what must be done before joining it?",
+        "hi": "पाइप कटर से सीपीवीसी पाइप काटने के बाद, जोड़ने से पहले क्या करना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Deburr/ream and clean the cut end"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Paint the cut end"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Heat the end with a torch"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Nothing, the cut is ready to join"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130",
+        "PSC/N0131"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 PC2 covers cutting, deburring/filing, marking and fixing; PSC/N0131 PC9 requires preparing pipe ends by reaming, deburring, levelling, filing and grinding so the joint seals properly.",
+        "hi": "PSC/N0130 PC2 कटिंग व डिबरिंग/फाइलिंग और PSC/N0131 PC9 पाइप एंड तैयार करना - रीमिंग, डिबरिंग, फाइलिंग शामिल है।"
+      }
+    },
+    {
+      "id": "mcq-drain-snake-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "Which tool is used to clear a blocked drain line that a plunger cannot clear?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Drain snake / auger"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Spirit level"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Pipe bender"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Pressure gauge"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0142"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0142 PC7 requires unclogging drains and drain strainer baskets; the drain snake/auger (drain cleaning machine in PSC/N0130 KU3) reaches blockages deep in the line that a plunger cannot."
+      }
+    },
+    {
+      "id": "mcq-plunger-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "A cup plunger is best suited for:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Clearing a simple blockage in sinks and WC bowls by creating a pressure surge"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cutting GI pipe to length"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Threading a pipe end"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Measuring water pressure"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0142",
+        "PSC/N0130"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 KU1 lists plungers as basic plumbing hand tools; PSC/N0142 PC7 covers removing blockages - a plunger works on shallow blockages, a drain snake on deeper ones."
+      }
+    },
+    {
+      "id": "mcq-pressure-gauge-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "Which device is used to check the pressure of a water supply system before commissioning?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Pressure gauge"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Plunger"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Hacksaw"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Chisel"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 KU5 covers measuring and testing devices such as pressure gauges and leak detectors; PC10 requires the correct pressure and flow rate for the water supply system."
+      }
+    },
+    {
+      "id": "mcq-spirit-level-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "A spirit level is used during installation mainly to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Ensure fixtures, supports and pipe runs are level and correctly graded"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cut the pipe to length"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Unclog a drain"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Measure water pressure"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130",
+        "PSC/N0133"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0133 PC14 requires plumbing and levelling the supports and fixtures for alignment and balance; PSC/N0130 PC11 requires the correct slope for drainage pipes."
+      }
+    },
+    {
+      "id": "mcq-soldering-torch-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "A soldering torch in plumbing is used to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Heat soldered joints on copper/GI pipes (hot work)"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cut PVC drainage pipes"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Level a wash basin"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Detect a hidden leak"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "PSC/N0130 KU3 lists soldering torches as specialized equipment for plumbing joints. Soldering is hot work: ventilate the area, keep cylinders away from the flame and never leave the torch unattended."
+      }
+    },
+    {
+      "id": "mcq-drainage-slope",
+      "topic": "theory",
+      "prompt": {
+        "en": "For a drainage system, PSC/N0130 PC11 requires the pipe to be laid with:",
+        "hi": "जल निकासी प्रणाली के लिए PSC/N0130 PC11 के अनुसार पाइप किस तरह बिछाना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The correct size and correct slope (fall)"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "No slope at all"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "A slope towards the water supply inlet"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The steepest slope possible"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 PC11: ensure correct usage of pipe size and fitting the pipe with correct slope to install the drainage system - too little fall blocks flow, too much fall leaves solids behind.",
+        "hi": "PSC/N0130 PC11: सही पाइप साइज और सही ढलान (स्लोप) के साथ ड्रेनेज पाइप बिछाएं।"
+      }
+    },
+    {
+      "id": "mcq-water-seal-and-venting",
+      "topic": "theory",
+      "prompt": {
+        "en": "PSC/N0130 PC14 requires checking the drainage system for proper venting, position of traps and:",
+        "hi": "PSC/N0130 PC14 के अनुसार ड्रेनेज प्रणाली में वेंटिंग, ट्रैप की स्थिति के साथ क्या जांचना चाहिए?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Anti-siphonage to prevent breaking of water seals"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Painted covers"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Electrical earthing"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Solar panel mounting"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 PC14: check the drainage system for proper venting, position of traps and anti-siphonage to prevent breaking of water seals - the water seal stops sewer gas entering the building.",
+        "hi": "PSC/N0130 PC14: सही वेंटिंग, ट्रैप की स्थिति और एंटी-सिफोनेज जांचें ताकि वॉटर सील न टूटे।"
+      }
+    },
+    {
+      "id": "mcq-pipe-size-for-flow",
+      "topic": "theory",
+      "prompt": {
+        "en": "The correct pipe size/diameter/type for a water supply system is selected to obtain the required:",
+        "hi": "जल आपूर्ति प्रणाली के लिए सही पाइप साइज/व्यास/प्रकार किसलिए चुना जाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Pressure and flow rate"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Colour of the water"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Noise level of the pipe"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Weight of the pipe alone"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0130 PC10: ensure correct pipe size/diameter/type is used to get the required pressure and flow rate for the water supply system.",
+        "hi": "PSC/N0130 PC10: आवश्यक दबाव और प्रवाह दर के लिए सही पाइप साइज/व्यास/प्रकार उपयोग करें।"
+      }
+    },
+    {
+      "id": "mcq-hot-and-cold-water-system",
+      "topic": "theory",
+      "prompt": {
+        "en": "Which statement best matches PSC/N0131 PC2?",
+        "hi": "PSC/N0131 PC2 से कौन सा कथन सर्वोत्तम मेल खाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The plumber must be able to explain the hot water and cold water distribution/circulation system in detail"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "One common pipe carries both hot and cold water"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Hot water lines are never insulated"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Circulation systems are not part of plumbing work"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0131"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0131 PC2: explain in detail the hot water and cold water distribution/circulation system; PSC/N0130 PC7 adds that hot and cold lines are laid correctly and insulated where necessary.",
+        "hi": "PSC/N0131 PC2: गर्म और ठंडे पानी की वितरण/परिसंचरण प्रणाली को विस्तार से समझाएं।"
+      }
+    },
+    {
+      "id": "mcq-air-lock-removal",
+      "topic": "theory",
+      "prompt": {
+        "en": "A tap yields no water although the supply is on - there is an air lock. PSC/N0142 PC5 requires the plumber to:",
+        "hi": "सप्लाई चालू होते हुए भी नल से पानी नहीं आ रहा - एयर लॉक है। PSC/N0142 PC5 के अनुसार प्लंबर क्या करे?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Remove the air lock and blockages in the pipes"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Replace the whole house piping"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Increase the pump pressure only"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Ignore it, it clears by itself"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0142"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0142 PC5: remove air lock and blockages in the pipes that are installed - air locks are cleared by venting or flushing the line, not by replacing the piping.",
+        "hi": "PSC/N0142 PC5: पाइप में एयर लॉक और रुकावट हटाएं - पूरी लाइन बदलने की जरूरत नहीं।"
+      }
+    },
+    {
+      "id": "mcq-green-plumbing-practices",
+      "topic": "theory",
+      "prompt": {
+        "en": "Which of these is a green plumbing practice as per PSC/N0142 PC18-PC24?",
+        "hi": "PSC/N0142 PC18-PC24 के अनुसार निम्न में से कौन सी हरित प्लंबिंग प्रथा है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Use water-efficient fixtures and apply leak-prevention techniques"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Leave taps dripping to keep drains wet"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Use high-toxicity solvents for every joint"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Oversize pressure so leaks flush away"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0142"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0142 PC18-PC19: minimize water usage with water-efficient fixtures and apply leak-prevention techniques; PC20-PC24 add low-toxicity materials, optimal pressure, hot-water pipe insulation and green building compliance.",
+        "hi": "PSC/N0142 PC18-PC19: जल-दक्ष फिटिंग से पानी का उपयोग कम करें और लीक रोकथाम तकनीक अपनाएं।"
+      }
+    },
+    {
+      "id": "mcq-insulation-thickness",
+      "topic": "theory",
+      "prompt": {
+        "en": "PSC/N0183 PC15 requires the desired thickness of insulation material to be calculated on the basis of:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Pipe diameter"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Colour of the pipe"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Height of the room"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Number of taps"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "PSC/N0183"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "PSC/N0183 PC15: calculate the desired thickness of insulation material based on pipe diameter; PC19-PC23 then require sealed seams, correct fastening, access to valves, reduced heat loss and temperature compatibility."
+      }
+    }
+  ],
+  "taskBlueprints": [
+    {
+      "id": "mcq-safety-critical",
+      "type": "mcq",
+      "title": {
+        "en": "Safety knowledge check (PPE, isolation, barricades, rescue)",
+        "hi": "सुरक्षा ज्ञान परीक्षण (पीपीई, अलगाव, बैरिकेड, बचाव)"
+      },
+      "brief": {
+        "en": "Answer the safety questions drawn from PSC/N0136 and PSC/N0130. A failed critical-safety item vetoes the overall pass.",
+        "hi": "PSC/N0136 और PSC/N0130 से लिए गए सुरक्षा प्रश्नों के उत्तर दें। किसी गंभीर सुरक्षा प्रश्न में असफलता समग्र उत्तीर्णता को रोक देगी।"
+      },
+      "nosRefs": [
+        "PSC/N0136",
+        "PSC/N0130"
+      ],
+      "criteriaRefs": [
+        "PSC-N0136-PC1",
+        "PSC-N0136-PC2",
+        "PSC-N0136-PC3",
+        "PSC-N0136-PC4",
+        "PSC-N0136-PC6",
+        "PSC-N0136-PC7",
+        "PSC-N0136-PC15",
+        "PSC-N0136-PC19",
+        "PSC-N0136-PC20",
+        "PSC-N0136-PC21",
+        "PSC-N0130-PC19"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [
+        "mcq-ppe-for-plumbing-work",
+        "mcq-isolate-electrical-wiring",
+        "mcq-barricades-around-pits",
+        "mcq-ventilation-underground-work",
+        "mcq-safe-working-trenches-confined",
+        "mcq-grounded-power-tools",
+        "mcq-fire-extinguisher-use",
+        "mcq-free-from-electrocution",
+        "mcq-first-aid-cpr",
+        "mcq-signage-and-barricades"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "mcq-tools-and-theory",
+      "type": "mcq",
+      "title": {
+        "en": "Tools and plumbing theory questions",
+        "hi": "औजार और प्लंबिंग सिद्धांत प्रश्न"
+      },
+      "brief": {
+        "en": "Identify what each plumbing tool does and answer questions on drainage slope, water seals, flow and green practices.",
+        "hi": "हर प्लंबिंग टूल का कार्य पहचानें और ड्रेनेज ढलान, वॉटर सील, प्रवाह तथा हरित प्रथाओं पर प्रश्नों के उत्तर दें।"
+      },
+      "nosRefs": [
+        "PSC/N0130",
+        "PSC/N0131",
+        "PSC/N0142",
+        "PSC/N0183"
+      ],
+      "criteriaRefs": [
+        "PSC-N0130-PC1",
+        "PSC-N0130-PC2",
+        "PSC-N0130-PC10",
+        "PSC-N0130-PC11",
+        "PSC-N0130-PC14",
+        "PSC-N0131-PC2",
+        "PSC-N0142-PC5",
+        "PSC-N0142-PC18",
+        "PSC-N0183-PC15"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [
+        "mcq-pipe-wrench-use",
+        "mcq-deburring-after-cutting",
+        "mcq-drain-snake-use",
+        "mcq-plunger-use",
+        "mcq-pressure-gauge-purpose",
+        "mcq-spirit-level-purpose",
+        "mcq-soldering-torch-use",
+        "mcq-drainage-slope",
+        "mcq-water-seal-and-venting",
+        "mcq-pipe-size-for-flow",
+        "mcq-hot-and-cold-water-system",
+        "mcq-air-lock-removal",
+        "mcq-green-plumbing-practices",
+        "mcq-insulation-thickness"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-hand-tools",
+      "type": "tool_identification",
+      "title": {
+        "en": "Identify the plumbing hand tools and measuring devices",
+        "hi": "प्लंबिंग हैंड टूल और मापन उपकरण पहचानें"
+      },
+      "brief": {
+        "en": "From a presented set, pick the hand tools and measuring/inspection devices required for plumbing preparation work and reject the distractors.",
+        "hi": "दिए गए सेट में से प्लंबिंग तैयारी कार्य के लिए आवश्यक हैंड टूल और मापन/निरीक्षण उपकरण चुनें और भ्रामक विकल्पों को खारिज करें।"
+      },
+      "nosRefs": [
+        "PSC/N0130"
+      ],
+      "criteriaRefs": [
+        "PSC-N0130-PC1",
+        "PSC-N0130-PC2",
+        "PSC-N0130-PC4",
+        "PSC-N0130-PC5"
+      ],
+      "weight": 7,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolPickCount": 5,
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-drainage-and-repair",
+      "type": "tool_identification",
+      "title": {
+        "en": "Identify the tools for drainage installation and blockage repair",
+        "hi": "ड्रेनेज इंस्टॉलेशन और रुकावट मरम्मत के औजार पहचानें"
+      },
+      "brief": {
+        "en": "Pick the correct tools for installing drainage components and for clearing blocked drains and leaking fittings; reject the distractors.",
+        "hi": "ड्रेनेज कंपोनेंट इंस्टॉल करने और अवरुद्ध ड्रेन व रिसती फिटिंग ठीक करने के सही औजार चुनें; भ्रामक विकल्प खारिज करें।"
+      },
+      "nosRefs": [
+        "PSC/N0132",
+        "PSC/N0142",
+        "PSC/N0133"
+      ],
+      "criteriaRefs": [
+        "PSC-N0132-PC7",
+        "PSC-N0142-PC7",
+        "PSC-N0142-PC9",
+        "PSC-N0133-PC6"
+      ],
+      "weight": 6,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolPickCount": 5,
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "checklist-pre-work-safety",
+      "type": "checklist",
+      "title": {
+        "en": "Pre-work safety checklist (PPE, isolation, barricades, tool condition)",
+        "hi": "कार्य-पूर्व सुरक्षा चेकलिस्ट (पीपीई, अलगाव, बैरिकेड, औजार की स्थिति)",
+        "mr": "कामापूर्व सुरक्षा यादी (पीपीई, विभक्ती, बॅरिकेड, साधनाची स्थिती)"
+      },
+      "brief": {
+        "en": "Confirm every isolation, PPE, ventilation, barricading and tool-condition step performed before opening any joint or entering any pit.",
+        "hi": "कोई भी जॉइन खोलने या गड्ढे में उतरने से पहले किए गए हर अलगाव, पीपीई, वेंटिलेशन, बैरिकेड और औजार-स्थिति चरण की पुष्टि करें।"
+      },
+      "nosRefs": [
+        "PSC/N0136",
+        "PSC/N0130"
+      ],
+      "criteriaRefs": [
+        "PSC-N0136-PC1",
+        "PSC-N0136-PC2",
+        "PSC-N0136-PC3",
+        "PSC-N0136-PC4",
+        "PSC-N0136-PC6",
+        "PSC-N0136-PC7",
+        "PSC-N0136-PC8",
+        "PSC-N0136-PC9",
+        "PSC-N0136-PC14",
+        "PSC-N0130-PC16",
+        "PSC-N0130-PC17",
+        "PSC-N0130-PC19"
+      ],
+      "weight": 12,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "checklist-installation-quality",
+      "type": "checklist",
+      "title": {
+        "en": "Installation quality and handover checklist",
+        "hi": "इंस्टॉलेशन गुणवत्ता और हैंडओवर चेकलिस्ट"
+      },
+      "brief": {
+        "en": "Walk through alignment, levelling, support, fault-rectification and customer handover checks after installing water supply pipework and fixtures.",
+        "hi": "जल आपूर्ति पाइपलाइन और फिटिंग स्थापित करने के बाद संरेखण, लेवलिंग, सपोर्ट, दोष-सुधार और ग्राहक हैंडओवर जांच करें।"
+      },
+      "nosRefs": [
+        "PSC/N0131",
+        "PSC/N0133"
+      ],
+      "criteriaRefs": [
+        "PSC-N0131-PC13",
+        "PSC-N0131-PC18",
+        "PSC-N0131-PC19",
+        "PSC-N0133-PC4",
+        "PSC-N0133-PC14",
+        "PSC-N0133-PC15",
+        "PSC-N0133-PC18"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-photo-work-preparation",
+      "type": "practical_photo",
+      "title": {
+        "en": "Photograph the prepared work area (material, barricades, signage, tool check)",
+        "hi": "तैयार कार्य क्षेत्र की फोटो लें (सामग्री, बैरिकेड, साइनेज, टूल जांच)"
+      },
+      "brief": {
+        "en": "Take photos of the collected material stored without spillage, the cleared work area, the barricades and signages around pits/trenches, and the tools being checked before use.",
+        "hi": "बिना रिसाव भंडारित सामग्री, साफ कार्य क्षेत्र, गड्ढों/खाइयों के चारों ओर बैरिकेड व साइनेज और उपयोग से पहले औजार जांच की फोटो लें।"
+      },
+      "nosRefs": [
+        "PSC/N0130",
+        "PSC/N0136"
+      ],
+      "criteriaRefs": [
+        "PSC-N0130-PC15",
+        "PSC-N0130-PC16",
+        "PSC-N0130-PC17",
+        "PSC-N0130-PC18",
+        "PSC-N0130-PC19",
+        "PSC-N0136-PC3",
+        "PSC-N0136-PC14"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 3,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-photo-fixture-installation",
+      "type": "practical_photo",
+      "title": {
+        "en": "Photograph an installed sanitary fixture (level, supports, connections)",
+        "hi": "स्थापित स्वच्छता फिक्स्चर की फोटो लें (लेवल, सपोर्ट, कनेक्शन)"
+      },
+      "brief": {
+        "en": "Photograph the installed fixture showing it level and securely fastened, the pipe supports with correct grade and spacing, and the water supply and drainage connections.",
+        "hi": "ऐसी फोटो लें जिसमें स्थापित फिक्स्चर लेवल व सुरक्षित रूप से जुड़ा हो, पाइप सपोर्ट सही ग्रेड व स्पेसिंग में हों और जल आपूर्ति व ड्रेनेज कनेक्शन दिखें।"
+      },
+      "nosRefs": [
+        "PSC/N0133"
+      ],
+      "criteriaRefs": [
+        "PSC-N0133-PC3",
+        "PSC-N0133-PC4",
+        "PSC-N0133-PC6",
+        "PSC-N0133-PC7",
+        "PSC-N0133-PC10",
+        "PSC-N0133-PC14"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 3,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-video-water-supply-installation",
+      "type": "practical_video",
+      "title": {
+        "en": "Video: cut, prepare, joint and install a water supply pipe run",
+        "hi": "वीडियो: जल आपूर्ति पाइप काटना, तैयार करना, जोड़ना और इंस्टॉल करना",
+        "mr": "व्हिडिओ: पाणीपुरवठा पाइप कापणे, तयार करणे, जोडणे आणि बसवणे"
+      },
+      "brief": {
+        "en": "Record the full sequence: measure and mark, cut the GI/CPVC/PPR pipe, deburr the ends, bend to the required offset, join with fittings, install with correct support and alignment, and check the finished run for leaks.",
+        "hi": "पूरा क्रम रिकॉर्ड करें: नाप व चिह्न, जीआई/सीपीवीसी/पीपीआर पाइप काटना, छोर डिबर करना, आवश्यक ऑफसेट पर मोड़ना, फिटिंग से जोड़ना, सही सपोर्ट व संरेखण के साथ स्थापित करना और लीक की जांच।"
+      },
+      "nosRefs": [
+        "PSC/N0131"
+      ],
+      "criteriaRefs": [
+        "PSC-N0131-PC5",
+        "PSC-N0131-PC7",
+        "PSC-N0131-PC8",
+        "PSC-N0131-PC9",
+        "PSC-N0131-PC10",
+        "PSC-N0131-PC13",
+        "PSC-N0131-PC16",
+        "PSC-N0131-PC18"
+      ],
+      "weight": 11,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false,
+        "minDurationSec": 60,
+        "maxDurationSec": 300
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "practical-video-repair-and-maintenance",
+      "type": "practical_video",
+      "title": {
+        "en": "Video: diagnose and repair a domestic plumbing fault",
+        "hi": "वीडियो: घरेलू प्लंबिंग दोष का निदान और मरम्मत"
+      },
+      "brief": {
+        "en": "Record the diagnosis of the root cause, removal of the blockage/air lock, unclogging of the drain strainer, rectification of the leakage or loose fitting, and the daily maintenance log entry at the end.",
+        "hi": "मूल कारण का निदान, रुकावट/एयर लॉक हटाना, ड्रेन स्ट्रेनर साफ करना, लीकेज या ढीली फिटिंग ठीक करना और अंत में दैनिक रखरखाव लॉग प्रविष्टि - सब रिकॉर्ड करें।"
+      },
+      "nosRefs": [
+        "PSC/N0142"
+      ],
+      "criteriaRefs": [
+        "PSC-N0142-PC1",
+        "PSC-N0142-PC2",
+        "PSC-N0142-PC5",
+        "PSC-N0142-PC7",
+        "PSC-N0142-PC9",
+        "PSC-N0142-PC16"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "narrationRequired": false,
+        "minDurationSec": 60,
+        "maxDurationSec": 300
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "narration-drainage-fault-walkthrough",
+      "type": "narration",
+      "title": {
+        "en": "Narrate your fault-diagnosis walkthrough of a blocked drain",
+        "hi": "अवरुद्ध ड्रेन के दोष-निदान का वर्णन करें",
+        "mr": "बंद नळाच्या त्रुटी-निदानाचे वर्णन करा"
+      },
+      "brief": {
+        "en": "Talk through how you detect the root cause, find the blockage or air lock, unclog the drain and strainer basket, stop the leakage or loose fitting, repair the trap, and record the daily log.",
+        "hi": "साथ-साथ बताएं कि आप मूल कारण कैसे पहचानते हैं, रुकावट या एयर लॉक कहां मिलाते हैं, ड्रेन व स्ट्रेनर बास्केट कैसे साफ करते हैं, लीकेज या ढीली फिटिंग कैसे रोकते हैं, ट्रैप कैसे ठीक करते हैं और दैनिक लॉग कैसे भरते हैं।"
+      },
+      "nosRefs": [
+        "PSC/N0142",
+        "PSC/N0132"
+      ],
+      "criteriaRefs": [
+        "PSC-N0142-PC1",
+        "PSC-N0142-PC2",
+        "PSC-N0142-PC5",
+        "PSC-N0142-PC7",
+        "PSC-N0142-PC9",
+        "PSC-N0142-PC16",
+        "PSC-N0132-PC13"
+      ],
+      "weight": 6,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 15,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "narration-safety-isolation-and-rescue",
+      "type": "narration",
+      "title": {
+        "en": "Narrate the isolation, PPE and emergency-response procedure before starting work",
+        "hi": "काम शुरू करने से पहले अलगाव, पीपीई और आपातकालीन प्रतिक्रिया प्रक्रिया का वर्णन करें",
+        "mr": "काम सुरू करण्यापूर्वी विभक्ती, पीपीई आणि आणीबाणी प्रतिसाद प्रक्रियेचे वर्णन करा"
+      },
+      "brief": {
+        "en": "Explain aloud how you identify the hazards, isolate the water/electrical supply, don the correct PPE, barricade the pit or trench, work safely in the confined area, and respond with a fire extinguisher, rescue method and first aid including CPR if something goes wrong.",
+        "hi": "साथ-साथ बताएं कि आप खतरे कैसे पहचानते हैं, पानी/विद्युत सप्लाई कैसे अलग करते हैं, सही पीपीई कैसे पहनते हैं, गड्ढा या खाई कैसे बैरिकेड करते हैं, संकीर्ण स्थान में सुरक्षित काम कैसे करते हैं, और गलती होने पर अग्निशामक, बचाव विधि तथा सीपीआर सहित प्राथमिक उपचार से कैसे प्रतिक्रिया देते हैं।"
+      },
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "criteriaRefs": [
+        "PSC-N0136-PC1",
+        "PSC-N0136-PC2",
+        "PSC-N0136-PC3",
+        "PSC-N0136-PC4",
+        "PSC-N0136-PC6",
+        "PSC-N0136-PC7",
+        "PSC-N0136-PC19",
+        "PSC-N0136-PC20",
+        "PSC-N0136-PC21"
+      ],
+      "weight": 6,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 15,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    }
+  ],
+  "thresholds": {
+    "overallPass": 0.6,
+    "perTaskPass": 0.5,
+    "criticalMustPass": true,
+    "confidenceHumanRoute": 0.65,
+    "consistencyFlagThreshold": 0.35,
+    "levelBands": [
+      {
+        "level": 3,
+        "minScore": 0,
+        "maxScore": 0.55,
+        "label": "NSQF Level 3 - assists on routine plumbing installation and repair under supervision"
+      },
+      {
+        "level": 4,
+        "minScore": 0.6,
+        "maxScore": 0.82,
+        "label": "NSQF Level 4 - independently installs water supply, drainage and sanitary fixtures"
+      },
+      {
+        "level": 5,
+        "minScore": 0.85,
+        "maxScore": 1,
+        "label": "NSQF Level 5 - supervises plumbing works and troubleshoots complex systems"
+      }
+    ],
+    "bridgeBand": {
+      "minScore": 0.55,
+      "maxScore": 0.6
+    }
+  },
+  "bridgeTraining": [
+    {
+      "skillArea": "Safe isolation, PPE and work-area barricading",
+      "nosRefs": [
+        "PSC/N0136",
+        "PSC/N0130"
+      ],
+      "suggestion": {
+        "en": "Practise the full pre-work sequence until it is habit: identify hazards, isolate the water/electrical supply, don the correct PPE for the task, barricade pits and trenches with signage, and verify every tool is in good condition before use.",
+        "hi": "कार्य-पूर्व पूरी श्रृंखला का अभ्यास करें: खतरे पहचानें, पानी/विद्युत सप्लाई अलग करें, कार्य के अनुसार पीपीई पहनें, गड्ढों-खाइयों पर बैरिकेड व साइनेज लगाएं और उपयोग से पहले हर औजार की जांच करें।"
+      }
+    },
+    {
+      "skillArea": "Drainage venting, traps and correct slope",
+      "nosRefs": [
+        "PSC/N0132",
+        "PSC/N0130"
+      ],
+      "suggestion": {
+        "en": "Drill on laying drainage pipes with the correct size and slope, positioning traps and inspection chambers, venting and anti-siphonage so water seals never break, and testing the installation for proper functioning.",
+        "hi": "सही साइज व ढलान के साथ ड्रेनेज पाइप बिछाने, ट्रैप व इंस्पेक्शन चैंबर स्थित करने, वेंटिंग व एंटी-सिफोनेज और कार्यशीलता परीक्षण का अभ्यास करें।"
+      }
+    },
+    {
+      "skillArea": "Pipe cutting, deburring, bending and jointing",
+      "nosRefs": [
+        "PSC/N0131"
+      ],
+      "suggestion": {
+        "en": "Repeat measure-mark-cut-deburr-bend-join on GI, CPVC and PPR pipe until every cut end is reamed smooth, every bend hits the specified angle and every joint meets the required specification."
+      }
+    },
+    {
+      "skillArea": "Fault finding: blockages, air lock and leakages",
+      "nosRefs": [
+        "PSC/N0142"
+      ],
+      "suggestion": {
+        "en": "Build speed at detecting the root cause of low flow, blockages and air locks, unclogging drains and strainer baskets, and resolving leakages, loosening and jamming of fittings - then record the daily log.",
+        "hi": "कम प्रवाह, रुकावट और एयर लॉक का मूल कारण पहचानने, ड्रेन व स्ट्रेनर साफ करने और लीकेज/जाम हल करने में गति बढ़ाएं - अंत में दैनिक लॉग भरें।"
+      }
+    },
+    {
+      "skillArea": "Confined space, hot work and emergency response",
+      "nosRefs": [
+        "PSC/N0136"
+      ],
+      "suggestion": {
+        "en": "Rehearse ventilation and standby cover before manhole or underground entry, safe LPG torch and solvent-cement handling, fire extinguisher selection, safe freeing from electrocution, and first aid including CPR.",
+        "hi": "मैनहोल/भूमिगत प्रवेश से पहले वेंटिलेशन व स्टैंडबाय, सुरक्षित टॉर्च व सॉल्वेंट हैंडलिंग, अग्निशामक चयन, विद्युत झटके से बचाव और सीपीआर सहित प्राथमिक उपचार का अभ्यास करें।"
+      }
+    }
+  ]
+}

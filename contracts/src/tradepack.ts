@@ -36,6 +36,14 @@ export const PerformanceCriterion = z.object({
   criticalSafety: z.boolean().default(false),
   /** Keywords used by the deterministic (no-LLM) scoring/retrieval fallback. */
   keywords: z.array(z.string()).default([]),
+  /**
+   * Hindi keyword variants (Devanagari and/or romanised) matched against
+   * regional-language narration so the no-LLM fallback does not score a
+   * Hindi speaker at zero. Optional; English `keywords` are always matched too.
+   */
+  keywordsHi: z.array(z.string()).default([]),
+  /** Marathi keyword variants for the deterministic narration fallback. */
+  keywordsMr: z.array(z.string()).default([]),
 });
 export type PerformanceCriterion = z.infer<typeof PerformanceCriterion>;
 

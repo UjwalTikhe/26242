@@ -70,6 +70,29 @@ All phases implemented and tested (`npm test` — 116 integration tests, real
 | 5 | Scoring engine (review-over-AI precedence, weighted overall, critical-safety veto, NSQF bands) + assessor review/claim/decision |
 | 6 | Competency report, certificate PDF + QR, public `/verify/:certificateNo`, tamper-evident per-assessment audit chain |
 | 7 | Socket.IO real-time, fairness analytics, Docker image + prod compose |
+| 8 | Plumber + Mason trade packs (sourced QP/NOS), Hindi/Marathi narration scoring + prompts, mobile public verifier landing page |
+
+### Trades & multilingual
+
+Packs are config-driven JSON in `backend/src/data/trade-packs/` (no code changes
+to add a trade): **Electrician**, **Welder**, **Plumber** (`PSC/Q0104`, NSQF 4,
+WMPSC) and **Mason** (`CON/Q0103`, NSQF 3, CSDCI). Every pack cites its QP/NOS
+sources with a `verified`/`estimated` confidence marker.
+
+Assessment is voice-first and regional by default. Narration and vision prompts
+accept Hindi/Marathi evidence in Devanagari, romanised or code-mixed (Hinglish);
+ASR is asked for the worker's language; and the deterministic (no-LLM) scorer
+matches `keywordsHi`/`keywordsMr` in addition to English, so a regional speaker is
+never scored at zero. Unverifiable regional narration is honestly routed to a
+human instead of being silently scored down.
+
+### Public certificate verifier
+
+Scanning a certificate QR opens `${PUBLIC_BASE_URL}/verify/<certificateNo>` — a
+mobile-first, no-login HTML page served by the backend (status badge, holder,
+trade, NSQF level, score, issue/decision dates; revoked and not-found states).
+The same route negotiates JSON with `?format=json` or `Accept: application/json`.
+The app/PWA keeps using the contract route `GET /api/v1/verify/:certificateNo`.
 
 ### API surface
 

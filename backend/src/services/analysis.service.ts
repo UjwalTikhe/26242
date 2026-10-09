@@ -9,6 +9,11 @@
  * When an OpenAI-compatible provider is configured the same items are upgraded
  * in place to `llm`/`mixed` with vision checks and ASR transcripts.
  *
+ * Multilingual by design: narration and vision prompts accept Hindi/Marathi
+ * (Devanagari, romanised or code-mixed) evidence, ASR is asked for the worker's
+ * language, and the deterministic scorer matches `keywordsHi`/`keywordsMr` in
+ * addition to English so a regional speaker is never scored at zero.
+ *
  * The pipeline NEVER decides pass/fail — that is the assessor + scoring engine.
  * It only produces per-item suggestions, confidences, flags and routing.
  */
@@ -58,11 +63,29 @@ const num = (v: unknown, fallback = 0): number => (typeof v === 'number' && Numb
 /** Drop `undefined` object keys (Mongoose Mixed turns them into `null`, which the contract rejects). */
 const clean = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
 
+/** Normalise BCP-47-ish language tags ("hi-IN", "mr") to our en/hi/mr codes. */
+const LANG_ALIASES: Record<string, 'en' | 'hi' | 'mr'> = {
+  en: 'en', 'en-in': 'en', 'en-us': 'en', 'en-gb': 'en', eng: 'en',
+  hi: 'hi', 'hi-in': 'hi', hin: 'hi', hindi: 'hi',
+  mr: 'mr', 'mr-in': 'mr', mar: 'mr', marathi: 'mr',
+};
+export function normLang(language: string | undefined): 'en' | 'hi' | 'mr' {
+  if (!language) return 'en';
+  const key = language.trim().toLowerCase();
+  const direct = LANG_ALIASES[key];
+  if (direct) return direct;
+  const base = key.split(/[-_]/)[0];
+  return base === 'hi' || base === 'mr' ? base : 'en';
+}
+
 function pickText(text: { en: string; hi?: string; mr?: string } | undefined, lang: string): string {
   if (!text) return '';
   const rec = text as Record<string, string | undefined>;
   return rec[lang] ?? rec.en ?? '';
 }
+
+/** Devanagari block — a strong hint the narration is spoken in Hindi/Marathi. */
+const DEVANAGARI = /[\u0900-\u097F]/;
 
 /* ------------------------------- flags ------------------------------ */
 
@@ -172,15 +195,49 @@ function narrationSource(
   return null;
 }
 
-function keywordScore(task: Task, pcMap: Map<string, PerformanceCriterion>, text: string) {
-  const keywords = new Set<string>();
-  for (const ref of task.criteriaRefs ?? []) {
-    for (const kw of pcMap.get(ref)?.keywords ?? []) keywords.add(kw.toLowerCase());
+/**
+ * Deterministic (no-LLM) keyword coverage for narration.
+ *
+ * English keywords are always matched (workers commonly code-mix / romanise);
+ * the spoken language's `keywordsHi`/`keywordsMr` are added on top, and both are
+ * added when the transcript is Devanagari — so a Hindi/Marathi speaker is never
+ * scored at zero just because the rubric was authored in English.
+ */
+export function keywordScore(
+  task: Task,
+  pcMap: Map<string, PerformanceCriterion>,
+  text: string,
+  language?: string,
+) {
+  const lang = normLang(language);
+  const devanagari = DEVANAGARI.test(text);
+  const langs = new Set<string>(['en', lang]);
+  if (devanagari) {
+    langs.add('hi');
+    langs.add('mr');
   }
-  const lower = text.toLowerCase();
-  const hits = [...keywords].filter((kw) => lower.includes(kw));
+
+  const keywords = new Set<string>();
+  const normKw = (s: string) => s.toLowerCase().replace(/[.,;:!?()[\]{}"'`/\\|_-]/g, ' ').replace(/\s+/g, ' ').trim();
+  for (const ref of task.criteriaRefs ?? []) {
+    const pc = pcMap.get(ref);
+    if (!pc) continue;
+    const add = (list: string[]) => {
+      for (const kw of list) {
+        const n = normKw(kw);
+        if (n) keywords.add(n);
+      }
+    };
+    add(pc.keywords ?? []);
+    if (langs.has('hi')) add(pc.keywordsHi ?? []);
+    if (langs.has('mr')) add(pc.keywordsMr ?? []);
+  }
+
+  // punctuation/hyphen-insensitive match so "pipe-cutter" still hits the "pipe cutter" keyword
+  const haystack = normKw(text);
+  const hits = [...keywords].filter((kw) => kw.length > 0 && haystack.includes(kw));
   const coverage = keywords.size > 0 ? hits.length / keywords.size : 0;
-  return { hits, coverage, total: keywords.size };
+  return { hits, coverage, total: keywords.size, language: lang, devanagari };
 }
 
 /* ------------------------------ vision ------------------------------ */
@@ -219,11 +276,13 @@ async function runVisionTask(
   evs: EvidenceDoc[],
   pcMap: Map<string, PerformanceCriterion>,
   humanRoute: number,
+  language = 'en',
 ): Promise<ScoredEvidence | null> {
   const bundles = await collectFrames(evs);
   const images = bundles.flatMap((b) => b.frames.map((f) => f.jpeg));
   if (images.length === 0) return null;
 
+  const lang = normLang(language);
   const rubric = (task.criteriaRefs ?? [])
     .map((ref) => {
       const pc = pcMap.get(ref);
@@ -235,7 +294,8 @@ async function runVisionTask(
 
   const prompt = [
     'You are an NSQF competency assessor reviewing worker evidence.',
-    `Task: ${pickText(task.title, 'en')}`,
+    `Task: ${pickText(task.title, lang)}`,
+    `The worker's preferred language is ${lang}; written labels, signboards or speech in Hindi/Marathi — in Devanagari script or romanised — are valid evidence and must not be penalised.`,
     'Score how well the evidence demonstrates each rubric criterion.',
     'Respond with ONLY a JSON object:',
     '{ "score": <0..1 overall>, "confidence": <0..1>,',
@@ -295,8 +355,10 @@ async function runNarrationTask(
   pcMap: Map<string, PerformanceCriterion>,
   text: string,
   humanRoute: number,
+  language = 'en',
 ): Promise<NarrationScore> {
-  const kw = keywordScore(task, pcMap, text);
+  const lang = normLang(language);
+  const kw = keywordScore(task, pcMap, text, lang);
 
   if (llmEnabled) {
     try {
@@ -310,10 +372,13 @@ async function runNarrationTask(
         {
           role: 'system',
           content:
-            'You are an NSQF assessor scoring a worker\'s spoken narration. Respond with ONLY JSON: ' +
+            "You are an NSQF assessor scoring a worker's spoken narration. The transcript may be in " +
+            'English, Hindi or Marathi, written in Devanagari script, romanised, or code-mixed (Hinglish). ' +
+            'Judge whether the meaning and the safety/technical steps described satisfy the rubric; do not ' +
+            'require literal English keywords. Respond with ONLY JSON: ' +
             '{ "score": <0..1>, "confidence": <0..1>, "flags": [{ "kind": string, "severity": string, "message": string }] }.',
         },
-        { role: 'user', content: `Rubric:\n${rubric}\n\nNarration:\n${text}` },
+        { role: 'user', content: `Language: ${lang}\nRubric:\n${rubric}\n\nNarration:\n${text}` },
       ]);
       const parsed = (res.data ?? {}) as Record<string, unknown>;
       const score = clamp(num(parsed.score, kw.coverage));
@@ -337,11 +402,21 @@ async function runNarrationTask(
 
   const score = clamp(kw.coverage);
   const confidence = clamp(0.5 + 0.5 * kw.coverage);
+  const flags: AIFlag[] = [];
+  if (kw.devanagari && kw.hits.length === 0) {
+    flags.push({
+      kind: 'process',
+      severity: 'info',
+      message:
+        'Regional-language narration (Devanagari) did not match the English rubric keywords — routed for assessor/LLM review',
+      evidenceIds: [],
+    });
+  }
   const requiresHuman = kw.total === 0 || confidence < humanRoute;
   return {
     score,
     confidence,
-    flags: [],
+    flags,
     keywordHits: kw.hits,
     routing: requiresHuman ? 'human_required' : 'ai_assist',
     requiresHuman,
@@ -393,6 +468,7 @@ async function buildAnalysis(args: BuildArgs): Promise<BuiltAnalysis> {
   const thresholds = pack.thresholds;
   // pack-level threshold wins; env is the global default the pack schema already seeds
   const humanRoute = thresholds.confidenceHumanRoute;
+  const assessmentLanguage = normLang(assessment.language);
 
   const items: AIItemScore[] = [];
   const keyframes: KeyframeCheck[] = [];
@@ -450,7 +526,7 @@ async function buildAnalysis(args: BuildArgs): Promise<BuiltAnalysis> {
       }
       if (llmEnabled) {
         try {
-          const vision = await runVisionTask(task, evs, pcMap, humanRoute);
+          const vision = await runVisionTask(task, evs, pcMap, humanRoute, assessmentLanguage);
           if (vision) {
             usedLlm = true;
             provider = vision.provider ?? provider;
@@ -490,17 +566,20 @@ async function buildAnalysis(args: BuildArgs): Promise<BuiltAnalysis> {
       const source = narrationSource(task, evs, declaration, response);
       let transcript = source?.text;
       let evidenceId = source?.evidenceId;
-      let language = source?.language ?? assessment.language;
+      let language = normLang(source?.language ?? assessment.language);
 
       if (!transcript && llmEnabled) {
         const audio = evs.find((e) => e.kind === 'audio');
         if (audio) {
-          const asr = await transcribeEvidence(audio.storageKey, audio.language ?? assessment.language);
+          const asr = await transcribeEvidence(
+            audio.storageKey,
+            normLang(audio.language ?? assessment.language),
+          );
           if (asr?.transcript) {
             usedLlm = true;
             transcript = asr.transcript;
             evidenceId = audio._id;
-            language = audio.language ?? assessment.language;
+            language = normLang(audio.language ?? assessment.language);
             provider = asr.provider ?? provider;
             models.asr = asr.model;
           }
@@ -514,7 +593,7 @@ async function buildAnalysis(args: BuildArgs): Promise<BuiltAnalysis> {
         continue;
       }
 
-      const scored = await runNarrationTask(task, pcMap, transcript, humanRoute);
+      const scored = await runNarrationTask(task, pcMap, transcript, humanRoute, language);
       usedLlm = usedLlm || scored.usedLlm;
       usedFallback = usedFallback || !scored.usedLlm;
       provider = scored.provider ?? provider;
@@ -531,7 +610,7 @@ async function buildAnalysis(args: BuildArgs): Promise<BuiltAnalysis> {
         narration.push({
           evidenceId,
           transcript,
-          language: language as NarrationAnalysis['language'],
+          language,
           flags: scored.flags,
           keywordHits: scored.keywordHits,
         });

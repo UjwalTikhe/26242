@@ -383,13 +383,29 @@
             "items": {
               "type": "string"
             }
+          },
+          "keywordsHi": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "keywordsMr": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
           "id",
           "text",
           "criticalSafety",
-          "keywords"
+          "keywords",
+          "keywordsHi",
+          "keywordsMr"
         ],
         "additionalProperties": false
       },

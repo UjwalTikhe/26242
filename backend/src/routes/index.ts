@@ -9,6 +9,7 @@ import { authGuard } from '../middleware/auth.js';
 import { logger } from '../logger.js';
 import { handlers, stubRoutes } from './handlers/index.js';
 import { registerTus } from './tus.js';
+import { registerVerifyPage } from './verify.js';
 
 type AppMethod = 'get' | 'post' | 'patch' | 'put' | 'delete';
 
@@ -39,6 +40,9 @@ export function registerRoutes(app: Express): void {
 
   // tus byte transport for evidence uploads (protocol route, not in routes[])
   registerTus(app);
+
+  // Human-facing QR landing page (non-contract; JSON contract route stays at /api/v1/verify)
+  registerVerifyPage(app);
 
   if (stubRoutes.length > 0) {
     logger.warn({ count: stubRoutes.length, routes: stubRoutes }, 'contract routes without handlers (501 stubs)');

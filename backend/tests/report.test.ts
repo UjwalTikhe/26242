@@ -231,3 +231,59 @@ describe('audit chain', () => {
     expect(after.brokenAt).toBe(2);
   });
 });
+
+describe('public verifier landing page', () => {
+  it('serves a mobile HTML page for a valid certificate, JSON via ?format=json, and 404 for unknown', async () => {
+    const { authorized, id } = await driveToReviewed(0.9);
+    const decision = Decision.parse((await decide(authorized, id, 'APPROVED').expect(200)).body);
+    const cert = (await Certificate.findById(decision.certificateId).lean()) as CertificateType | null;
+    expect(cert).toBeTruthy();
+
+    // the QR URL (PUBLIC_BASE_URL + /verify/<no>) renders a human page
+    const page = await request(app).get(`/verify/${cert!.certificateNo}`);
+    expect(page.status).toBe(200);
+    expect(String(page.headers['content-type'])).toMatch(/text\/html/);
+    expect(page.headers['cache-control']).toMatch(/no-store/);
+    expect(page.text).toContain('Valid certificate');
+    expect(page.text).toContain(cert!.certificateNo);
+    expect(page.text).toContain(cert!.holderName);
+    expect(page.text).toContain(`L${cert!.nsqfLevel}`);
+
+    // same endpoint negotiates JSON for app/PWA consumers
+    const json = await request(app).get(`/verify/${cert!.certificateNo}?format=json`);
+    expect(json.status).toBe(200);
+    expect(VerifyRes.parse(json.body).valid).toBe(true);
+
+    // the Accept header alone is enough
+    const viaAccept = await request(app)
+      .get(`/verify/${cert!.certificateNo}`)
+      .set('Accept', 'application/json');
+    expect(VerifyRes.parse(viaAccept.body).valid).toBe(true);
+
+    // search / help page and the no-JS query-param form flow
+    const search = await request(app).get('/verify');
+    expect(search.status).toBe(200);
+    expect(search.text).toContain('Verify a certificate');
+    const viaQuery = await request(app).get(`/verify?certificateNo=${cert!.certificateNo}`);
+    expect(viaQuery.status).toBe(200);
+    expect(viaQuery.text).toContain('Valid certificate');
+
+    // unknown number → friendly 404 page
+    const missing = await request(app).get('/verify/NOPE-0000-DEADBEEF');
+    expect(missing.status).toBe(404);
+    expect(missing.text).toContain('No matching certificate');
+    expect(missing.text).toContain('NOPE-0000-DEADBEEF');
+
+    // ...and JSON negotiation reports the same not-valid result
+    const missingJson = await request(app).get('/verify/NOPE-0000-DEADBEEF?format=json');
+    expect(missingJson.status).toBe(404);
+    expect(VerifyRes.parse(missingJson.body).valid).toBe(false);
+
+    // revoked certificate → valid page, clearly marked
+    await Certificate.updateOne({ _id: decision.certificateId }, { $set: { revoked: true } });
+    const revoked = await request(app).get(`/verify/${cert!.certificateNo}`);
+    expect(revoked.status).toBe(200);
+    expect(revoked.text).toContain('revoked');
+  });
+});
+
