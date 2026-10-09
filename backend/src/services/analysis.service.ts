@@ -45,6 +45,7 @@ import { Evidence, type EvidenceDoc } from '../models/evidence.models.js';
 import { toApi } from '../utils/toApi.js';
 import { getAssessmentFor, transitionAssessment } from './assessment.service.js';
 import { recordChange } from './changelog.service.js';
+import { emitToAssessment, emitToUser } from '../realtime/index.js';
 import { gradeObjective, isObjective } from './grading.service.js';
 import { getTradePack } from './tradepack.service.js';
 import { chatJson, visionJson } from '../ai/llm.js';
@@ -682,6 +683,15 @@ export async function analyzeAssessment(assessmentId: string): Promise<void> {
       updatedAt: now,
       data: toApi(doc.toObject()),
     });
+
+    emitToAssessment(assessmentId, 'analysis:ready', {
+      assessmentId,
+      round,
+      mode: built.mode,
+      pendingHumanTasks: built.pendingHumanTasks,
+      at: now.toISOString(),
+    });
+    emitToUser(assessment.workerId, 'analysis:ready', { assessmentId, round, at: now.toISOString() });
   } catch (err) {
     await AnalysisJob.findOneAndUpdate(
       { assessmentId },

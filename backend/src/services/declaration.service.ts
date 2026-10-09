@@ -13,6 +13,7 @@ import { Assessment, Declaration, newUuid } from '../models/assessment.models.js
 import { toApi } from '../utils/toApi.js';
 import { assertTransition } from './stateMachine.js';
 import { recordChange } from './changelog.service.js';
+import { onStatusChanged } from './statusEvents.js';
 
 export async function getDeclarationFor(id: string, user: AuthUser): Promise<unknown> {
   const assessment = await Assessment.findById(id);
@@ -66,6 +67,16 @@ export async function submitDeclaration(
     version: advanced.version,
     updatedAt: advanced.updatedAt,
     data: advanced.toObject(),
+  });
+  await onStatusChanged({
+    assessmentId,
+    from: 'DRAFT',
+    to: 'DECLARED',
+    workerId: assessment.workerId,
+    version: advanced.version,
+    round: advanced.round,
+    actorId: user.id,
+    actorRole: user.role,
   });
 
   // …then persist the declaration; a concurrent duplicate falls through to

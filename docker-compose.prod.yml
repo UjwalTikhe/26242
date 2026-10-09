@@ -1,0 +1,77 @@
+# Production-ish stack: API + BullMQ worker + Mongo + Redis.
+#
+#   cp .env.example .env      # then set JWT secrets, PUBLIC_BASE_URL, AI keys
+#   docker compose -f docker-compose.prod.yml up --build
+#
+# For a single-service host (Render/Railway) you can run just the `api` image
+# with QUEUE_DRIVER=inline and skip the `worker` service + Redis.
+name: sih-rpl-prod
+
+x-backend-env: &backend-env
+  NODE_ENV: production
+  PORT: "4000"
+  MONGO_URI: mongodb://mongo:27017/sih_rpl
+  REDIS_URL: redis://redis:6379
+  QUEUE_DRIVER: bullmq
+  LOCAL_STORAGE_DIR: /app/backend/data/storage
+  TUS_UPLOAD_DIR: /app/backend/data/storage/tus
+  FFMPEG_PATH: /usr/bin/ffmpeg
+  PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:4000}
+  CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+  JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?set JWT_ACCESS_SECRET in .env}
+  JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?set JWT_REFRESH_SECRET in .env}
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
+
+  api:
+    build:
+      context: .
+    image: sih-rpl-backend
+    restart: unless-stopped
+    environment: *backend-env
+    ports:
+      - "4000:4000"
+    volumes:
+      - uploads:/app/backend/data/storage
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    image: sih-rpl-backend
+    restart: unless-stopped
+    command: ["node", "backend/dist/worker/main.js"]
+    environment: *backend-env
+    volumes:
+      - uploads:/app/backend/data/storage
+    depends_on:
+      api:
+        condition: service_started
+
+volumes:
+  mongo_data:
+  redis_data:
+  uploads:

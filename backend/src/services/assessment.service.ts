@@ -12,6 +12,7 @@ import { toApi } from '../utils/toApi.js';
 import { assertTransition } from './stateMachine.js';
 import { recordAudit } from './audit.service.js';
 import { recordChange } from './changelog.service.js';
+import { onStatusChanged } from './statusEvents.js';
 
 /** Workers see only their own; assessors see everything (404 hides existence). */
 export async function getAssessmentFor(id: string, user: AuthUser): Promise<AssessmentDocument> {
@@ -125,13 +126,15 @@ export async function transitionAssessment(
     updatedAt: updated.updatedAt,
     data: updated.toObject(),
   });
-  await recordAudit({
-    scope: id,
-    entityType: 'assessment',
-    entityId: id,
-    action: `status:${to}`,
+  await onStatusChanged({
+    assessmentId: id,
+    from,
+    to,
+    workerId: updated.workerId,
+    version: updated.version,
+    round: updated.round,
     actorId: opts.by,
-    data: { from, to, ...(opts.note ? { note: opts.note } : {}) },
+    data: opts.note ? { note: opts.note } : undefined,
   });
   return updated;
 }

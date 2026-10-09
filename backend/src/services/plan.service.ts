@@ -24,6 +24,7 @@ import {
 import { toApi } from '../utils/toApi.js';
 import { getTradePack } from './tradepack.service.js';
 import { assertTransition } from './stateMachine.js';
+import { onStatusChanged } from './statusEvents.js';
 
 /* --------------------------- determinism --------------------------- */
 
@@ -335,6 +336,16 @@ export async function generatePlan(
     if (race) return { plan: stripAnswerKey(toApi(race)), created: true };
     throw conflict('invalid_transition', 'Assessment left MAPPED during plan generation');
   }
+  await onStatusChanged({
+    assessmentId,
+    from: 'MAPPED',
+    to: 'PLAN_READY',
+    workerId: assessment.workerId,
+    version: advanced.version,
+    round: advanced.round,
+    actorId: user.id,
+    actorRole: user.role,
+  });
 
   return { plan: stripAnswerKey(toApi(doc.toObject())), created: true };
 }

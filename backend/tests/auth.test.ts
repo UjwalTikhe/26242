@@ -1,7 +1,6 @@
 /**
  * Phase 1 auth tests: phone-OTP worker flow, assessor email+password,
- * refresh rotation, and role guards (guards run BEFORE handlers, so stub
- * routes still enforce auth).
+ * refresh rotation, and role guards (guards run BEFORE handlers).
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import type { Express } from 'express';
@@ -186,7 +185,7 @@ describe('refresh rotation + logout', () => {
   });
 });
 
-describe('role guards (run before handlers, even on 501 stubs)', () => {
+describe('role guards (run before handlers)', () => {
   it('anonymous access to protected routes → 401', async () => {
     const res = await request(app).get('/api/v1/profile');
     expect(res.status).toBe(401);
@@ -201,7 +200,7 @@ describe('role guards (run before handlers, even on 501 stubs)', () => {
     expect(res.status).toBe(401);
   });
 
-  it('worker cannot reach assessor routes (403, even on a stub)', async () => {
+  it('worker cannot reach assessor routes (403)', async () => {
     const { tokens } = await loginWorker(app);
     const res = await request(app).get('/api/v1/assessor/queue').set(bearer(tokens));
     expect(res.status).toBe(403);
@@ -217,12 +216,11 @@ describe('role guards (run before handlers, even on 501 stubs)', () => {
     expect(res.status).toBe(403);
   });
 
-  it('assessor passes the guard on assessor routes → explicit 501 stub', async () => {
+  it('assessor passes the guard on assessor routes (authorized_assessor)', async () => {
     const { tokens } = await loginAssessor(app, 'authorized_assessor');
-    // admin/fairness is still an unimplemented stub; the guard must let the role through
-    const res = await request(app).get('/api/v1/admin/fairness').set(bearer(tokens));
-    expect(res.status).toBe(501);
-    expect(res.body.error).toBe('not_implemented');
+    const res = await request(app).get('/api/v1/assessor/queue').set(bearer(tokens));
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body.items)).toBe(true);
   });
 
   it('assessor cannot use worker profile routes (403)', async () => {

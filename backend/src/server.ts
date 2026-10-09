@@ -1,12 +1,16 @@
 /**
- * HTTP server bootstrap. Connects Mongo first (fails fast), then listens.
+ * HTTP server bootstrap. Connects Mongo first (fails fast), then listens and
+ * attaches the Socket.IO real-time channel to the same HTTP server.
  */
+import { createServer } from 'node:http';
 import { createApp } from './app.js';
 import { env } from './config/env.js';
 import { logger } from './logger.js';
 import { connectMongo, disconnectMongo } from './db/mongo.js';
+import { initRealtime } from './realtime/index.js';
 
 const app = createApp();
+const httpServer = createServer(app);
 
 try {
   await connectMongo();
@@ -15,13 +19,15 @@ try {
   process.exit(1);
 }
 
-const server = app.listen(env.PORT, () => {
+initRealtime(httpServer);
+
+httpServer.listen(env.PORT, () => {
   logger.info({ port: env.PORT, env: env.NODE_ENV }, 'API listening');
 });
 
 async function shutdown(signal: string): Promise<void> {
   logger.info({ signal }, 'shutting down');
-  server.close();
+  httpServer.close();
   await disconnectMongo();
   process.exit(0);
 }

@@ -26,6 +26,7 @@ import {
 import { toApi } from '../utils/toApi.js';
 import { getAllTradePacks } from './tradepack.service.js';
 import { assertTransition } from './stateMachine.js';
+import { onStatusChanged } from './statusEvents.js';
 
 const STOPWORDS = new Set([
   'a', 'an', 'the', 'of', 'and', 'or', 'in', 'on', 'at', 'to', 'for', 'with',
@@ -240,6 +241,16 @@ export async function mapAssessment(
     if (race) return { match: toApi(race), created: true };
     throw conflict('invalid_transition', 'Assessment left DECLARED during mapping');
   }
+  await onStatusChanged({
+    assessmentId,
+    from: 'DECLARED',
+    to: 'MAPPED',
+    workerId: assessment.workerId,
+    version: advanced.version,
+    round: advanced.round,
+    actorId: user.id,
+    actorRole: user.role,
+  });
 
   return { match: toApi(doc.toObject()), created: true };
 }
