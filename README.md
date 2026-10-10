@@ -57,8 +57,10 @@ Defined once in `contracts/src/enums.ts` (`ASSESSMENT_TRANSITIONS`, `canTransiti
 
 ## Backend status (Person B)
 
-All phases implemented and tested (`npm test` — 116 integration tests, real
-`mongod` via mongodb-memory-server; `npm run typecheck` clean).
+All phases implemented and tested (`npm test` - 124 integration tests, real
+`mongod` via mongodb-memory-server; `npm run typecheck` clean). A 6-page IEEE
+research paper with figures, equations and 22 verifiable references is in
+`paper/` (`paper.tex`, compiled to `paper.pdf` via Tectonic).
 
 | Phase | What landed |
 | --- | --- |

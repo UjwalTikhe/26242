@@ -1,0 +1,4190 @@
+{
+  "schemaVersion": 1,
+  "id": "mason",
+  "title": {
+    "en": "Mason General (Brickwork, Plastering, Waterproofing and Flooring)",
+    "hi": "मेसन जनरल (ईंट की चिनाई, पलस्तरिंग, जलरोधक कार्य और फर्श निर्माण)"
+  },
+  "aliases": [
+    "mason",
+    "mason general",
+    "bricklayer",
+    "brick mason",
+    "plasterer",
+    "construction worker",
+    "masonry worker"
+  ],
+  "qp": {
+    "title": "Mason General",
+    "qpId": "CON/Q0103",
+    "ncoCode": "NCO-2015/7113.0100",
+    "nsqfLevel": 3,
+    "ssc": "Construction Skill Development Council of India (CSDCI)",
+    "version": "1.0",
+    "alignedJobRoles": [
+      "Mason General",
+      "Bricklayer",
+      "Masonry Assistant",
+      "Construction Worker - Masonry"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Qualification Pack CON/Q0103: Mason General, Version 1.0 (NSQF Level 3)",
+      "url": "https://www.csdcindia.org/wp-content/uploads/2019/01/FG_CONQ0103_Mason-General_21.03.2018.pdf",
+      "publisher": "Construction Skill Development Council of India (CSDCI)",
+      "confidence": "verified",
+      "note": "Read in full. Primary source: all 8 NOS and assessment criteria/performance criteria (162 PCs reconstructed from the assessment-criteria tables of the Facilitator Guide). FG does not state NCO code; ncoCode uses NCO-2015/7113.0100 (Mason Building Constructor lineage). CON/N0114 extraction artefacts resolved to keep criterion ids unique."
+    },
+    {
+      "title": "CSDCI Qualification Packs & Model Curriculums",
+      "url": "https://www.csdcindia.org/qualification-packs-model-curriculums/",
+      "publisher": "CSDCI",
+      "confidence": "verified",
+      "note": "Confirms QP code CON/Q0103 under Masonry occupation."
+    },
+    {
+      "title": "Model Curriculum - Mason General (CON/Q0103), NSQF Level 4",
+      "url": "http://skillmission.karnataka.gov.in/wp-content/uploads/2023/05/Mason-General-MC-ENG.pdf",
+      "publisher": "Skill Mission Karnataka / CSDCI",
+      "confidence": "estimated",
+      "note": "Later Level 4 version; used only to corroborate scope (no code change to NOS)."
+    },
+    {
+      "title": "NSQF Qualification File - Mason (Building Constructor) CTS",
+      "url": "https://bharatskills.gov.in/pdf/Curriculum/CTS/English/Mason_(Building_Constructor)_CTS3.0_NSQF-2.5.pdf",
+      "publisher": "Directorate General of Training (DGT), MSDE",
+      "confidence": "verified",
+      "note": "CTS trade syllabus corroborating tools, masonry operations and safety."
+    }
+  ],
+  "nos": [
+    {
+      "code": "CON/N0110",
+      "title": "Construct Masonry Structures Using Brick/Block",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CON-N0110-PC1",
+          "text": "Read and interpret the basic working drawings/sketches before the commencement of brick/block work.",
+          "criticalSafety": false,
+          "keywords": [
+            "drawings",
+            "sketches",
+            "brickwork",
+            "blockwork"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC2",
+          "text": "Check the availability of tools, equipment, materials and work area for brick/block work.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "materials",
+            "work area"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC3",
+          "text": "Check for any undulations in the surface prior to commencement of work.",
+          "criticalSafety": false,
+          "keywords": [
+            "undulations",
+            "surface preparation",
+            "levelling"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC4",
+          "text": "Roughly estimate the amount of materials required to complete a given job of brick/block work.",
+          "criticalSafety": false,
+          "keywords": [
+            "estimation",
+            "materials",
+            "quantity estimation"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC5",
+          "text": "Ensure proper compaction of base prior to commencement of work.",
+          "criticalSafety": false,
+          "keywords": [
+            "compaction",
+            "base",
+            "base preparation"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC6",
+          "text": "Mark and transfer required levels using appropriate tools.",
+          "criticalSafety": false,
+          "keywords": [
+            "levels",
+            "marking",
+            "tools"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC7",
+          "text": "Identify and use correct tools, tackles and equipment for the given job.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "tackles",
+            "equipment"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC8",
+          "text": "Prepare and test the quality of cement mortar of specified ratio by volume batching as per the given job.",
+          "criticalSafety": false,
+          "keywords": [
+            "cement mortar",
+            "volume batching",
+            "ratio"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC9",
+          "text": "Arrange bricks/blocks as per the required bond and thickness of wall within the tolerance limit as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "bond",
+            "bricks",
+            "blocks"
+          ],
+          "keywordsHi": [
+            "बॉन्ड",
+            "ईंट",
+            "ब्लॉक"
+          ],
+          "keywordsMr": [
+            "बॉन्ड",
+            "विटा",
+            "ब्लॉक"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC10",
+          "text": "Build brick/block wall of required thickness as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "brick wall",
+            "block wall",
+            "thickness"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC11",
+          "text": "Place bricks/blocks in a proper manner with uniform joints.",
+          "criticalSafety": false,
+          "keywords": [
+            "joints",
+            "brick placement",
+            "uniform joints"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC12",
+          "text": "Check for verticality of wall using appropriate tools.",
+          "criticalSafety": false,
+          "keywords": [
+            "verticality",
+            "plumb",
+            "wall"
+          ],
+          "keywordsHi": [
+            "सीधापन",
+            "प्लंब"
+          ],
+          "keywordsMr": [
+            "लंबत्व",
+            "प्लंब"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC13",
+          "text": "Ensure line, level and alignment of brick/block work.",
+          "criticalSafety": false,
+          "keywords": [
+            "line",
+            "level",
+            "alignment"
+          ],
+          "keywordsHi": [
+            "लाइन",
+            "लेवल",
+            "एलाइनमेंट"
+          ],
+          "keywordsMr": [
+            "रेषा",
+            "समतल",
+            "संरेषण"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC14",
+          "text": "Fix door/window frame at the required location as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "door frame",
+            "window frame",
+            "fixing"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC15",
+          "text": "Fix hold fasts and other fixtures as per the requirements.",
+          "criticalSafety": false,
+          "keywords": [
+            "hold fasts",
+            "fixtures",
+            "fixing"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC16",
+          "text": "Build brick/block wall corners in different bonds as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "corners",
+            "bonds",
+            "brickwork"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC17",
+          "text": "Construct junctions of walls in different bonds as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "junctions",
+            "walls",
+            "bonds"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC18",
+          "text": "Build column and piers as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "column",
+            "piers",
+            "brickwork"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC19",
+          "text": "Rake joints and remove loose mortar for pointing and plastering.",
+          "criticalSafety": false,
+          "keywords": [
+            "raking",
+            "joints",
+            "pointing"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC20",
+          "text": "Provide provision for passing the services as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "services",
+            "provision",
+            "service ducts"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC21",
+          "text": "Perform English/Flemish bond brick work as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "english bond",
+            "flemish bond",
+            "bond pattern"
+          ],
+          "keywordsHi": [
+            "अंग्रेजी बॉन्ड",
+            "फ्लेमिश बॉन्ड"
+          ],
+          "keywordsMr": [
+            "इंग्लिश बॉन्ड",
+            "फ्लेमिश बॉन्ड"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC22",
+          "text": "Build one and half brick thick wall in English bond as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "one and half brick",
+            "english bond",
+            "wall thickness"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC23",
+          "text": "Build one brick thick wall in Flemish bond as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "one brick",
+            "flemish bond",
+            "wall thickness"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC24",
+          "text": "Carry out plastering of brick/block wall as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "plastering",
+            "brick wall",
+            "wall finish"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC25",
+          "text": "Carry out pointing work on brick/block wall as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "pointing",
+            "masonry",
+            "mortar pointing"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC26",
+          "text": "Lay damp proof course (DPC) as per the specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "DPC",
+            "damp proof course",
+            "damp proof"
+          ],
+          "keywordsHi": [
+            "डीपीसी",
+            "नमी रोधक"
+          ],
+          "keywordsMr": [
+            "डीपीसी",
+            "ओलावा प्रतिबंधक"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC27",
+          "text": "Build sills, jambs and arches as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "sills",
+            "jambs",
+            "arches"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC28",
+          "text": "Build circular wall of half brick thickness as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "circular wall",
+            "half brick",
+            "curved wall"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC29",
+          "text": "Build half brick thick wall in stretcher bond as per drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "stretcher bond",
+            "half brick",
+            "stretcher"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC30",
+          "text": "Carry out honeycomb repair in brick/block wall as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "honeycomb",
+            "repair",
+            "honeycomb treatment"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC31",
+          "text": "Repair cracks in brick/block wall using appropriate method.",
+          "criticalSafety": false,
+          "keywords": [
+            "cracks",
+            "repair",
+            "crack repair"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC32",
+          "text": "Use appropriate scaffolding and work platform safely for brick/block work.",
+          "criticalSafety": true,
+          "keywords": [
+            "scaffolding",
+            "working at height",
+            "platform"
+          ],
+          "keywordsHi": [
+            "स्कैफोल्डिंग",
+            "ऊंचाई पर काम"
+          ],
+          "keywordsMr": [
+            "स्कॅफोल्डिंग",
+            "उंचीवर काम"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC33",
+          "text": "Follow safe working practices and use personal protective equipment (PPE) during brick/block work.",
+          "criticalSafety": true,
+          "keywords": [
+            "PPE",
+            "safety",
+            "safe work practices"
+          ],
+          "keywordsHi": [
+            "पीपीई",
+            "सुरक्षा उपकरण"
+          ],
+          "keywordsMr": [
+            "पीपीई",
+            "सुरक्षा साधने"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC34",
+          "text": "Ensure housekeeping and proper stacking of materials at the work site.",
+          "criticalSafety": true,
+          "keywords": [
+            "housekeeping",
+            "stacking",
+            "materials"
+          ],
+          "keywordsHi": [
+            "हाउसकीपिंग",
+            "सफाई"
+          ],
+          "keywordsMr": [
+            "स्वच्छता",
+            "सामग्री ठेवण"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC35",
+          "text": "Ensure proper curing of brick/block masonry structure as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "curing",
+            "masonry",
+            "con/n0110 con-n0110-pc35"
+          ],
+          "keywordsHi": [
+            "क्योरिंग",
+            "भिजवणे"
+          ],
+          "keywordsMr": [
+            "क्युरिंग",
+            "ओलाव्यात ठेवणे"
+          ]
+        },
+        {
+          "id": "CON-N0110-PC36",
+          "text": "Ensure proper bonding between the old and new surface.",
+          "criticalSafety": false,
+          "keywords": [
+            "bonding",
+            "old and new surface",
+            "jointing"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N0111",
+      "title": "Execute Plaster on Internal & External Surfaces of Masonry & RCC Structures",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CON-N0111-PC1",
+          "text": "Read and interpret the basic working drawings/sketches for plastering work.",
+          "criticalSafety": false,
+          "keywords": [
+            "drawings",
+            "plastering",
+            "sketches"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC2",
+          "text": "Check the availability of tools, equipment, materials and work area for plastering work.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "materials",
+            "work area"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC3",
+          "text": "Roughly estimate the amount of materials required to complete a given job of plastering work.",
+          "criticalSafety": false,
+          "keywords": [
+            "estimation",
+            "materials",
+            "quantity"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC4",
+          "text": "Ensure proper cleaning and preparation of base surface prior to plastering.",
+          "criticalSafety": false,
+          "keywords": [
+            "cleaning",
+            "surface preparation",
+            "base preparation"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC5",
+          "text": "Mark and transfer required levels using appropriate tools.",
+          "criticalSafety": false,
+          "keywords": [
+            "levels",
+            "marking",
+            "datum level"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC6",
+          "text": "Identify and use correct tools, tackles and equipment for plastering work.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "equipment",
+            "trowel"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC7",
+          "text": "Prepare and test the quality of cement mortar of specified ratio by volume batching for plastering work.",
+          "criticalSafety": false,
+          "keywords": [
+            "cement mortar",
+            "ratio",
+            "volumetric batching"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC8",
+          "text": "Apply cement mortar on masonry surface for different thickness of plastering as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "mortar",
+            "plastering",
+            "thickness"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC9",
+          "text": "Fix button marks to maintain thickness of plastering as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "button marks",
+            "thickness",
+            "screeds"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC10",
+          "text": "Check for verticality and alignment of plastered surface using appropriate tools.",
+          "criticalSafety": false,
+          "keywords": [
+            "verticality",
+            "alignment",
+            "plumb"
+          ],
+          "keywordsHi": [
+            "सीधापन",
+            "एलाइनमेंट"
+          ],
+          "keywordsMr": [
+            "लंबत्व",
+            "संरेषण"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC11",
+          "text": "Level the plastered surface to obtain the required thickness and slope as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "level",
+            "slope",
+            "thickness"
+          ],
+          "keywordsHi": [
+            "लेवल",
+            "ढलान"
+          ],
+          "keywordsMr": [
+            "समतल",
+            "उतार"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC12",
+          "text": "Ensure proper finishing of plastered surface as per the given job requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "finishing",
+            "surface",
+            "smooth finish"
+          ],
+          "keywordsHi": [
+            "सफाई",
+            "फिनिश"
+          ],
+          "keywordsMr": [
+            "फिनिशिंग",
+            "पृष्ठभाग"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC13",
+          "text": "Ensure proper curing of plastered surface as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "curing",
+            "plaster",
+            "con/n0111 con-n0111-pc13"
+          ],
+          "keywordsHi": [
+            "क्योरिंग"
+          ],
+          "keywordsMr": [
+            "क्युरिंग"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC14",
+          "text": "Carry out plastering work on internal and external surfaces as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "internal plaster",
+            "external plaster",
+            "internal wall"
+          ],
+          "keywordsHi": [
+            "आंतरिक पलस्तर",
+            "बाहरी पलस्तर"
+          ],
+          "keywordsMr": [
+            "आतील प्लास्टर",
+            "बाहेरील प्लास्टर"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC15",
+          "text": "Carry out plastering work on RCC surfaces as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "RCC",
+            "plastering",
+            "concrete surface"
+          ],
+          "keywordsHi": [
+            "आरसीसी",
+            "पलस्तर"
+          ],
+          "keywordsMr": [
+            "आरसीसी",
+            "प्लास्टर"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC16",
+          "text": "Provide groove, cornice and drip mould as per the drawing/sketch.",
+          "criticalSafety": false,
+          "keywords": [
+            "groove",
+            "cornice",
+            "drip mould"
+          ],
+          "keywordsHi": [
+            "ग्रूव",
+            "कॉर्निस"
+          ],
+          "keywordsMr": [
+            "ग्रूव्ह",
+            "कॉर्निस"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC17",
+          "text": "Rectify the defects in plastering surface as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "defects",
+            "rectification",
+            "defect repair"
+          ],
+          "keywordsHi": [
+            "त्रुटि सुधार"
+          ],
+          "keywordsMr": [
+            "दोष दूर करणे"
+          ]
+        },
+        {
+          "id": "CON-N0111-PC18",
+          "text": "Use appropriate scaffolding and work platform safely for plastering work at height.",
+          "criticalSafety": true,
+          "keywords": [
+            "scaffolding",
+            "working at height",
+            "platform safety"
+          ],
+          "keywordsHi": [
+            "स्कैफोल्डिंग",
+            "ऊंचाई पर काम"
+          ],
+          "keywordsMr": [
+            "स्कॅफोल्डिंग",
+            "उंचीवर काम"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N0112",
+      "title": "Carry out Waterproofing Work on Structures using Cementitious Materials",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CON-N0112-PC1",
+          "text": "Identify and correct defects, including caulking by sealing joints or seams in various concrete structures.",
+          "criticalSafety": false,
+          "keywords": [
+            "defects",
+            "caulking",
+            "sealing"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC2",
+          "text": "Clean and wash the surface to be waterproofed.",
+          "criticalSafety": false,
+          "keywords": [
+            "cleaning",
+            "washing",
+            "surface cleaning"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC3",
+          "text": "Ensure bricks are soaked overnight prior to laying a course.",
+          "criticalSafety": false,
+          "keywords": [
+            "soaking",
+            "brick course",
+            "soaking bricks"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC4",
+          "text": "Apply a slurry coat of neat cement on a clean, damp surface.",
+          "criticalSafety": false,
+          "keywords": [
+            "slurry coat",
+            "cement",
+            "slurry"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC5",
+          "text": "Lay brick bat coba for waterproofing as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "brick bat coba",
+            "waterproofing",
+            "brickbat"
+          ],
+          "keywordsHi": [
+            "ब्रिक बैट कोबा",
+            "जलरोधक"
+          ],
+          "keywordsMr": [
+            "ब्रिक बॅट कोबा",
+            "जलरोधक"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC6",
+          "text": "Prepare and apply cement plaster of specified proportion for waterproofing.",
+          "criticalSafety": false,
+          "keywords": [
+            "cement plaster",
+            "waterproofing",
+            "mortar proportion"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC7",
+          "text": "Provide and finish the top surface with a layer of cement mortar.",
+          "criticalSafety": false,
+          "keywords": [
+            "cement mortar",
+            "finishing",
+            "screed"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC8",
+          "text": "Cure the waterproofed surface as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "curing",
+            "waterproofing",
+            "con/n0112 con-n0112-pc8"
+          ],
+          "keywordsHi": [
+            "क्योरिंग",
+            "जलरोधक"
+          ],
+          "keywordsMr": [
+            "क्युरिंग",
+            "जलरोधक"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC9",
+          "text": "Rectify defects in the waterproofing work.",
+          "criticalSafety": false,
+          "keywords": [
+            "defects",
+            "rectification",
+            "defect repair"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC10",
+          "text": "Follow safe working practices and use PPE during waterproofing work.",
+          "criticalSafety": true,
+          "keywords": [
+            "PPE",
+            "safety",
+            "gloves",
+            "goggles"
+          ],
+          "keywordsHi": [
+            "पीपीई",
+            "सुरक्षा"
+          ],
+          "keywordsMr": [
+            "पीपीई",
+            "सुरक्षा"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC11",
+          "text": "Check the slope and drainage arrangement for waterproofing.",
+          "criticalSafety": false,
+          "keywords": [
+            "slope",
+            "drainage",
+            "drainage slope"
+          ],
+          "keywordsHi": [
+            "ढलान",
+            "जल निकासी"
+          ],
+          "keywordsMr": [
+            "उतार",
+            "पाणी निचरा"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC12",
+          "text": "Identify tools and materials required for waterproofing work.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "materials",
+            "consumables"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC13",
+          "text": "Prepare surface by removing loose materials and ensuring it is free from dust.",
+          "criticalSafety": false,
+          "keywords": [
+            "surface preparation",
+            "dust removal",
+            "primer"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC14",
+          "text": "Apply primer/bonding agent if required as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "primer",
+            "bonding",
+            "bonding agent"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC15",
+          "text": "Mix waterproofing compound/material as per manufacturer instructions.",
+          "criticalSafety": false,
+          "keywords": [
+            "waterproofing compound",
+            "mixing",
+            "con/n0112 con-n0112-pc15"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC16",
+          "text": "Apply the waterproofing material in specified coats.",
+          "criticalSafety": false,
+          "keywords": [
+            "coats",
+            "waterproofing",
+            "coats application"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC17",
+          "text": "Ensure proper overlap between coats of waterproofing material.",
+          "criticalSafety": false,
+          "keywords": [
+            "overlap",
+            "coats",
+            "con/n0112 con-n0112-pc17"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC18",
+          "text": "Provide protective layer over waterproofing if specified.",
+          "criticalSafety": false,
+          "keywords": [
+            "protective layer",
+            "protection layer",
+            "screed protection"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC19",
+          "text": "Carry out water test to check the effectiveness of waterproofing.",
+          "criticalSafety": false,
+          "keywords": [
+            "water test",
+            "waterproofing",
+            "ponding test"
+          ],
+          "keywordsHi": [
+            "जल परीक्षण"
+          ],
+          "keywordsMr": [
+            "पाणी चाचणी"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC20",
+          "text": "Maintain proper housekeeping at the work site.",
+          "criticalSafety": false,
+          "keywords": [
+            "housekeeping",
+            "site cleanliness",
+            "debris removal"
+          ],
+          "keywordsHi": [
+            "हाउसकीपिंग"
+          ],
+          "keywordsMr": [
+            "स्वच्छता"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC21",
+          "text": "Use scaffolding safely where required for waterproofing work at height.",
+          "criticalSafety": true,
+          "keywords": [
+            "scaffolding",
+            "working at height",
+            "platform"
+          ],
+          "keywordsHi": [
+            "स्कैफोल्डिंग",
+            "ऊंचाई पर काम"
+          ],
+          "keywordsMr": [
+            "स्कॅफोल्डिंग",
+            "उंचीवर काम"
+          ]
+        },
+        {
+          "id": "CON-N0112-PC22",
+          "text": "Report any leakage or damage observed to the supervisor.",
+          "criticalSafety": false,
+          "keywords": [
+            "leakage",
+            "reporting",
+            "leak report"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N0113",
+      "title": "Construct random rubble foundation and stone masonry wall",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CON-N0113-PC1",
+          "text": "Identify, classify and select stones or rubble for the specified works.",
+          "criticalSafety": false,
+          "keywords": [
+            "stone",
+            "rubble",
+            "selection"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC2",
+          "text": "Dressing of stones as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "dressing",
+            "stone",
+            "stone dressing"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC3",
+          "text": "Preparation of mortar for random rubble foundation and stone masonry wall.",
+          "criticalSafety": false,
+          "keywords": [
+            "mortar",
+            "preparation",
+            "random rubble"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC4",
+          "text": "Provide Architectural Record (A.R.) for plinth masonry.",
+          "criticalSafety": false,
+          "keywords": [
+            "architectural record",
+            "plinth masonry",
+            "AR"
+          ],
+          "keywordsHi": [
+            "आर्किटेक्चरल रिकॉर्ड",
+            "प्लिंथ चिनाई"
+          ],
+          "keywordsMr": [
+            "आर्किटेक्चरल रेकॉर्ड",
+            "प्लिंथ चिनाई"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC5",
+          "text": "Laying of foundation stones as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "foundation",
+            "stones",
+            "laying"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC6",
+          "text": "Constructing foundation masonry with random rubble stones, including leveling courses where required.",
+          "criticalSafety": false,
+          "keywords": [
+            "foundation masonry",
+            "random rubble",
+            "leveling course"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC7",
+          "text": "Identification of materials required for construction of random rubble foundation masonry with or without mortar.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "random rubble",
+            "mortar"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC8",
+          "text": "Selecting and arranging stones in courses in proper bond with staggering joints of consecutive courses.",
+          "criticalSafety": false,
+          "keywords": [
+            "bond",
+            "courses",
+            "staggering joints"
+          ],
+          "keywordsHi": [
+            "पारंपरिक बॉन्ड",
+            "परतें",
+            "जोड़ों का स्टेगरिंग"
+          ],
+          "keywordsMr": [
+            "बॉन्ड",
+            "स्तर",
+            "सांधे स्थिरीकरण"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC9",
+          "text": "Preparing mortar for random rubble stone masonry in foundation.",
+          "criticalSafety": false,
+          "keywords": [
+            "mortar",
+            "foundation",
+            "stone masonry"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC10",
+          "text": "Providing through stones at required intervals in masonry.",
+          "criticalSafety": false,
+          "keywords": [
+            "through stones",
+            "intervals",
+            "masonry"
+          ],
+          "keywordsHi": [
+            "थ्रू स्टोन",
+            "मेज़ोरी पत्थर"
+          ],
+          "keywordsMr": [
+            "थ्रू स्टोन",
+            "मेज़ोरी दगड"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC11",
+          "text": "Preparing materials for foundation masonry with random rubble stones with or without mortar.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "foundation masonry",
+            "rubble"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC12",
+          "text": "Constructing random rubble foundation masonry with or without mortar, including band and cornice if required.",
+          "criticalSafety": false,
+          "keywords": [
+            "random rubble",
+            "band",
+            "cornice"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC13",
+          "text": "Collecting necessary materials for construction of random rubble foundation masonry.",
+          "criticalSafety": false,
+          "keywords": [
+            "collecting materials",
+            "foundation masonry",
+            "rubble"
+          ],
+          "keywordsHi": [
+            "सामग्री एकत्र करना",
+            "नींव चिनाई"
+          ],
+          "keywordsMr": [
+            "साहित्य गोळा करणे",
+            "चौकट चिनाई"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC14",
+          "text": "Levelling and preparing the site for laying random rubble foundation masonry with or without mortar as specified.",
+          "criticalSafety": false,
+          "keywords": [
+            "levelling",
+            "site preparation",
+            "foundation"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC15",
+          "text": "Dressing stones to required dimensions for the specified works.",
+          "criticalSafety": false,
+          "keywords": [
+            "dressing",
+            "dimensions",
+            "stones"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC16",
+          "text": "Identification of tools, plant and machinery required for preparing materials and constructing random rubble foundation masonry.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "plant",
+            "machinery",
+            "random rubble"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC17",
+          "text": "Building random rubble stone masonry in foundation with or without mortar to line, level and alignment with reference to line and profile pillars.",
+          "criticalSafety": false,
+          "keywords": [
+            "line",
+            "level",
+            "alignment",
+            "profile pillars"
+          ],
+          "keywordsHi": [
+            "लाइन, लेवल और अलाइनमेंट",
+            "प्रोफाइल पिलर"
+          ],
+          "keywordsMr": [
+            "रेषा, समतल आणि संरेषण",
+            "प्रोफाइल स्तंभ"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC18",
+          "text": "Cleaning the site of random rubble masonry including foundation for the specified works.",
+          "criticalSafety": false,
+          "keywords": [
+            "cleaning",
+            "site",
+            "foundation"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC19",
+          "text": "Providing through, bond and hearting stones in foundation masonry in plinth and super structure to specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "through stones",
+            "bond stones",
+            "hearting stones"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC20",
+          "text": "Constructing random rubble masonry in foundation including provision of 15 mm nominal size wored joints as required.",
+          "criticalSafety": false,
+          "keywords": [
+            "wored joints",
+            "foundation",
+            "random rubble"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC21",
+          "text": "Preparing materials for random rubble masonry in foundation with or without mortar as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "mortar",
+            "foundation"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC22",
+          "text": "Constructing random rubble masonry in foundation in cement mortar 1:6 (1 cement : 6 coarse sand) as per spec.",
+          "criticalSafety": false,
+          "keywords": [
+            "cement mortar",
+            "1:6",
+            "coarse sand"
+          ],
+          "keywordsHi": [
+            "सीमेंट मोर्टार 1:6",
+            "मोटा रेत"
+          ],
+          "keywordsMr": [
+            "सीमेंट मोर्टार 1:6",
+            "जाडी वाळू"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC23",
+          "text": "Providing and fixing in position 40 mm thick stone slabs on mu reset in cement mortar 1:4 as specified.",
+          "criticalSafety": false,
+          "keywords": [
+            "stone slabs",
+            "cement mortar 1:4",
+            "fixing"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC24",
+          "text": "Preparing materials for random rubble masonry in super structure with or without mortar as required.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "super structure",
+            "random rubble"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC25",
+          "text": "Providing random rubble masonry in super structure by using stones in alternate courses or without mortar as specified.",
+          "criticalSafety": false,
+          "keywords": [
+            "super structure",
+            "alternate courses",
+            "masonry"
+          ],
+          "keywordsHi": [
+            "सुपर स्ट्रक्चर",
+            "वैकल्पिक परतें"
+          ],
+          "keywordsMr": [
+            "सुपर स्ट्रक्चर",
+            "पर्यायी स्तर"
+          ]
+        },
+        {
+          "id": "CON-N0113-PC26",
+          "text": "Identification of materials required for construction of random rubble masonry in super structure with or without mortar.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "super structure",
+            "masonry"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N0114",
+      "title": "Carry out IPS/Tremix flooring works",
+      "category": "core",
+      "performanceCriteria": [
+        {
+          "id": "CON-N0114-PC1",
+          "text": "Identification of IPS flooring laying tools, plants, machinery, equipments and materials required to prepare materials.",
+          "criticalSafety": false,
+          "keywords": [
+            "IPS flooring",
+            "tools",
+            "materials"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC2",
+          "text": "Levelling and preparing the site for laying IPS flooring with reference to line and grade.",
+          "criticalSafety": false,
+          "keywords": [
+            "levelling",
+            "site preparation",
+            "line and grade"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC3",
+          "text": "Collecting necessary materials for laying IPS flooring.",
+          "criticalSafety": false,
+          "keywords": [
+            "collecting materials",
+            "IPS flooring",
+            "materials"
+          ],
+          "keywordsHi": [
+            "सामग्री एकत्र करना",
+            "आईपीएस फ्लोरिंग"
+          ],
+          "keywordsMr": [
+            "साहित्य गोळा करणे",
+            "आयपीएस फ्लोअरिंग"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC4",
+          "text": "Levelling and preparing the site for laying IPS flooring as per specification.",
+          "criticalSafety": false,
+          "keywords": [
+            "levelling",
+            "specification",
+            "IPS flooring"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC5",
+          "text": "Collecting necessary materials for laying IPS flooring as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "IPS flooring",
+            "requirement"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC6",
+          "text": "Identification of tools, plant and machinery required for preparing materials and laying IPS flooring.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "plant",
+            "machinery",
+            "IPS flooring"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC7",
+          "text": "Laying IPS flooring as per code of practice to line, level, alignment and design mixing proportion of material with reference to line and level pegs.",
+          "criticalSafety": false,
+          "keywords": [
+            "line",
+            "level",
+            "mixing proportion",
+            "level pegs"
+          ],
+          "keywordsHi": [
+            "लाइन और लेवल पेग",
+            "मिश्रण अनुपात"
+          ],
+          "keywordsMr": [
+            "रेषा आणि समतल पेग",
+            "मिश्रण प्रमाण"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC8",
+          "text": "Identification of materials required for construction of IPS flooring and 20 mm cement plaster.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "IPS flooring",
+            "cement plaster"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC9",
+          "text": "Preparing necessary materials for laying IPS flooring to line and grade with reference to line and grade pillars as per spec.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "line and grade",
+            "pillars"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC10",
+          "text": "Identification of tools, plant and machinery required for construction of IPS flooring and 20 mm cement plaster finish.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "cement plaster",
+            "finish"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC11",
+          "text": "Collecting necessary materials for construction of IPS flooring and 20 mm cement plaster finish as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "cement plaster",
+            "20 mm"
+          ],
+          "keywordsHi": [
+            "सामग्री एकत्र करना",
+            "सीमेंट प्लास्टर"
+          ],
+          "keywordsMr": [
+            "साहित्य गोळा करणे",
+            "सीमेंट प्लास्टर"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC12",
+          "text": "Identification of materials required for construction of IPS flooring.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "IPS flooring",
+            "cement",
+            "sand"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC13",
+          "text": "Preparing the base or sub base material with required plant, machinery, tools and tackles for laying IPS flooring to line and grade with reference to line and grade pillars.",
+          "criticalSafety": false,
+          "keywords": [
+            "base",
+            "sub base",
+            "line and grade"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC14",
+          "text": "Laying IPS flooring as per specification with reference to line and grade and design mixing proportion of material.",
+          "criticalSafety": false,
+          "keywords": [
+            "laying",
+            "specification",
+            "mixing proportion"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC15",
+          "text": "Constructing IPS flooring including filling and ramming of joints as per spec with reference to line and grade pillars.",
+          "criticalSafety": false,
+          "keywords": [
+            "filling joints",
+            "ramming",
+            "line and grade"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC16",
+          "text": "Identification of tools, plant and machinery required for preparing materials and constructing IPS flooring with reference to line and grade pillars.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "IPS flooring",
+            "grade pillars"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC17",
+          "text": "Collecting necessary materials for construction of IPS flooring including filling and ramming of joints as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "filling joints",
+            "ramming"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC18",
+          "text": "Preparing materials for IPS flooring to line and grade with reference to line and grade pillars as per spec.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "line and grade",
+            "specification"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC19",
+          "text": "Constructing IPS flooring including filling and ramming of joints with reference to line and grade pillars as per spec.",
+          "criticalSafety": false,
+          "keywords": [
+            "IPS flooring",
+            "joints",
+            "grade pillars"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC20",
+          "text": "Identification of tools, plant and machinery required for preparing materials and constructing IPS flooring.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "plant",
+            "machinery",
+            "IPS flooring"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC21",
+          "text": "Identification of materials required for construction of IPS flooring including filling and ramming of joints.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "filling joints",
+            "ramming"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC22",
+          "text": "Constructing IPS flooring by spreading and ramming the mix of design proportion with reference to line and grade pillars as per spec.",
+          "criticalSafety": false,
+          "keywords": [
+            "spreading",
+            "ramming",
+            "design proportion"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC23",
+          "text": "Identification of materials required for construction of IPS flooring by spreading and ramming the mix of design proportion.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "spreading",
+            "ramming"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC24",
+          "text": "Identification of tools, plant and machinery required for preparing materials and constructing IPS flooring by spreading and ramming the mix of design proportion.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "spreading",
+            "design proportion"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC25",
+          "text": "Collecting necessary materials for construction of IPS flooring by spreading and ramming the mix of design proportion as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "spreading",
+            "ramming"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC26",
+          "text": "Identification of tools, plant and machinery required for preparation of materials and laying IPS flooring, 40 mm IPS (1:3:6) topping and 20 mm cement plaster finish (1:3) on 12 mm thick granolithic screed.",
+          "criticalSafety": false,
+          "keywords": [
+            "IPS topping",
+            "granolithic screed",
+            "cement plaster"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC27",
+          "text": "Collecting necessary materials for laying IPS flooring, 40 mm IPS (1:3:6) topping and 20 mm cement plaster finish (1:3) on 12 mm thick granolithic screed as per requirement.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "IPS topping",
+            "plaster finish"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC28",
+          "text": "Identification of materials required for construction of laying IPS flooring, 40 mm IPS (1:3:6) topping and 20 mm cement plaster finish (1:3) on 12 mm thick granolithic screed.",
+          "criticalSafety": false,
+          "keywords": [
+            "materials",
+            "IPS flooring",
+            "granolithic screed"
+          ]
+        },
+        {
+          "id": "CON-N0114-PC29",
+          "text": "Levelling and preparing the site for laying IPS flooring, 40 mm IPS (1:3:6) topping and 20 mm cement plaster finish (1:3) on 12 mm thick granolithic screed with reference to line and grade as per spec.",
+          "criticalSafety": false,
+          "keywords": [
+            "levelling",
+            "line and grade",
+            "granolithic screed"
+          ],
+          "keywordsHi": [
+            "साइट तैयार करना",
+            "लाइन और ग्रेड"
+          ],
+          "keywordsMr": [
+            "साइट तयार करणे",
+            "रेषा आणि ग्रेड"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N9001",
+      "title": "Follow Construction Site Protocol",
+      "category": "safety",
+      "performanceCriteria": [
+        {
+          "id": "CON-N9001-PC1",
+          "text": "Identify and confirm own work area and report safety, health or any other concern to supervisor prior to commencement of work.",
+          "criticalSafety": true,
+          "keywords": [
+            "work area",
+            "reporting",
+            "supervisor"
+          ],
+          "keywordsHi": [
+            "कार्य क्षेत्र",
+            "रिपोर्टिंग",
+            "पर्यवेक्षक"
+          ],
+          "keywordsMr": [
+            "कार्य क्षेत्र",
+            "नोंदवणूक",
+            "पर्यवेक्षक"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC2",
+          "text": "Operate in compliance with site safety protocols, personal protective equipment, statutory signs and signals.",
+          "criticalSafety": true,
+          "keywords": [
+            "safety protocols",
+            "PPE",
+            "signs and signals"
+          ],
+          "keywordsHi": [
+            "सुरक्षा प्रोटोकॉल",
+            "व्यक्तिगत सुरक्षा उपकरण",
+            "संकेत"
+          ],
+          "keywordsMr": [
+            "सुरक्षा प्रोटोकॉल",
+            "वैयक्तिक सुरक्षा साधने",
+            "संकेत"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC3",
+          "text": "Maintain housekeeping and cleanliness in the allotted area of work.",
+          "criticalSafety": true,
+          "keywords": [
+            "housekeeping",
+            "cleanliness",
+            "work area"
+          ],
+          "keywordsHi": [
+            "हाउसकीपिंग",
+            "सफाई",
+            "कार्य क्षेत्र"
+          ],
+          "keywordsMr": [
+            "हाउसकीपिंग",
+            "स्वच्छता",
+            "कार्य क्षेत्र"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC4",
+          "text": "Ensure and maintain proper ventilation in work areas.",
+          "criticalSafety": true,
+          "keywords": [
+            "ventilation",
+            "work area",
+            "safety"
+          ],
+          "keywordsHi": [
+            "वेंटिलेशन",
+            "हवा आवागमन"
+          ],
+          "keywordsMr": [
+            "व्हेंटिलेशन",
+            "वायुवहन"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC5",
+          "text": "Ensure and confirm cleanliness of toilets and provide necessary lighting, if required, at the work place.",
+          "criticalSafety": true,
+          "keywords": [
+            "toilets",
+            "lighting",
+            "work place"
+          ],
+          "keywordsHi": [
+            "टॉयलेट की सफाई",
+            "प्रकाश व्यवस्था"
+          ],
+          "keywordsMr": [
+            "शौचालय स्वच्छता",
+            "प्रकाश व्यवस्था"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC6",
+          "text": "Provide adequate drinking water facilities as per site norms during work.",
+          "criticalSafety": true,
+          "keywords": [
+            "drinking water",
+            "facilities",
+            "water"
+          ],
+          "keywordsHi": [
+            "पीने का पानी",
+            "सुविधाएं"
+          ],
+          "keywordsMr": [
+            "पिण्याचे पाणी",
+            "सुविधा"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC7",
+          "text": "Render first aid and safety precautions for minor cuts and wounds and report major incidents to the supervisor.",
+          "criticalSafety": true,
+          "keywords": [
+            "first aid",
+            "cuts",
+            "wounds",
+            "reporting"
+          ],
+          "keywordsHi": [
+            "प्राथमिक उपचार",
+            "घाव",
+            "दुर्घटना रिपोर्ट"
+          ],
+          "keywordsMr": [
+            "प्राथमिक उपचार",
+            "जखम",
+            "दुर्घटना नोंद"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC8",
+          "text": "Use personal protective equipment as advised and wear helmet and safety shoes during work.",
+          "criticalSafety": true,
+          "keywords": [
+            "PPE",
+            "helmet",
+            "safety shoes"
+          ],
+          "keywordsHi": [
+            "हेलमेट",
+            "सेफ्टी शूज",
+            "व्यक्तिगत सुरक्षा उपकरण"
+          ],
+          "keywordsMr": [
+            "हेलमेट",
+            "सेफ्टी शूज",
+            "वैयक्तिक सुरक्षा साधने"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC9",
+          "text": "Report site safety, health hazards or any other unsafe conditions to the supervisor promptly.",
+          "criticalSafety": true,
+          "keywords": [
+            "hazards",
+            "reporting",
+            "unsafe conditions"
+          ],
+          "keywordsHi": [
+            "खतरे",
+            "स्वास्थ्य जोखिम",
+            "रिपोर्टिंग"
+          ],
+          "keywordsMr": [
+            "धोके",
+            "आरोग्य धोके",
+            "नोंदवणूक"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC10",
+          "text": "Maintain safe access and egress routes and keep emergency exits clear at the work place.",
+          "criticalSafety": true,
+          "keywords": [
+            "access",
+            "egress",
+            "emergency exits"
+          ],
+          "keywordsHi": [
+            "आपातकालीन निकास",
+            "सुरक्षित प्रवेश"
+          ],
+          "keywordsMr": [
+            "आणीबाणी बाहेर पडण्याचा मार्ग",
+            "सुरक्षित प्रवेश"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC11",
+          "text": "Follow statutory signs, signals and barricades posted on the construction site.",
+          "criticalSafety": true,
+          "keywords": [
+            "signs",
+            "signals",
+            "barricades"
+          ],
+          "keywordsHi": [
+            "सांकेतिक चिन्ह",
+            "संकेत",
+            "बैरिकेड"
+          ],
+          "keywordsMr": [
+            "सांकेतिक चिन्ह",
+            "संकेत",
+            "बॅरिकेड"
+          ]
+        },
+        {
+          "id": "CON-N9001-PC12",
+          "text": "Handle, store and dispose of construction materials and debris safely without obstructing the work area.",
+          "criticalSafety": true,
+          "keywords": [
+            "materials",
+            "debris",
+            "safe handling"
+          ],
+          "keywordsHi": [
+            "निर्माण सामग्री",
+            "मलबा",
+            "सुरक्षित हैंडलिंग"
+          ],
+          "keywordsMr": [
+            "बांधकाम साहित्य",
+            "कचरा",
+            "सुरक्षित हाताळण"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N8001",
+      "title": "Work effectively in a team",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "CON-N8001-PC1",
+          "text": "Identify team members and their respective roles in the masonry work team.",
+          "criticalSafety": false,
+          "keywords": [
+            "team members",
+            "roles",
+            "masonry work"
+          ],
+          "keywordsHi": [
+            "टीम सदस्य",
+            "भूमिकाएं"
+          ],
+          "keywordsMr": [
+            "टीम सदस्य",
+            "भूमिका"
+          ]
+        },
+        {
+          "id": "CON-N8001-PC2",
+          "text": "Recognize the importance of teamwork in completing masonry tasks on schedule.",
+          "criticalSafety": false,
+          "keywords": [
+            "teamwork",
+            "schedule",
+            "masonry tasks"
+          ],
+          "keywordsHi": [
+            "टीम वर्क",
+            "समय-सारणी"
+          ],
+          "keywordsMr": [
+            "टीमवर्क",
+            "वेळापत्रक"
+          ]
+        },
+        {
+          "id": "CON-N8001-PC3",
+          "text": "Cooperate with team members during handling, mixing and placing of construction materials.",
+          "criticalSafety": false,
+          "keywords": [
+            "cooperation",
+            "handling materials",
+            "team"
+          ],
+          "keywordsHi": [
+            "सहयोग",
+            "सामग्री हैंडलिंग"
+          ],
+          "keywordsMr": [
+            "सहकार्य",
+            "साहित्य हाताळण"
+          ]
+        },
+        {
+          "id": "CON-N8001-PC4",
+          "text": "Share information about work progress and site conditions with the team and supervisor.",
+          "criticalSafety": false,
+          "keywords": [
+            "communication",
+            "work progress",
+            "site conditions"
+          ],
+          "keywordsHi": [
+            "संचार",
+            "कार्य प्रगति"
+          ],
+          "keywordsMr": [
+            "संवाद",
+            "कार्य प्रगती"
+          ]
+        },
+        {
+          "id": "CON-N8001-PC5",
+          "text": "Support team members in following safety practices and using personal protective equipment.",
+          "criticalSafety": false,
+          "keywords": [
+            "support",
+            "safety practices",
+            "PPE"
+          ],
+          "keywordsHi": [
+            "सुरक्षा प्रथाएं",
+            "सहायता"
+          ],
+          "keywordsMr": [
+            "सुरक्षा पद्धती",
+            "मदत"
+          ]
+        },
+        {
+          "id": "CON-N8001-PC6",
+          "text": "Resolve minor disagreements within the team amicably and seek supervisor guidance when needed.",
+          "criticalSafety": false,
+          "keywords": [
+            "conflict resolution",
+            "guidance",
+            "team"
+          ],
+          "keywordsHi": [
+            "मतभेद समाधान",
+            "मार्गदर्शन"
+          ],
+          "keywordsMr": [
+            "मतभेद निराकरण",
+            "मार्गदर्शन"
+          ]
+        },
+        {
+          "id": "CON-N8001-PC7",
+          "text": "Participate in team meetings and toolbox talks held at the construction site.",
+          "criticalSafety": false,
+          "keywords": [
+            "meetings",
+            "toolbox talk",
+            "participation"
+          ],
+          "keywordsHi": [
+            "टूलबॉक्स टॉक",
+            "बैठक"
+          ],
+          "keywordsMr": [
+            "टूलबॉक्स टॉक",
+            "बैठक"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CON/N8002",
+      "title": "Plan and organise own work",
+      "category": "support",
+      "performanceCriteria": [
+        {
+          "id": "CON-N8002-PC1",
+          "text": "Identify the assigned masonry work, its sequence and required deliverables before starting.",
+          "criticalSafety": false,
+          "keywords": [
+            "work sequence",
+            "deliverables",
+            "planning"
+          ],
+          "keywordsHi": [
+            "कार्य क्रम",
+            "योजना"
+          ],
+          "keywordsMr": [
+            "कार्य क्रम",
+            "नियोजन"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC2",
+          "text": "List the tools, materials and consumables needed for the day's masonry work.",
+          "criticalSafety": false,
+          "keywords": [
+            "tools",
+            "materials",
+            "listing"
+          ],
+          "keywordsHi": [
+            "उपकरण",
+            "सामग्री",
+            "सूची"
+          ],
+          "keywordsMr": [
+            "साधने",
+            "साहित्य",
+            "यादी"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC3",
+          "text": "Estimate the quantity of bricks, stones, sand, cement and water required for the planned task.",
+          "criticalSafety": false,
+          "keywords": [
+            "estimation",
+            "bricks",
+            "cement",
+            "sand"
+          ],
+          "keywordsHi": [
+            "अनुमान",
+            "ईंट",
+            "सीमेंट",
+            "रेत"
+          ],
+          "keywordsMr": [
+            "अंदाज",
+            "विटा",
+            "सीमेंट",
+            "वाळू"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC4",
+          "text": "Organise the work area with line, level and profile arrangements before laying starts.",
+          "criticalSafety": false,
+          "keywords": [
+            "work area",
+            "line",
+            "level",
+            "profile"
+          ],
+          "keywordsHi": [
+            "कार्य क्षेत्र",
+            "लाइन और लेवल"
+          ],
+          "keywordsMr": [
+            "कार्य क्षेत्र",
+            "रेषा आणि समतल"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC5",
+          "text": "Schedule own tasks in a logical order so that dependent activities are not delayed.",
+          "criticalSafety": false,
+          "keywords": [
+            "schedule",
+            "task order",
+            "dependencies"
+          ],
+          "keywordsHi": [
+            "समय-सारणी",
+            "कार्य क्रम"
+          ],
+          "keywordsMr": [
+            "वेळापत्रक",
+            "कार्य क्रम"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC6",
+          "text": "Check availability of scaffolding, staging and access arrangements before commencing work at height.",
+          "criticalSafety": false,
+          "keywords": [
+            "scaffolding",
+            "staging",
+            "access"
+          ],
+          "keywordsHi": [
+            "स्कैफोल्डिंग",
+            "पहुंच व्यवस्था"
+          ],
+          "keywordsMr": [
+            "स्कॅफोल्डिंग",
+            "प्रवेश व्यवस्था"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC7",
+          "text": "Prioritise safety checks, hazard removal and PPE wear as the first step of own work planning.",
+          "criticalSafety": false,
+          "keywords": [
+            "safety checks",
+            "hazards",
+            "PPE",
+            "priorities"
+          ],
+          "keywordsHi": [
+            "सुरक्षा जांच",
+            "खतरे",
+            "प्राथमिकता"
+          ],
+          "keywordsMr": [
+            "सुरक्षा तपासणी",
+            "धोके",
+            "प्राधान्य"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC8",
+          "text": "Monitor own work progress against the planned sequence and report deviations to the supervisor.",
+          "criticalSafety": false,
+          "keywords": [
+            "progress monitoring",
+            "deviation",
+            "reporting"
+          ],
+          "keywordsHi": [
+            "प्रगति निगरानी",
+            "विचलन"
+          ],
+          "keywordsMr": [
+            "प्रगती निरीक्षण",
+            "विचलन"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC9",
+          "text": "Prepare and keep own work area tidy at the end of each shift to support the next activity.",
+          "criticalSafety": false,
+          "keywords": [
+            "work area",
+            "tidy",
+            "shift"
+          ],
+          "keywordsHi": [
+            "कार्य क्षेत्र",
+            "व्यवस्था"
+          ],
+          "keywordsMr": [
+            "कार्य क्षेत्र",
+            "व्यवस्था"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC10",
+          "text": "Maintain a record of materials used and wastage for the day's masonry work.",
+          "criticalSafety": false,
+          "keywords": [
+            "records",
+            "materials",
+            "wastage"
+          ],
+          "keywordsHi": [
+            "रिकॉर्ड",
+            "सामग्री",
+            "अपव्यय"
+          ],
+          "keywordsMr": [
+            "नोंद",
+            "साहित्य",
+            "नास"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC11",
+          "text": "Coordinate with team members to ensure materials are available at the point of use.",
+          "criticalSafety": false,
+          "keywords": [
+            "coordination",
+            "materials",
+            "point of use"
+          ],
+          "keywordsHi": [
+            "समन्वय",
+            "सामग्री उपलब्धता"
+          ],
+          "keywordsMr": [
+            "समन्वय",
+            "साहित्य उपलब्धता"
+          ]
+        },
+        {
+          "id": "CON-N8002-PC12",
+          "text": "Review completed work against the drawing, specification and quality checklist before handing over.",
+          "criticalSafety": false,
+          "keywords": [
+            "review",
+            "drawing",
+            "quality checklist"
+          ],
+          "keywordsHi": [
+            "समीक्षा",
+            "ड्रॉइंग",
+            "गुणवत्ता सूची"
+          ],
+          "keywordsMr": [
+            "समीक्षा",
+            "रचना",
+            "गुणवत्ता यादी"
+          ]
+        }
+      ]
+    }
+  ],
+  "safetyTopics": [
+    {
+      "id": "ppe-for-masonry-work",
+      "text": {
+        "en": "Wear required PPE for masonry work: safety helmet, eye and face protection, hand gloves, dust mask/respirator in dusty work, and safety boots.",
+        "hi": "मेसनरी काम में आवश्यक PPE पहनें: सेफ्टी हेलमेट, आंख व चेहरे की सुरक्षा, हाथों के दस्ताने, धूल वाले काम में मास्क/रेस्पिरेटर और सेफ्टी बूट।"
+      },
+      "critical": true
+    },
+    {
+      "id": "scaffolding-and-working-at-height",
+      "text": {
+        "en": "Work at height only from a stable, inspected scaffold, platform or ladder with guard rails.",
+        "hi": "ऊंचाई पर केवल जांची हुई स्थिर स्कैफोल्ड, मंच या गार्ड रेल सहित सीढ़ी से काम करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "manual-handling-and-lifting",
+      "text": {
+        "en": "Lift bricks, blocks and mortar pans with bent knees, close to body, share heavy loads, and keep stacks within safe height limits.",
+        "hi": "ईंट, ब्लॉक और मसाला ट्रे घुटने मोड़कर व शरीर के पास रखकर उठाएं, भारी भार साझा करें और ढेरी सुरक्षित ऊंचाई तक रखें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "safe-cutting-and-chipping",
+      "text": {
+        "en": "When cutting or chipping, secure the piece, wear eye protection, strike away from body, and use power saws only with guards.",
+        "hi": "काटते या छिलते समय टुकड़े को सुरक्षित रखें, आंखों की सुरक्षा पहनें और शरीर से दूर मारें; पावर सॉ केवल गार्ड के साथ चलाएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "cement-silica-dust",
+      "text": {
+        "en": "Use wet methods, dust mask and good ventilation to control cement/silica dust; never dry-sweep.",
+        "hi": "सीमेंट और रेत की धूल में सिलिका होता है: गीली विधि, धूल मास्क और हवादार व्यवस्था अपनाएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "lime-and-cement-burn",
+      "text": {
+        "en": "Lime and cement are caustic: wear gloves and goggles; if contact occurs, wash immediately with plenty of clean water.",
+        "hi": "चूना और सीमेंट क्षारीय होते हैं: दस्ताने व गॉगल पहनें; संपर्क होने पर तुरंत खूब साफ पानी से धोएं।"
+      },
+      "critical": true
+    },
+    {
+      "id": "safe-mortar-mixing",
+      "text": {
+        "en": "Fit mixer drum guard, switch off before clearing jam, never put hands in running machine, and add water slowly.",
+        "hi": "मसाला सुरक्षित मिलाएं: मिक्सर ड्रम पर गार्ड लगाएं, जाम होने पर मशीन बंद करके ही साफ करें, चलती मशीन में हाथ न डालें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "material-stacking-and-housekeeping",
+      "text": {
+        "en": "Stack materials on firm, level base within safe height limits; keep gangways, stairs and exits free of debris.",
+        "hi": "सामग्री को मजबूत समतल आधार पर सुरक्षित ऊंचाई तक ढेरें और रास्ते, सीढ़ियां तथा निकास को मलबे से मुक्त रखें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "open-excavations-and-trenches",
+      "text": {
+        "en": "Barricade open excavations/trenches, keep spoil away from edge, and never work alone at the edge.",
+        "hi": "खुली खाइयों व गड्ढों को बैरिकेड करें, निकाली गई मिट्टी किनारे से दूर रखें और खाई के किनारे अकेले काम न करें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "electrical-safety-on-site",
+      "text": {
+        "en": "Use earthed, guarded portable tools with intact cables; keep leads away from water and wet mortar.",
+        "hi": "अर्थड व गार्ड सहित सुरक्षित पोर्टेबल औज़ार उपयोग करें; तारों को पानी व गीले मसाले से दूर रखें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "barricades-and-public-safety",
+      "text": {
+        "en": "Keep work zone barricaded with signage so the public, children and vehicles stay clear of falling-object areas.",
+        "hi": "कार्य क्षेत्र को बैरिकेड व चेतावनी बोर्ड से घेरें ताकि आम लोग, बच्चे और वाहन गिरने वाली वस्तुओं के क्षेत्र से दूर रहें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "heat-stress-and-hydration",
+      "text": {
+        "en": "Work in cooler hours, take shaded rest breaks and drink water regularly to prevent heat stress.",
+        "hi": "भारी काम में गर्मी से बचने के लिए ठंडे समय पर काम करें, छाया में आराम लें और नियमित रूप से पानी पीते रहें।"
+      },
+      "critical": false
+    },
+    {
+      "id": "emergency-and-first-aid",
+      "text": {
+        "en": "Know site emergency and evacuation routes; give basic first aid and report incidents immediately.",
+        "hi": "साइट की आपातकालीन व निकासी रास्ता जानें; प्राथमिक उपचार दें, अलार्म बजाएं और घटना की तुरंत सूचना दें।"
+      },
+      "critical": true
+    },
+    {
+      "id": "hand-tool-condition-check",
+      "text": {
+        "en": "Inspect tools before use: handles tight and uncracked; remove damaged tools from service.",
+        "hi": "हर उपयोग से पहले औज़ार जांचें: लकड़ी की हैंडल कसी हुई व दराररहित; खराब औज़ार काम से हटा दें।"
+      },
+      "critical": false
+    }
+  ],
+  "mcqBank": [
+    {
+      "id": "mcq-ppe-for-masonry-work",
+      "topic": "safety",
+      "prompt": {
+        "en": "Which PPE is essential when cutting or chipping bricks?",
+        "hi": "Which PPE is essential when cutting or chipping bricks?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Shoes only"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Eye protection"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Gloves only"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Helmet only"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N9001",
+        "CON/N0110"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Eye protection prevents injury.",
+        "hi": "Eye protection prevents injury."
+      }
+    },
+    {
+      "id": "mcq-safe-scaffold-use",
+      "topic": "safety",
+      "prompt": {
+        "en": "When should a scaffold be used?",
+        "hi": "When should a scaffold be used?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Loose bricks"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Stable inspected scaffold"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Drums"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Unstable platform"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N9001",
+        "CON/N0110"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Use only stable, inspected scaffolds.",
+        "hi": "Use only stable, inspected scaffolds."
+      }
+    },
+    {
+      "id": "mcq-report-hazards",
+      "topic": "safety",
+      "prompt": {
+        "en": "What should you do on seeing an unsafe condition?",
+        "hi": "What should you do on seeing an unsafe condition?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Ignore"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Report to supervisor"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Fix alone"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Wait"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Report to supervisor.",
+        "hi": "Report to supervisor."
+      }
+    },
+    {
+      "id": "mcq-lime-cement-burn-first-aid",
+      "topic": "safety",
+      "prompt": {
+        "en": "First aid for lime/cement in eyes is to wash with:",
+        "hi": "First aid for lime/cement in eyes is to wash with:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Plenty of clean water"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Oil"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Cream"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Dry cloth"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Plenty of clean water.",
+        "hi": "Plenty of clean water."
+      }
+    },
+    {
+      "id": "mcq-manual-handling-posture",
+      "topic": "safety",
+      "prompt": {
+        "en": "Correct manual handling means:",
+        "hi": "Correct manual handling means:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Twist and lift"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Bend knees load close"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Back straight heavy"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Lift high"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Bend knees, load close.",
+        "hi": "Bend knees, load close."
+      }
+    },
+    {
+      "id": "mcq-brick-chipping-safety",
+      "topic": "safety",
+      "prompt": {
+        "en": "While chipping, strike:",
+        "hi": "While chipping, strike:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Towards body"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Away from body"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Up"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Down"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N9001",
+        "CON/N0110"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Away from body.",
+        "hi": "Away from body."
+      }
+    },
+    {
+      "id": "mcq-emergency-evacuation",
+      "topic": "safety",
+      "prompt": {
+        "en": "On hearing emergency alarm you must:",
+        "hi": "On hearing emergency alarm you must:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Continue"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Follow route"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Pack tools"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Hide"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Follow evacuation route.",
+        "hi": "Follow evacuation route."
+      }
+    },
+    {
+      "id": "mcq-silica-dust-control",
+      "topic": "safety",
+      "prompt": {
+        "en": "Best way to control silica dust:",
+        "hi": "Best way to control silica dust:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Wet methods"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Dry sweep"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Blow air"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Fan fast"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Use wet methods.",
+        "hi": "Use wet methods."
+      }
+    },
+    {
+      "id": "mcq-near-miss-identification",
+      "topic": "safety",
+      "prompt": {
+        "en": "A near miss is:",
+        "hi": "A near miss is:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Injury"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Damage"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Could cause injury"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Near fall"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Could have caused injury.",
+        "hi": "Could have caused injury."
+      }
+    },
+    {
+      "id": "mcq-open-excavation-barricade",
+      "topic": "safety",
+      "prompt": {
+        "en": "Open excavations must be:",
+        "hi": "Open excavations must be:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Barricaded"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Open"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Unmarked"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Free access"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criticalSafety": true,
+      "explanation": {
+        "en": "Barricaded with signs.",
+        "hi": "Barricaded with signs."
+      }
+    },
+    {
+      "id": "mcq-trowel-selection",
+      "topic": "tools",
+      "prompt": {
+        "en": "Masons trowel is used for:",
+        "hi": "Masons trowel is used for:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Spread mortar"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cut steel"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Drill"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Measure"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Spreading mortar.",
+        "hi": "Spreading mortar."
+      }
+    },
+    {
+      "id": "mcq-plumb-bob-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "Plumb bob checks:",
+        "hi": "Plumb bob checks:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Level"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Verticality"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Width"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Length"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Verticality.",
+        "hi": "Verticality."
+      }
+    },
+    {
+      "id": "mcq-spirit-level-use",
+      "topic": "tools",
+      "prompt": {
+        "en": "Spirit level checks:",
+        "hi": "Spirit level checks:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Temp"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Horizontal/vertical"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Weight"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Pressure"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Horizontal/vertical.",
+        "hi": "Horizontal/vertical."
+      }
+    },
+    {
+      "id": "mcq-sieve-purpose",
+      "topic": "tools",
+      "prompt": {
+        "en": "Sieve separates:",
+        "hi": "Sieve separates:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Mix"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Separate coarse"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Compact"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Cure"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0111"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Coarse particles.",
+        "hi": "Coarse particles."
+      }
+    },
+    {
+      "id": "mcq-straight-edge-course-level",
+      "topic": "tools",
+      "prompt": {
+        "en": "Straight edge checks:",
+        "hi": "Straight edge checks:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Evenness"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Angle"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Curve"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Hole"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Surface evenness.",
+        "hi": "Surface evenness."
+      }
+    },
+    {
+      "id": "mcq-builder-square-345",
+      "topic": "tools",
+      "prompt": {
+        "en": "Builders square sets:",
+        "hi": "Builders square sets:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Slope"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Right angle"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Radius"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Height"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Right angles.",
+        "hi": "Right angles."
+      }
+    },
+    {
+      "id": "mcq-chisel-and-mash-hammer",
+      "topic": "tools",
+      "prompt": {
+        "en": "Mash hammer pairs with:",
+        "hi": "Mash hammer pairs with:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Chisel"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Drill"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Screw"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Bolt"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Chisel.",
+        "hi": "Chisel."
+      }
+    },
+    {
+      "id": "mcq-float-for-plaster-finish",
+      "topic": "tools",
+      "prompt": {
+        "en": "Wooden float gives:",
+        "hi": "Wooden float gives:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Smooth"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Rough"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Grooved"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Textured"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0111"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Smooth finish.",
+        "hi": "Smooth finish."
+      }
+    },
+    {
+      "id": "mcq-mortar-proportion",
+      "topic": "theory",
+      "prompt": {
+        "en": "Cement:sand for brickwork is:",
+        "hi": "Cement:sand for brickwork is:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1:6"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1:10"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1:12"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1:20"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "1:6.",
+        "hi": "1:6."
+      }
+    },
+    {
+      "id": "mcq-brick-soaking-purpose",
+      "topic": "theory",
+      "prompt": {
+        "en": "Bricks soaked to:",
+        "hi": "Bricks soaked to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Heavy"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Prevent water loss"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Color"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Dry fast"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Prevent water loss from mortar.",
+        "hi": "Prevent water loss from mortar."
+      }
+    },
+    {
+      "id": "mcq-curing-importance",
+      "topic": "theory",
+      "prompt": {
+        "en": "Curing is to:",
+        "hi": "Curing is to:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Gain strength"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Shrink"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Crack"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Fade"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Gain strength.",
+        "hi": "Gain strength."
+      }
+    },
+    {
+      "id": "mcq-bond-alignment-plumb",
+      "topic": "theory",
+      "prompt": {
+        "en": "Stretcher bond uses bricks laid:",
+        "hi": "Stretcher bond uses bricks laid:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Header"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Lengthwise"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Diagonal"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Vertical"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Lengthwise.",
+        "hi": "Lengthwise."
+      }
+    },
+    {
+      "id": "mcq-brickbat-waterproofing-sequence",
+      "topic": "theory",
+      "prompt": {
+        "en": "Brick bat coba is:",
+        "hi": "Brick bat coba is:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Waterproofing"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Plaster"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Paint"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Floor"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "nosRefs": [
+        "CON/N0112"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Waterproofing treatment.",
+        "hi": "Waterproofing treatment."
+      }
+    },
+    {
+      "id": "mcq-ips-slope-and-panels",
+      "topic": "theory",
+      "prompt": {
+        "en": "IPS needs:",
+        "hi": "IPS needs:"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Flat"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Slope for drainage"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Step"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Concave"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "nosRefs": [
+        "CON/N0114"
+      ],
+      "criticalSafety": false,
+      "explanation": {
+        "en": "Slope for drainage.",
+        "hi": "Slope for drainage."
+      }
+    }
+  ],
+  "taskBlueprints": [
+    {
+      "id": "mcq-safety-critical",
+      "type": "mcq",
+      "title": {
+        "en": "Construction-site safety knowledge check (PPE, scaffolds, excavation, first aid)",
+        "hi": "निर्माण स्थल सुरक्षा ज्ञान परीक्षण (पीपीई, मचान, खोदाई, प्राथमिक उपचार)"
+      },
+      "brief": {
+        "en": "Answer the safety questions drawn from CON/N9001. A failed critical-safety item vetoes the overall pass.",
+        "hi": "CON/N9001 से लिए गए सुरक्षा प्रश्नों के उत्तर दें। किसी गंभीर सुरक्षा प्रश्न में असफलता समग्र उत्तीर्णता रोक देगी।"
+      },
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criteriaRefs": [
+        "CON-N9001-PC1",
+        "CON-N9001-PC2",
+        "CON-N9001-PC3",
+        "CON-N9001-PC4",
+        "CON-N9001-PC5"
+      ],
+      "weight": 10,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [
+        "mcq-ppe-for-masonry-work",
+        "mcq-safe-scaffold-use",
+        "mcq-report-hazards",
+        "mcq-lime-cement-burn-first-aid",
+        "mcq-manual-handling-posture",
+        "mcq-brick-chipping-safety",
+        "mcq-emergency-evacuation",
+        "mcq-silica-dust-control",
+        "mcq-near-miss-identification",
+        "mcq-open-excavation-barricade"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "mcq-tools-and-theory",
+      "type": "mcq",
+      "title": {
+        "en": "Tools and masonry theory check (bond, mortar, curing, waterproofing)",
+        "hi": "औज़ार और राजगीरी सिद्धांत परीक्षण (बंधन, मसाला, क्यूरिंग, जलरोधक)"
+      },
+      "brief": {
+        "en": "Answer tool-selection and theory questions covering masonry, plastering and waterproofing.",
+        "hi": "चिनाई, पलस्तर और जलरोधक कार्य पर औज़ार-चयन और सिद्धांत प्रश्नों के उत्तर दें।"
+      },
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC21",
+        "CON-N0110-PC24",
+        "CON-N0110-PC26",
+        "CON-N0111-PC7",
+        "CON-N0111-PC8"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "mcqIds": [
+        "mcq-trowel-selection",
+        "mcq-plumb-bob-use",
+        "mcq-spirit-level-use",
+        "mcq-sieve-purpose",
+        "mcq-straight-edge-course-level",
+        "mcq-builder-square-345",
+        "mcq-chisel-and-mash-hammer",
+        "mcq-float-for-plaster-finish",
+        "mcq-mortar-proportion",
+        "mcq-brick-soaking-purpose",
+        "mcq-curing-importance",
+        "mcq-bond-alignment-plumb",
+        "mcq-brickbat-waterproofing-sequence",
+        "mcq-ips-slope-and-panels"
+      ],
+      "toolDistractorCount": 3,
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-basic-hand-tools",
+      "type": "tool_identification",
+      "title": {
+        "en": "Identify basic masonry hand tools",
+        "hi": "बुनियादी राजगीरी हस्त-औज़ार पहचानें"
+      },
+      "brief": {
+        "en": "Pick the hand tools needed for brick/block masonry from a workspace spread.",
+        "hi": "कार्यक्षेत्र में फैले औज़ारों में से ईंट/ब्लॉक चिनाई हेतु आवश्यक हस्त-औज़ार चुनें।"
+      },
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC6",
+        "CON-N0110-PC7",
+        "CON-N0111-PC6"
+      ],
+      "weight": 7,
+      "criticalSafety": false,
+      "toolPickCount": 5,
+      "toolDistractorCount": 3,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "tool-identification-setting-out-and-finishing",
+      "type": "tool_identification",
+      "title": {
+        "en": "Identify setting-out and finishing tools",
+        "hi": "मार्किंग और फिनिशिंग औज़ार पहचानें"
+      },
+      "brief": {
+        "en": "Identify the layout (setting-out) and finishing tools used for masonry and plaster.",
+        "hi": "चिनाई और पलस्तर हेतु लेआउट (सेटिंग-आउट) और फिनिशिंग औज़ार पहचानें।"
+      },
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC8",
+        "CON-N0110-PC9",
+        "CON-N0111-PC5"
+      ],
+      "weight": 6,
+      "criticalSafety": false,
+      "toolPickCount": 4,
+      "toolDistractorCount": 3,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "checklist-pre-work-and-ppe",
+      "type": "checklist",
+      "title": {
+        "en": "Pre-work readiness and PPE checklist",
+        "hi": "कार्य-पूर्व तैयारी और पीपीई चेकलिस्ट"
+      },
+      "brief": {
+        "en": "Assessor verifies site readiness, material staging, housekeeping and PPE before work starts.",
+        "hi": "कार्य शुरू होने से पहले पर्यवेक्षक साइट तैयारी, सामग्री, सफ़ाई और पीपीई की जाँच करता है।"
+      },
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criteriaRefs": [
+        "CON-N9001-PC1",
+        "CON-N9001-PC2",
+        "CON-N9001-PC3",
+        "CON-N9001-PC4",
+        "CON-N9001-PC5",
+        "CON-N9001-PC6"
+      ],
+      "weight": 12,
+      "criticalSafety": true,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "checklist-masonry-quality",
+      "type": "checklist",
+      "title": {
+        "en": "Brickwork and plaster quality checklist",
+        "hi": "चिनाई और पलस्तर गुणवत्ता चेकलिस्ट"
+      },
+      "brief": {
+        "en": "Assessor checks joint uniformity, plumb, level, thickness and finishing against specification.",
+        "hi": "पर्यवेक्षक जोड़ों की एकरूपता, सीध, तल, मोटाई और फिनिशिंग को विशिष्टि के अनुसार जाँचता है।"
+      },
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC11",
+        "CON-N0110-PC21",
+        "CON-N0110-PC24",
+        "CON-N0111-PC8",
+        "CON-N0111-PC10",
+        "CON-N0111-PC12"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "practical-photo-work-preparation",
+      "type": "practical_photo",
+      "title": {
+        "en": "Photograph work preparation and setting-out",
+        "hi": "कार्य-तैयारी और मार्किंग का फोटो लें"
+      },
+      "brief": {
+        "en": "Capture geotagged photos of the prepared base, setting-out lines and stacked materials.",
+        "hi": "तैयार आधार, मार्किंग रेखाओं और रखी सामग्री के जियोटैग फोटो लें।"
+      },
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC3",
+        "CON-N0110-PC4",
+        "CON-N0110-PC5"
+      ],
+      "weight": 10,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 2,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "practical-photo-brickwork-and-plaster",
+      "type": "practical_photo",
+      "title": {
+        "en": "Photograph completed brickwork and plaster",
+        "hi": "पूर्ण चिनाई और पलस्तर का फोटो लें"
+      },
+      "brief": {
+        "en": "Capture geotagged photos of the finished wall courses, DPC and plastered surface.",
+        "hi": "तैयार दीवार की पंक्तियों, डीपीसी और पलस्तरित सतह के जियोटैग फोटो लें।"
+      },
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC22",
+        "CON-N0110-PC23",
+        "CON-N0110-PC24",
+        "CON-N0110-PC26",
+        "CON-N0111-PC14"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "photo"
+        ],
+        "minCount": 2,
+        "maxCount": 6,
+        "requireGps": true,
+        "requireWorkerInFrame": true
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "practical-video-brick-block-masonry",
+      "type": "practical_video",
+      "title": {
+        "en": "Record a brick/block masonry task",
+        "hi": "ईंट/ब्लॉक चिनाई कार्य रिकॉर्ड करें"
+      },
+      "brief": {
+        "en": "Record the full sequence of laying and levelling a brick/block course with mortar.",
+        "hi": "मसाला सहित ईंट/ब्लॉक पंक्ति बिछाने और समतल करने का पूरा क्रम रिकॉर्ड करें।"
+      },
+      "nosRefs": [
+        "CON/N0110"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC9",
+        "CON-N0110-PC10",
+        "CON-N0110-PC11",
+        "CON-N0110-PC12",
+        "CON-N0110-PC13",
+        "CON-N0110-PC14"
+      ],
+      "weight": 11,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "minDurationSec": 45,
+        "maxDurationSec": 300
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "practical-video-waterproofing-and-flooring",
+      "type": "practical_video",
+      "title": {
+        "en": "Record waterproofing or IPS flooring work",
+        "hi": "जलरोधक या आईपीएस फर्श कार्य रिकॉर्ड करें"
+      },
+      "brief": {
+        "en": "Record the waterproofing (brickbat coba) or IPS flooring sequence including slope checks.",
+        "hi": "ढलान जाँच सहित जलरोधक (ब्रिकबैट कोबा) या आईपीएस फर्श क्रम रिकॉर्ड करें।"
+      },
+      "nosRefs": [
+        "CON/N0112",
+        "CON/N0114"
+      ],
+      "criteriaRefs": [
+        "CON-N0112-PC5",
+        "CON-N0112-PC16",
+        "CON-N0112-PC17",
+        "CON-N0114-PC3",
+        "CON-N0114-PC12"
+      ],
+      "weight": 8,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "video"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": true,
+        "requireWorkerInFrame": true,
+        "minDurationSec": 45,
+        "maxDurationSec": 300
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "narration-masonry-process-walkthrough",
+      "type": "narration",
+      "title": {
+        "en": "Explain your masonry process in your language",
+        "hi": "अपनी भाषा में राजगीरी प्रक्रिया समझाएँ",
+        "mr": "तुमच्या भाषेत दगडी बांधकाम प्रक्रिया सांगा"
+      },
+      "brief": {
+        "en": "Describe in Hindi/Marathi/English how you set out, lay and cure brickwork, naming tools and steps.",
+        "hi": "हिंदी/मराठी/अंग्रेज़ी में बताएँ कि आप मार्किंग, चिनाई और क्यूरिंग कैसे करते हैं, औज़ार और चरण बताइए।",
+        "mr": "हिंदी/मराठी/इंग्रजीत सांगा की तुम्ही मोजमाप, चिणाई आणि क्युरिंग कशी करता, अवजारे व टप्पे सांगा।"
+      },
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N0111"
+      ],
+      "criteriaRefs": [
+        "CON-N0110-PC21",
+        "CON-N0110-PC26",
+        "CON-N0110-PC35",
+        "CON-N0111-PC13",
+        "CON-N0111-PC14"
+      ],
+      "weight": 6,
+      "criticalSafety": false,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 30,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    },
+    {
+      "id": "narration-safety-and-scaffolding",
+      "type": "narration",
+      "title": {
+        "en": "Explain site safety and safe scaffolding use",
+        "hi": "साइट सुरक्षा और सुरक्षित मचान उपयोग समझाएँ",
+        "mr": "साइट सुरक्षा आणि सुरक्षित मचान वापर सांगा"
+      },
+      "brief": {
+        "en": "Describe the PPE you use and how you work safely at height and around excavations.",
+        "hi": "आप कौन-सा पीपीई उपयोग करते हैं और ऊँचाई व खोदाई के पास सुरक्षित कैसे काम करते हैं, बताएँ।",
+        "mr": "तुम्ही कोणते पीपीई वापरता आणि उंची व खड्ड्याजवळ सुरक्षितपणे कसे काम करता ते सांगा।"
+      },
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "criteriaRefs": [
+        "CON-N9001-PC1",
+        "CON-N9001-PC2",
+        "CON-N9001-PC3",
+        "CON-N9001-PC4",
+        "CON-N9001-PC5"
+      ],
+      "weight": 6,
+      "criticalSafety": true,
+      "evidenceSpec": {
+        "media": [
+          "audio"
+        ],
+        "minCount": 1,
+        "maxCount": 5,
+        "requireGps": false,
+        "requireWorkerInFrame": false,
+        "narrationRequired": true,
+        "minDurationSec": 30,
+        "maxDurationSec": 180
+      },
+      "checklistFrom": "criteria",
+      "checklistItems": [],
+      "generation": "static"
+    }
+  ],
+  "thresholds": {
+    "overallPass": 0.7,
+    "perTaskPass": 0.5,
+    "criticalMustPass": true,
+    "confidenceHumanRoute": 0.65,
+    "consistencyFlagThreshold": 0.35,
+    "levelBands": [
+      {
+        "level": 2,
+        "minScore": 0,
+        "maxScore": 0.55,
+        "label": "NSQF Level 2 - assists in preparatory masonry work under supervision"
+      },
+      {
+        "level": 3,
+        "minScore": 0.6,
+        "maxScore": 0.82,
+        "label": "NSQF Level 3 - independently performs routine brick/block masonry, plastering and flooring"
+      },
+      {
+        "level": 4,
+        "minScore": 0.85,
+        "maxScore": 1,
+        "label": "NSQF Level 4 - handles complex masonry, waterproofing and supervises a small crew"
+      }
+    ],
+    "bridgeBand": {
+      "minScore": 0.6,
+      "maxScore": 0.7
+    }
+  },
+  "bridgeTraining": [
+    {
+      "skillArea": "Working at height and scaffolding safety",
+      "nosRefs": [
+        "CON/N0110",
+        "CON/N9001"
+      ],
+      "suggestion": {
+        "en": "Hands-on refresher on scaffold inspection, guardrails and safe access."
+      }
+    },
+    {
+      "skillArea": "Plastering and surface finish",
+      "nosRefs": [
+        "CON/N0111"
+      ],
+      "suggestion": {
+        "en": "Practice mixing ratios, keying and finishing defects."
+      }
+    },
+    {
+      "skillArea": "Waterproofing techniques",
+      "nosRefs": [
+        "CON/N0112"
+      ],
+      "suggestion": {
+        "en": "Practice surface prep, DPC-like details and defect rectification."
+      }
+    },
+    {
+      "skillArea": "IPS/Tremix flooring",
+      "nosRefs": [
+        "CON/N0114"
+      ],
+      "suggestion": {
+        "en": "Practice screed, slope, paneling and jointing."
+      }
+    },
+    {
+      "skillArea": "Random rubble masonry",
+      "nosRefs": [
+        "CON/N0113"
+      ],
+      "suggestion": {
+        "en": "Practice bond, through stones and alignment."
+      }
+    },
+    {
+      "skillArea": "Site safety and hazard reporting",
+      "nosRefs": [
+        "CON/N9001"
+      ],
+      "suggestion": {
+        "en": "Practice first aid, near-miss reporting and PPE use."
+      }
+    }
+  ],
+  "tools": [
+    {
+      "id": "mason-trowel",
+      "name": {
+        "en": "Mason's Trowel",
+        "hi": "राजगीर की ट्रॉवेल"
+      },
+      "aliases": [
+        "brick trowel",
+        "pointing trowel"
+      ]
+    },
+    {
+      "id": "mason-hammer",
+      "name": {
+        "en": "Mason's Hammer",
+        "hi": "राजगीर का हथौड़ा"
+      },
+      "aliases": [
+        "brick hammer"
+      ]
+    },
+    {
+      "id": "block-chisel",
+      "name": {
+        "en": "Blocking Chisel",
+        "hi": "ब्लॉकिंग छैनी"
+      },
+      "aliases": [
+        "cold chisel"
+      ]
+    },
+    {
+      "id": "mash-hammer",
+      "name": {
+        "en": "Mash Hammer",
+        "hi": "मश हथौड़ा"
+      },
+      "aliases": []
+    },
+    {
+      "id": "jointer",
+      "name": {
+        "en": "Jointer/Pointing Tool",
+        "hi": "जॉइंटर / पॉइंटिंग उपकरण"
+      },
+      "aliases": [
+        "pointing tool",
+        "rake jointer"
+      ]
+    },
+    {
+      "id": "spirit-level",
+      "name": {
+        "en": "Spirit Level",
+        "hi": "स्पिरिट लेवल"
+      },
+      "aliases": [
+        "bubble level"
+      ]
+    },
+    {
+      "id": "plumb-bob",
+      "name": {
+        "en": "Plumb Bob",
+        "hi": "प्लंब बॉब"
+      },
+      "aliases": []
+    },
+    {
+      "id": "straight-edge",
+      "name": {
+        "en": "Straight Edge",
+        "hi": "सीधा पटरा"
+      },
+      "aliases": [
+        "aluminium straight edge"
+      ]
+    },
+    {
+      "id": "builders-square",
+      "name": {
+        "en": "Builder's Square",
+        "hi": "बिल्डर स्क्वायर"
+      },
+      "aliases": [
+        "framing square"
+      ]
+    },
+    {
+      "id": "line-dori",
+      "name": {
+        "en": "Line / Mason's Line",
+        "hi": "मसाला डोरी"
+      },
+      "aliases": [
+        "mason line"
+      ]
+    },
+    {
+      "id": "measuring-tape",
+      "name": {
+        "en": "Measuring Tape",
+        "hi": "मापने की फीता"
+      },
+      "aliases": [
+        "tape measure"
+      ]
+    },
+    {
+      "id": "mortar-pan",
+      "name": {
+        "en": "Mortar Pan",
+        "hi": "मसाला तवा / पैन"
+      },
+      "aliases": [
+        "ghamela"
+      ]
+    },
+    {
+      "id": "wheelbarrow",
+      "name": {
+        "en": "Wheelbarrow",
+        "hi": "हाथ ठेला"
+      },
+      "aliases": []
+    },
+    {
+      "id": "shovel",
+      "name": {
+        "en": "Shovel",
+        "hi": "फावड़ा"
+      },
+      "aliases": [
+        "showel"
+      ]
+    },
+    {
+      "id": "sieve",
+      "name": {
+        "en": "Sieve",
+        "hi": "चलनी"
+      },
+      "aliases": [
+        "sand sieve"
+      ]
+    },
+    {
+      "id": "float",
+      "name": {
+        "en": "Float (Wooden/Steel)",
+        "hi": "फ्लोट (लकड़ी / स्टील)"
+      },
+      "aliases": [
+        "wooden float",
+        "steel float"
+      ]
+    },
+    {
+      "id": "darby",
+      "name": {
+        "en": "Darby",
+        "hi": "डार्बी"
+      },
+      "aliases": []
+    },
+    {
+      "id": "scaffolding",
+      "name": {
+        "en": "Scaffolding / Tubular Scaffold",
+        "hi": "स्कैफोल्डिंग"
+      },
+      "aliases": [
+        "scaffold"
+      ]
+    },
+    {
+      "id": "concrete-mixer",
+      "name": {
+        "en": "Concrete Mixer",
+        "hi": "कंक्रीट मिक्सर"
+      },
+      "aliases": [
+        "mortar mixer"
+      ]
+    },
+    {
+      "id": "water-level",
+      "name": {
+        "en": "Water Level / Hose Level",
+        "hi": "वाटर लेवल"
+      },
+      "aliases": []
+    },
+    {
+      "id": "corner-blocks",
+      "name": {
+        "en": "Corner Blocks / Profile Boards",
+        "hi": "कोने के बोर्ड"
+      },
+      "aliases": [
+        "profile boards"
+      ]
+    }
+  ]
+}
