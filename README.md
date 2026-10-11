@@ -62,7 +62,11 @@ Defined once in `contracts/src/enums.ts` (`ASSESSMENT_TRANSITIONS`, `canTransiti
 All phases implemented and tested (`npm test` - 124 integration tests, real
 `mongod` via mongodb-memory-server; `npm run typecheck` clean). A 6-page IEEE
 research paper with figures, equations and 22 verifiable references is in
-`paper/` (`paper.tex`, compiled to `paper.pdf` via Tectonic).
+`paper/` (`paper.tex`, compiled to `paper.pdf` via Tectonic). A standalone
+12-page technical report covering the whole platform - architecture,
+contract-first design, the assessment pipeline, security, testing evidence and
+the API reference - is in `docs/` (`technical-report.tex`, compiled to
+`technical-report.pdf`).
 
 | Phase | What landed |
 | --- | --- |
