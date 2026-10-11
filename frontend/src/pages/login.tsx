@@ -83,12 +83,23 @@ export default function Login() {
       <main className="digi-container">
         {/* DigiLocker Official Identity Banner */}
         <div className="digi-banner">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-            <span className="digi-pill digi-pill-green">Verified Auth</span>
-            <span style={{ fontSize: '0.75rem', opacity: 0.9 }}>Digital India</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+            <img
+              src="/DakshSetu.png"
+              alt="National Emblem Logo"
+              width={54}
+              height={54}
+              style={{ objectFit: 'contain', background: '#ffffff', padding: 3, borderRadius: 6 }}
+            />
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span className="digi-pill digi-pill-green">Verified Auth</span>
+                <span style={{ fontSize: '0.75rem', opacity: 0.9 }}>Digital India</span>
+              </div>
+              <h2 style={{ margin: '4px 0 0', fontSize: '1.25rem' }}>Sign In to Skill Locker</h2>
+            </div>
           </div>
-          <h2>Sign In to Skill Locker</h2>
-          <p>
+          <p style={{ margin: 0 }}>
             Authenticate with your mobile number to access your NSQF RPL skill declarations, assessments, and verifiable certificates.
           </p>
         </div>

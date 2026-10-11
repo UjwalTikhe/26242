@@ -20,7 +20,13 @@ export function DigiHeader() {
       </div>
       <div className="digi-navbar">
         <Link to="/" className="digi-logo-area">
-          <div className="digi-emblem-badge">NSQF</div>
+          <img
+            src="/DakshSetu.png"
+            alt="National Skill Logo"
+            width={40}
+            height={40}
+            style={{ objectFit: 'contain', flexShrink: 0 }}
+          />
           <div>
             <h1 className="digi-title">{APP_NAME}</h1>
             <p className="digi-subtitle">DigiLocker RPL Skill Credential</p>
