@@ -32,7 +32,8 @@ function RequireRole({ roles, children }: { roles: string[]; children: React.Rea
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/portal" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/assessor/login" element={<AssessorLogin />} />
       <Route path="/verify" element={<Verify />} />

@@ -3,102 +3,103 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { APP_NAME } from '../config';
 import { useAuth, useLang, useOnline } from '../store/providers';
 
-export function GovHeader() {
+export function DigiHeader() {
   const { user, logout } = useAuth();
-  const { t, lang, setLang } = useLang();
+  const { lang, setLang } = useLang();
   const isOnline = useOnline();
   const navigate = useNavigate();
-  const role = user?.role;
 
   return (
-    <header className="admin-header">
-      <div className="header-topbar">
-        <span>GOV RPL PORTAL · NSQF</span>
-        <span style={{ fontWeight: 'bold' }}>
-          {isOnline ? '● ONLINE' : '○ OFFLINE (LOCAL)'}
+    <header className="digi-header">
+      <div className="digi-topbar">
+        <span>GOVERNMENT OF INDIA · NSQF RPL PORTAL</span>
+        <span>
+          <span className={`live-dot ${!isOnline ? 'offline' : ''}`} />
+          {isOnline ? 'ONLINE' : 'OFFLINE (LOCAL)'}
         </span>
       </div>
-      <div className="header-main">
-        <Link to="/" className="header-brand">
-          <div className="header-brand-badge">NSQF</div>
+      <div className="digi-navbar">
+        <Link to="/" className="digi-logo-area">
+          <div className="digi-emblem-badge">NSQF</div>
           <div>
-            <h1 className="header-title">{APP_NAME}</h1>
-            <p className="header-sub">SKILL ASSESSMENT SYSTEM</p>
+            <h1 className="digi-title">{APP_NAME}</h1>
+            <p className="digi-subtitle">DigiLocker RPL Skill Credential</p>
           </div>
         </Link>
-        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+        <div className="digi-nav-actions">
           <button
             type="button"
-            className="nav-btn"
+            className="digi-btn-lang"
             onClick={() => setLang(lang === 'en' ? 'hi' : lang === 'hi' ? 'mr' : 'en')}
-            style={{ padding: '6px 10px', fontSize: '0.82rem', fontWeight: 700 }}
+            title="Switch Language"
           >
-            [{lang.toUpperCase()}]
+            {lang.toUpperCase()}
           </button>
-          {role ? (
+          {user && (
             <button
               type="button"
-              className="nav-btn"
+              className="digi-btn-signout"
               onClick={() => {
                 logout();
-                navigate('/');
+                navigate('/login');
               }}
-              style={{ padding: '6px 10px', fontSize: '0.82rem' }}
             >
               Sign Out
             </button>
-          ) : (
-            <Link to="/login" className="nav-btn active" style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
-              Sign In
-            </Link>
           )}
         </div>
       </div>
-      <nav className="header-nav-mobile" aria-label="Quick Navigation">
-        <NavLink to="/" end className={({ isActive }) => `nav-link-item${isActive ? ' active' : ''}`}>
-          Home
-        </NavLink>
-        {role === 'worker' && (
-          <>
-            <NavLink to="/worker" className={({ isActive }) => `nav-link-item${isActive ? ' active' : ''}`}>
-              My Tests
-            </NavLink>
-            <NavLink to="/worker/new" className={({ isActive }) => `nav-link-item${isActive ? ' active' : ''}`}>
-              New Test
-            </NavLink>
-          </>
-        )}
-        {(role === 'assessor' || role === 'authorized_assessor' || role === 'admin') && (
-          <>
-            <NavLink to="/assessor" className={({ isActive }) => `nav-link-item${isActive ? ' active' : ''}`}>
-              Queue
-            </NavLink>
-            <NavLink to="/fairness" className={({ isActive }) => `nav-link-item${isActive ? ' active' : ''}`}>
-              Audit
-            </NavLink>
-          </>
-        )}
-        <NavLink to="/verify" className={({ isActive }) => `nav-link-item${isActive ? ' active' : ''}`}>
-          Verify
-        </NavLink>
-      </nav>
+      {!isOnline && (
+        <div className="digi-offline-strip">
+          System is in Offline Mode. Assessment data is securely preserved on your device.
+        </div>
+      )}
     </header>
   );
 }
 
+export function DigiBottomNav() {
+  const { user } = useAuth();
+  const role = user?.role;
+
+  return (
+    <nav className="digi-bottom-nav" aria-label="Bottom Navigation">
+      <NavLink to="/worker" end className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
+        <span className="tab-icon">📋</span>
+        <span>My Skills</span>
+      </NavLink>
+      <NavLink to="/worker/new" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
+        <span className="tab-icon">➕</span>
+        <span>Apply Test</span>
+      </NavLink>
+      <NavLink to="/verify" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
+        <span className="tab-icon">🔍</span>
+        <span>Verify QR</span>
+      </NavLink>
+      <NavLink to="/worker/profile" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
+        <span className="tab-icon">👤</span>
+        <span>Profile</span>
+      </NavLink>
+      {(role === 'assessor' || role === 'authorized_assessor' || role === 'admin') && (
+        <NavLink to="/assessor" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
+          <span className="tab-icon">⚖️</span>
+          <span>Assessor</span>
+        </NavLink>
+      )}
+    </nav>
+  );
+}
+
 export function Shell({ children }: { children: React.ReactNode }) {
-  const isOnline = useOnline();
+  const { user } = useAuth();
   return (
     <>
-      <GovHeader />
-      {!isOnline && (
-        <div className="sync-banner">
-          <span>OFFLINE MODE: Responses recorded in IndexedDB. Will sync automatically upon reconnecting.</span>
-        </div>
-      )}
-      <main className="page">{children}</main>
+      <DigiHeader />
+      <main className="digi-container">{children}</main>
+      {user && <DigiBottomNav />}
     </>
   );
 }
 
 export const AppShell = Shell;
+export const GovHeader = DigiHeader;

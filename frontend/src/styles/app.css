@@ -1,368 +1,350 @@
 /* ============================================================
-   SIH26242: AI-Assisted Skill Assessment Tool for RPL
-   Utility-First, Government-Grade Mobile-Responsive Design System
-   Dense, rectangular, borders-only architecture (Zero Shadows, Zero Radii)
+   DigiLocker / Gov-India National Portal Design System
+   Clean, institutional, high-trust, mobile-first government UI
    ============================================================ */
 
 :root {
-  /* Design Palette */
-  --base-canvas: #F1F5F9;
-  --surface-card: #FAFAFA;
-  --solid-border: #CBD5E1;
-  --solid-border-dark: #94A3B8;
+  --digi-navy: #15325b;
+  --digi-blue: #0b5cab;
+  --digi-blue-dark: #08437d;
+  --digi-sky: #e9f2fa;
+  --digi-orange: #f26f21;
+  --digi-green: #2e8540;
+  --digi-green-bg: #e8f5e9;
   
-  --ink-body: #0F172A;
-  --ink-muted: #475569;
+  --digi-bg: #f4f6fa;
+  --digi-card: #ffffff;
+  --digi-border: #d5dbe5;
+  --digi-border-dark: #b8c4d4;
   
-  --primary-navy: #1E3A8A;
-  --primary-navy-dark: #172554;
-  --state-pass: #15803D;
-  --state-pass-bg: #F0FDF4;
-  --state-audio: #991B1B;
-  --state-audio-bg: #FEF2F2;
-  --state-flag: #B45309;
-  --state-flag-bg: #FFFBEB;
-  --state-critical: #881337;
-  --state-critical-bg: #FFF1F2;
-
-  --font-system: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --digi-text: #1d2d42;
+  --digi-muted: #596a80;
+  
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
   box-sizing: border-box;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  border-radius: 0px !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--base-canvas);
-  color: var(--ink-body);
+  background-color: var(--digi-bg);
+  color: var(--digi-text);
   font-family: var(--font-system);
   font-size: 15px;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   width: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--ink-body);
-  margin: 0 0 6px 0;
-  font-weight: 700;
-  line-height: 1.25;
+/* Institutional DigiLocker Header */
+.digi-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--digi-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-h1 { font-size: 1.4rem; letter-spacing: -0.01em; }
-h2 { font-size: 1.15rem; }
-h3 { font-size: 1rem; }
-p { margin: 0 0 6px 0; color: var(--ink-body); }
-.muted { color: var(--ink-muted); }
-.small { font-size: 0.82rem; }
-
-a {
-  color: var(--primary-navy);
-  text-decoration: underline;
-}
-a:hover {
-  color: var(--primary-navy-dark);
-}
-
-/* Institutional Mobile Administrative Header */
-.admin-header {
-  background-color: #FFFFFF;
-  border-bottom: 2px solid var(--solid-border-dark);
-  padding: 0;
-  width: 100%;
-}
-.header-topbar {
-  background-color: #0F172A;
-  color: #F8FAFC;
+.digi-topbar {
+  background-color: var(--digi-navy);
+  color: #ffffff;
   padding: 4px 12px;
   font-size: 0.72rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
-.header-main {
-  padding: 10px 12px;
+.digi-topbar .live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  margin-right: 4px;
+}
+.digi-topbar .live-dot.offline {
+  background-color: #f87171;
+}
+
+.digi-navbar {
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-}
-.header-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none !important;
-  color: var(--ink-body);
-}
-.header-brand-badge {
-  background-color: var(--primary-navy);
-  color: #FFFFFF;
-  font-weight: 800;
-  font-size: 0.95rem;
-  padding: 4px 8px;
-  border: 1px solid var(--primary-navy-dark);
-}
-.header-title {
-  font-size: 1rem;
-  font-weight: 800;
-  margin: 0;
-  color: var(--primary-navy);
-  line-height: 1.1;
-}
-.header-sub {
-  font-size: 0.68rem;
-  color: var(--ink-muted);
-  margin: 0;
-}
-
-/* Compact Mobile Navigation Bar */
-.header-nav-mobile {
-  display: flex;
-  background-color: #E2E8F0;
-  border-top: 1px solid var(--solid-border);
-  overflow-x: auto;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-.nav-link-item {
-  flex: 1;
-  text-align: center;
-  padding: 8px 10px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--ink-body);
-  text-decoration: none !important;
-  border-right: 1px solid var(--solid-border);
-}
-.nav-link-item:last-child {
-  border-right: none;
-}
-.nav-link-item.active {
-  background-color: var(--primary-navy);
-  color: #FFFFFF;
-}
-
-.nav-btn {
-  background-color: #FFFFFF;
-  border: 1px solid var(--solid-border);
-  color: var(--ink-body);
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none !important;
-  cursor: pointer;
-}
-.nav-btn.active {
-  background-color: var(--primary-navy);
-  border-color: var(--primary-navy-dark);
-  color: #FFFFFF;
-}
-
-/* Layout Containers */
-.container {
-  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 12px;
 }
-.page {
-  padding-bottom: 32px;
+.digi-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--digi-navy);
+}
+.digi-emblem-badge {
+  background: linear-gradient(135deg, #15325b, #0b5cab);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 5px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+.digi-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--digi-navy);
+  line-height: 1.15;
+}
+.digi-subtitle {
+  margin: 0;
+  font-size: 0.68rem;
+  color: var(--digi-muted);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-/* Structural Panels (Dense, Touch-Friendly, Borders-Only) */
-.panel {
-  background-color: var(--surface-card);
-  border: 1px solid var(--solid-border);
-  padding: 12px;
-  margin-bottom: 12px;
-  width: 100%;
+.digi-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.panel-header {
-  border-bottom: 1px solid var(--solid-border);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+.digi-btn-lang {
+  background: var(--digi-sky);
+  color: var(--digi-blue);
+  border: 1px solid #c2dbf1;
+  padding: 5px 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.digi-btn-signout {
+  background: transparent;
+  color: var(--digi-muted);
+  border: 1px solid var(--digi-border);
+  padding: 5px 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* App Bottom Navigation Bar (Authentic Mobile App Flow) */
+.digi-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--digi-border);
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 0 8px;
+  z-index: 50;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.digi-bottom-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--digi-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex: 1;
+}
+.digi-bottom-tab.active {
+  color: var(--digi-blue);
+  font-weight: 700;
+}
+.digi-bottom-tab .tab-icon {
+  font-size: 1rem;
+}
+
+/* Page Frame */
+.digi-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 14px 14px 75px;
+}
+
+/* DigiLocker Document / Issuer Style Cards */
+.digi-card {
+  background-color: var(--digi-card);
+  border: 1px solid var(--digi-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.digi-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--digi-border);
 }
-.panel-header h2, .panel-header h3 {
+.digi-card-header h2, .digi-card-header h3 {
   margin: 0;
-}
-
-/* Tables (Horizontal scroll support on small screens) */
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: 8px;
-}
-.table-dense {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.82rem;
-  background-color: #FFFFFF;
-  border: 1px solid var(--solid-border);
-}
-.table-dense th {
-  background-color: #E2E8F0;
-  color: var(--ink-body);
-  text-align: left;
-  padding: 6px 8px;
+  font-size: 1rem;
   font-weight: 700;
-  border: 1px solid var(--solid-border);
-  white-space: nowrap;
-}
-.table-dense td {
-  padding: 6px 8px;
-  border: 1px solid var(--solid-border);
-  vertical-align: middle;
-}
-.table-dense tr:nth-child(even) td {
-  background-color: #F8FAFC;
+  color: var(--digi-navy);
 }
 
-/* Buttons (Touch Targets >= 44px) */
-.btn {
+/* DigiLocker Aadhaar / Document Banner */
+.digi-banner {
+  background: linear-gradient(135deg, #15325b 0%, #0b5cab 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.digi-banner h2 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 0 0 6px;
+}
+.digi-banner p {
+  color: #e2effc;
+  font-size: 0.85rem;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+/* DigiLocker Pill Badges */
+.digi-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.digi-pill-green {
+  background-color: var(--digi-green-bg);
+  color: var(--digi-green);
+  border: 1px solid #b7e1cd;
+}
+.digi-pill-blue {
+  background-color: var(--digi-sky);
+  color: var(--digi-blue);
+  border: 1px solid #bde0fe;
+}
+.digi-pill-orange {
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffe0b2;
+}
+
+/* High-Trust Gov Inputs & Buttons */
+.digi-form-group {
+  margin-bottom: 14px;
+}
+.digi-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--digi-navy);
+  margin-bottom: 4px;
+}
+.digi-input {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  border: 1px solid var(--digi-border-dark);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--digi-text);
+  font-family: inherit;
+  outline: none;
+}
+.digi-input:focus {
+  border-color: var(--digi-blue);
+  box-shadow: 0 0 0 2px var(--digi-sky);
+}
+
+.digi-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-family: inherit;
-  font-size: 0.92rem;
-  font-weight: 600;
-  padding: 10px 14px;
-  min-height: 42px;
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
   cursor: pointer;
-  border: 1px solid var(--solid-border-dark);
   text-decoration: none !important;
-  line-height: 1.25;
-  text-align: center;
+  font-family: inherit;
+  min-height: 44px;
 }
-.btn:focus-visible {
-  outline: 2px solid var(--ink-body);
-  outline-offset: 1px;
+.digi-btn-primary {
+  background-color: var(--digi-blue);
+  color: #ffffff;
 }
-.btn[disabled] {
+.digi-btn-primary:active {
+  background-color: var(--digi-blue-dark);
+}
+.digi-btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.btn-primary {
-  background-color: var(--primary-navy);
-  color: #FFFFFF;
-  border-color: var(--primary-navy-dark);
+.digi-btn-outline {
+  background-color: #ffffff;
+  color: var(--digi-blue);
+  border: 1px solid var(--digi-blue);
 }
-.btn-primary:active {
-  background-color: var(--primary-navy-dark);
-}
-
-.btn-secondary {
-  background-color: #FFFFFF;
-  color: var(--ink-body);
-  border-color: var(--solid-border-dark);
-}
-.btn-secondary:active {
-  background-color: #E2E8F0;
+.digi-btn-outline:active {
+  background-color: var(--digi-sky);
 }
 
-.btn-danger {
-  background-color: var(--state-audio);
-  color: #FFFFFF;
-  border-color: #7F1D1D;
+.digi-btn-orange {
+  background-color: var(--digi-orange);
+  color: #ffffff;
 }
-.btn-success {
-  background-color: var(--state-pass);
-  color: #FFFFFF;
-  border-color: #14532D;
+.digi-btn-orange:active {
+  background-color: #d85c14;
 }
 
-/* Form Controls (Full Width, Mobile Keyboards) */
-.form-group {
-  margin-bottom: 12px;
-  width: 100%;
+/* Trade Selection Cards (Big touch blocks) */
+.trade-choice-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid var(--digi-border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #ffffff;
+  text-decoration: none;
+  color: var(--digi-text);
 }
-.form-label {
-  display: block;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 4px;
-  color: var(--ink-body);
-}
-.form-hint {
-  font-size: 0.75rem;
-  color: var(--ink-muted);
-  margin-top: 3px;
-}
-.form-control {
-  width: 100%;
-  padding: 10px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  border: 1px solid var(--solid-border-dark);
-  background-color: #FFFFFF;
-  color: var(--ink-body);
-  min-height: 42px;
-}
-.form-control:focus {
-  outline: 2px solid var(--primary-navy);
+.trade-choice-card:active {
+  background-color: var(--digi-sky);
+  border-color: var(--digi-blue);
 }
 
-/* Status Badges */
-.status-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border: 1px solid var(--solid-border);
-  background-color: #FFFFFF;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-}
-.status-tag.pass {
-  color: var(--state-pass);
-  background-color: var(--state-pass-bg);
-  border-color: var(--state-pass);
-}
-.status-tag.flag {
-  color: var(--state-flag);
-  background-color: var(--state-flag-bg);
-  border-color: var(--state-flag);
-}
-.status-tag.critical {
-  color: var(--state-critical);
-  background-color: var(--state-critical-bg);
-  border-color: var(--state-critical);
-}
-.status-tag.navy {
-  color: var(--primary-navy);
-  border-color: var(--primary-navy);
-}
-
-/* Offline Sync Status Bar */
-.sync-banner {
-  background-color: #FEF3C7;
-  color: #78350F;
-  border-bottom: 1px solid #F59E0B;
+/* Offline Banner */
+.digi-offline-strip {
+  background-color: #fff9db;
+  color: #856404;
+  border-bottom: 1px solid #ffeeba;
   padding: 6px 12px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-align: center;
-}
-.sync-banner.online {
-  background-color: #ECFDF5;
-  color: #065F46;
-  border-color: #10B981;
-}
-
-/* Mobile Media Queries */
-@media (min-width: 768px) {
-  .container {
-    max-width: 800px;
-  }
 }
