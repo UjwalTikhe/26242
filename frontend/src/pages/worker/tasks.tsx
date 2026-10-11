@@ -154,7 +154,7 @@ function TaskForm({
       {task.brief && <p className="muted">{loc(task.brief)}</p>}
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
         <span className="chip">{task.type.replace(/_/g, ' ')}</span>
-        <span className="chip">{t('yourScore').split(' ')[0]}: {task.weight}%</span>
+        <span className="chip">{t('weight')}: {task.weight}%</span>
         {task.nosRefs.map((n) => <span key={n} className="chip">{n}</span>)}
       </div>
 
