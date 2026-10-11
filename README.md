@@ -1,4 +1,4 @@
-# SIH26242 — AI-Assisted RPL Skill Assessment Tool
+# SIH26242 — DakshSetu · AI-Assisted RPL Skill Assessment Tool
 
 Monorepo for Smart India Hackathon problem statement 26242.
 
@@ -10,7 +10,7 @@ Monorepo for Smart India Hackathon problem statement 26242.
 | --- | --- | --- |
 | `contracts/` | both | Zod schemas + status state machine + generated `openapi.json` — the single source of truth. **Nobody changes it without telling the other.** |
 | `backend/` | Person B (backend) | Express + TypeScript API, AI pipeline worker, scoring engine, reports |
-| (future) `frontend/` | Person A (field side) | Worker PWA + assessor portal |
+| `frontend/` | Person A (field side) | **DakshSetu** worker PWA + assessor portal (React 18 + Vite + TanStack Query, PWA, contract-typed against `@sih/contracts`) |
 
 ## Stack
 
@@ -26,9 +26,11 @@ Monorepo for Smart India Hackathon problem statement 26242.
 ```bash
 npm install
 cp .env.example .env
-npm run infra:up          # MongoDB + Redis via Docker
+npm run infra:up          # MongoDB + Redis via Docker (or: npm run dev:local, no Docker)
 npm run openapi           # regenerate contracts/openapi.json (commit it)
 npm run dev               # API on http://localhost:4000
+npm run dev:local         # API with an in-memory MongoDB — keyless, no Docker
+npm run dev:frontend      # DakshSetu web app on http://localhost:5173
 npm run dev:worker        # optional: BullMQ worker (QUEUE_DRIVER=bullmq)
 npm test                  # integration tests (no infra needed)
 ```
@@ -73,6 +75,27 @@ research paper with figures, equations and 22 verifiable references is in
 | 6 | Competency report, certificate PDF + QR, public `/verify/:certificateNo`, tamper-evident per-assessment audit chain |
 | 7 | Socket.IO real-time, fairness analytics, Docker image + prod compose |
 | 8 | Plumber + Mason trade packs (sourced QP/NOS), Hindi/Marathi narration scoring + prompts, mobile public verifier landing page |
+| 9 | **DakshSetu** frontend: worker PWA + assessor portal, contract-typed API client, offline-first outbox, tus evidence capture, trilingual UI |
+
+## Frontend (Person A) — DakshSetu
+
+The field app lives in `frontend/` (React 18 + TypeScript + Vite + TanStack
+Query, installable PWA via `vite-plugin-pwa`). It imports its types straight
+from `@sih/contracts`, so every request/response is compile-time checked against
+the same Zod schemas the API validates with.
+
+- **Worker PWA**: phone-OTP login, self-declaration, AI NSQF match + generation
+  of the practical plan, a task runner for all six task types (MCQ, tool
+  identification, checklist, photo, video, narration), then results + a
+  verifiable certificate.
+- **Assessor portal**: review queue, claim, per-item AI-vs-human scoring with
+  overrides and flags, REASSESS rounds, and authorized-assessor approve/reject.
+- **Public**: no-login certificate verification; trilingual UI (English /
+  हिन्दी / मराठी); government-friendly design system with a tricolour accent.
+- **Offline-first**: an IndexedDB outbox replays profile / declaration / answer
+  edits on reconnect (last-write-wins); evidence uploads use tus (resumable) and
+  are queued when offline.
+- The working name **DakshSetu** is centralised in `frontend/src/config.ts`.
 
 ### Trades & multilingual
 

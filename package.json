@@ -6,12 +6,16 @@
   "type": "module",
   "workspaces": [
     "contracts",
-    "backend"
+    "backend",
+    "frontend"
   ],
   "scripts": {
     "build": "npm run build -w @sih/contracts && npm run build -w @sih/backend",
     "dev": "npm run build -w @sih/contracts && npm run dev -w @sih/backend",
+    "dev:local": "npm run build -w @sih/contracts && npm run dev:local -w @sih/backend",
     "dev:worker": "npm run build -w @sih/contracts && npm run dev:worker -w @sih/backend",
+    "dev:frontend": "npm run build -w @sih/contracts && npm run dev -w @sih/frontend",
+    "build:frontend": "npm run build -w @sih/contracts && npm run build -w @sih/frontend",
     "test": "npm run build -w @sih/contracts && npm run test -w @sih/backend",
     "openapi": "npm run openapi -w @sih/contracts",
     "infra:up": "docker compose up -d",
