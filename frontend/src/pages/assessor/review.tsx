@@ -90,23 +90,23 @@ export default function ReviewPage() {
 
   return (
     <AppShell>
-      <div className="toolbar" style={{ justifyContent: 'space-between' }}>
+      <div className="digi-toolbar justify-between">
         <div>
-          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            <h1 style={{ margin: 0 }}>{t('reviewTitle')}</h1>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+            <h1 className="mt-0 mb-0">{t('reviewTitle')}</h1>
             <StatusBadge status={a.status} />
-            <span className="muted small">{t('round')} {a.round}</span>
+            <span className="text-muted text-sm">{t('round')} {a.round}</span>
           </div>
-          <div className="muted small mono">{a.id}</div>
+          <div className="text-muted text-sm text-mono">{a.id}</div>
         </div>
-        <Link className="btn btn-ghost btn-sm" to="/assessor">{t('back')}</Link>
+        <Link className="digi-btn digi-btn-ghost digi-btn-sm digi-btn-inline" to="/assessor" style={{ textDecoration: 'none' }}>{t('back')}</Link>
       </div>
 
       {canClaim && (
         <Card>
-          <p className="muted">{t('claim')}. This assessment is waiting for an assessor.</p>
+          <p className="text-muted">{t('claim')}. This assessment is waiting for an assessor.</p>
           <Button variant="saffron" disabled={claim.isPending} onClick={() => claim.mutate()}>
-            {claim.isPending ? '…' : t('claim')}
+            {claim.isPending ? '...' : t('claim')}
           </Button>
         </Card>
       )}
@@ -116,40 +116,40 @@ export default function ReviewPage() {
       {canReview && (
         <>
           {anq.data && anq.data.safetySummary.criticalFlags > 0 && (
-            <Alert kind="err">⚠️ {anq.data.safetySummary.criticalFlags} critical-safety flag(s) raised by AI.</Alert>
+            <Alert kind="err">[!] {anq.data.safetySummary.criticalFlags} critical-safety flag(s) raised by AI.</Alert>
           )}
 
           {tasks.map((tk) => {
             const ai = aiByTask.get(tk.id);
             const auto = respByTask.get(tk.id)?.autoScore?.score;
             return (
-              <Card key={tk.id} title={<span>{loc(tk.title)} {tk.criticalSafety && <span className="badge bg-reassess">safety</span>}</span>}>
-                <div className="grid grid-2">
+              <Card key={tk.id} title={<span>{loc(tk.title)} {tk.criticalSafety && <span className="digi-pill digi-pill-red">safety</span>}</span>}>
+                <div className="digi-grid-2">
                   <div>
-                    <dl className="key-value">
+                    <dl className="digi-kv">
                       <dt>Rubric weight</dt><dd>{tk.weight}%</dd>
-                      <dt>Deterministic auto-score</dt><dd>{auto !== undefined ? `${Math.round(auto * 100)}%` : '—'}</dd>
-                      <dt>AI score</dt><dd>{ai?.aiScore !== null && ai?.aiScore !== undefined ? `${Math.round(ai.aiScore * 100)}%` : 'deferred to human'}</dd>
-                      <dt>AI confidence</dt><dd>{ai ? `${Math.round(ai.confidence * 100)}%` : '—'}</dd>
-                      <dt>Routing</dt><dd>{ai?.routing ?? '—'}</dd>
+                      <dt>Auto-score</dt><dd>{auto !== undefined ? `${Math.round(auto * 100)}%` : '-'}</dd>
+                      <dt>AI score</dt><dd>{ai?.aiScore !== null && ai?.aiScore !== undefined ? `${Math.round(ai.aiScore * 100)}%` : 'deferred'}</dd>
+                      <dt>AI confidence</dt><dd>{ai ? `${Math.round(ai.confidence * 100)}%` : '-'}</dd>
+                      <dt>Routing</dt><dd>{ai?.routing ?? '-'}</dd>
                     </dl>
                     {ai && ai.flags.length > 0 && (
-                      <div style={{ marginTop: 8 }}>
+                      <div className="mt-8">
                         {ai.flags.map((f, i) => (
-                          <div key={i} className={`alert alert-${f.severity === 'critical' ? 'err' : 'info'}`} style={{ margin: '4px 0' }}>
+                          <Alert key={i} kind={f.severity === 'critical' ? 'err' : 'info'}>
                             <b>{f.kind}</b>: {f.message}
-                          </div>
+                          </Alert>
                         ))}
                       </div>
                     )}
                   </div>
                   <div>
-                    <label className="check">
+                    <label className="digi-check-item" style={{ marginBottom: 8 }}>
                       <input type="checkbox" checked={!!accept[tk.id]} onChange={(e) => setAccept((s) => ({ ...s, [tk.id]: e.target.checked }))} />
-                      <span className="check-label">{t('acceptAi')}</span>
+                      <span>{t('acceptAi')}</span>
                     </label>
-                    <div className="field">
-                      <label className="field-label">{t('yourScore')}: {Math.round((scores[tk.id] ?? 0) * 100)}%</label>
+                    <div className="digi-form-group">
+                      <label className="digi-label">{t('yourScore')}: {Math.round((scores[tk.id] ?? 0) * 100)}%</label>
                       <input
                         type="range" min={0} max={1} step={0.05}
                         value={scores[tk.id] ?? 0}
@@ -158,16 +158,16 @@ export default function ReviewPage() {
                         style={{ width: '100%' }}
                       />
                     </div>
-                    <div className="field">
-                      <label className="field-label">{t('comment')}</label>
-                      <input className="input" value={comments[tk.id] ?? ''} onChange={(e) => setComments((s) => ({ ...s, [tk.id]: e.target.value }))} />
+                    <div className="digi-form-group">
+                      <label className="digi-label">{t('comment')}</label>
+                      <input className="digi-input" value={comments[tk.id] ?? ''} onChange={(e) => setComments((s) => ({ ...s, [tk.id]: e.target.value }))} />
                     </div>
-                    <label className="check">
+                    <label className="digi-check-item" style={{ marginBottom: 8 }}>
                       <input type="checkbox" checked={!!reassess[tk.id]} onChange={(e) => setReassess((s) => ({ ...s, [tk.id]: e.target.checked }))} />
-                      <span className="check-label">{t('ovReassess')}</span>
+                      <span>{t('ovReassess')}</span>
                     </label>
                     {reassess[tk.id] && (
-                      <input className="input" placeholder={t('reassessReason')} value={reasons[tk.id] ?? ''} onChange={(e) => setReasons((s) => ({ ...s, [tk.id]: e.target.value }))} />
+                      <input className="digi-input" placeholder={t('reassessReason')} value={reasons[tk.id] ?? ''} onChange={(e) => setReasons((s) => ({ ...s, [tk.id]: e.target.value }))} />
                     )}
                   </div>
                 </div>
@@ -176,22 +176,22 @@ export default function ReviewPage() {
           })}
 
           <Card title={t('outcome')}>
-            <div className="radio-group">
-              <label className={`radio ${outcome === 'REVIEWED' ? 'selected' : ''}`}>
+            <div className="digi-check-group" style={{ marginBottom: 12 }}>
+              <label className={`digi-check-item${outcome === 'REVIEWED' ? ' selected' : ''}`}>
                 <input type="radio" checked={outcome === 'REVIEWED'} onChange={() => setOutcome('REVIEWED')} />
-                <span className="check-label">{t('ovReviewed')}</span>
+                <span>{t('ovReviewed')}</span>
               </label>
-              <label className={`radio ${outcome === 'REASSESS' ? 'selected' : ''}`}>
+              <label className={`digi-check-item${outcome === 'REASSESS' ? ' selected' : ''}`}>
                 <input type="radio" checked={outcome === 'REASSESS'} onChange={() => setOutcome('REASSESS')} />
-                <span className="check-label">{t('ovReassess')}</span>
+                <span>{t('ovReassess')}</span>
               </label>
             </div>
-            <div className="field">
-              <label className="field-label">{t('overallComment')}</label>
-              <textarea className="textarea" value={overall} onChange={(e) => setOverall(e.target.value)} />
+            <div className="digi-form-group">
+              <label className="digi-label">{t('overallComment')}</label>
+              <textarea className="digi-textarea" value={overall} onChange={(e) => setOverall(e.target.value)} />
             </div>
             <Button variant="primary" disabled={review.isPending} onClick={() => review.mutate()}>
-              {review.isPending ? '…' : t('sendReview')}
+              {review.isPending ? '...' : t('sendReview')}
             </Button>
           </Card>
         </>
@@ -200,7 +200,7 @@ export default function ReviewPage() {
       {a.status === 'REVIEWED' && (
         <Card title={t('decisionTitle')}>
           <Alert kind="ok">{t('ovReviewed')}. Final decision pending.</Alert>
-          <Link className="btn btn-saffron" to={`/assessor/a/${id}/decision`}>{t('decisionTitle')}</Link>
+          <Link className="digi-btn digi-btn-orange digi-btn-inline" to={`/assessor/a/${id}/decision`} style={{ textDecoration: 'none', marginTop: 8 }}>{t('decisionTitle')}</Link>
         </Card>
       )}
       {(a.status === 'APPROVED' || a.status === 'REJECTED') && (

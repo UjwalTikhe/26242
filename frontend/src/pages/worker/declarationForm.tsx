@@ -28,34 +28,34 @@ export function DeclarationForm({
 
   return (
     <Card title={t('declarationTitle')}>
-      <p className="muted small">{t('declarationTitle')} · {t('govt')}</p>
+      <p className="text-muted text-sm">{t('declarationTitle')} | {t('govt')}</p>
 
       <Field label={t('yearsExperience')}>
-        <input className="input" type="number" min={0} max={60} value={years} onChange={(e) => setYears(Number(e.target.value))} />
+        <input className="digi-input" type="number" min={0} max={60} value={years} onChange={(e) => setYears(Number(e.target.value))} />
       </Field>
 
       <Field label={t('workTypes')}>
-        <TagList value={workTypes} onChange={setWorkTypes} placeholder="Add type of work…" suggestions={WORK_SUGGESTIONS} />
+        <TagList value={workTypes} onChange={setWorkTypes} placeholder="Add type of work..." suggestions={WORK_SUGGESTIONS} />
       </Field>
 
       <Field label={t('toolsUsed')}>
-        <TagList value={toolsUsed} onChange={setToolsUsed} placeholder="Add a tool…" suggestions={TOOL_SUGGESTIONS} />
+        <TagList value={toolsUsed} onChange={setToolsUsed} placeholder="Add a tool..." suggestions={TOOL_SUGGESTIONS} />
       </Field>
 
       <Field label={t('tasksCanPerform')}>
-        <TagList value={tasksCanPerform} onChange={setTasks} placeholder="Add a task…" suggestions={TASK_SUGGESTIONS} />
+        <TagList value={tasksCanPerform} onChange={setTasks} placeholder="Add a task..." suggestions={TASK_SUGGESTIONS} />
       </Field>
 
       <Field label={t('sectors')} optional>
-        <TagList value={sectors} onChange={setSectors} placeholder="Add a sector…" suggestions={SECTOR_SUGGESTIONS} />
+        <TagList value={sectors} onChange={setSectors} placeholder="Add a sector..." suggestions={SECTOR_SUGGESTIONS} />
       </Field>
 
       <Field label={t('employment')} optional>
-        <TagList value={employmentTypes} onChange={setEmployment} placeholder="Add employment type…" suggestions={EMPLOYMENT_SUGGESTIONS} />
+        <TagList value={employmentTypes} onChange={setEmployment} placeholder="Add employment type..." suggestions={EMPLOYMENT_SUGGESTIONS} />
       </Field>
 
       <Field label={t('notes')} optional>
-        <textarea className="textarea" value={notes} onChange={(e) => setNotes(e.target.value)} />
+        <textarea className="digi-textarea" value={notes} onChange={(e) => setNotes(e.target.value)} />
       </Field>
 
       <Button
@@ -73,7 +73,7 @@ export function DeclarationForm({
           })
         }
       >
-        {busy ? '…' : t('submitDeclaration')}
+        {busy ? '...' : t('submitDeclaration')}
       </Button>
     </Card>
   );

@@ -23,15 +23,15 @@ export function TagList({
 
   return (
     <div>
-      <div className="pill-input">
+      <div className="digi-pill-input">
         {value.map((v) => (
-          <span key={v} className="chip">
+          <span key={v} className="digi-chip">
             {v}
             <button
               type="button" aria-label={`remove ${v}`}
               onClick={() => remove(v)}
-              style={{ border: 'none', background: 'none', cursor: 'pointer', marginLeft: 4, color: 'inherit' }}
-            >×</button>
+              style={{ border: 'none', background: 'none', cursor: 'pointer', marginLeft: 4, color: 'inherit', padding: 0, fontSize: '1rem' }}
+            >x</button>
           </span>
         ))}
         <input
@@ -52,7 +52,7 @@ export function TagList({
       {suggestions && suggestions.length > 0 && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
           {suggestions.filter((s) => !value.includes(s)).slice(0, 12).map((s) => (
-            <button key={s} type="button" className="chip chip-saffron" style={{ cursor: 'pointer' }} onClick={() => add(s)}>
+            <button key={s} type="button" className="digi-chip digi-chip-orange" style={{ cursor: 'pointer' }} onClick={() => add(s)}>
               + {s}
             </button>
           ))}

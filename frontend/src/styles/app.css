@@ -1,5 +1,5 @@
 /* ============================================================
-   DigiLocker / Gov-India National Portal Design System
+   DakshSetu / DigiLocker Gov-India National Portal Design System
    Clean, institutional, high-trust, mobile-first government UI
    ============================================================ */
 
@@ -9,17 +9,22 @@
   --digi-blue-dark: #08437d;
   --digi-sky: #e9f2fa;
   --digi-orange: #f26f21;
+  --digi-orange-dark: #d85c14;
   --digi-green: #2e8540;
   --digi-green-bg: #e8f5e9;
-  
+  --digi-red: #c62828;
+  --digi-red-bg: #fdecea;
+  --digi-amber: #e65100;
+  --digi-amber-bg: #fff3e0;
+
   --digi-bg: #f4f6fa;
   --digi-card: #ffffff;
   --digi-border: #d5dbe5;
   --digi-border-dark: #b8c4d4;
-  
+
   --digi-text: #1d2d42;
   --digi-muted: #596a80;
-  
+
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -41,7 +46,9 @@ html, body {
   min-height: 100vh;
 }
 
-/* Institutional DigiLocker Header */
+a { color: var(--digi-blue); }
+
+/* ===== Institutional DigiLocker Header ===== */
 .digi-header {
   background-color: #ffffff;
   border-bottom: 1px solid var(--digi-border);
@@ -137,7 +144,7 @@ html, body {
   cursor: pointer;
 }
 
-/* App Bottom Navigation Bar (Authentic Mobile App Flow) */
+/* ===== App Bottom Navigation Bar ===== */
 .digi-bottom-nav {
   position: fixed;
   bottom: 0;
@@ -159,9 +166,11 @@ html, body {
   gap: 3px;
   text-decoration: none;
   color: var(--digi-muted);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   flex: 1;
+  min-height: 44px;
+  justify-content: center;
 }
 .digi-bottom-tab.active {
   color: var(--digi-blue);
@@ -169,9 +178,10 @@ html, body {
 }
 .digi-bottom-tab .tab-icon {
   font-size: 1rem;
+  font-weight: 700;
 }
 
-/* Page Frame */
+/* ===== Page Frame ===== */
 .digi-container {
   width: 100%;
   max-width: 540px;
@@ -179,7 +189,7 @@ html, body {
   padding: 14px 14px 75px;
 }
 
-/* DigiLocker Document / Issuer Style Cards */
+/* ===== Document / Issuer Style Cards ===== */
 .digi-card {
   background-color: var(--digi-card);
   border: 1px solid var(--digi-border);
@@ -203,7 +213,7 @@ html, body {
   color: var(--digi-navy);
 }
 
-/* DigiLocker Aadhaar / Document Banner */
+/* ===== Aadhaar / Document Banner ===== */
 .digi-banner {
   background: linear-gradient(135deg, #15325b 0%, #0b5cab 100%);
   color: #ffffff;
@@ -223,7 +233,7 @@ html, body {
   line-height: 1.4;
 }
 
-/* DigiLocker Pill Badges */
+/* ===== Pill Badges ===== */
 .digi-pill {
   display: inline-block;
   padding: 2px 8px;
@@ -244,42 +254,27 @@ html, body {
   border: 1px solid #bde0fe;
 }
 .digi-pill-orange {
-  background-color: #fff3e0;
-  color: #e65100;
+  background-color: var(--digi-amber-bg);
+  color: var(--digi-amber);
   border: 1px solid #ffe0b2;
 }
-
-/* High-Trust Gov Inputs & Buttons */
-.digi-form-group {
-  margin-bottom: 14px;
+.digi-pill-red {
+  background-color: var(--digi-red-bg);
+  color: var(--digi-red);
+  border: 1px solid #f5c6cb;
 }
-.digi-label {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 700;
+.digi-pill-navy {
+  background-color: var(--digi-sky);
   color: var(--digi-navy);
-  margin-bottom: 4px;
-}
-.digi-input {
-  width: 100%;
-  padding: 11px 12px;
-  font-size: 0.95rem;
-  border: 1px solid var(--digi-border-dark);
-  border-radius: 6px;
-  background-color: #ffffff;
-  color: var(--digi-text);
-  font-family: inherit;
-  outline: none;
-}
-.digi-input:focus {
-  border-color: var(--digi-blue);
-  box-shadow: 0 0 0 2px var(--digi-sky);
+  border: 1px solid var(--digi-border);
 }
 
+/* ===== Buttons ===== */
 .digi-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   width: 100%;
   padding: 12px;
   font-size: 0.95rem;
@@ -302,7 +297,6 @@ html, body {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
 .digi-btn-outline {
   background-color: #ffffff;
   color: var(--digi-blue);
@@ -311,16 +305,118 @@ html, body {
 .digi-btn-outline:active {
   background-color: var(--digi-sky);
 }
-
 .digi-btn-orange {
   background-color: var(--digi-orange);
   color: #ffffff;
 }
 .digi-btn-orange:active {
-  background-color: #d85c14;
+  background-color: var(--digi-orange-dark);
+}
+.digi-btn-orange:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.digi-btn-green {
+  background-color: var(--digi-green);
+  color: #ffffff;
+}
+.digi-btn-green:active {
+  background-color: #256e34;
+}
+.digi-btn-red {
+  background-color: var(--digi-red);
+  color: #ffffff;
+}
+.digi-btn-red:active {
+  background-color: #a32020;
+}
+.digi-btn-ghost {
+  background-color: transparent;
+  color: var(--digi-blue);
+  border: none;
+}
+.digi-btn-ghost:active {
+  background-color: var(--digi-sky);
+}
+.digi-btn-sm {
+  width: auto;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  min-height: 36px;
+}
+.digi-btn-inline {
+  width: auto;
+  display: inline-flex;
 }
 
-/* Trade Selection Cards (Big touch blocks) */
+/* ===== Forms ===== */
+.digi-form-group {
+  margin-bottom: 14px;
+}
+.digi-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--digi-navy);
+  margin-bottom: 4px;
+}
+.digi-hint {
+  font-size: 0.75rem;
+  color: var(--digi-muted);
+  margin-top: 2px;
+}
+.digi-input {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  border: 1px solid var(--digi-border-dark);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--digi-text);
+  font-family: inherit;
+  outline: none;
+  min-height: 44px;
+}
+.digi-input:focus {
+  border-color: var(--digi-blue);
+  box-shadow: 0 0 0 2px var(--digi-sky);
+}
+.digi-select {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  border: 1px solid var(--digi-border-dark);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--digi-text);
+  font-family: inherit;
+  outline: none;
+  min-height: 44px;
+  appearance: auto;
+}
+.digi-select:focus {
+  border-color: var(--digi-blue);
+  box-shadow: 0 0 0 2px var(--digi-sky);
+}
+.digi-textarea {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  border: 1px solid var(--digi-border-dark);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--digi-text);
+  font-family: inherit;
+  outline: none;
+  min-height: 80px;
+  resize: vertical;
+}
+.digi-textarea:focus {
+  border-color: var(--digi-blue);
+  box-shadow: 0 0 0 2px var(--digi-sky);
+}
+
+/* ===== Trade Selection Cards ===== */
 .trade-choice-card {
   display: flex;
   align-items: center;
@@ -332,13 +428,384 @@ html, body {
   background: #ffffff;
   text-decoration: none;
   color: var(--digi-text);
+  cursor: pointer;
+  min-height: 44px;
 }
 .trade-choice-card:active {
   background-color: var(--digi-sky);
   border-color: var(--digi-blue);
 }
+.trade-choice-card.selected {
+  background-color: var(--digi-sky);
+  border-color: var(--digi-blue);
+  border-width: 2px;
+}
 
-/* Offline Banner */
+/* ===== Alerts ===== */
+.digi-alert {
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.digi-alert-info {
+  background-color: var(--digi-sky);
+  color: var(--digi-blue-dark);
+  border: 1px solid #bde0fe;
+}
+.digi-alert-ok {
+  background-color: var(--digi-green-bg);
+  color: var(--digi-green);
+  border: 1px solid #b7e1cd;
+}
+.digi-alert-err {
+  background-color: var(--digi-red-bg);
+  color: var(--digi-red);
+  border: 1px solid #f5c6cb;
+}
+.digi-alert-warn {
+  background-color: var(--digi-amber-bg);
+  color: var(--digi-amber);
+  border: 1px solid #ffe0b2;
+}
+
+/* ===== Status Badges (Assessment Statuses) ===== */
+.digi-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.digi-status-draft { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+.digi-status-declared { background: var(--digi-sky); color: var(--digi-blue); border: 1px solid #bde0fe; }
+.digi-status-mapped { background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
+.digi-status-plan_ready { background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
+.digi-status-in_progress { background: var(--digi-amber-bg); color: var(--digi-amber); border: 1px solid #ffe0b2; }
+.digi-status-submitted { background: var(--digi-sky); color: var(--digi-navy); border: 1px solid var(--digi-border); }
+.digi-status-ai_analyzed { background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; }
+.digi-status-under_review { background: var(--digi-amber-bg); color: var(--digi-amber); border: 1px solid #ffe0b2; }
+.digi-status-reassess { background: var(--digi-red-bg); color: var(--digi-red); border: 1px solid #f5c6cb; }
+.digi-status-reviewed { background: var(--digi-green-bg); color: var(--digi-green); border: 1px solid #b7e1cd; }
+.digi-status-approved { background: var(--digi-green-bg); color: var(--digi-green); border: 1px solid #b7e1cd; }
+.digi-status-rejected { background: var(--digi-red-bg); color: var(--digi-red); border: 1px solid #f5c6cb; }
+
+/* ===== Tables ===== */
+.digi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.digi-table th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--digi-navy);
+  padding: 10px 8px;
+  border-bottom: 2px solid var(--digi-border);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.digi-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--digi-border);
+  vertical-align: top;
+}
+.digi-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== Stepper ===== */
+.digi-stepper {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+.digi-step {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--digi-muted);
+  border-bottom: 3px solid var(--digi-border);
+  min-width: 60px;
+}
+.digi-step.done {
+  color: var(--digi-green);
+  border-bottom-color: var(--digi-green);
+}
+.digi-step.current {
+  color: var(--digi-blue);
+  border-bottom-color: var(--digi-blue);
+  font-weight: 800;
+}
+
+/* ===== Key-Value pairs ===== */
+.digi-kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+  font-size: 0.88rem;
+}
+.digi-kv dt {
+  color: var(--digi-muted);
+  font-weight: 600;
+  margin: 0;
+}
+.digi-kv dd {
+  color: var(--digi-text);
+  font-weight: 700;
+  margin: 0;
+  text-align: right;
+}
+
+/* ===== Timeline ===== */
+.digi-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.digi-timeline li {
+  position: relative;
+  padding: 8px 0 8px 24px;
+  border-left: 2px solid var(--digi-border);
+}
+.digi-timeline li::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--digi-border);
+}
+.digi-timeline li.done::before {
+  background-color: var(--digi-green);
+}
+.digi-timeline li.current::before {
+  background-color: var(--digi-blue);
+  box-shadow: 0 0 0 3px var(--digi-sky);
+}
+.digi-timeline li:last-child {
+  border-left-color: transparent;
+}
+
+/* ===== Checkbox / Radio inputs ===== */
+.digi-check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.digi-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--digi-border);
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 44px;
+  background: #ffffff;
+  font-size: 0.92rem;
+}
+.digi-check-item.selected {
+  background-color: var(--digi-sky);
+  border-color: var(--digi-blue);
+}
+.digi-check-item input[type="checkbox"],
+.digi-check-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ===== Chip / Tag ===== */
+.digi-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background-color: var(--digi-sky);
+  color: var(--digi-navy);
+  border: 1px solid var(--digi-border);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.digi-chip-orange {
+  background-color: var(--digi-amber-bg);
+  color: var(--digi-amber);
+  border-color: #ffe0b2;
+}
+
+/* ===== Pill Input (TagList) ===== */
+.digi-pill-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--digi-border-dark);
+  border-radius: 6px;
+  background: #ffffff;
+  min-height: 44px;
+  align-items: center;
+}
+.digi-pill-input input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  padding: 4px 0;
+  background: transparent;
+  color: var(--digi-text);
+}
+
+/* ===== Progress bar ===== */
+.digi-progress {
+  height: 6px;
+  background: var(--digi-border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.digi-progress span {
+  display: block;
+  height: 100%;
+  background: var(--digi-blue);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ===== Upload zone ===== */
+.digi-upload-zone {
+  border: 2px dashed var(--digi-border-dark);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--digi-muted);
+  font-size: 0.88rem;
+  margin-top: 10px;
+}
+.digi-upload-zone:active {
+  background-color: var(--digi-sky);
+  border-color: var(--digi-blue);
+}
+
+/* ===== Media Grid ===== */
+.digi-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+.digi-media-tile {
+  border: 1px solid var(--digi-border);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: #f8fafc;
+}
+.digi-media-tile img,
+.digi-media-tile video {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+.digi-media-tile .kind {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.9);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--digi-navy);
+}
+
+/* ===== Score display ===== */
+.digi-score-display {
+  text-align: center;
+  padding: 12px;
+}
+.digi-score-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--digi-navy);
+  line-height: 1;
+}
+
+/* ===== Section heading ===== */
+.digi-section-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--digi-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 18px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--digi-border);
+}
+
+/* ===== Loading / Empty ===== */
+.digi-center {
+  text-align: center;
+  padding: 24px;
+}
+.digi-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--digi-border);
+  border-top-color: var(--digi-blue);
+  border-radius: 50%;
+  animation: digi-spin 0.7s linear infinite;
+}
+@keyframes digi-spin {
+  to { transform: rotate(360deg); }
+}
+.digi-empty {
+  color: var(--digi-muted);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== Toolbar row ===== */
+.digi-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* ===== Two-column grid ===== */
+.digi-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 500px) {
+  .digi-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Offline Banner ===== */
 .digi-offline-strip {
   background-color: #fff9db;
   color: #856404;
@@ -348,3 +815,35 @@ html, body {
   font-weight: 600;
   text-align: center;
 }
+
+/* ===== Divider ===== */
+.digi-divider {
+  border: none;
+  border-top: 1px solid var(--digi-border);
+  margin: 14px 0;
+}
+
+/* ===== Utility ===== */
+.text-muted { color: var(--digi-muted); }
+.text-navy { color: var(--digi-navy); }
+.text-sm { font-size: 0.82rem; }
+.text-xs { font-size: 0.72rem; }
+.text-mono { font-family: "SF Mono", "Cascadia Code", Menlo, Consolas, monospace; font-size: 0.85em; }
+.text-center { text-align: center; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mb-4 { margin-bottom: 4px; }
+.mb-8 { margin-bottom: 8px; }
+.gap-8 { gap: 8px; }
+.gap-10 { gap: 10px; }
+.d-flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.flex-1 { flex: 1; }
+.w-full { width: 100%; }

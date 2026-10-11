@@ -42,25 +42,25 @@ export default function AssessorLogin() {
     <AppShell>
       <div style={{ maxWidth: 480, margin: '20px auto' }}>
         <Card title={t('assessorPortal')}>
-          <div className="toolbar">
-            <Button variant={mode === 'login' ? 'primary' : 'ghost'} className="btn-sm" onClick={() => setMode('login')}>{t('loginBtn')}</Button>
-            <Button variant={mode === 'register' ? 'primary' : 'ghost'} className="btn-sm" onClick={() => setMode('register')}>{t('register')}</Button>
+          <div className="digi-toolbar" style={{ marginBottom: 14 }}>
+            <Button variant={mode === 'login' ? 'primary' : 'ghost'} className="digi-btn-sm digi-btn-inline" onClick={() => setMode('login')}>{t('loginBtn')}</Button>
+            <Button variant={mode === 'register' ? 'primary' : 'ghost'} className="digi-btn-sm digi-btn-inline" onClick={() => setMode('register')}>{t('register')}</Button>
           </div>
 
           <Field label={t('email')}>
-            <input className="input" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input className="digi-input" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </Field>
           <Field label={t('password')}>
-            <input className="input" type="password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'} value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className="digi-input" type="password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'} value={password} onChange={(e) => setPassword(e.target.value)} />
           </Field>
 
           {mode === 'register' && (
             <>
               <Field label={t('displayName')}>
-                <input className="input" value={name} onChange={(e) => setName(e.target.value)} />
+                <input className="digi-input" value={name} onChange={(e) => setName(e.target.value)} />
               </Field>
               <Field label="Role">
-                <select className="select" value={role} onChange={(e) => setRole(e.target.value as 'assessor' | 'authorized_assessor')}>
+                <select className="digi-select" value={role} onChange={(e) => setRole(e.target.value as 'assessor' | 'authorized_assessor')}>
                   <option value="assessor">Assessor</option>
                   <option value="authorized_assessor">Authorized assessor (can issue certificate)</option>
                 </select>
@@ -69,12 +69,12 @@ export default function AssessorLogin() {
           )}
 
           <Button variant="primary" onClick={submit} disabled={busy || !email || !password} style={{ width: '100%' }}>
-            {busy ? '…' : mode === 'login' ? t('loginBtn') : t('registerBtn')}
+            {busy ? '...' : mode === 'login' ? t('loginBtn') : t('registerBtn')}
           </Button>
 
           {error && <Alert kind="err">{error}</Alert>}
         </Card>
-        <p className="center small muted" style={{ marginTop: 14 }}>
+        <p className="text-center text-sm text-muted" style={{ marginTop: 14 }}>
           {t('workerPortal')}? <a href="/login">{t('login')}</a>
         </p>
       </div>

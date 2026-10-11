@@ -12,12 +12,12 @@ export default function AssessorDashboard() {
 
   return (
     <AppShell>
-      <div className="toolbar" style={{ justifyContent: 'space-between' }}>
+      <div className="digi-toolbar justify-between">
         <div>
-          <h1 style={{ margin: 0 }}>{t('queue')}</h1>
-          <p className="muted" style={{ margin: 0 }}>{t('rolesAssessorD')}</p>
+          <h1 className="mt-0 mb-0">{t('queue')}</h1>
+          <p className="text-muted mt-0">{t('rolesAssessorD')}</p>
         </div>
-        <Link className="btn btn-outline btn-sm" to="/fairness">{t('admin')}</Link>
+        <Link className="digi-btn digi-btn-outline digi-btn-sm digi-btn-inline" to="/fairness" style={{ textDecoration: 'none' }}>{t('admin')}</Link>
       </div>
 
       <Card>
@@ -25,33 +25,36 @@ export default function AssessorDashboard() {
         {q.isError && <ErrorBox error={q.error} retry={() => q.refetch()} />}
         {q.data && q.data.items.length === 0 && <Empty>{t('noQueue')}</Empty>}
         {q.data && q.data.items.length > 0 && (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Assessment</th><th>{t('status')}</th><th>{t('round')}</th><th>{t('updated')}</th><th>Claimed</th><th /></tr>
-            </thead>
-            <tbody>
-              {q.data.items.map((a) => (
-                <tr key={a.id}>
-                  <td className="mono small">{a.id}</td>
-                  <td><StatusBadge status={a.status} /></td>
-                  <td>{a.round}</td>
-                  <td className="small muted">{fmtDate(a.updatedAt)}</td>
-                  <td className="small">{a.claimedBy ? '✓' : '—'}</td>
-                  <td style={{ textAlign: 'right' }}>
-                    <Link className="btn btn-outline btn-sm" to={`/assessor/a/${a.id}`}>
-                      {['SUBMITTED', 'AI_ANALYZED'].includes(a.status) ? t('claim') : t('reviewTitle')}
-                    </Link>
-                  </td>
+          <div style={{ overflowX: 'auto' }}>
+            <table className="digi-table">
+              <thead>
+                <tr>
+                  <th>Assessment</th><th>{t('status')}</th><th>{t('round')}</th><th>{t('updated')}</th><th>Claimed</th><th />
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {q.data.items.map((a) => (
+                  <tr key={a.id}>
+                    <td className="text-mono text-sm">{a.id.slice(0, 8)}...</td>
+                    <td><StatusBadge status={a.status} /></td>
+                    <td>{a.round}</td>
+                    <td className="text-sm text-muted">{fmtDate(a.updatedAt)}</td>
+                    <td className="text-sm">{a.claimedBy ? '[done]' : '-'}</td>
+                    <td style={{ textAlign: 'right' }}>
+                      <Link className="digi-btn digi-btn-outline digi-btn-sm digi-btn-inline" to={`/assessor/a/${a.id}/review`} style={{ textDecoration: 'none' }}>
+                        {['SUBMITTED', 'AI_ANALYZED'].includes(a.status) ? t('claim') : t('reviewTitle')}
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </Card>
 
-      <div className="toolbar" style={{ marginTop: 12 }}>
-        <Button variant="ghost" className="btn-sm" onClick={() => q.refetch()}>{t('retry')}</Button>
+      <div className="digi-toolbar mt-12">
+        <Button variant="ghost" className="digi-btn-sm digi-btn-inline" onClick={() => q.refetch()}>{t('retry')}</Button>
       </div>
     </AppShell>
   );

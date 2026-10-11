@@ -92,19 +92,19 @@ export function EvidenceCapture({ assessmentId, taskId, spec, language, onNarrat
 
   return (
     <div>
-      <div className="toolbar" style={{ justifyContent: 'space-between' }}>
+      <div className="digi-toolbar justify-between">
         <strong>{t('evidenceTitle')}</strong>
-        <span className={`badge ${satisfied ? 'bg-approved' : 'bg-in_progress'}`}>
-          {count} / {spec.minCount}–{spec.maxCount} {mediaTypes.join(', ')}
+        <span className={`digi-pill ${satisfied ? 'digi-pill-green' : 'digi-pill-orange'}`}>
+          {count} / {spec.minCount}-{spec.maxCount} {mediaTypes.join(', ')}
         </span>
       </div>
 
-      {spec.requireWorkerInFrame && <p className="muted small">Ensure the worker is visible performing the task.</p>}
-      {spec.narrationRequired && <p className="muted small">{t('narrationTranscript')}</p>}
+      {spec.requireWorkerInFrame && <p className="text-muted text-sm">Ensure the worker is visible performing the task.</p>}
+      {spec.narrationRequired && <p className="text-muted text-sm">{t('narrationTranscript')}</p>}
 
       {mediaTypes.includes('audio') && (
         <textarea
-          className="textarea"
+          className="digi-textarea"
           placeholder={t('narrationTranscript')}
           value={transcript}
           onChange={(e) => setTranscript(e.target.value)}
@@ -126,25 +126,25 @@ export function EvidenceCapture({ assessmentId, taskId, spec, language, onNarrat
       />
 
       {!atMax && (
-        <div className="upload-zone" onClick={() => inputRef.current?.click()}>
-          <div style={{ fontSize: '1.4rem' }}>＋</div>
+        <div className="digi-upload-zone" onClick={() => inputRef.current?.click()}>
+          <div style={{ fontSize: '1.4rem', fontWeight: 700 }}>+</div>
           <div>
             {mediaTypes.map((m) => (m === 'photo' ? t('addPhoto') : m === 'video' ? t('addVideo') : m === 'audio' ? t('addAudio') : 'Document')).join(' / ')}
           </div>
-          <div className="small">{isOnline() ? 'Camera / gallery' : t('offline')}</div>
+          <div className="text-sm">{isOnline() ? 'Camera / gallery' : t('offline')}</div>
         </div>
       )}
 
       {progress !== null && (
-        <div style={{ marginTop: 10 }}>
-          <div className="small muted">{t('uploading', { p: progress })}</div>
-          <div className="progress"><span style={{ width: `${progress}%` }} /></div>
+        <div className="mt-8">
+          <div className="text-sm text-muted">{t('uploading', { p: progress })}</div>
+          <div className="digi-progress"><span style={{ width: `${progress}%` }} /></div>
         </div>
       )}
       {queued > 0 && <Alert kind="info">{t('syncPending', { n: queued })}</Alert>}
       {error && <Alert kind="err">{error}</Alert>}
 
-      <div style={{ marginTop: 12 }}>
+      <div className="mt-12">
         {eq.isLoading ? <Spinner /> : <EvidenceGrid items={mine} />}
       </div>
     </div>

@@ -73,7 +73,7 @@ export default function WorkerProfilePage() {
       }
     } catch (e) {
       if (e instanceof ApiError && e.status === 409) {
-        setMsg({ kind: 'err', text: 'This profile was updated elsewhere. Reloading latest version…' });
+        setMsg({ kind: 'err', text: 'This profile was updated elsewhere. Reloading latest version...' });
         const server = await getProfile();
         setProfile(server);
       } else {
@@ -86,54 +86,52 @@ export default function WorkerProfilePage() {
 
   return (
     <AppShell>
-      <div style={{ maxWidth: 720, margin: '0 auto' }}>
-        <h1>{t('displayName')}</h1>
-        <Card>
-          <div className="grid grid-2">
-            <Field label={t('displayName')}>
-              <input className="input" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-            </Field>
-            <Field label={t('yearsExperience')}>
-              <input className="input" type="number" min={0} max={60} value={years} onChange={(e) => setYears(Number(e.target.value))} />
-            </Field>
-            <Field label="Gender" optional>
-              <select className="select" value={gender} onChange={(e) => setGender(e.target.value)}>
-                <option value="">—</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-                <option value="prefer_not_to_say">Prefer not to say</option>
-              </select>
-            </Field>
-            <Field label="Date of birth" optional>
-              <input className="input" type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
-            </Field>
-            <Field label="State" optional>
-              <input className="input" value={state} onChange={(e) => setState(e.target.value)} />
-            </Field>
-            <Field label="District" optional>
-              <input className="input" value={district} onChange={(e) => setDistrict(e.target.value)} />
-            </Field>
-            <Field label="PIN code" optional>
-              <input className="input" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} />
-            </Field>
-            <Field label={t('language')} optional>
-              <select className="select" value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
-                <option value="mr">मराठी</option>
-              </select>
-            </Field>
-          </div>
-          <Field label="Trades" hint="Comma separated (e.g. electrician, solar installer)" optional>
-            <input className="input" value={trades} onChange={(e) => setTrades(e.target.value)} />
+      <h1>{t('displayName')}</h1>
+      <Card>
+        <div className="digi-grid-2">
+          <Field label={t('displayName')}>
+            <input className="digi-input" value={fullName} onChange={(e) => setFullName(e.target.value)} />
           </Field>
-          {msg && <Alert kind={msg.kind}>{msg.text}</Alert>}
-          <div className="toolbar">
-            <Button variant="primary" onClick={save} disabled={busy || !profile}>{busy ? '…' : t('save')}</Button>
-          </div>
-        </Card>
-      </div>
+          <Field label={t('yearsExperience')}>
+            <input className="digi-input" type="number" min={0} max={60} value={years} onChange={(e) => setYears(Number(e.target.value))} />
+          </Field>
+          <Field label="Gender" optional>
+            <select className="digi-select" value={gender} onChange={(e) => setGender(e.target.value)}>
+              <option value="">-</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="prefer_not_to_say">Prefer not to say</option>
+            </select>
+          </Field>
+          <Field label="Date of birth" optional>
+            <input className="digi-input" type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
+          </Field>
+          <Field label="State" optional>
+            <input className="digi-input" value={state} onChange={(e) => setState(e.target.value)} />
+          </Field>
+          <Field label="District" optional>
+            <input className="digi-input" value={district} onChange={(e) => setDistrict(e.target.value)} />
+          </Field>
+          <Field label="PIN code" optional>
+            <input className="digi-input" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} />
+          </Field>
+          <Field label={t('language')} optional>
+            <select className="digi-select" value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="mr">Marathi</option>
+            </select>
+          </Field>
+        </div>
+        <Field label="Trades" hint="Comma separated (e.g. electrician, solar installer)" optional>
+          <input className="digi-input" value={trades} onChange={(e) => setTrades(e.target.value)} />
+        </Field>
+        {msg && <Alert kind={msg.kind}>{msg.text}</Alert>}
+        <div className="digi-toolbar mt-8">
+          <Button variant="primary" className="digi-btn-inline" onClick={save} disabled={busy || !profile}>{busy ? '...' : t('save')}</Button>
+        </div>
+      </Card>
     </AppShell>
   );
 }

@@ -12,7 +12,7 @@ export function DigiHeader() {
   return (
     <header className="digi-header">
       <div className="digi-topbar">
-        <span>GOVERNMENT OF INDIA · NSQF RPL PORTAL</span>
+        <span>GOVERNMENT OF INDIA | NSQF RPL PORTAL</span>
         <span>
           <span className={`live-dot ${!isOnline ? 'offline' : ''}`} />
           {isOnline ? 'ONLINE' : 'OFFLINE (LOCAL)'}
@@ -29,7 +29,7 @@ export function DigiHeader() {
           />
           <div>
             <h1 className="digi-title">{APP_NAME}</h1>
-            <p className="digi-subtitle">DigiLocker RPL Skill Credential</p>
+            <p className="digi-subtitle">NSQF RPL Skill Credential</p>
           </div>
         </Link>
         <div className="digi-nav-actions">
@@ -71,24 +71,24 @@ export function DigiBottomNav() {
   return (
     <nav className="digi-bottom-nav" aria-label="Bottom Navigation">
       <NavLink to="/worker" end className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
-        <span className="tab-icon">📋</span>
+        <span className="tab-icon">[ ]</span>
         <span>My Skills</span>
       </NavLink>
       <NavLink to="/worker/new" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
-        <span className="tab-icon">➕</span>
-        <span>Apply Test</span>
+        <span className="tab-icon">+</span>
+        <span>Apply</span>
       </NavLink>
       <NavLink to="/verify" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
-        <span className="tab-icon">🔍</span>
-        <span>Verify QR</span>
+        <span className="tab-icon">Q</span>
+        <span>Verify</span>
       </NavLink>
       <NavLink to="/worker/profile" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
-        <span className="tab-icon">👤</span>
+        <span className="tab-icon">A</span>
         <span>Profile</span>
       </NavLink>
       {(role === 'assessor' || role === 'authorized_assessor' || role === 'admin') && (
         <NavLink to="/assessor" className={({ isActive }) => `digi-bottom-tab${isActive ? ' active' : ''}`}>
-          <span className="tab-icon">⚖️</span>
+          <span className="tab-icon">R</span>
           <span>Assessor</span>
         </NavLink>
       )}

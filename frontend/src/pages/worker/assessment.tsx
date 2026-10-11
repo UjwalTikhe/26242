@@ -75,44 +75,47 @@ export default function AssessmentHome() {
 
   return (
     <AppShell>
-      <div className="toolbar" style={{ justifyContent: 'space-between' }}>
+      <div className="digi-toolbar justify-between">
         <div>
           <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
-            <h1 style={{ margin: 0 }}>{t('myAssessments')}</h1>
+            <h1 className="mt-0 mb-0">{t('myAssessments')}</h1>
             <StatusBadge status={a.status} />
-            <span className="muted small">{t('round')} {a.round}</span>
+            <span className="text-muted text-sm">{t('round')} {a.round}</span>
           </div>
-          <div className="muted small mono">{a.id}</div>
+          <div className="text-muted text-sm text-mono">{a.id}</div>
         </div>
-        <Link className="btn btn-ghost btn-sm" to="/worker">{t('back')}</Link>
+        <Link className="digi-btn digi-btn-ghost digi-btn-sm digi-btn-inline" to="/worker" style={{ textDecoration: 'none' }}>{t('back')}</Link>
       </div>
 
-      <div className="stepper">
+      {/* Stepper */}
+      <div className="digi-stepper">
         {steps.map((s, i) => (
-          <div key={s} className={`step${i < stepIdx ? ' done' : ''}${i === stepIdx ? ' now' : ''}`}>{s}</div>
+          <div key={s} className={`digi-step${i < stepIdx ? ' done' : ''}${i === stepIdx ? ' current' : ''}`}>{s}</div>
         ))}
       </div>
 
+      {/* Plan Ready / In Progress / Reassess */}
       {(status === 'PLAN_READY' || status === 'IN_PROGRESS' || status === 'REASSESS') && (
         <Card>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
-              <h3 style={{ marginBottom: 2 }}>{t('planTitle')}</h3>
-              <p className="muted small" style={{ margin: 0 }}>
+              <h3 className="mb-4">{t('planTitle')}</h3>
+              <p className="text-muted text-sm mt-0">
                 {pq.data ? t('planBody', { n: pq.data.tasks.length, w: pq.data.totalWeight }) : t('loading')}
-                {pq.data ? ` · ${loc(pq.data.qpTitle)} · NSQF ${pq.data.nsqfLevel}` : ''}
+                {pq.data ? ` | ${loc(pq.data.qpTitle)} | NSQF ${pq.data.nsqfLevel}` : ''}
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 8 }}>
+            <div className="digi-toolbar">
               {canTransition(a.status, 'IN_PROGRESS') && status === 'PLAN_READY' && (
-                <Button variant="saffron" disabled={busy} onClick={() => run(() => startAssessment(id))}>{t('start')}</Button>
+                <Button variant="saffron" className="digi-btn-sm digi-btn-inline" disabled={busy} onClick={() => run(() => startAssessment(id))}>{t('start')}</Button>
               )}
-              <Link className="btn btn-primary" to={`/worker/a/${id}/tasks`}>{t('continueAssessment')}</Link>
+              <Link className="digi-btn digi-btn-primary digi-btn-sm digi-btn-inline" to={`/worker/a/${id}/tasks`} style={{ textDecoration: 'none' }}>{t('continueAssessment')}</Link>
             </div>
           </div>
         </Card>
       )}
 
+      {/* Draft: Declaration Form */}
       {status === 'DRAFT' && (
         <DeclarationForm
           busy={submitDecl.isPending}
@@ -120,16 +123,17 @@ export default function AssessmentHome() {
         />
       )}
 
+      {/* Declared: Trigger Mapping */}
       {status === 'DECLARED' && (
         <Card title={t('stepMap')}>
-          <p className="muted">{t('mappingBody')}</p>
+          <p className="text-muted">{t('mappingBody')}</p>
           <Button variant="saffron" disabled={busy} onClick={() => run(() => mapAssessment(id, undefined), t('taskSaved'))}>
-            {busy ? '…' : `${t('stepMap')}`}
+            {busy ? '...' : `${t('stepMap')}`}
           </Button>
           {dq.data && (
-            <div style={{ marginTop: 14 }}>
+            <div className="mt-12">
               <h4>{t('declarationTitle')}</h4>
-              <dl className="key-value">
+              <dl className="digi-kv">
                 <dt>{t('yearsExperience')}</dt><dd>{dq.data.answers.yearsExperience}</dd>
                 <dt>{t('workTypes')}</dt><dd>{dq.data.answers.workTypes.join(', ')}</dd>
                 <dt>{t('toolsUsed')}</dt><dd>{dq.data.answers.toolsUsed.join(', ')}</dd>
@@ -140,25 +144,26 @@ export default function AssessmentHome() {
         </Card>
       )}
 
+      {/* Mapped: Show matches, confirm role */}
       {status === 'MAPPED' && (
         <Card title={t('mappingTitle')}>
-          <p className="muted">{t('mappingBody')}</p>
+          <p className="text-muted">{t('mappingBody')}</p>
           {mq.data?.matches.map((m, i) => (
-            <div key={m.tradePackId} className="card" style={{ marginTop: 10, boxShadow: 'none' }}>
+            <div key={m.tradePackId} className="digi-card" style={{ marginTop: 10 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
                 <div>
-                  <h3 style={{ marginBottom: 2 }}>{i === 0 ? '★ ' : ''}{m.qpTitle}</h3>
-                  <span className="muted small">NSQF Level {m.nsqfLevel} {m.jobRole ? `· ${m.jobRole}` : ''}</span>
+                  <h3 className="mb-4">{i === 0 ? '[best] ' : ''}{m.qpTitle}</h3>
+                  <span className="text-muted text-sm">NSQF Level {m.nsqfLevel} {m.jobRole ? `| ${m.jobRole}` : ''}</span>
                 </div>
-                <span className="badge bg-mapped">{t('confidence', { p: Math.round(m.confidence * 100) })}</span>
+                <span className="digi-pill digi-pill-blue">{t('confidence', { p: Math.round(m.confidence * 100) })}</span>
               </div>
-              <p className="small" style={{ marginTop: 8 }}>{t('reasoning', { r: m.reasoning })}</p>
+              <p className="text-sm" style={{ marginTop: 8 }}>{t('reasoning', { r: m.reasoning })}</p>
               {m.matchedConcepts.length > 0 && (
-                <p className="small muted">{t('matchedConcepts', { c: m.matchedConcepts.join(', ') })}</p>
+                <p className="text-sm text-muted">{t('matchedConcepts', { c: m.matchedConcepts.join(', ') })}</p>
               )}
               <Button
                 variant={i === 0 ? 'saffron' : 'outline'}
-                className="btn-sm"
+                className="digi-btn-sm"
                 disabled={busy}
                 onClick={() => run(() => generatePlan(id, m.tradePackId), t('taskSaved'))}
               >
@@ -170,6 +175,7 @@ export default function AssessmentHome() {
         </Card>
       )}
 
+      {/* Status updates */}
       {status === 'SUBMITTED' && (
         <Card title={t('status')}>
           <Alert kind="info">
@@ -201,7 +207,7 @@ export default function AssessmentHome() {
       {status === 'REVIEWED' && (
         <Card title={t('stepDecision')}>
           <Alert kind="ok">{t('ovReviewed')}. Awaiting final decision.</Alert>
-          <Link className="btn btn-outline btn-sm" to={`/worker/a/${id}/result`}>{t('results')}</Link>
+          <Link className="digi-btn digi-btn-outline digi-btn-sm digi-btn-inline mt-8" to={`/worker/a/${id}/result`} style={{ textDecoration: 'none' }}>{t('results')}</Link>
         </Card>
       )}
 
@@ -210,26 +216,27 @@ export default function AssessmentHome() {
           <Alert kind={status === 'APPROVED' ? 'ok' : 'err'}>
             {status === 'APPROVED' ? t('approved') : t('rejected')}
           </Alert>
-          <Link className="btn btn-saffron" to={`/worker/a/${id}/result`}>{t('results')}</Link>
+          <Link className="digi-btn digi-btn-orange digi-btn-inline mt-8" to={`/worker/a/${id}/result`} style={{ textDecoration: 'none' }}>{t('results')}</Link>
         </Card>
       )}
 
+      {/* Status History */}
       <SectionTitle>{t('status')}</SectionTitle>
       <Card>
-        <ul className="timeline">
+        <ul className="digi-timeline">
           {a.statusHistory.map((h, i) => {
             const last = i === a.statusHistory.length - 1;
             return (
-              <li key={`${h.status}-${h.at}`} className={last ? 'cur' : 'done'}>
+              <li key={`${h.status}-${h.at}`} className={last ? 'current' : 'done'}>
                 <div>
                   <StatusBadge status={h.status} />
-                  <div className="muted small">{fmtDate(h.at)}{h.note ? ` · ${h.note}` : ''}</div>
+                  <div className="text-muted text-sm">{fmtDate(h.at)}{h.note ? ` | ${h.note}` : ''}</div>
                 </div>
               </li>
             );
           })}
         </ul>
-        <p className="muted small">{t('updated')}: {fmtDate(a.updatedAt)}</p>
+        <p className="text-muted text-sm">{t('updated')}: {fmtDate(a.updatedAt)}</p>
       </Card>
     </AppShell>
   );

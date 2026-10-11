@@ -39,15 +39,15 @@ export default function DecisionPage() {
 
   return (
     <AppShell>
-      <div className="toolbar" style={{ justifyContent: 'space-between' }}>
+      <div className="digi-toolbar justify-between">
         <div>
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            <h1 style={{ margin: 0 }}>{t('decisionTitle')}</h1>
+            <h1 className="mt-0 mb-0">{t('decisionTitle')}</h1>
             <StatusBadge status={a.status} />
           </div>
-          <div className="muted small mono">{a.id}</div>
+          <div className="text-muted text-sm text-mono">{a.id}</div>
         </div>
-        <Link className="btn btn-ghost btn-sm" to={`/assessor/a/${id}`}>{t('back')}</Link>
+        <Link className="digi-btn digi-btn-ghost digi-btn-sm digi-btn-inline" to={`/assessor/a/${id}/review`} style={{ textDecoration: 'none' }}>{t('back')}</Link>
       </div>
 
       {!authorized && (
@@ -56,21 +56,21 @@ export default function DecisionPage() {
 
       {rq.data && (
         <Card title={t('results')}>
-          <div className="grid grid-2">
-            <div className="score-ring">
-              <div className="score-num">{Math.round(rq.data.overallScore)}%</div>
-              <span className={`badge ${rq.data.recommendation === 'certify' ? 'bg-approved' : rq.data.recommendation === 'not_certified' ? 'bg-rejected' : 'bg-in_progress'}`}>
+          <div className="digi-grid-2">
+            <div className="digi-score-display">
+              <div className="digi-score-num">{Math.round(rq.data.overallScore)}%</div>
+              <span className={`digi-pill ${rq.data.recommendation === 'certify' ? 'digi-pill-green' : rq.data.recommendation === 'not_certified' ? 'digi-pill-red' : 'digi-pill-orange'}`} style={{ marginTop: 8 }}>
                 {rq.data.recommendation.replace(/_/g, ' ')}
               </span>
             </div>
-            <dl className="key-value">
+            <dl className="digi-kv">
               <dt>Critical safety</dt><dd>{rq.data.criticalSafetyPassed ? 'Passed' : 'Failed'}</dd>
               <dt>Assessor overrides</dt><dd>{rq.data.assessorOverrides}</dd>
-              <dt>NSQF level</dt><dd>{rq.data.currentNsqfLevel} → {rq.data.suggestedNsqfLevel}</dd>
+              <dt>NSQF level</dt><dd>{rq.data.currentNsqfLevel} to {rq.data.suggestedNsqfLevel}</dd>
               <dt>Generated</dt><dd>{fmtDate(rq.data.generatedAt)}</dd>
             </dl>
           </div>
-          {rq.data.summary && <p className="small muted">{loc(rq.data.summary)}</p>}
+          {rq.data.summary && <p className="text-sm text-muted mt-8">{loc(rq.data.summary)}</p>}
         </Card>
       )}
 
@@ -79,20 +79,20 @@ export default function DecisionPage() {
           <SectionTitle>Assessor review</SectionTitle>
           <Card>
             <Alert kind={revq.data.outcome === 'REVIEWED' ? 'ok' : 'err'}>Outcome: {revq.data.outcome}</Alert>
-            {revq.data.overallComment && <p className="muted small">{revq.data.overallComment}</p>}
+            {revq.data.overallComment && <p className="text-muted text-sm">{revq.data.overallComment}</p>}
           </Card>
         </>
       )}
 
       {canDecide ? (
         <Card title={t('decisionTitle')}>
-          <div className="field">
-            <label className="field-label">{t('decisionComment')}</label>
-            <textarea className="textarea" value={comments} onChange={(e) => setComments(e.target.value)} />
+          <div className="digi-form-group">
+            <label className="digi-label">{t('decisionComment')}</label>
+            <textarea className="digi-textarea" value={comments} onChange={(e) => setComments(e.target.value)} />
           </div>
-          <div className="toolbar">
-            <Button variant="success" disabled={decide.isPending} onClick={() => decide.mutate('APPROVED')}>{t('approve')}</Button>
-            <Button variant="danger" disabled={decide.isPending} onClick={() => decide.mutate('REJECTED')}>{t('reject')}</Button>
+          <div className="digi-toolbar">
+            <Button variant="success" className="digi-btn-inline" disabled={decide.isPending} onClick={() => decide.mutate('APPROVED')}>{t('approve')}</Button>
+            <Button variant="danger" className="digi-btn-inline" disabled={decide.isPending} onClick={() => decide.mutate('REJECTED')}>{t('reject')}</Button>
           </div>
         </Card>
       ) : a.status !== 'REVIEWED' ? (

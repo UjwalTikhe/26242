@@ -40,7 +40,6 @@ export default function NewAssessment() {
         navigate(`/worker/a/${result.result.id}`);
       } else {
         toast(t('offline'), 'info');
-        // Offline: go to the (client) id so the user can start filling the declaration.
         navigate(`/worker/a/${clientId}`);
       }
     } catch (e) {
@@ -52,28 +51,26 @@ export default function NewAssessment() {
 
   return (
     <AppShell>
-      <div style={{ maxWidth: 640, margin: '0 auto' }}>
-        <h1>{t('newApplication')}</h1>
-        <Card>
-          <p className="muted">{t('govt')}</p>
-          <Field label={t('chooseTrade')} optional>
-            {trades.isLoading ? <Loading /> : (
-              <select className="select" value={tradeHint} onChange={(e) => setTradeHint(e.target.value)}>
-                <option value="">Let AI decide from my declaration</option>
-                {(trades.data?.items ?? []).map((tp) => (
-                  <option key={tp.id} value={tp.id}>
-                    {loc(tp.title, tp.id)} (NSQF {tp.qp?.nsqfLevel ?? '—'})
-                  </option>
-                ))}
-              </select>
-            )}
-          </Field>
-          <Button variant="saffron" onClick={create} disabled={busy} style={{ width: '100%' }}>
-            {busy ? t('creating') : t('create')}
-          </Button>
-          {msg && <Alert kind="err">{msg}</Alert>}
-        </Card>
-      </div>
+      <h1>{t('newApplication')}</h1>
+      <Card>
+        <p className="text-muted">{t('govt')}</p>
+        <Field label={t('chooseTrade')} optional>
+          {trades.isLoading ? <Loading /> : (
+            <select className="digi-select" value={tradeHint} onChange={(e) => setTradeHint(e.target.value)}>
+              <option value="">Let AI decide from my declaration</option>
+              {(trades.data?.items ?? []).map((tp) => (
+                <option key={tp.id} value={tp.id}>
+                  {loc(tp.title, tp.id)} (NSQF {tp.qp?.nsqfLevel ?? '-'})
+                </option>
+              ))}
+            </select>
+          )}
+        </Field>
+        <Button variant="saffron" onClick={create} disabled={busy} style={{ width: '100%' }}>
+          {busy ? t('creating') : t('create')}
+        </Button>
+        {msg && <Alert kind="err">{msg}</Alert>}
+      </Card>
     </AppShell>
   );
 }

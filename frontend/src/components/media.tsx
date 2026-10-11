@@ -25,12 +25,12 @@ export function EvidenceTile({ evidence, onClick }: { evidence: Evidence; onClic
 
   const label = evidence.kind;
   return (
-    <div className="media-tile" onClick={onClick} role={onClick ? 'button' : undefined} tabIndex={onClick ? 0 : undefined}>
+    <div className="digi-media-tile" onClick={onClick} role={onClick ? 'button' : undefined} tabIndex={onClick ? 0 : undefined}>
       <span className="kind">{label}</span>
       {err ? (
-        <div className="empty small" style={{ padding: '34px 8px' }}>Unavailable</div>
+        <div className="digi-empty text-sm" style={{ padding: '34px 8px' }}>Unavailable</div>
       ) : !url ? (
-        <div className="empty small" style={{ padding: '34px 8px' }}>…</div>
+        <div className="digi-empty text-sm" style={{ padding: '34px 8px' }}>Loading...</div>
       ) : evidence.kind === 'photo' ? (
         <img src={url} alt={`evidence ${evidence.seq}`} />
       ) : evidence.kind === 'video' ? (
@@ -45,9 +45,9 @@ export function EvidenceTile({ evidence, onClick }: { evidence: Evidence; onClic
 }
 
 export function EvidenceGrid({ items, onOpen }: { items: Evidence[]; onOpen?: (e: Evidence) => void }) {
-  if (!items.length) return <p className="muted small">No evidence attached yet.</p>;
+  if (!items.length) return <p className="text-muted text-sm">No evidence attached yet.</p>;
   return (
-    <div className="media-grid">
+    <div className="digi-media-grid">
       {items.map((e) => (
         <EvidenceTile key={e.id} evidence={e} onClick={onOpen ? () => onOpen(e) : undefined} />
       ))}
