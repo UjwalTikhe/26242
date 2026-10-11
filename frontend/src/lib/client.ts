@@ -120,7 +120,7 @@ export async function evidenceBlob(evidenceId: string): Promise<Blob> {
 /* ---------------- analysis / review ---------------- */
 export const getAnalysis = (id: string) => api<AIAnalysis>(`/api/v1/assessments/${id}/analysis`);
 export const getAnalysisStatus = (id: string) => api<AnalysisStatusResT>(`/api/v1/assessments/${id}/analysis/status`);
-export const claimReview = (id: string) => api<{ assessment: Assessment }>(`/api/v1/assessments/${id}/review/claim`, { method: 'POST' });
+export const claimReview = (id: string) => api<Assessment>(`/api/v1/assessments/${id}/review/claim`, { method: 'POST' });
 export const submitReview = (id: string, body: Record<string, unknown>) => api<ReviewResT>(`/api/v1/assessments/${id}/review`, { method: 'POST', body });
 export const getReview = (id: string) => api<ReviewResT>(`/api/v1/assessments/${id}/review`);
 export const assessorQueue = (limit = 30) => api<AssessmentListResT>(`/api/v1/assessor/queue?limit=${limit}`);

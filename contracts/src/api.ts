@@ -210,7 +210,7 @@ export const AnalysisStatusRes = z.object({
   message: z.string().optional(),
 });
 
-export const ClaimReviewRes = z.object({ assessment: Assessment });
+export const ClaimReviewRes = Assessment;
 
 export const ReviewSubmitReq = z.object({
   items: z

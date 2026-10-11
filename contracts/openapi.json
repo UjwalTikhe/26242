@@ -3124,12 +3124,82 @@
       "ClaimReviewRes": {
         "type": "object",
         "properties": {
-          "assessment": {
-            "$ref": "#/components/schemas/SubmitAssessmentRes"
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "workerId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "DECLARED",
+              "MAPPED",
+              "PLAN_READY",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "AI_ANALYZED",
+              "UNDER_REVIEW",
+              "REASSESS",
+              "REVIEWED",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "round": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "language": {
+            "default": "en",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Language"
+              }
+            ]
+          },
+          "claimedBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Id"
+              }
+            ]
+          },
+          "version": {
+            "default": 0,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              }
+            ]
+          },
+          "statusHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusEvent"
+            }
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/DateTime"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/DateTime"
           }
         },
         "required": [
-          "assessment"
+          "id",
+          "workerId",
+          "status",
+          "round",
+          "language",
+          "version",
+          "statusHistory",
+          "createdAt",
+          "updatedAt"
         ],
         "additionalProperties": false
       },
@@ -6715,7 +6785,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimReviewRes"
+                  "$ref": "#/components/schemas/SubmitAssessmentRes"
                 }
               }
             }
