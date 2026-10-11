@@ -1,66 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { APP_NAME, APP_NAME_HI } from '../config';
+import { APP_NAME } from '../config';
 import { useAuth, useLang, useOnline } from '../store/providers';
-
-function LangToggle() {
-  const { lang, setLang } = useLang();
-  return (
-    <button
-      className="nav-link"
-      style={{ border: 'none', background: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
-      onClick={() => setLang(lang === 'en' ? 'hi' : 'en')}
-      aria-label="Toggle language"
-      title="हिन्दी / English"
-    >
-      {lang === 'en' ? 'हिन्दी' : 'EN'}
-    </button>
-  );
-}
 
 export function GovHeader() {
   const { user, logout } = useAuth();
-  const { t } = useLang();
+  const { t, lang, setLang } = useLang();
+  const isOnline = useOnline();
   const navigate = useNavigate();
   const role = user?.role;
 
-  const links: Array<{ to: string; label: string; show: boolean }> = [
-    { to: '/', label: t('home'), show: !role },
-    { to: '/worker', label: t('dashboard'), show: role === 'worker' },
-    { to: '/worker/new', label: t('apply'), show: role === 'worker' },
-    { to: '/assessor', label: t('queue'), show: role === 'assessor' || role === 'authorized_assessor' },
-    { to: '/fairness', label: t('admin'), show: role === 'assessor' || role === 'authorized_assessor' || role === 'admin' },
-  ];
-
   return (
-    <header className="navbar">
-      <div className="tricolor-bar" aria-hidden />
-      <div className="nav-inner">
-        <Link to="/" className="brand">
-          <img src="/DakshSetu.png" alt="" width={40} height={40} style={{ borderRadius: 4 }} />
-          <span>
-            <span className="brand-name">{APP_NAME}</span>
-            <span className="brand-sub" style={{ display: 'block' }}>{t('govt')}</span>
-          </span>
+    <header className="admin-header">
+      <div className="header-topbar">
+        <span>GOVERNMENT OF INDIA · SKILL ASSESSMENT & CERTIFICATION (RPL)</span>
+        <span>
+          STATUS: {isOnline ? '[ONLINE]' : '[OFFLINE: WORKING LOCALLY]'}
+        </span>
+      </div>
+      <div className="header-main">
+        <Link to="/" className="header-brand">
+          <div className="header-brand-badge">NSQF</div>
+          <div>
+            <h1 className="header-title">{APP_NAME}</h1>
+            <p className="header-sub">RECOGNITION OF PRIOR LEARNING (RPL) ASSESSMENT SYSTEM</p>
+          </div>
         </Link>
-        <nav className="nav-links" aria-label="Main">
-          {links.filter((l) => l.show).map((l) => (
-            <NavLink key={l.to} to={l.to} end className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-              {l.label}
-            </NavLink>
-          ))}
-          <LangToggle />
-          {role && (
-            <span className="nav-user">
-              <span className="nav-chip">{user?.displayName ?? role}</span>
-              <button
-                className="nav-link"
-                style={{ border: 'none', background: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
-                onClick={() => { logout(); navigate('/'); }}
-              >
-                {t('logout')}
-              </button>
-            </span>
+        <nav className="header-nav" aria-label="Main Navigation">
+          <NavLink to="/" end className={({ isActive }) => `nav-btn${isActive ? ' active' : ''}`}>
+            Home
+          </NavLink>
+          {role === 'worker' && (
+            <>
+              <NavLink to="/worker" className={({ isActive }) => `nav-btn${isActive ? ' active' : ''}`}>
+                Candidate Portal
+              </NavLink>
+              <NavLink to="/worker/new" className={({ isActive }) => `nav-btn${isActive ? ' active' : ''}`}>
+                New Assessment
+              </NavLink>
+            </>
+          )}
+          {(role === 'assessor' || role === 'authorized_assessor' || role === 'admin') && (
+            <>
+              <NavLink to="/assessor" className={({ isActive }) => `nav-btn${isActive ? ' active' : ''}`}>
+                Review Queue
+              </NavLink>
+              <NavLink to="/fairness" className={({ isActive }) => `nav-btn${isActive ? ' active' : ''}`}>
+                Analytics
+              </NavLink>
+            </>
+          )}
+          <NavLink to="/verify" className={({ isActive }) => `nav-btn${isActive ? ' active' : ''}`}>
+            Verify Certificate
+          </NavLink>
+
+          <button
+            type="button"
+            className="nav-btn"
+            onClick={() => setLang(lang === 'en' ? 'hi' : lang === 'hi' ? 'mr' : 'en')}
+            title="Switch Language"
+          >
+            Language: [{lang.toUpperCase()}]
+          </button>
+
+          {role ? (
+            <button
+              type="button"
+              className="nav-btn"
+              onClick={() => {
+                logout();
+                navigate('/');
+              }}
+            >
+              Sign Out ({user?.displayName ?? role})
+            </button>
+          ) : (
+            <Link to="/login" className="nav-btn active">
+              Sign In
+            </Link>
           )}
         </nav>
       </div>
@@ -68,36 +85,19 @@ export function GovHeader() {
   );
 }
 
-export function OfflineBanner() {
-  const { online, syncPending } = useOnline();
-  const { t } = useLang();
-  if (!online) {
-    return (
-      <div className="offline-banner" role="status">
-        <span className="dot" aria-hidden />
-        <span>{t('offline')}</span>
-      </div>
-    );
-  }
-  if (syncPending > 0) {
-    return (
-      <div className="offline-banner" role="status">
-        <span className="dot" aria-hidden />
-        <span>{t('syncPending', { n: syncPending })}</span>
-      </div>
-    );
-  }
-  return null;
-}
-
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function Shell({ children }: { children: React.ReactNode }) {
+  const isOnline = useOnline();
   return (
     <>
       <GovHeader />
-      <OfflineBanner />
-      <main className="page">
-        <div className="container">{children}</div>
-      </main>
+      {!isOnline && (
+        <div className="sync-banner">
+          <span>NOTICE: System is currently running in OFFLINE mode. Data is stored in device IndexedDB and will sync upon reconnection.</span>
+        </div>
+      )}
+      <main className="page">{children}</main>
     </>
   );
 }
+
+export const AppShell = Shell;
