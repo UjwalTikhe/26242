@@ -5,7 +5,6 @@ import { useAuth, useLang } from '../store/providers';
 import { GovHeader } from '../components/layout';
 
 export default function Landing() {
-  const { t } = useLang();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [cert, setCert] = useState('');
@@ -13,181 +12,139 @@ export default function Landing() {
   return (
     <>
       <GovHeader />
-      <div className="container" style={{ paddingTop: 20 }}>
-        {/* Institutional System Notice */}
-        <div className="panel" style={{ borderLeft: '4px solid var(--primary-navy)', background: '#FFFFFF' }}>
-          <h2>National Skills Qualifications Framework (NSQF) Assessment Portal</h2>
-          <p className="muted" style={{ marginBottom: 12 }}>
-            DakshSetu assesses informal workers across certified trade packs: Electrician (ELE/Q1401), Plumber (PSC/Q0104), and Welder (CSC/Q0204). Complete hands-on evaluation with offline support and tamper-evident logging.
+      <div className="container" style={{ paddingTop: 12, paddingBottom: 32 }}>
+        {/* Worker Action Focus Card */}
+        <div className="panel" style={{ borderLeft: '4px solid var(--primary-navy)', background: '#FFFFFF', padding: '16px 14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span className="status-tag navy">RPL Skill Certification</span>
+            <span className="small muted">NSQF Level 3-4</span>
+          </div>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: 8, lineHeight: 1.3 }}>
+            Government RPL Candidate Assessment Portal
+          </h2>
+          <p className="muted small" style={{ marginBottom: 14 }}>
+            For informal workers with prior skills in Electrician, Plumber, or Welder trades. Take practical tests, upload voice/video evidence, and earn an official NSQF credential. Operates in full offline mode.
           </p>
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {user?.role === 'worker' ? (
-              <Link className="btn btn-primary" to="/worker">
-                Go to Candidate Dashboard
+              <Link className="btn btn-primary" to="/worker" style={{ width: '100%' }}>
+                Enter Candidate Portal
               </Link>
             ) : (
-              <Link className="btn btn-primary" to="/login">
-                Candidate Access (Phone OTP)
+              <Link className="btn btn-primary" to="/login" style={{ width: '100%', padding: '12px', fontSize: '1rem' }}>
+                Start Candidate Test (Mobile OTP)
               </Link>
             )}
             <Link
               className="btn btn-secondary"
               to={user?.role === 'assessor' || user?.role === 'authorized_assessor' ? '/assessor' : '/assessor/login'}
+              style={{ width: '100%' }}
             >
-              Assessor / Audit Login
+              Assessor / Reviewer Login
             </Link>
           </div>
         </div>
 
-        {/* Dense Institutional Information Grid */}
-        <div className="row">
-          <div className="col-2">
-            <div className="panel">
-              <div className="panel-header">
-                <h3>Assessment Workflow Specifications</h3>
-                <span className="status-tag navy">12-State Machine</span>
-              </div>
-              <table className="table-dense">
-                <thead>
-                  <tr>
-                    <th style={{ width: 80 }}>Stage</th>
-                    <th>Module</th>
-                    <th>Authority</th>
-                    <th>Offline Capability</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>01</td>
-                    <td>Candidate Self-Declaration (Experience, Tools, Tasks)</td>
-                    <td>Candidate (Voice / Form)</td>
-                    <td>Local IndexedDB Outbox</td>
-                  </tr>
-                  <tr>
-                    <td>02</td>
-                    <td>AI NSQF Qualification Pack Matching</td>
-                    <td>Automated Model (RAG / NOS)</td>
-                    <td>Server Process</td>
-                  </tr>
-                  <tr>
-                    <td>03</td>
-                    <td>Practical Task Execution (Tool ID, Safety, Wiring, Faults)</td>
-                    <td>Candidate (Media / Audio)</td>
-                    <td>Full Offline Operation</td>
-                  </tr>
-                  <tr>
-                    <td>04</td>
-                    <td>AI Evidence Triage & Timestamp Bookmarking</td>
-                    <td>Analysis Worker (Non-binding)</td>
-                    <td>Background Job</td>
-                  </tr>
-                  <tr>
-                    <td>05</td>
-                    <td>Assessor Review & Final Decision</td>
-                    <td>Authorized Assessor (Binding)</td>
-                    <td>Assessor Portal</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="panel">
-              <div className="panel-header">
-                <h3>Active Qualification Packs in Repository</h3>
-                <span className="status-tag pass">Verified NOS</span>
-              </div>
-              <table className="table-dense">
-                <thead>
-                  <tr>
-                    <th>Trade Category</th>
-                    <th>QP Reference</th>
-                    <th>NSQF Level</th>
-                    <th>Safety Flooring</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Electrician Domestic Solutions</strong></td>
-                    <td>ELE/Q1401</td>
-                    <td>Level 4</td>
-                    <td>Mandatory Isolation Veto</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Plumber General</strong></td>
-                    <td>PSC/Q0104</td>
-                    <td>Level 4</td>
-                    <td>Pressure Test Verification</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Manual Metal Arc Welder</strong></td>
-                    <td>CSC/Q0204</td>
-                    <td>Level 3</td>
-                    <td>PPE & Hot Work Discipline</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        {/* Mobile-Friendly Active Qualification Packs */}
+        <div className="panel" style={{ padding: '14px' }}>
+          <div className="panel-header" style={{ marginBottom: 8, paddingBottom: 6 }}>
+            <h3 style={{ fontSize: '1rem' }}>Active Trade Qualification Packs</h3>
+            <span className="status-tag pass">Verified</span>
           </div>
-
-          <div className="col">
-            <div className="panel">
-              <div className="panel-header">
-                <h3>Public Credential Verification</h3>
-                <span className="status-tag">No Auth Required</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ padding: '8px 10px', background: '#FFFFFF', border: '1px solid var(--solid-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <strong>Electrician Domestic Solutions</strong>
+                <span className="status-tag navy">Level 4</span>
               </div>
-              <p className="small muted">
-                Verify any issued RPL certificate using the registration identifier. Displays NSQF level, NOS breakdown, and tamper-evident SHA-256 audit hash.
-              </p>
-              <div className="form-group">
-                <label className="form-label">Certificate Identifier</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="e.g. SIH-RPL-2026-00000001"
-                  value={cert}
-                  onChange={(e) => setCert(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && cert.trim()) {
-                      navigate(`/verify?no=${encodeURIComponent(cert.trim())}`);
-                    }
-                  }}
-                />
-              </div>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                style={{ width: '100%' }}
-                onClick={() => cert.trim() && navigate(`/verify?no=${encodeURIComponent(cert.trim())}`)}
-              >
-                Search Registry
-              </button>
+              <div className="small muted" style={{ marginTop: 2 }}>QP: ELE/Q1401 · Mandatory Isolation Veto</div>
             </div>
 
-            <div className="panel">
-              <div className="panel-header">
-                <h3>Integrity & Compliance Controls</h3>
+            <div style={{ padding: '8px 10px', background: '#FFFFFF', border: '1px solid var(--solid-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <strong>Plumber General</strong>
+                <span className="status-tag navy">Level 4</span>
               </div>
-              <p className="small" style={{ margin: '0 0 6px 0' }}>
-                <strong>Evidence Chain:</strong> SHA-256 per-assessment hash sequence.
-              </p>
-              <p className="small" style={{ margin: '0 0 6px 0' }}>
-                <strong>Resumable Protocol:</strong> Chunked binary uploads via tus.
-              </p>
-              <p className="small" style={{ margin: '0 0 6px 0' }}>
-                <strong>Human-in-the-Loop:</strong> AI scores are assistive recommendations; assessors hold sole decision authority.
-              </p>
+              <div className="small muted" style={{ marginTop: 2 }}>QP: PSC/Q0104 · Pressure Test Verification</div>
+            </div>
+
+            <div style={{ padding: '8px 10px', background: '#FFFFFF', border: '1px solid var(--solid-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <strong>Manual Metal Arc Welder</strong>
+                <span className="status-tag navy">Level 3</span>
+              </div>
+              <div className="small muted" style={{ marginTop: 2 }}>QP: CSC/Q0204 · PPE & Hot Work Discipline</div>
             </div>
           </div>
         </div>
 
-        {/* Administrative Footer */}
-        <div style={{ borderTop: '1px solid var(--solid-border)', paddingTop: 16, marginTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <span className="small muted">
-            {APP_NAME} · {SIH_HINT} · Government RPL Skill Assessment System
-          </span>
-          <span className="small muted">
-            <Link to="/tos">Terms of Service</Link> | <Link to="/privacy">Privacy Policy</Link>
-          </span>
+        {/* Mobile Assessment Steps Accordion / Card */}
+        <div className="panel" style={{ padding: '14px' }}>
+          <div className="panel-header" style={{ marginBottom: 8, paddingBottom: 6 }}>
+            <h3 style={{ fontSize: '1rem' }}>Assessment Process Sequence</h3>
+            <span className="status-tag">5 Steps</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: '0.88rem' }}>
+            <div style={{ padding: '6px 8px', borderLeft: '3px solid var(--primary-navy)', background: '#FFFFFF', border: '1px solid var(--solid-border)', borderLeftWidth: 3 }}>
+              <strong>1. Self-Declaration:</strong> Voice or form declaration of years, tools, and tasks performed.
+            </div>
+            <div style={{ padding: '6px 8px', borderLeft: '3px solid var(--primary-navy)', background: '#FFFFFF', border: '1px solid var(--solid-border)', borderLeftWidth: 3 }}>
+              <strong>2. NSQF Match:</strong> Instant AI qualification pack ranking and target level recommendation.
+            </div>
+            <div style={{ padding: '6px 8px', borderLeft: '3px solid var(--primary-navy)', background: '#FFFFFF', border: '1px solid var(--solid-border)', borderLeftWidth: 3 }}>
+              <strong>3. Practical Test:</strong> Tool identification, safety MCQs, hands-on wiring/pipe activity, and fault finding (supports full offline mode).
+            </div>
+            <div style={{ padding: '6px 8px', borderLeft: '3px solid var(--primary-navy)', background: '#FFFFFF', border: '1px solid var(--solid-border)', borderLeftWidth: 3 }}>
+              <strong>4. AI Evidence Triage:</strong> Keyframe extraction, transcript matching, and safety issue flagging.
+            </div>
+            <div style={{ padding: '6px 8px', borderLeft: '3px solid var(--primary-navy)', background: '#FFFFFF', border: '1px solid var(--solid-border)', borderLeftWidth: 3 }}>
+              <strong>5. Assessor Audit & Certification:</strong> Assessor reviews flags, sets final scores, and issues QR certificate.
+            </div>
+          </div>
+        </div>
+
+        {/* Public Credential Verification Card */}
+        <div className="panel" style={{ padding: '14px' }}>
+          <div className="panel-header" style={{ marginBottom: 8, paddingBottom: 6 }}>
+            <h3 style={{ fontSize: '1rem' }}>Verify a Certificate</h3>
+            <span className="status-tag">Instant</span>
+          </div>
+          <p className="small muted" style={{ marginBottom: 8 }}>
+            Enter certificate identifier to verify legitimacy and view NOS competency breakdown.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="e.g. SIH-RPL-2026-00000001"
+              value={cert}
+              onChange={(e) => setCert(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && cert.trim()) {
+                  navigate(`/verify?no=${encodeURIComponent(cert.trim())}`);
+                }
+              }}
+            />
+            <button
+              type="button"
+              className="btn btn-secondary"
+              style={{ width: '100%' }}
+              onClick={() => cert.trim() && navigate(`/verify?no=${encodeURIComponent(cert.trim())}`)}
+            >
+              Verify Credential
+            </button>
+          </div>
+        </div>
+
+        {/* Compact Footer */}
+        <div style={{ textAlign: 'center', borderTop: '1px solid var(--solid-border)', paddingTop: 14, marginTop: 16 }}>
+          <div className="small muted">
+            {APP_NAME} · {SIH_HINT}
+          </div>
+          <div className="small muted" style={{ marginTop: 4 }}>
+            <Link to="/tos">Terms</Link> · <Link to="/privacy">Privacy</Link>
+          </div>
         </div>
       </div>
     </>
