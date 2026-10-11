@@ -24,7 +24,7 @@ export default function DecisionPage() {
   const decide = useMutation({
     mutationFn: (outcome: 'APPROVED' | 'REJECTED') => submitDecision(id, outcome, comments || undefined),
     onSuccess: async () => {
-      toast(t('sendDecision') + ' ✓', 'ok');
+      toast(t('sendDecision'), 'ok');
       await qc.invalidateQueries({ queryKey: ['assessment', id] });
       navigate('/assessor');
     },
@@ -64,7 +64,7 @@ export default function DecisionPage() {
               </span>
             </div>
             <dl className="key-value">
-              <dt>Critical safety</dt><dd>{rq.data.criticalSafetyPassed ? '✓ passed' : '✗ failed'}</dd>
+              <dt>Critical safety</dt><dd>{rq.data.criticalSafetyPassed ? 'Passed' : 'Failed'}</dd>
               <dt>Assessor overrides</dt><dd>{rq.data.assessorOverrides}</dd>
               <dt>NSQF level</dt><dd>{rq.data.currentNsqfLevel} → {rq.data.suggestedNsqfLevel}</dd>
               <dt>Generated</dt><dd>{fmtDate(rq.data.generatedAt)}</dd>

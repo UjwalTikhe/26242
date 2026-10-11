@@ -59,7 +59,7 @@ export default function NewAssessment() {
           <Field label={t('chooseTrade')} optional>
             {trades.isLoading ? <Loading /> : (
               <select className="select" value={tradeHint} onChange={(e) => setTradeHint(e.target.value)}>
-                <option value="">— Let AI decide from my declaration —</option>
+                <option value="">Let AI decide from my declaration</option>
                 {(trades.data?.items ?? []).map((tp) => (
                   <option key={tp.id} value={tp.id}>
                     {loc(tp.title, tp.id)} (NSQF {tp.qp?.nsqfLevel ?? '—'})

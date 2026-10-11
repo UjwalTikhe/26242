@@ -107,7 +107,7 @@ export default function AssessmentHome() {
               {canTransition(a.status, 'IN_PROGRESS') && status === 'PLAN_READY' && (
                 <Button variant="saffron" disabled={busy} onClick={() => run(() => startAssessment(id))}>{t('start')}</Button>
               )}
-              <Link className="btn btn-primary" to={`/worker/a/${id}/tasks`}>{t('continueAssessment')} →</Link>
+              <Link className="btn btn-primary" to={`/worker/a/${id}/tasks`}>{t('continueAssessment')}</Link>
             </div>
           </div>
         </Card>
@@ -124,7 +124,7 @@ export default function AssessmentHome() {
         <Card title={t('stepMap')}>
           <p className="muted">{t('mappingBody')}</p>
           <Button variant="saffron" disabled={busy} onClick={() => run(() => mapAssessment(id, undefined), t('taskSaved'))}>
-            {busy ? '…' : `${t('stepMap')} →`}
+            {busy ? '…' : `${t('stepMap')}`}
           </Button>
           {dq.data && (
             <div style={{ marginTop: 14 }}>
@@ -188,7 +188,7 @@ export default function AssessmentHome() {
 
       {status === 'UNDER_REVIEW' && (
         <Card title={t('status')}>
-          <Alert kind="info">{t('reviewTitle')} — an assessor will review your evidence.</Alert>
+          <Alert kind="info">{t('reviewTitle')}. An assessor will review your evidence.</Alert>
         </Card>
       )}
 
@@ -200,7 +200,7 @@ export default function AssessmentHome() {
 
       {status === 'REVIEWED' && (
         <Card title={t('stepDecision')}>
-          <Alert kind="ok">{t('ovReviewed')} — awaiting final decision.</Alert>
+          <Alert kind="ok">{t('ovReviewed')}. Awaiting final decision.</Alert>
           <Link className="btn btn-outline btn-sm" to={`/worker/a/${id}/result`}>{t('results')}</Link>
         </Card>
       )}

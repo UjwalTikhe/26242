@@ -65,7 +65,7 @@ export default function Verify() {
               <Card>
                 {result.valid ? (
                   <>
-                    <Alert kind="ok"><b>✓ {t('verifyValid')}</b></Alert>
+                    <Alert kind="ok"><b>{t('verifyValid')}</b></Alert>
                     <dl className="key-value">
                       <dt>{t('displayName')}</dt><dd>{result.holder?.name ?? result.certificate?.holderName}</dd>
                       <dt>Trade</dt><dd>{result.holder?.trade ?? result.certificate?.qpTitle}</dd>
@@ -83,8 +83,8 @@ export default function Verify() {
 
             <SectionTitle>About</SectionTitle>
             <p className="muted small">
-              Every certificate issued through DakshSetu carries a QR code and a certificate number. Anyone —
-              an employer, a training partner, or a government officer — can verify it instantly here, with no login.
+              Every certificate issued through DakshSetu carries a QR code and a certificate number. Anyone,
+              an employer, a training partner, or a government officer, can verify it instantly here with no login.
             </p>
           </div>
         </div>

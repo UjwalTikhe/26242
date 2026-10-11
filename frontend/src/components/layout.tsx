@@ -37,9 +37,9 @@ export function GovHeader() {
       <div className="tricolor-bar" aria-hidden />
       <div className="nav-inner">
         <Link to="/" className="brand">
-          <img src="/icon.svg" alt="" width={40} height={40} />
+          <img src="/DakshSetu.png" alt="" width={40} height={40} style={{ borderRadius: 4 }} />
           <span>
-            <span className="brand-name">{APP_NAME} <span style={{ color: 'var(--saffron)' }}>·</span> {APP_NAME_HI}</span>
+            <span className="brand-name">{APP_NAME}</span>
             <span className="brand-sub" style={{ display: 'block' }}>{t('govt')}</span>
           </span>
         </Link>

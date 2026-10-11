@@ -53,7 +53,7 @@ export default function Landing() {
               <Card key={s.n}>
                 <div style={{ display: 'flex', gap: 14 }}>
                   <div style={{
-                    width: 38, height: 38, borderRadius: 999, background: 'var(--navy)', color: '#fff',
+                    width: 38, height: 38, borderRadius: 4, background: 'var(--navy)', color: '#fff',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flex: 'none',
                   }}>{s.n}</div>
                   <div>
@@ -98,7 +98,10 @@ export default function Landing() {
           </Card>
 
           <p className="center muted small" style={{ marginTop: 24 }}>
-            {APP_NAME} ({APP_NAME_HI}) · {SIH_HINT}
+            {APP_NAME} · {SIH_HINT}
+            <span style={{ display: 'block', marginTop: 4 }}>
+              <a href="/tos" className="muted">{t('tos') || 'Terms of Service'}</a> · <a href="/privacy" className="muted">{t('privacy') || 'Privacy Policy'}</a>
+            </span>
           </p>
         </div>
       </main>

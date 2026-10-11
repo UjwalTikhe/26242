@@ -66,8 +66,8 @@ export default function WorkerProfilePage() {
         },
       );
       if (result.applied) {
-        setMsg({ kind: 'ok', text: t('save') + ' ✓' });
-        toast(t('save') + ' ✓', 'ok');
+        setMsg({ kind: 'ok', text: t('save') });
+        toast(t('save'), 'ok');
       } else {
         setMsg({ kind: 'info', text: t('offline') });
       }

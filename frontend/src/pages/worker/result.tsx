@@ -106,7 +106,7 @@ export default function WorkerResult() {
           <Card>
             <Alert kind={approved ? 'ok' : 'err'}>
               {approved ? t('approved') : t('rejected')}
-              {dq.data.comments ? ` — ${dq.data.comments}` : ''}
+              {dq.data.comments ? `: ${dq.data.comments}` : ''}
             </Alert>
             {approved && dq.data.certificateId && (
               <div className="toolbar" style={{ marginTop: 8 }}>

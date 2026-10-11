@@ -89,7 +89,7 @@ export default function TaskRunner() {
                     background: i === current ? 'var(--line-2)' : 'transparent',
                   }}
                 >
-                  <span style={{ flex: 'none', width: 22 }}>{answered.has(tk.id) ? '✅' : `${i + 1}.`}</span>
+                  <span style={{ flex: 'none', width: 22 }}>{answered.has(tk.id) ? '✓' : `${i + 1}.`}</span>
                   <span style={{ flex: 1, fontSize: '0.9rem' }}>{loc(tk.title)}</span>
                   {tk.criticalSafety && <span title="Critical safety">⚠️</span>}
                 </button>

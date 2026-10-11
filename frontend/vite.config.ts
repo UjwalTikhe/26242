@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icon.svg', 'pwa-192.png', 'pwa-512.png'],
+      includeAssets: ['DakshSetu.png', 'icon.svg', 'pwa-192.png', 'pwa-512.png'],
       manifest: {
         name: 'DakshSetu — AI-Assisted RPL Skill Assessment',
         short_name: 'DakshSetu',
@@ -22,6 +22,7 @@ export default defineConfig({
         scope: '/',
         lang: 'en',
         icons: [
+          { src: '/DakshSetu.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
           { src: '/pwa-192.png', sizes: '192x192', type: 'image/png' },
           { src: '/pwa-512.png', sizes: '512x512', type: 'image/png' },
           { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' },

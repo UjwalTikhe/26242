@@ -75,7 +75,7 @@ export default function ReviewPage() {
           : [],
       }),
     onSuccess: async () => {
-      toast(t('sendReview') + ' ✓', 'ok');
+      toast(t('sendReview'), 'ok');
       await qc.invalidateQueries({ queryKey: ['assessment', id] });
       navigate('/assessor');
     },
@@ -104,7 +104,7 @@ export default function ReviewPage() {
 
       {canClaim && (
         <Card>
-          <p className="muted">{t('claim')} — this assessment is waiting for an assessor.</p>
+          <p className="muted">{t('claim')}. This assessment is waiting for an assessor.</p>
           <Button variant="saffron" disabled={claim.isPending} onClick={() => claim.mutate()}>
             {claim.isPending ? '…' : t('claim')}
           </Button>
@@ -199,8 +199,8 @@ export default function ReviewPage() {
 
       {a.status === 'REVIEWED' && (
         <Card title={t('decisionTitle')}>
-          <Alert kind="ok">{t('ovReviewed')} — final decision pending.</Alert>
-          <Link className="btn btn-saffron" to={`/assessor/a/${id}/decision`}>{t('decisionTitle')} →</Link>
+          <Alert kind="ok">{t('ovReviewed')}. Final decision pending.</Alert>
+          <Link className="btn btn-saffron" to={`/assessor/a/${id}/decision`}>{t('decisionTitle')}</Link>
         </Card>
       )}
       {(a.status === 'APPROVED' || a.status === 'REJECTED') && (
