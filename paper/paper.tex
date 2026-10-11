@@ -107,7 +107,7 @@ explicitly routed, and always auditable. Contributions are:
   \item a \textbf{SHA-256 evidence chain} with certificate QR verification by the public;
   \item \textbf{four NSQF-aligned trade packs} (Electrician, Welder, Plumber, Mason) with
         bilingual keyword rubrics, validated as machine-readable contracts;
-  \item an \textbf{evaluation harness} of 125 automated tests over an OpenAPI surface of
+  \item an \textbf{evaluation harness} of 124 automated tests over an OpenAPI surface of
         37 paths and 141 schemas.
 \end{enumerate}
 
@@ -492,7 +492,7 @@ contracts, Mongoose~9 on MongoDB, BullMQ~6 queues on Redis (with an inline drive
 tests and single-host deploys), JWT role tokens, PDFKit + QR certificate rendering, and a
 tus media gateway. The bilingual analysis service, verifier page, and the Plumber/Mason
 trade packs are the hackathon additions over the base platform. The full test suite is
-Vitest + Supertest over in-memory MongoDB: \textbf{125 tests} across 14 suites (auth,
+Vitest + Supertest over in-memory MongoDB: \textbf{124 tests} across 14 suites (auth,
 assessment lifecycle, analysis, bilingual scoring, evidence chain, sync/LWW, contract,
 tus resumable upload, trade-pack schema integrity, report/certificate and public verifier,
 review, admin, profile, health).
@@ -540,7 +540,7 @@ augment, low-confidence human route); the critical-safety veto (a missing ``isol
 circuit'' criterion fails the NOS regardless of other scores); append-only enforcement; LWW
 merge determinism; tus resume at a byte offset; the 70\% rule; certificate issuance with QR
 and public \texttt{/verify} resolution; and 404 on forged certificate numbers. \textbf{All
-125 tests pass} with \texttt{AI\_MODE=mock} and the inline queue driver; learned adapters
+124 tests pass} with \texttt{AI\_MODE=mock} and the inline queue driver; learned adapters
 are contract-tested through their interfaces but not statically evaluated here.
 
 \subsection{Limitations}
@@ -560,7 +560,7 @@ a machine-verifiable rubric computed from the official QP, with learned models r
 explicit, gated advisory roles---makes the assessment explainable and auditable, which is
 exactly what certification bodies and courts require. The system ships four NSQF-aligned
 trade packs, a bilingual scoring engine with honest human routing, an offline-first sync
-contract, and a public certificate verifier over a SHA-256 evidence chain, validated by 125
+contract, and a public certificate verifier over a SHA-256 evidence chain, validated by 124
 automated tests over 37 API paths.
 
 Future work proceeds along four lines: (1)~field pilots with a partner SSC to measure
