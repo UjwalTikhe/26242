@@ -54,6 +54,9 @@ export default function AssessorDashboard() {
       </Card>
 
       <div className="digi-toolbar mt-12">
+        <Link className="digi-btn digi-btn-primary digi-btn-sm digi-btn-inline" to="/assessor/sensor-dashboard" style={{ textDecoration: 'none', marginRight: 8 }}>
+          📡 Sensor Dashboard
+        </Link>
         <Button variant="ghost" className="digi-btn-sm digi-btn-inline" onClick={() => q.refetch()}>{t('retry')}</Button>
       </div>
     </AppShell>

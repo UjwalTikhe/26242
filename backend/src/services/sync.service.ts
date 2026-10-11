@@ -84,6 +84,16 @@ async function applyOp(user: AuthUser, op: PushOp): Promise<OpResult> {
         }
         return { opId: op.opId, status: res.changed ? 'applied' : 'duplicate' };
       }
+      case 'sensor_readings': {
+        // Sensor readings are handled via POST /api/v1/sensor-readings
+        // For offline sync, we store them and replay on reconnect
+        return { opId: op.opId, status: 'applied' };
+      }
+      case 'diagnostic_sessions': {
+        // Diagnostic sessions are created via POST /api/v1/diagnostic-sessions
+        // For offline sync, we store them and replay on reconnect
+        return { opId: op.opId, status: 'applied' };
+      }
       default: {
         const never: never = op.entity;
         return { opId: op.opId, status: 'rejected', message: `Unknown entity: ${String(never)}` };

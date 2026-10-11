@@ -21,14 +21,20 @@ import {
   AIAnalysis,
   Assessment,
   AssessorReview,
+  AuditLogEntry,
   Certificate,
   CompetencyReport,
   Declaration,
   Decision,
+  Device,
+  DeviceAlert,
+  DiagnosticSession,
   Evidence,
   QPMatch,
   AssessmentPlan,
   PublicTask,
+  SafetyThreshold,
+  SensorReading,
   SyncRecord,
   TaskAnswers,
   TaskResponse,
@@ -36,7 +42,6 @@ import {
   WorkerProfile,
   DeclarationAnswers,
   VoiceAnswer,
-  AuditLogEntry,
 } from './entities.js';
 import { TradePack } from './tradepack.js';
 
@@ -299,6 +304,63 @@ export const SyncPullRes = z.object({
 });
 
 /* ================================================================== */
+/* Sensor diagnostics                                                  */
+/* ================================================================== */
+
+export const RegisterDeviceReq = z.object({
+  deviceId: z.string(),
+  serialNumber: z.string().optional(),
+  type: z.enum(['wearable', 'handheld', 'fixed']),
+  name: z.string(),
+  sensors: z.array(z.enum(['acoustic', 'pressure', 'gas_concentration', 'temperature', 'uv', 'proximity', 'vibration'])),
+  associatedTrades: z.array(z.string()).default([]),
+  firmwareVersion: z.string().optional(),
+});
+export const DeviceRes = Device;
+export const DeviceListRes = paginated(Device);
+
+export const CreateDiagnosticSessionReq = z.object({
+  deviceId: z.string(),
+  mode: z.enum(['leak_detection', 'welding_hazard', 'general_monitoring']),
+  trade: z.string().optional(),
+  scenario: z.string().optional(),
+  assessmentId: z.string().optional(),
+});
+export const DiagnosticSessionRes = DiagnosticSession;
+export const DiagnosticSessionListRes = paginated(DiagnosticSession);
+
+export const SensorReadingReq = z.object({
+  sessionId: z.string(),
+  sensorType: z.enum(['acoustic', 'pressure', 'gas_concentration', 'temperature', 'uv', 'proximity', 'vibration']),
+  unit: z.string(),
+  value: z.number(),
+  rawValue: z.number().optional(),
+  location: z
+    .object({
+      lat: z.number(),
+      lng: z.number(),
+      accuracy: z.number().optional(),
+    })
+    .optional(),
+  accuracy: z.number().min(0).max(1).optional(),
+  timestamp: z.string().datetime(),
+});
+export const SensorReadingRes = SensorReading;
+export const SensorReadingListRes = paginated(SensorReading);
+
+export const SafetyThresholdRes = SafetyThreshold;
+export const SafetyThresholdListRes = paginated(SafetyThreshold);
+
+export const DeviceAlertRes = DeviceAlert;
+export const DeviceAlertListRes = paginated(DeviceAlert);
+
+export const SessionSummaryReq = z.object({
+  sessionId: z.string(),
+  trainerNotes: z.string().optional(),
+});
+export const SessionSummaryRes = DiagnosticSession;
+
+/* ================================================================== */
 /* Trades / meta / admin                                               */
 /* ================================================================== */
 
@@ -422,4 +484,26 @@ export const routes: RouteDef[] = [
 
   // admin
   { method: 'get', path: '/api/v1/admin/fairness', tag: 'admin', summary: 'Fairness stats by language/gender/region', auth: 'assessor', query: PageQuery, response: FairnessRes },
+
+  // sensor diagnostics
+  { method: 'post', path: '/api/v1/devices', tag: 'sensors', summary: 'Register diagnostic device', auth: 'any', body: RegisterDeviceReq, bodyRequired: true, response: DeviceRes, status: 201 },
+  { method: 'get', path: '/api/v1/devices', tag: 'sensors', summary: 'List registered devices', auth: 'any', query: PageQuery, response: DeviceListRes },
+  { method: 'get', path: '/api/v1/devices/:id', tag: 'sensors', summary: 'Get device details', auth: 'any', params: z.object({ id: Id }), response: DeviceRes },
+  { method: 'patch', path: '/api/v1/devices/:id', tag: 'sensors', summary: 'Update device status/battery', auth: 'any', params: z.object({ id: Id }), body: z.object({ batteryLevel: z.number().min(0).max(100).optional(), isActive: z.boolean().optional() }), response: DeviceRes },
+
+  { method: 'post', path: '/api/v1/diagnostic-sessions', tag: 'sensors', summary: 'Create diagnostic session', auth: 'worker', body: CreateDiagnosticSessionReq, bodyRequired: true, response: DiagnosticSessionRes, status: 201 },
+  { method: 'get', path: '/api/v1/diagnostic-sessions', tag: 'sensors', summary: 'List diagnostic sessions', auth: 'any', query: PageQuery, response: DiagnosticSessionListRes },
+  { method: 'get', path: '/api/v1/diagnostic-sessions/:id', tag: 'sensors', summary: 'Get diagnostic session', auth: 'any', params: z.object({ id: Id }), response: DiagnosticSessionRes },
+  { method: 'post', path: '/api/v1/diagnostic-sessions/:id/complete', tag: 'sensors', summary: 'Complete diagnostic session', auth: 'worker', params: z.object({ id: Id }), response: DiagnosticSessionRes },
+  { method: 'post', path: '/api/v1/diagnostic-sessions/:id/summary', tag: 'sensors', summary: 'Add trainer summary/notes', auth: 'assessor', params: z.object({ id: Id }), body: SessionSummaryReq, bodyRequired: false, response: SessionSummaryRes },
+
+  { method: 'post', path: '/api/v1/sensor-readings', tag: 'sensors', summary: 'Submit sensor reading', auth: 'worker', body: SensorReadingReq, bodyRequired: true, response: SensorReadingRes, status: 201 },
+  { method: 'get', path: '/api/v1/sensor-readings', tag: 'sensors', summary: 'List sensor readings', auth: 'any', query: PageQuery.extend({ sessionId: Id.optional(), deviceId: Id.optional() }), response: SensorReadingListRes },
+  { method: 'get', path: '/api/v1/diagnostic-sessions/:id/readings', tag: 'sensors', summary: 'Get readings for a session', auth: 'any', params: z.object({ id: Id }), query: PageQuery, response: SensorReadingListRes },
+
+  { method: 'get', path: '/api/v1/safety-thresholds', tag: 'sensors', summary: 'List safety thresholds', auth: 'public', query: PageQuery.extend({ sensorType: z.enum(['acoustic', 'pressure', 'gas_concentration', 'temperature', 'uv', 'proximity', 'vibration']).optional(), tradePackId: z.string().optional() }), response: SafetyThresholdListRes },
+  { method: 'get', path: '/api/v1/safety-thresholds/:id', tag: 'sensors', summary: 'Get safety threshold', auth: 'public', params: z.object({ id: Id }), response: SafetyThresholdRes },
+
+  { method: 'get', path: '/api/v1/diagnostic-sessions/:id/alerts', tag: 'sensors', summary: 'Get alerts for a session', auth: 'any', params: z.object({ id: Id }), query: PageQuery, response: DeviceAlertListRes },
+  { method: 'post', path: '/api/v1/device-alerts/:id/acknowledge', tag: 'sensors', summary: 'Acknowledge device alert', auth: 'worker', params: z.object({ id: Id }), response: DeviceAlertRes },
 ];

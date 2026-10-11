@@ -32,6 +32,13 @@ export default function WorkerDashboard() {
         </Link>
       </div>
 
+      {/* Diagnostic Session Button */}
+      <div style={{ marginBottom: 14 }}>
+        <Link className="digi-btn digi-btn-primary" to="/worker/diagnostic/new" style={{ gap: 8 }}>
+          <span>📡 Start Diagnostic Session</span>
+        </Link>
+      </div>
+
       {/* Active Skill Credentials / Assessments */}
       <div className="digi-card">
         <div className="digi-card-header">

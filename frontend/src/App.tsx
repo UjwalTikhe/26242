@@ -13,10 +13,13 @@ import NewAssessment from './pages/worker/new';
 import AssessmentHome from './pages/worker/assessment';
 import TaskRunner from './pages/worker/tasks';
 import WorkerResult from './pages/worker/result';
+import NewDiagnostic from './pages/worker/new-diagnostic';
+import SensorMonitor from './pages/worker/sensor-monitor';
 import AssessorDashboard from './pages/assessor/dashboard';
 import ReviewPage from './pages/assessor/review';
 import DecisionPage from './pages/assessor/decision';
 import FairnessPage from './pages/assessor/fairness';
+import SensorDashboard from './pages/assessor/sensor-dashboard';
 
 function RequireRole({ roles, children }: { roles: string[]; children: React.ReactNode }) {
   const { user } = useAuth();
@@ -46,10 +49,13 @@ export default function App() {
       <Route path="/worker/a/:id" element={<RequireRole roles={['worker']}><AssessmentHome /></RequireRole>} />
       <Route path="/worker/a/:id/tasks" element={<RequireRole roles={['worker']}><TaskRunner /></RequireRole>} />
       <Route path="/worker/a/:id/result" element={<RequireRole roles={['worker']}><WorkerResult /></RequireRole>} />
+      <Route path="/worker/diagnostic/new" element={<RequireRole roles={['worker']}><NewDiagnostic /></RequireRole>} />
+      <Route path="/worker/sensor/:id" element={<RequireRole roles={['worker']}><SensorMonitor /></RequireRole>} />
 
       <Route path="/assessor" element={<RequireRole roles={['assessor', 'authorized_assessor', 'admin']}><AssessorDashboard /></RequireRole>} />
       <Route path="/assessor/a/:id/review" element={<RequireRole roles={['assessor', 'authorized_assessor', 'admin']}><ReviewPage /></RequireRole>} />
       <Route path="/assessor/a/:id/decision" element={<RequireRole roles={['assessor', 'authorized_assessor', 'admin']}><DecisionPage /></RequireRole>} />
+      <Route path="/assessor/sensor-dashboard" element={<RequireRole roles={['assessor', 'authorized_assessor', 'admin']}><SensorDashboard /></RequireRole>} />
       <Route path="/fairness" element={<RequireRole roles={['assessor', 'authorized_assessor', 'admin']}><FairnessPage /></RequireRole>} />
 
       <Route path="*" element={<Navigate to="/" replace />} />

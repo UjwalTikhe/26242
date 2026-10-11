@@ -135,7 +135,7 @@ export type DecisionOutcome = (typeof DECISION_OUTCOMES)[number];
 /* Offline sync                                                        */
 /* ------------------------------------------------------------------ */
 
-export const SYNC_ENTITIES = ['profile', 'declaration', 'answers'] as const;
+export const SYNC_ENTITIES = ['profile', 'declaration', 'answers', 'sensor_readings', 'diagnostic_sessions'] as const;
 export type SyncEntity = (typeof SYNC_ENTITIES)[number];
 
 export const SYNC_OP_STATUSES = ['applied', 'duplicate', 'conflict', 'rejected', 'error'] as const;
@@ -150,3 +150,38 @@ export const HEADER_CLIENT_ID = 'X-Client-Id';
 export const HEADER_API_VERSION = 'X-Api-Version';
 
 export const API_VERSION = '1';
+
+/* ------------------------------------------------------------------ */
+/* Sensor diagnostics                                                  */
+/* ------------------------------------------------------------------ */
+
+export const SENSOR_TYPES = [
+  'acoustic',      // Sound/ultrasonic for leak detection
+  'pressure',      // Pressure sensors for gas/water lines
+  'gas_concentration', // Gas sensors (methane, LPG, CO, etc.)
+  'temperature',   // Temperature monitoring
+  'uv',            // UV radiation sensor for welding
+  'proximity',     // Distance/proximity sensors
+  'vibration',     // Vibration/accelerometer
+] as const;
+export type SensorType = (typeof SENSOR_TYPES)[number];
+
+export const DEVICE_TYPES = ['wearable', 'handheld', 'fixed'] as const;
+export type DeviceType = (typeof DEVICE_TYPES)[number];
+
+export const ALERT_LEVELS = ['safe', 'warning', 'danger', 'critical'] as const;
+export type AlertLevel = (typeof ALERT_LEVELS)[number];
+
+export const ALERT_TYPES = ['visual', 'audio', 'haptic', 'notification'] as const;
+export type AlertType = (typeof ALERT_TYPES)[number];
+
+export const DIAGNOSTIC_SESSION_STATUSES = [
+  'active',
+  'paused',
+  'completed',
+  'aborted',
+] as const;
+export type DiagnosticSessionStatus = (typeof DIAGNOSTIC_SESSION_STATUSES)[number];
+
+export const DIAGNOSTIC_MODES = ['leak_detection', 'welding_hazard', 'general_monitoring'] as const;
+export type DiagnosticMode = (typeof DIAGNOSTIC_MODES)[number];

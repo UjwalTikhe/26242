@@ -6,8 +6,13 @@ import { z } from 'zod';
 import { DateTime, GeoPoint, Id, Language, LocalizedText, Timestamps, Version } from './common.js';
 import {
   AI_MODES,
+  ALERT_LEVELS,
+  ALERT_TYPES,
   ASSESSMENT_STATUSES,
   DECISION_OUTCOMES,
+  DIAGNOSTIC_MODES,
+  DIAGNOSTIC_SESSION_STATUSES,
+  DEVICE_TYPES,
   EVIDENCE_STATUSES,
   FLAG_KINDS,
   ITEM_ROUTINGS,
@@ -17,6 +22,7 @@ import {
   REVIEW_OUTCOMES,
   ROLES,
   SEVERITIES,
+  SENSOR_TYPES,
   TASK_TYPES,
 } from './enums.js';
 import { ChecklistItem, EvidenceSpec } from './tradepack.js';
@@ -502,6 +508,131 @@ export const AuditLogEntry = z.object({
   at: DateTime,
 });
 export type AuditLogEntry = z.infer<typeof AuditLogEntry>;
+
+/* ================================================================== */
+/* Sensor diagnostics                                                  */
+/* ================================================================== */
+
+export const Device = z.object({
+  id: Id,
+  deviceId: z.string(), // Hardware identifier
+  serialNumber: z.string().optional(),
+  type: z.enum(DEVICE_TYPES),
+  name: z.string(),
+  /** Supported sensor types */
+  sensors: z.array(z.enum(SENSOR_TYPES)),
+  /** Trade associations (e.g., plumber, welder, electrician) */
+  associatedTrades: z.array(z.string()).default([]),
+  /** Current firmware version */
+  firmwareVersion: z.string().optional(),
+  batteryLevel: z.number().min(0).max(100).optional(),
+  lastSeenAt: DateTime.optional(),
+  isActive: z.boolean().default(true),
+  ...Timestamps.shape,
+});
+export type Device = z.infer<typeof Device>;
+
+export const SensorReading = z.object({
+  id: Id,
+  deviceId: Id,
+  sessionId: Id,
+  sensorType: z.enum(SENSOR_TYPES),
+  /** Sensor-specific unit (e.g., ppm, °C, dB, mbar) */
+  unit: z.string(),
+  value: z.number(),
+  /** Raw sensor value before calibration */
+  rawValue: z.number().optional(),
+  /** GPS location of reading */
+  location: GeoPoint.optional(),
+  /** Accuracy/confidence of reading */
+  accuracy: z.number().min(0).max(1).optional(),
+  /** Alert level based on safety thresholds */
+  alertLevel: z.enum(ALERT_LEVELS).default('safe'),
+  /** Calibrated timestamp */
+  timestamp: DateTime,
+  ...Timestamps.shape,
+});
+export type SensorReading = z.infer<typeof SensorReading>;
+
+export const SafetyThreshold = z.object({
+  id: Id,
+  sensorType: z.enum(SENSOR_TYPES),
+  tradePackId: z.string().optional(), // Trade-specific threshold
+  /** Threshold name/description */
+  name: z.string(),
+  /** Occupational safety standard reference (e.g., OSHA, BIS) */
+  standardRef: z.string().optional(),
+  /** Safe upper limit */
+  maxSafe: z.number(),
+  /** Warning threshold (percentage of max) */
+  warningThreshold: z.number().min(0).max(1).default(0.7),
+  /** Critical/danger threshold (percentage of max) */
+  criticalThreshold: z.number().min(0).max(1).default(0.9),
+  /** Unit of measurement */
+  unit: z.string(),
+  /** Duration-based thresholds (exposure time limits) */
+  durationLimitSec: z.number().int().optional(),
+  notes: z.string().optional(),
+  isActive: z.boolean().default(true),
+  ...Timestamps.shape,
+});
+export type SafetyThreshold = z.infer<typeof SafetyThreshold>;
+
+export const DiagnosticSession = z.object({
+  id: Id,
+  deviceId: Id,
+  workerId: Id,
+  assessmentId: Id.optional(), // Optional: linked to assessment
+  trainerId: Id.optional(), // Trainer overseeing the session
+  mode: z.enum(DIAGNOSTIC_MODES),
+  status: z.enum(DIAGNOSTIC_SESSION_STATUSES).default('active'),
+  /** Trade being practiced */
+  trade: z.string().optional(),
+  /** Specific task or scenario */
+  scenario: z.string().optional(),
+  /** Session start time */
+  startedAt: DateTime,
+  /** Session end time */
+  endedAt: DateTime.optional(),
+  /** Number of readings collected */
+  readingCount: z.number().int().default(0),
+  /** Maximum alert level reached */
+  maxAlertLevel: z.enum(ALERT_LEVELS).default('safe'),
+  /** Safety violations detected */
+  violations: z.array(
+    z.object({
+      sensorType: z.enum(SENSOR_TYPES),
+      value: z.number(),
+      threshold: z.number(),
+      at: DateTime,
+      resolvedAt: DateTime.optional(),
+    }),
+  ).default([]),
+  /** Trainer notes */
+  trainerNotes: z.string().optional(),
+  /** Session summary for AI/trainer review */
+  summary: z.string().optional(),
+  ...Timestamps.shape,
+});
+export type DiagnosticSession = z.infer<typeof DiagnosticSession>;
+
+export const DeviceAlert = z.object({
+  id: Id,
+  sessionId: Id,
+  deviceId: Id,
+  sensorType: z.enum(SENSOR_TYPES),
+  alertLevel: z.enum(ALERT_LEVELS),
+  value: z.number(),
+  threshold: z.number(),
+  /** Alert types triggered */
+  alertTypes: z.array(z.enum(ALERT_TYPES)).default(['visual']),
+  /** Whether the alert was acknowledged */
+  acknowledged: z.boolean().default(false),
+  acknowledgedAt: DateTime.optional(),
+  timestamp: DateTime,
+  ...Timestamps.shape,
+});
+export type DeviceAlert = z.infer<typeof DeviceAlert>;
 
 /* ================================================================== */
 /* Sync (offline contract)                                             */
